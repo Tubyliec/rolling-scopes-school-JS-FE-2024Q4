@@ -1,0 +1,62 @@
+//Import
+
+@use 'reset' as *;
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+
+//Variables
+
+$desktop-max-width: 1276px;
+$primary-radius: 20px;
+
+$primary-margin: 60px 82px;
+
+//Mixins
+
+@mixin flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-horizontal-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-vertical-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@mixin flex-vertical-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+@mixin button_link_style {
+    @include button_font;
+    padding: 20px 32px;
+    background-color: $dark;
+    border-radius: $primary-radius;
+    cursor: pointer;
+    &:hover {
+        background-color: $static-white;
+        color: $dark;
+    }
+}
+
