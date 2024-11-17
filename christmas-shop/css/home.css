@@ -1,1 +1,288 @@
-/*# sourceMappingURL=home.css.map */
+/*Reset configuration*/
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+a, a:link, a:visited, a:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul, ul li {
+  list-style: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/*Fonts*/
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"), url("../assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Allura";
+  src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
+}
+/*Images*/
+/*Global*/
+body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px 20px 0 0;
+  background-color: #ff4646;
+}
+
+/*Header*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
+  padding: 12px 82px;
+}
+header .logo_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+header .logo_box .logo_image {
+  background-image: url("../assets/icons/snowflake.svg");
+  width: 24px;
+  height: 24px;
+}
+header .navigation_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+header .navigation_list li {
+  padding: 12px 20px;
+}
+header .navigation_list li a {
+  color: #181c29;
+}
+
+.section {
+  max-width: 1276px;
+}
+
+.hero_wrapper {
+  background-image: url("../assets/images/home/bg-ball.png");
+  background-position: center;
+  background-size: cover;
+}
+.hero_wrapper .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 0;
+  gap: 12px;
+}
+.hero_wrapper .hero .hero_description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+  gap: 12px;
+}
+.hero_wrapper .hero .hero_description p {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  font-family: Allura;
+  color: #fff;
+}
+.hero_wrapper .hero .hero_description h1 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 150%;
+  letter-spacing: 0.18em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+.hero_wrapper .hero .hero_description .button_link p {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 20px 32px;
+  background-color: #181c29;
+  border-radius: 20px;
+}
+
+.about_wrapper {
+  background-image: url("../assets/images/home/bg-snow.png");
+  background-position: center;
+  background-size: cover;
+}
+.about_wrapper .about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  margin: 60px 82px;
+  border-radius: 20px;
+}
+.about_wrapper .about .about_info_wrapper {
+  width: 50%;
+}
+.about_wrapper .about .about_info_wrapper .about_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  margin: 100px 92px 100px 60px;
+  padding: 60px 0;
+  gap: 20px;
+}
+.about_wrapper .about .about_info_wrapper .about_info p {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  font-family: Allura;
+  color: #ff4646;
+}
+.about_wrapper .about .about_info_wrapper .about_info p:last-child {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 148%;
+  font-family: Montserrat;
+  color: #181c29;
+}
+.about_wrapper .about .about_info_wrapper .about_info h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 152%;
+  letter-spacing: 0.16em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
+}
+.about_wrapper .about .about_image {
+  border-radius: 20px;
+  background-image: url("../assets/images/home/santa.png");
+  background-position: center;
+  background-size: cover;
+  width: 50%;
+  height: 528px;
+}
+
+.slider_wrapper {
+  background-image: url("../assets/images/home/bg-snow.png");
+  background-position: center;
+  background-size: cover;
+}
+.slider_wrapper .slider_container {
+  margin: 60px 82px;
+  padding-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.slider_wrapper .slider_container .slider_caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.slider_wrapper .slider_container .slider_caption p {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  font-family: Allura;
+  color: #fff;
+}
+.slider_wrapper .slider_container .slider_caption h2 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 152%;
+  letter-spacing: 0.16em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #fff;
+}
+.slider_wrapper .slider_container .slider {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  overflow: hidden;
+}
+.slider_wrapper .slider_container .slider .slider_item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.slider_wrapper .slider_container .slider .slider_item p {
+  font-weight: 600;
+  font-size: 80px;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+.slider_wrapper .slider_container .slider .slider_item .slider_item_img {
+  width: 200px;
+  height: 200px;
+}
+.slider_wrapper .slider_container .slider .slider_item .slider_item_img img {
+  border-radius: 20px;
+}/*# sourceMappingURL=home.css.map */

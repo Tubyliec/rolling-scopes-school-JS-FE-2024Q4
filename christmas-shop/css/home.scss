@@ -1,0 +1,191 @@
+//Import
+
+@use 'reset' as *;
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+
+//Variables
+$desktop-max-width: 1276px;
+$primary-radius: 20px;
+
+//Mixins
+
+@mixin flex-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-vertical-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+}
+
+@mixin button_link_style {
+    @include button_font;
+    padding: 20px 32px;
+    background-color: $dark;
+    border-radius: $primary-radius;
+}
+
+/*Global*/
+
+body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 20px 20px 0 0;
+    background-color: $primary;
+}
+
+/*Header*/
+
+header {
+    @include flex-horizontal;
+    @include navigation-font;
+    padding: 12px 82px;
+    .logo_box {
+        @include flex-horizontal;
+        gap: 8px;
+        .logo_image {
+            background-image: $gifts-logo;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .navigation_list {
+        @include flex-horizontal;
+        gap: 8px;
+        li {
+            padding: 12px 20px;
+            a {
+                color: $dark;
+            }
+        }
+    }
+}
+
+.section {
+    max-width: $desktop-max-width;
+}
+
+.hero_wrapper {
+    background-image: $background-ball;
+    background-position: center;
+    background-size: cover;
+    .hero {
+        @include flex-vertical;
+        margin: 60px 0;
+        gap: 12px;
+        .hero_description {
+            @include flex-vertical;
+            padding: 60px 0;
+            gap: 12px;
+            p {
+                @include header-italic;
+            }
+            h1 {
+                @include h1;
+            }
+            .button_link {
+                p {
+                    @include button_link_style;
+                }
+            }
+        }
+    }
+}
+
+.about_wrapper {
+    background-image: $background-snow;
+    background-position: center;
+    background-size: cover;
+    .about {
+        @include flex-horizontal;
+        background-color: $static-white;
+        margin: 60px 82px;
+        border-radius: $primary-radius;
+        .about_info_wrapper {
+            width: 50%;
+            .about_info {
+                @include flex-vertical-left;
+                margin: 100px 92px 100px 60px;
+                padding: 60px 0;
+                gap: 20px;
+                p {
+                    @include header-italic-primary;
+                    &:last-child {
+                        @include text_font;
+                    }
+                }
+                h2 {
+                    @include h2;
+                }
+            }
+        }
+        .about_image {
+            border-radius: $primary-radius;
+            background-image: $santa-img;
+            background-position: center;
+            background-size: cover;
+            width: 50%;
+            height: 528px;
+        }
+    }
+}
+
+.slider_wrapper {
+    background-image: $background-snow;
+    background-position: center;
+    background-size: cover;
+    .slider_container {
+        margin: 60px 82px;
+        padding-bottom: 56px;
+        @include flex-vertical;
+        .slider_caption {
+            @include flex-vertical;
+            gap: 12px;
+            p {
+                @include header-italic;
+            }
+            h2 {
+                @include h2-white;
+            }
+        }
+        .slider {
+            margin: 20px 0;
+            @include flex-horizontal;
+            gap: 20px;
+            overflow: hidden;
+            .slider_item {
+                @include flex-horizontal;
+                gap: 20px;
+                p {
+                    @include slider-font;
+                }
+                .slider_item_img {
+                    width: 200px;
+                    height: 200px;
+                    img {
+                        border-radius: $primary-radius;
+                    }
+                }
+            }
+        }
+    }
+}
