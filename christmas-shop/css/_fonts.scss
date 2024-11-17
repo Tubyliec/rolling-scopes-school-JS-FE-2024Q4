@@ -30,7 +30,33 @@
         weight: 400;
         size: 16px;
     }
+    line-height: 150%;
+}
+
+@mixin font-16-148 {
+    font: {
+        weight: 400;
+        size: 16px;
+    }
     line-height: 148%;
+}
+
+@mixin font-16-152 {
+    font: {
+        weight: 400;
+        size: 16px;
+    }
+    line-height: 152%;
+    letter-spacing: 0.08em;
+}
+
+@mixin font-16-152-600 {
+    font: {
+        weight: 600;
+        size: 16px;
+    }
+    line-height: 152%;
+    letter-spacing: 0.08em;
 }
 
 @mixin font-24 {
@@ -80,6 +106,18 @@
     color: $static-white;
 }
 
+@mixin header-italic-dark {
+    @include font-24;
+    font-family: Allura;
+    color: $dark;
+}
+
+@mixin header-italic {
+    @include font-24;
+    font-family: Allura;
+    color: $static-white;
+}
+
 @mixin header-italic-primary {
     @include font-24;
     font-family: Allura;
@@ -118,6 +156,7 @@
 @mixin text_font {
     @include font-16;
     font-family: Montserrat;
+    letter-spacing: 0.0015em;
     color: $dark;
 }
 
@@ -128,3 +167,37 @@
     text-align: center;
     color: $static-white;
 }
+
+@mixin item_font {
+    @include font-12;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    color: $dark;
+}
+
+@mixin item_description_text {
+    @include font-16-152;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    color: $dark;
+}
+
+@mixin count_item_text {
+    @include font-12;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    color: $static-white;
+}
+
+@mixin contact_font {
+    font-family: Montserrat;
+   @include font-16-152-600;
+   text-transform: uppercase;
+   color: $dark;
+}
+
+@mixin contact_rs_font {
+    font-family: Montserrat;
+    @include font-16-148;
+    color: $dark;
+ }
