@@ -40,6 +40,11 @@ header {
         gap: 8px;
         padding-left: 20px;
         cursor: pointer;
+        .logo_caption {
+            a {
+                color: $dark;
+            }
+        }
         .logo_image {
             background-image: $gifts-logo;
             width: 24px;
@@ -69,7 +74,7 @@ header {
 /*Hero*/
 
 .hero_wrapper {
-    background-image: $background-ball;
+    background-image: $background-ball, $background-snow;
     background-position: center;
     background-size: cover;
 }
@@ -278,10 +283,22 @@ header {
     }
 }
 
+.for_work {
+    color: $tag-purple;
+}
+
+.for_harmony {
+    color: $tag-pink;
+}
+
+.for_health {
+    color: $tag-green;
+}
+
 /*Counter*/
 
 .counter_wrapper {
-    background-image: $background-forest;
+    background-image: $background-forest, $background-snow;
     background-position: center;
     background-size: cover;
 }
@@ -316,13 +333,18 @@ header {
 }
 
 .counter {
-    @include flex-horizontal;
+    display: grid;
+    grid-template-columns: 80px 1px 80px 1px 80px 1px 80px;
+    align-items: center;
     background-color: $static-white-40;
     border-radius: $primary-radius;
     padding: 7px 12px 12px 12px;
     text-align: center;
+    .separator {
+        padding: 0;
+    }
     .counter_item {
-        padding: 0 16px;
+        padding: 0 10px;
         @include flex-vertical;
         .value {
             @include h2-white;
@@ -390,8 +412,9 @@ footer {
 }
 
 .social {
-    @include flex-horizontal-center;
-    gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 24px);
+    grid-gap: 30px;
     margin-bottom: 10px;
     .logo {
         width: 20px;
