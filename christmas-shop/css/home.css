@@ -341,6 +341,9 @@ header .navigation_list li:hover a {
   opacity: 0.4;
   pointer-events: none;
 }
+.slider_pagination .pag_btn:hover {
+  background-image: url("../assets/icons/Button_right_hover.png");
+}
 
 /*Best gifts*/
 .best_gifts_wrapper {
