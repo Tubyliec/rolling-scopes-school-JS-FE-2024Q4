@@ -100,6 +100,13 @@
     color: $dark;
 }
 
+@mixin navigation-font-white {
+    @include font-12;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    color: $static-white;
+}
+
 @mixin header-italic {
     @include font-24;
     font-family: Allura;

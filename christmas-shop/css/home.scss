@@ -68,6 +68,7 @@ header {
             }
         }
     }
+
 }
 
 
@@ -97,6 +98,7 @@ header {
             p {
                 @include button_link_style;
             }
+
         }
     }
 }
@@ -208,14 +210,16 @@ header {
     .pag_btn {
         width: 56px;
         height: 56px;
+        background-color: $primary;
         cursor: pointer;
+        &:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
     }
 }
 
-.disabled {
-    pointer-events: none;
-   opacity: 0.4;
-}
+
 
 /*Best gifts*/
 

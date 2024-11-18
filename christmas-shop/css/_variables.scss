@@ -60,3 +60,19 @@ $primary-margin: 60px 82px;
     }
 }
 
+@mixin list_item_styles {
+    li {
+        padding: 12px 20px;
+        border-radius: 10px;
+        a {
+            color: $dark;
+        }
+        &:hover {
+            background: $primary-opacity;
+            a {
+                color: $primary;
+            }
+        }
+    }
+}
+
