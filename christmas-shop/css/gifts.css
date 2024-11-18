@@ -1,1 +1,379 @@
-/*# sourceMappingURL=gifts.css.map */
+/*Reset configuration*/
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+a, a:link, a:visited, a:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul, ul li {
+  list-style: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/*Fonts*/
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"), url("../assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Allura";
+  src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
+}
+/*Global*/
+* {
+  transition: 0.5s;
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px 20px 0 0;
+  background-color: #ff4646;
+}
+
+.section {
+  max-width: 1276px;
+}
+
+/*Header*/
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
+  padding: 12px 82px;
+}
+header .logo_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+header .logo_box .logo_caption a {
+  color: #181c29;
+}
+header .logo_box .logo_image {
+  background-image: url("../assets/icons/snowflake.svg");
+  width: 24px;
+  height: 24px;
+}
+header .navigation_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+header .navigation_list li {
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+header .navigation_list li a {
+  color: #181c29;
+}
+header .navigation_list li:hover {
+  background: rgba(255, 70, 70, 0.2);
+}
+header .navigation_list li:hover a {
+  color: #ff4646;
+}
+header ul li:first-child {
+  pointer-events: none;
+  cursor: default;
+}
+
+/*Best gifts*/
+.best_gifts_wrapper {
+  background-image: url("../assets/images/bg-garland.png");
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.best_gifts_container {
+  margin: 60px 82px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.best_gifts_caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.best_gifts_caption h1 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 150%;
+  letter-spacing: 0.18em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+
+.buttons_panel_list {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.buttons_panel_list li {
+  padding: 12px 20px;
+  border-radius: 10px;
+}
+.buttons_panel_list li a {
+  color: #181c29;
+}
+.buttons_panel_list li:hover {
+  background: rgba(255, 70, 70, 0.2);
+}
+.buttons_panel_list li:hover a {
+  color: #ff4646;
+}
+
+.best_gifts {
+  display: grid;
+  grid-template-columns: repeat(4, 310px);
+  grid-template-rows: repeat(3, 342px);
+  gap: 12px;
+}
+
+.gifts_item {
+  width: 310px;
+  height: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: #ecf3f8;
+}
+.gifts_item .gift_img {
+  width: 310px;
+  height: 230px;
+}
+.gifts_item .gift_description_wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.gifts_item .gift_description_wrapper .gift_description {
+  text-align: left;
+  padding: 20px;
+}
+.gifts_item .gift_description_wrapper .gift_description p {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+.gifts_item .gift_description_wrapper .gift_description h3 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 152%;
+  letter-spacing: 0.08em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
+}
+.gifts_item:hover {
+  cursor: pointer;
+}
+.gifts_item:hover .gift_description > h3 {
+  color: #ff4646;
+}
+
+.for_work {
+  color: #4361ff;
+}
+
+.for_harmony {
+  color: #ff43f7;
+}
+
+.for_health {
+  color: #06a44f;
+}
+
+/*Footer*/
+.footer_wrapper {
+  background-color: #fff;
+}
+
+footer {
+  margin: 60px 82px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 65px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.contacts .contact_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background-color: #ecf3f8;
+  border-radius: 20px;
+  text-align: center;
+  width: 30%;
+  padding: 20px;
+}
+.contacts .contact_card a {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 152%;
+  letter-spacing: 0.16em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
+}
+.contacts .contact_card p {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 152%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #181c29;
+}
+
+.card_img {
+  width: 80px;
+  height: 80px;
+}
+
+.phone_img {
+  background-image: url("../assets/icons/santa-claus.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.adress_img {
+  background-image: url("../assets/icons/christmas-tree.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.mail_img {
+  background-image: url("../assets/icons/snake.svg");
+  background-position: center;
+  background-size: cover;
+}
+
+.social {
+  display: grid;
+  grid-template-columns: repeat(4, 24px);
+  grid-gap: 30px;
+  margin-bottom: 10px;
+}
+.social .logo {
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  background-position: center;
+  background-size: cover;
+}
+.social .telegram {
+  background-image: url("../assets/icons/telegram.png");
+}
+.social .facebook {
+  background-image: url("../assets/icons/facebook.png");
+}
+.social .instagram {
+  background-image: url("../assets/icons/instagram.png");
+}
+.social .x {
+  background-image: url("../assets/icons/X.png");
+}
+
+.rs_contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.rs_contacts p {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 148%;
+  color: #181c29;
+}
+.rs_contacts a {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0.05em;
+  font-family: Allura;
+  color: #181c29;
+}/*# sourceMappingURL=gifts.css.map */

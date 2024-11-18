@@ -332,12 +332,12 @@ header .navigation_list li:hover a {
 .slider_pagination .pag_btn {
   width: 56px;
   height: 56px;
+  background-color: #ff4646;
   cursor: pointer;
 }
-
-.disabled {
-  pointer-events: none;
+.slider_pagination .pag_btn:disabled {
   opacity: 0.4;
+  pointer-events: none;
 }
 
 /*Best gifts*/
