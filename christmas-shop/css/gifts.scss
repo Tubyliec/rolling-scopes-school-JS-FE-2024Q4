@@ -15,7 +15,9 @@
 }
 
 body {
+    margin: 0 auto;
     height: 100%;
+    max-width: 1440px;
 }
 
 .container {
@@ -93,7 +95,18 @@ header {
     @include navigation-font-white;
     @include flex-horizontal-center;
     gap: 8px;
-    @include list_item_styles;
+    li {
+        padding: 12px 20px;
+        border-radius: 10px;
+        &:hover {
+            background-color: $static-white-40;
+            cursor: pointer;
+        }
+        &:first-child {
+            pointer-events: none;
+            background-color: $static-white-40;
+        }
+    }
 }
 
 .best_gifts {
@@ -166,15 +179,15 @@ footer {
     @include flex-horizontal;
     gap: 12px;
     .contact_card {
-        @include flex-vertical;
-        gap: 12px;
         background-color: $content-background;
         border-radius: $primary-radius;
         text-align: center;
         width: 30%;
         padding: 20px;
         a {
+            @include flex-vertical;
             @include h2;
+            gap: 12px;
         }
         p {
             @include contact_font;
