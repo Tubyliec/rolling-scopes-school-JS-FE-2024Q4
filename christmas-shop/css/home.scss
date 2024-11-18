@@ -14,7 +14,9 @@
 }
 
 body {
+    margin: 0 auto;
     height: 100%;
+    max-width: 1440px;
 }
 
 .container {
@@ -216,6 +218,9 @@ header {
             opacity: 0.4;
             pointer-events: none;
         }
+        &:hover {
+            background-image: $right-button-img-hover;
+        }
     }
 }
 
@@ -378,15 +383,15 @@ footer {
     @include flex-horizontal;
     gap: 12px;
     .contact_card {
-        @include flex-vertical;
-        gap: 12px;
         background-color: $content-background;
         border-radius: $primary-radius;
         text-align: center;
         width: 30%;
         padding: 20px;
         a {
+            @include flex-vertical;
             @include h2;
+            gap: 12px;
         }
         p {
             @include contact_font;

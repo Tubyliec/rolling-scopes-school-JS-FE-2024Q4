@@ -55,7 +55,9 @@ button::-moz-focus-inner {
 }
 
 body {
+  margin: 0 auto;
   height: 100%;
+  max-width: 1440px;
 }
 
 .container {
@@ -178,14 +180,13 @@ header ul li:first-child {
   padding: 12px 20px;
   border-radius: 10px;
 }
-.buttons_panel_list li a {
-  color: #181c29;
-}
 .buttons_panel_list li:hover {
-  background: rgba(255, 70, 70, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
 }
-.buttons_panel_list li:hover a {
-  color: #ff4646;
+.buttons_panel_list li:first-child {
+  pointer-events: none;
+  background-color: rgba(255, 255, 255, 0.4);
 }
 
 .best_gifts {
@@ -276,11 +277,6 @@ footer {
   gap: 12px;
 }
 .contacts .contact_card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
   background-color: #ecf3f8;
   border-radius: 20px;
   text-align: center;
@@ -288,6 +284,10 @@ footer {
   padding: 20px;
 }
 .contacts .contact_card a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-weight: 600;
   font-size: 24px;
   line-height: 152%;
@@ -295,6 +295,7 @@ footer {
   font-family: Montserrat;
   text-transform: uppercase;
   color: #181c29;
+  gap: 12px;
 }
 .contacts .contact_card p {
   font-family: Montserrat;
