@@ -125,7 +125,7 @@ header .navigation_list li:hover a {
 
 /*Hero*/
 .hero_wrapper {
-  background-image: url("../assets/images/home/bg-ball.png");
+  background-image: url("../assets/images/home/bg-ball.png"), url("../assets/images/home/bg-snow.png");
   background-position: center;
   background-size: cover;
 }
@@ -449,7 +449,7 @@ header .navigation_list li:hover a {
 
 /*Counter*/
 .counter_wrapper {
-  background-image: url("../assets/images/home/bg-forest.png");
+  background-image: url("../assets/images/home/bg-forest.png"), url("../assets/images/home/bg-snow.png");
   background-position: center;
   background-size: cover;
 }
