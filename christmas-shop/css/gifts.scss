@@ -24,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
     background-color: $primary;
 }
 
@@ -35,6 +35,9 @@ body {
 /*Header*/
 
 header {
+    a {
+        color: $dark;
+    }
     @include flex-horizontal;
     @include navigation-font;
     padding: 12px 82px;
@@ -43,11 +46,6 @@ header {
         gap: 8px;
         padding-left: 20px;
         cursor: pointer;
-        .logo_caption {
-            a {
-                color: $dark;
-            }
-        }
         .logo_image {
             background-image: $gifts-logo;
             width: 24px;
@@ -63,6 +61,7 @@ header {
         li:first-child {
             pointer-events: none;
             cursor: default;
+            background: $primary-opacity;
         }
     }
 }
@@ -230,15 +229,27 @@ footer {
     }
     .telegram {
         background-image: $telegram-logo;
+        &:hover {
+            background-image: $telegram-logo-red;;
+        }
     }
     .facebook {
         background-image: $facebook-logo;
+        &:hover {
+            background-image: $facebook-logo-red;;
+        }
     }
     .instagram {
         background-image: $instagram-logo;
+        &:hover {
+            background-image: $instagram-logo-red;;
+        }
     }
     .x {
         background-image: $x-logo;
+        &:hover {
+            background-image: $x-logo-red;;
+        }
     }
 }
 
@@ -251,4 +262,8 @@ footer {
     a {
         @include header-italic-dark;
     }
+}
+
+.rs_link:hover {
+    color: $primary;
 }
