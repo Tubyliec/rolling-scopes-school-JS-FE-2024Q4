@@ -64,7 +64,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px;
   background-color: #ff4646;
 }
 
@@ -87,6 +87,9 @@ header {
   color: #181c29;
   padding: 12px 82px;
 }
+header a {
+  color: #181c29;
+}
 header .logo_box {
   display: flex;
   flex-direction: row;
@@ -95,9 +98,6 @@ header .logo_box {
   gap: 8px;
   padding-left: 20px;
   cursor: pointer;
-}
-header .logo_box .logo_caption a {
-  color: #181c29;
 }
 header .logo_box .logo_image {
   background-image: url("../assets/icons/snowflake.svg");
@@ -127,6 +127,7 @@ header .navigation_list li:hover a {
 header ul li:first-child {
   pointer-events: none;
   cursor: default;
+  background: rgba(255, 70, 70, 0.2);
 }
 
 /*Best gifts*/
@@ -346,14 +347,26 @@ footer {
 .social .telegram {
   background-image: url("../assets/icons/telegram.png");
 }
+.social .telegram:hover {
+  background-image: url("../assets/icons/telegram-red.png");
+}
 .social .facebook {
   background-image: url("../assets/icons/facebook.png");
+}
+.social .facebook:hover {
+  background-image: url("../assets/icons/facebook-red.png");
 }
 .social .instagram {
   background-image: url("../assets/icons/instagram.png");
 }
+.social .instagram:hover {
+  background-image: url("../assets/icons/instagram-red.png");
+}
 .social .x {
   background-image: url("../assets/icons/X.png");
+}
+.social .x:hover {
+  background-image: url("../assets/icons/X-red.png");
 }
 
 .rs_contacts {
@@ -377,4 +390,8 @@ footer {
   letter-spacing: 0.05em;
   font-family: Allura;
   color: #181c29;
+}
+
+.rs_link:hover {
+  color: #ff4646;
 }/*# sourceMappingURL=gifts.css.map */
