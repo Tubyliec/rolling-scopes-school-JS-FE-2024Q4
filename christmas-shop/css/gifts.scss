@@ -194,6 +194,12 @@ footer {
     }
 }
 
+.contact_card:hover {
+    a > span, p {
+        color: $primary;
+    }
+}
+
 .card_img {
     width: 80px;
     height: 80px;

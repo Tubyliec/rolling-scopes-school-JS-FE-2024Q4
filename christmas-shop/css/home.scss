@@ -45,9 +45,6 @@ header {
         gap: 8px;
         padding-left: 20px;
         cursor: pointer;
-        .logo_caption {
-
-        }
         .logo_image {
             background-image: $gifts-logo;
             width: 24px;
@@ -397,6 +394,12 @@ footer {
         p {
             @include contact_font;
         }
+    }
+}
+
+.contact_card:hover {
+    a > span, p {
+        color: $primary;
     }
 }
 

@@ -612,6 +612,10 @@ footer {
   color: #181c29;
 }
 
+.contact_card:hover a > span, .contact_card:hover p {
+  color: #ff4646;
+}
+
 .card_img {
   width: 80px;
   height: 80px;
