@@ -54,19 +54,8 @@ header {
     .navigation_list {
         @include flex-horizontal;
         gap: 8px;
-        li {
-            padding: 12px 20px;
-            border-radius: 10px;
-            a {
-                color: $dark;
-            }
-            &:hover {
-                background: $primary-opacity;
-                a {
-                    color: $primary;
-                }
-            }
-        }
+        @include list_item_styles;
+        padding: 12px 0;
     }
 
 }
