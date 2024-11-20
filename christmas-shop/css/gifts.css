@@ -111,23 +111,22 @@ header .navigation_list {
   align-items: center;
   gap: 8px;
 }
-header .navigation_list li {
-  padding: 12px 20px;
-  border-radius: 10px;
-}
 header .navigation_list li a {
+  padding: 12px 20px;
   color: #181c29;
-}
-header .navigation_list li:hover {
-  background: rgba(255, 70, 70, 0.2);
+  border-radius: 10px;
 }
 header .navigation_list li:hover a {
   color: #ff4646;
+  background: rgba(255, 70, 70, 0.2);
 }
 header ul li:first-child {
+  padding: 12px 20px;
+  border-radius: 10px;
   pointer-events: none;
   cursor: default;
   background: rgba(255, 70, 70, 0.2);
+  color: #ff4646;
 }
 
 /*Best gifts*/
@@ -230,7 +229,7 @@ header ul li:first-child {
   padding-bottom: 10px;
 }
 .gifts_item .gift_description_wrapper .gift_description h3 {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 16px;
   line-height: 152%;
   letter-spacing: 0.08em;
