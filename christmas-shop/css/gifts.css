@@ -39,6 +39,10 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+html {
+  font-size: 10px;
+}
+
 /*Fonts*/
 @font-face {
   font-family: "Montserrat";
@@ -48,6 +52,11 @@ button::-moz-focus-inner {
   font-family: "Allura";
   src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
 }
+.burger_menu, .phone_img, .adress_img, .mail_img {
+  background-position: center;
+  background-size: cover;
+}
+
 /*Global*/
 * {
   transition: 0.5s;
@@ -71,6 +80,11 @@ body {
 .section {
   max-width: 1276px;
 }
+@media (min-width: 400px) and (max-width: 800px) {
+  .section {
+    max-width: 752px;
+  }
+}
 
 /*Header*/
 header {
@@ -89,6 +103,11 @@ header {
 }
 header a {
   color: #181c29;
+}
+@media (max-width: 800px) {
+  header {
+    padding: 1.2rem 8px;
+  }
 }
 header .logo_box {
   display: flex;
@@ -120,6 +139,11 @@ header .navigation_list li:hover a {
   color: #ff4646;
   background: rgba(255, 70, 70, 0.2);
 }
+@media (max-width: 768px) {
+  header .navigation_list {
+    display: none;
+  }
+}
 header ul li:first-child {
   padding: 12px 20px;
   border-radius: 10px;
@@ -127,6 +151,18 @@ header ul li:first-child {
   cursor: default;
   background: rgba(255, 70, 70, 0.2);
   color: #ff4646;
+}
+
+.burger_menu {
+  display: none;
+  background-image: url("../assets/icons/burger-default.svg");
+  width: 40px;
+  height: 40px;
+}
+@media (max-width: 768px) {
+  .burger_menu {
+    display: inline-block;
+  }
 }
 
 /*Best gifts*/
@@ -138,7 +174,7 @@ header ul li:first-child {
 }
 
 .best_gifts_container {
-  margin: 60px 82px;
+  margin: 60px 8px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -176,9 +212,19 @@ header ul li:first-child {
   align-items: center;
   gap: 8px;
 }
+@media (max-width: 649px) {
+  .buttons_panel_list {
+    gap: 0;
+  }
+}
 .buttons_panel_list li {
   padding: 12px 20px;
   border-radius: 10px;
+}
+@media (max-width: 649px) {
+  .buttons_panel_list li {
+    padding: 12px 8px;
+  }
 }
 .buttons_panel_list li:hover {
   background-color: rgba(255, 255, 255, 0.4);
@@ -190,10 +236,28 @@ header ul li:first-child {
 }
 
 .best_gifts {
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 310px);
   grid-template-rows: repeat(3, 342px);
   gap: 12px;
+}
+@media (min-width: 1100px) and (max-width: 1439px) {
+  .best_gifts {
+    grid-template-columns: repeat(3, 310px);
+    grid-template-rows: repeat(4, 342px);
+  }
+}
+@media (min-width: 650px) and (max-width: 1100px) {
+  .best_gifts {
+    grid-template-columns: repeat(2, 310px);
+    grid-template-rows: repeat(6, 342px);
+  }
+}
+@media (max-width: 649px) {
+  .best_gifts {
+    grid-template-columns: repeat(1, 310px);
+  }
 }
 
 .gifts_item {
@@ -268,6 +332,11 @@ footer {
   justify-content: space-between;
   gap: 65px;
 }
+@media (max-width: 800px) {
+  footer {
+    margin: 60px 8px;
+  }
+}
 
 .contacts {
   display: flex;
@@ -275,6 +344,14 @@ footer {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+}
+@media (max-width: 1200px) {
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .contacts .contact_card {
   background-color: #ecf3f8;
@@ -306,6 +383,12 @@ footer {
   text-transform: uppercase;
   color: #181c29;
 }
+@media (max-width: 1200px) {
+  .contacts .contact_card {
+    width: 100%;
+    padding: 20px 0;
+  }
+}
 
 .contact_card:hover a > span, .contact_card:hover p {
   color: #ff4646;
@@ -318,20 +401,14 @@ footer {
 
 .phone_img {
   background-image: url("../assets/icons/santa-claus.svg");
-  background-position: center;
-  background-size: cover;
 }
 
 .adress_img {
   background-image: url("../assets/icons/christmas-tree.svg");
-  background-position: center;
-  background-size: cover;
 }
 
 .mail_img {
   background-image: url("../assets/icons/snake.svg");
-  background-position: center;
-  background-size: cover;
 }
 
 .social {
@@ -348,28 +425,28 @@ footer {
   background-size: cover;
 }
 .social .telegram {
-  background-image: url("../assets/icons/telegram.png");
+  background-image: url("../assets/icons/telegram.svg");
 }
 .social .telegram:hover {
-  background-image: url("../assets/icons/telegram-red.png");
+  background-image: url("../assets/icons/telegram-red.svg");
 }
 .social .facebook {
-  background-image: url("../assets/icons/facebook.png");
+  background-image: url("../assets/icons/facebook.svg");
 }
 .social .facebook:hover {
-  background-image: url("../assets/icons/facebook-red.png");
+  background-image: url("../assets/icons/facebook-red.svg");
 }
 .social .instagram {
-  background-image: url("../assets/icons/instagram.png");
+  background-image: url("../assets/icons/instagram.svg");
 }
 .social .instagram:hover {
-  background-image: url("../assets/icons/instagram-red.png");
+  background-image: url("../assets/icons/instagram-red.svg");
 }
 .social .x {
-  background-image: url("../assets/icons/X.png");
+  background-image: url("../assets/icons/X.svg");
 }
 .social .x:hover {
-  background-image: url("../assets/icons/X-red.png");
+  background-image: url("../assets/icons/X-red.svg");
 }
 
 .rs_contacts {

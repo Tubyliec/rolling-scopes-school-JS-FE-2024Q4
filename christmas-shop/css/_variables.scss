@@ -8,9 +8,18 @@
 //Variables
 
 $desktop-max-width: 1276px;
+$tablet-max-width: 752px;
 $primary-radius: 20px;
 
 $primary-margin: 60px 82px;
+$tablet-margin: 60px 8px;
+
+//Placeholders
+
+%background-center {
+    background-position: center;
+    background-size: cover;
+}
 
 //Mixins
 
