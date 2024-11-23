@@ -29,6 +29,9 @@ body {
 
 .section {
     max-width: $desktop-max-width;
+    @media (min-width: 400px) and (max-width: 800px) {
+        max-width: $tablet-max-width;
+    }
 }
 
 /*Header*/
@@ -40,6 +43,9 @@ header {
     @include flex-horizontal;
     @include navigation-font;
     padding: 12px 82px;
+    @media (max-width: 800px) {
+        padding: 1.2rem 8px;
+    }
     .logo_box {
         @include flex-horizontal;
         gap: 8px;
@@ -56,8 +62,21 @@ header {
         gap: 8px;
         @include list_item_styles;
         padding: 12px 0;
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
+}
 
+.burger_menu {
+    display: none;
+    background-image: $burger-button;
+    @extend %background-center;
+    width: 40px;
+    height: 40px;
+    @media (max-width: 768px) {
+        display: inline-block;
+    }
 }
 
 
@@ -65,8 +84,7 @@ header {
 
 .hero_wrapper {
     background-image: $background-ball, $background-snow;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 
 .hero {
@@ -96,15 +114,36 @@ header {
 
 .about_wrapper {
     background-image: $background-snow;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 
 .about {
     @include flex-horizontal;
+    height: 528px;
     background-color: $static-white;
     margin: $primary-margin;
     border-radius: $primary-radius;
+    @media (max-width: 800px) {
+        margin: $tablet-margin;
+    }
+    @media (max-width: 600px) {
+        @include flex-vertical;
+        height: 100%;
+        margin: $tablet-margin;
+        .about_info_wrapper {
+            width: 100%;
+
+            .about_info {
+                margin: 60px 20px;
+
+                padding: 0;
+            }
+        }
+        .about_image {
+            width: 100%;
+        }
+
+    }
 }
 
 .about_info_wrapper {
@@ -115,6 +154,7 @@ header {
         padding: 60px 0;
         gap: 20px;
         p {
+            padding-right: 60px;
             @include header-italic-primary;
             &:last-child {
                 @include text_font;
@@ -123,14 +163,19 @@ header {
         h2 {
             @include h2;
         }
+        @media (max-width: 800px) {
+            margin: 46px 60px;
+            p {
+                padding-right: 0;
+            }
+        }
     }
 }
 
 .about_image {
     border-radius: $primary-radius;
     background-image: $santa-img;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
     width: 50%;
     height: 528px;
 }
@@ -139,8 +184,7 @@ header {
 
 .slider_wrapper {
     background-image: $background-snow;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
     overflow: hidden;
 }
 
@@ -148,6 +192,9 @@ header {
     margin: $primary-margin;
     display: flex;
     flex-direction: column;
+    @media (max-width: 800px) {
+        margin: $tablet-margin;
+    }
 }
 
 .slider_caption {
@@ -188,13 +235,11 @@ header {
     gap: 20px;
     .button_left {
         background-image: $left-button-img;
-        background-position: center;
-        background-size: cover;
+        @extend %background-center;
     }
     .button_right {
         background-image: $right-button-img;
-        background-position: center;
-        background-size: cover;
+        @extend %background-center;
     }
     .pag_btn {
         width: 56px;
@@ -217,8 +262,7 @@ header {
 
 .best_gifts_wrapper {
     background-image: $background-snow;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 
 .best_gifts_container {
@@ -226,6 +270,9 @@ header {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media (max-width: 800px) {
+        margin: $tablet-margin;
+    }
 }
 
 .best_gifts_caption {
@@ -240,7 +287,8 @@ header {
 }
 
 .best_gifts {
-    @include flex-horizontal;
+    @include flex-horizontal-center;
+    flex-wrap: wrap;
     gap: 12px;
 }
 
@@ -295,8 +343,7 @@ header {
 
 .counter_wrapper {
     background-image: $background-forest, $background-snow;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 
 .counter_container {
@@ -364,11 +411,17 @@ footer {
     margin: $primary-margin;
     @include flex-vertical-between;
     gap: 65px;
+    @media (max-width: 800px) {
+        margin: $tablet-margin;
+    }
 }
 
 .contacts {
     @include flex-horizontal;
-    gap: 12px;
+    gap: 10px;
+    @media (max-width: 1200px) {
+        @include flex-vertical;
+    }
     .contact_card {
         background-color: $content-background;
         border-radius: $primary-radius;
@@ -382,6 +435,10 @@ footer {
         }
         p {
             @include contact_font;
+        }
+        @media (max-width: 1200px) {
+            width: 100%;
+            padding: 20px 0;
         }
     }
 }
@@ -399,18 +456,15 @@ footer {
 
 .phone_img {
     background-image: $santa-logo;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 .adress_img {
     background-image: $tree-logo;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 .mail_img {
     background-image: $snake-logo;
-    background-position: center;
-    background-size: cover;
+    @extend %background-center;
 }
 
 .social {

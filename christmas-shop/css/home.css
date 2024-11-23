@@ -39,6 +39,10 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+html {
+  font-size: 10px;
+}
+
 /*Fonts*/
 @font-face {
   font-family: "Montserrat";
@@ -48,6 +52,11 @@ button::-moz-focus-inner {
   font-family: "Allura";
   src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
 }
+.burger_menu, .hero_wrapper, .about_wrapper, .about_image, .slider_wrapper, .slider_pagination .button_left, .slider_pagination .button_right, .best_gifts_wrapper, .counter_wrapper, .phone_img, .adress_img, .mail_img {
+  background-position: center;
+  background-size: cover;
+}
+
 /*Global*/
 * {
   transition: 0.5s;
@@ -71,6 +80,11 @@ body {
 .section {
   max-width: 1276px;
 }
+@media (min-width: 400px) and (max-width: 800px) {
+  .section {
+    max-width: 752px;
+  }
+}
 
 /*Header*/
 header {
@@ -89,6 +103,11 @@ header {
 }
 header a {
   color: #181c29;
+}
+@media (max-width: 800px) {
+  header {
+    padding: 1.2rem 8px;
+  }
 }
 header .logo_box {
   display: flex;
@@ -121,12 +140,27 @@ header .navigation_list li:hover a {
   color: #ff4646;
   background: rgba(255, 70, 70, 0.2);
 }
+@media (max-width: 768px) {
+  header .navigation_list {
+    display: none;
+  }
+}
+
+.burger_menu {
+  display: none;
+  background-image: url("../assets/icons/burger-default.svg");
+  width: 40px;
+  height: 40px;
+}
+@media (max-width: 768px) {
+  .burger_menu {
+    display: inline-block;
+  }
+}
 
 /*Hero*/
 .hero_wrapper {
   background-image: url("../assets/images/home/bg-ball.png"), url("../assets/images/home/bg-snow.png");
-  background-position: center;
-  background-size: cover;
 }
 
 .hero {
@@ -184,8 +218,6 @@ header .navigation_list li:hover a {
 /*About*/
 .about_wrapper {
   background-image: url("../assets/images/home/bg-snow.png");
-  background-position: center;
-  background-size: cover;
 }
 
 .about {
@@ -193,9 +225,35 @@ header .navigation_list li:hover a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 528px;
   background-color: #fff;
   margin: 60px 82px;
   border-radius: 20px;
+}
+@media (max-width: 800px) {
+  .about {
+    margin: 60px 8px;
+  }
+}
+@media (max-width: 600px) {
+  .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 60px 8px;
+  }
+  .about .about_info_wrapper {
+    width: 100%;
+  }
+  .about .about_info_wrapper .about_info {
+    margin: 60px 20px;
+    padding: 0;
+  }
+  .about .about_image {
+    width: 100%;
+  }
 }
 
 .about_info_wrapper {
@@ -211,6 +269,7 @@ header .navigation_list li:hover a {
   gap: 20px;
 }
 .about_info_wrapper .about_info p {
+  padding-right: 60px;
   font-weight: 400;
   font-size: 24px;
   line-height: 100%;
@@ -235,12 +294,18 @@ header .navigation_list li:hover a {
   text-transform: uppercase;
   color: #181c29;
 }
+@media (max-width: 800px) {
+  .about_info_wrapper .about_info {
+    margin: 46px 60px;
+  }
+  .about_info_wrapper .about_info p {
+    padding-right: 0;
+  }
+}
 
 .about_image {
   border-radius: 20px;
   background-image: url("../assets/images/home/santa.png");
-  background-position: center;
-  background-size: cover;
   width: 50%;
   height: 528px;
 }
@@ -248,8 +313,6 @@ header .navigation_list li:hover a {
 /*Slider*/
 .slider_wrapper {
   background-image: url("../assets/images/home/bg-snow.png");
-  background-position: center;
-  background-size: cover;
   overflow: hidden;
 }
 
@@ -257,6 +320,11 @@ header .navigation_list li:hover a {
   margin: 60px 82px;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 800px) {
+  .slider_container {
+    margin: 60px 8px;
+  }
 }
 
 .slider_caption {
@@ -320,13 +388,9 @@ header .navigation_list li:hover a {
 }
 .slider_pagination .button_left {
   background-image: url("../assets/icons/Button_left.png");
-  background-position: center;
-  background-size: cover;
 }
 .slider_pagination .button_right {
   background-image: url("../assets/icons/Button_right.png");
-  background-position: center;
-  background-size: cover;
 }
 .slider_pagination .pag_btn {
   width: 56px;
@@ -345,8 +409,6 @@ header .navigation_list li:hover a {
 /*Best gifts*/
 .best_gifts_wrapper {
   background-image: url("../assets/images/home/bg-snow.png");
-  background-position: center;
-  background-size: cover;
 }
 
 .best_gifts_container {
@@ -354,6 +416,11 @@ header .navigation_list li:hover a {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+@media (max-width: 800px) {
+  .best_gifts_container {
+    margin: 60px 8px;
+  }
 }
 
 .best_gifts_caption {
@@ -384,8 +451,9 @@ header .navigation_list li:hover a {
 .best_gifts {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
 }
 
@@ -452,8 +520,6 @@ header .navigation_list li:hover a {
 /*Counter*/
 .counter_wrapper {
   background-image: url("../assets/images/home/bg-forest.png"), url("../assets/images/home/bg-snow.png");
-  background-position: center;
-  background-size: cover;
 }
 
 .counter_container {
@@ -570,13 +636,26 @@ footer {
   justify-content: space-between;
   gap: 65px;
 }
+@media (max-width: 800px) {
+  footer {
+    margin: 60px 8px;
+  }
+}
 
 .contacts {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+@media (max-width: 1200px) {
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 .contacts .contact_card {
   background-color: #ecf3f8;
@@ -608,6 +687,12 @@ footer {
   text-transform: uppercase;
   color: #181c29;
 }
+@media (max-width: 1200px) {
+  .contacts .contact_card {
+    width: 100%;
+    padding: 20px 0;
+  }
+}
 
 .contact_card:hover a > span, .contact_card:hover p {
   color: #ff4646;
@@ -620,20 +705,14 @@ footer {
 
 .phone_img {
   background-image: url("../assets/icons/santa-claus.svg");
-  background-position: center;
-  background-size: cover;
 }
 
 .adress_img {
   background-image: url("../assets/icons/christmas-tree.svg");
-  background-position: center;
-  background-size: cover;
 }
 
 .mail_img {
   background-image: url("../assets/icons/snake.svg");
-  background-position: center;
-  background-size: cover;
 }
 
 .social {
@@ -650,28 +729,28 @@ footer {
   background-size: cover;
 }
 .social .telegram {
-  background-image: url("../assets/icons/telegram.png");
+  background-image: url("../assets/icons/telegram.svg");
 }
 .social .telegram:hover {
-  background-image: url("../assets/icons/telegram-red.png");
+  background-image: url("../assets/icons/telegram-red.svg");
 }
 .social .facebook {
-  background-image: url("../assets/icons/facebook.png");
+  background-image: url("../assets/icons/facebook.svg");
 }
 .social .facebook:hover {
-  background-image: url("../assets/icons/facebook-red.png");
+  background-image: url("../assets/icons/facebook-red.svg");
 }
 .social .instagram {
-  background-image: url("../assets/icons/instagram.png");
+  background-image: url("../assets/icons/instagram.svg");
 }
 .social .instagram:hover {
-  background-image: url("../assets/icons/instagram-red.png");
+  background-image: url("../assets/icons/instagram-red.svg");
 }
 .social .x {
-  background-image: url("../assets/icons/X.png");
+  background-image: url("../assets/icons/X.svg");
 }
 .social .x:hover {
-  background-image: url("../assets/icons/X-red.png");
+  background-image: url("../assets/icons/X-red.svg");
 }
 
 .rs_contacts {
