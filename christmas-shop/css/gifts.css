@@ -43,6 +43,7 @@ html {
   font-size: 10px;
 }
 
+/*Reset configuration end*/
 /*Fonts*/
 @font-face {
   font-family: "Montserrat";
@@ -52,6 +53,7 @@ html {
   font-family: "Allura";
   src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
 }
+/*Fonts end*/
 .burger_menu, .phone_img, .adress_img, .mail_img {
   background-position: center;
   background-size: cover;
