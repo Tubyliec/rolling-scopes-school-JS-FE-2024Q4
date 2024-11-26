@@ -24,8 +24,10 @@
                 <li><a href="#contact" class="navigation_link">contacts</a></li>
             </ul>
         </nav>
-        <div class="burger_menu">
-        </div>
+        <button class="menu" popovertarget="menu_popup">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger" popovertarget="menu_popup"></label>
+        </button>
     </header>
     <div class="container">
         <div class="hero_wrapper">
@@ -94,7 +96,7 @@
                     </div>
                 </div>
                 <div class="slider_pagination">
-                    <button class="button_left pag_btn" disabled></button>
+                    <button class="button_left pag_btn"></button>
                     <button class="button_right pag_btn"></button>
                 </div>
             </section>
@@ -225,5 +227,17 @@
             </div>
         </footer>
     </div>
+    <div class="menu_popup" popover="manual" id="menu_popup">
+        <nav class="navigation_panel_burger">
+            <ul class="navigation_list">
+                <li><a href="./gifts.html" class="navigation_link">gifts</a></li>
+                <li><a href="#about" class="navigation_link">about</a></li>
+                <li><a href="#best" class="navigation_link">best</a></li>
+                <li><a href="#contact" class="navigation_link">contacts</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button class="button_top pag_btn"></button>
+    <script src="./js/home.js"></script>
 </body>
 </html>

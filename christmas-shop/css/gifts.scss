@@ -5,7 +5,7 @@
 @use 'colors' as *;
 @use 'images' as *;
 @use 'variables' as *;
-@use 'variables' as *;
+@use 'burger' as *;
 
 /*Global*/
 
@@ -58,34 +58,26 @@ header {
             height: 24px;
         }
     }
-    .navigation_list {
-        @include flex-horizontal;
-        gap: 8px;
-        @include list_item_styles;
-        @media (max-width: 768px) {
-            display: none;
-        }
-    }
-    ul {
-        li:first-child {
-            padding: 12px 20px;
-            border-radius: 10px;
-            pointer-events: none;
-            cursor: default;
-            background: $primary-opacity;
-            color: $primary;
-        }
-    }
+    anchor-name: --my-anchor;
 }
 
-.burger_menu {
-    display: none;
-    background-image: $burger-button;
-    @extend %background-center;
-    width: 40px;
-    height: 40px;
+.navigation_list {
+    @include flex-horizontal;
+    gap: 8px;
+    @include list_item_styles;
     @media (max-width: 768px) {
-        display: inline-block;
+        @include flex-vertical;
+        gap: 20px;
+    }
+}
+ul {
+    li:first-child {
+        padding: 12px 20px;
+        border-radius: 10px;
+        pointer-events: none;
+        cursor: default;
+        background: $primary-opacity;
+        color: $primary;
     }
 }
 

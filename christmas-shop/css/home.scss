@@ -5,6 +5,7 @@
 @use 'colors' as *;
 @use 'images' as *;
 @use 'variables' as *;
+@use 'burger' as *;
 
 /*Global*/
 
@@ -17,6 +18,10 @@ body {
     margin: 0 auto;
     height: 100%;
     max-width: 1440px;
+}
+
+.no_scroll {
+    overflow: hidden;
 }
 
 .container {
@@ -57,28 +62,19 @@ header {
             height: 24px;
         }
     }
-    .navigation_list {
-        @include flex-horizontal;
-        gap: 8px;
-        @include list_item_styles;
-        padding: 12px 0;
-        @media (max-width: 768px) {
-            display: none;
-        }
-    }
+    anchor-name: --my-anchor;
 }
 
-.burger_menu {
-    display: none;
-    background-image: $burger-button;
-    @extend %background-center;
-    width: 40px;
-    height: 40px;
+.navigation_list {
+    @include flex-horizontal;
+    gap: 8px;
+    @include list_item_styles;
+    padding: 12px 0;
     @media (max-width: 768px) {
-        display: inline-block;
+        @include flex-vertical;
+        gap: 20px;
     }
 }
-
 
 /*Hero*/
 
@@ -236,27 +232,29 @@ header {
     .button_left {
         background-image: $left-button-img;
         @extend %background-center;
+        &:hover {
+            background-image: $left-button-img-hover;
+        }
     }
     .button_right {
         background-image: $right-button-img;
         @extend %background-center;
-    }
-    .pag_btn {
-        width: 56px;
-        height: 56px;
-        background-color: $primary;
-        cursor: pointer;
-        &:disabled {
-            opacity: 0.4;
-            pointer-events: none;
-        }
         &:hover {
             background-image: $right-button-img-hover;
         }
     }
 }
 
-
+.pag_btn {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    cursor: pointer;
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}
 
 /*Best gifts*/
 
@@ -518,4 +516,14 @@ footer {
 
 .rs_link:hover {
     color: $primary;
+}
+
+/*Button top*/
+
+.button_top {
+    background-image: $top-button-img;
+    @extend %background-center;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
 }
