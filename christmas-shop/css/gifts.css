@@ -54,9 +54,13 @@ html {
   src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
 }
 /*Fonts end*/
-.phone_img, .adress_img, .mail_img {
+.phone_img, .adress_img, .mail_img, .button_top {
   background-position: center;
   background-size: cover;
+}
+
+.no_scroll {
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -585,4 +589,33 @@ footer {
   .rs_link:hover {
     color: #ff4646;
   }
+}
+/*Button top*/
+.button_top {
+  display: none;
+  visibility: hidden;
+  background-image: url("../assets/icons/Button_top.svg");
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+}
+@media (max-width: 768px) {
+  .button_top {
+    display: block;
+  }
+}
+
+.pag_btn {
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  cursor: pointer;
+}
+.pag_btn:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.visible {
+  visibility: visible;
 }/*# sourceMappingURL=gifts.css.map */

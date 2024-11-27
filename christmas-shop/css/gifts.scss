@@ -338,3 +338,33 @@ footer {
     }
 
 }
+
+/*Button top*/
+
+.button_top {
+    display: none;
+    visibility: hidden;
+    background-image: $top-button-img;
+    @extend %background-center;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+.pag_btn {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    cursor: pointer;
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}
+
+.visible {
+    visibility: visible;
+}

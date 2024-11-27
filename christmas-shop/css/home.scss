@@ -20,10 +20,6 @@ body {
     max-width: 1440px;
 }
 
-.no_scroll {
-    overflow: hidden;
-}
-
 .container {
     display: flex;
     flex-direction: column;
@@ -543,14 +539,4 @@ footer {
         color: $primary;
     }
 
-}
-
-/*Button top*/
-
-.button_top {
-    background-image: $top-button-img;
-    @extend %background-center;
-    position: fixed;
-    bottom: 3%;
-    right: 3%;
 }

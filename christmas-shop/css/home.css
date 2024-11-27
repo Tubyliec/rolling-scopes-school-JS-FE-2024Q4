@@ -54,9 +54,13 @@ html {
   src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
 }
 /*Fonts end*/
-.hero_wrapper, .about_wrapper, .about_image, .slider_wrapper, .slider_pagination .button_left, .slider_pagination .button_right, .best_gifts_wrapper, .counter_wrapper, .phone_img, .adress_img, .mail_img, .button_top {
+.hero_wrapper, .about_wrapper, .about_image, .slider_wrapper, .slider_pagination .button_left, .slider_pagination .button_right, .best_gifts_wrapper, .counter_wrapper, .phone_img, .adress_img, .mail_img {
   background-position: center;
   background-size: cover;
+}
+
+.no_scroll {
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -166,10 +170,6 @@ body {
   margin: 0 auto;
   height: 100%;
   max-width: 1440px;
-}
-
-.no_scroll {
-  overflow: hidden;
 }
 
 .container {
@@ -902,11 +902,4 @@ footer {
   .rs_link:hover {
     color: #ff4646;
   }
-}
-/*Button top*/
-.button_top {
-  background-image: url("../assets/icons/Button_top.svg");
-  position: fixed;
-  bottom: 3%;
-  right: 3%;
 }/*# sourceMappingURL=home.css.map */
