@@ -138,6 +138,9 @@ html {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
   text-transform: uppercase;
   align-content: center;
   translate: 100%;
@@ -233,9 +236,11 @@ header .logo_box .logo_image {
   color: #181c29;
   border-radius: 10px;
 }
-.navigation_list li:hover a {
-  color: #ff4646;
-  background: rgba(255, 70, 70, 0.2);
+@media (hover: hover) {
+  .navigation_list li:hover a {
+    color: #ff4646;
+    background: rgba(255, 70, 70, 0.2);
+  }
 }
 @media (max-width: 768px) {
   .navigation_list {
@@ -317,9 +322,11 @@ ul li:first-child {
     padding: 12px 8px;
   }
 }
-.buttons_panel_list li:hover {
-  background-color: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
+@media (hover: hover) {
+  .buttons_panel_list li:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+  }
 }
 .buttons_panel_list li:first-child {
   pointer-events: none;
@@ -392,11 +399,13 @@ ul li:first-child {
   text-transform: uppercase;
   color: #181c29;
 }
-.gifts_item:hover {
-  cursor: pointer;
-}
-.gifts_item:hover .gift_description > h3 {
-  color: #ff4646;
+@media (hover: hover) {
+  .gifts_item:hover {
+    cursor: pointer;
+  }
+  .gifts_item:hover .gift_description > h3 {
+    color: #ff4646;
+  }
 }
 
 .for_work {
@@ -481,10 +490,11 @@ footer {
   }
 }
 
-.contact_card:hover a > span, .contact_card:hover p {
-  color: #ff4646;
+@media (hover: hover) {
+  .contact_card:hover a > span, .contact_card:hover p {
+    color: #ff4646;
+  }
 }
-
 .card_img {
   width: 80px;
   height: 80px;
@@ -518,26 +528,34 @@ footer {
 .social .telegram {
   background-image: url("../assets/icons/telegram.svg");
 }
-.social .telegram:hover {
-  background-image: url("../assets/icons/telegram-red.svg");
+@media (hover: hover) {
+  .social .telegram:hover {
+    background-image: url("../assets/icons/telegram-red.svg");
+  }
 }
 .social .facebook {
   background-image: url("../assets/icons/facebook.svg");
 }
-.social .facebook:hover {
-  background-image: url("../assets/icons/facebook-red.svg");
+@media (hover: hover) {
+  .social .facebook:hover {
+    background-image: url("../assets/icons/facebook-red.svg");
+  }
 }
 .social .instagram {
   background-image: url("../assets/icons/instagram.svg");
 }
-.social .instagram:hover {
-  background-image: url("../assets/icons/instagram-red.svg");
+@media (hover: hover) {
+  .social .instagram:hover {
+    background-image: url("../assets/icons/instagram-red.svg");
+  }
 }
 .social .x {
   background-image: url("../assets/icons/X.svg");
 }
-.social .x:hover {
-  background-image: url("../assets/icons/X-red.svg");
+@media (hover: hover) {
+  .social .x:hover {
+    background-image: url("../assets/icons/X-red.svg");
+  }
 }
 
 .rs_contacts {
@@ -563,6 +581,8 @@ footer {
   color: #181c29;
 }
 
-.rs_link:hover {
-  color: #ff4646;
+@media (hover: hover) {
+  .rs_link:hover {
+    color: #ff4646;
+  }
 }/*# sourceMappingURL=gifts.css.map */

@@ -120,9 +120,11 @@ ul {
 
         }
         border-radius: 10px;
-        &:hover {
-            background-color: $static-white-40;
-            cursor: pointer;
+        @media (hover: hover) {
+            &:hover {
+                background-color: $static-white-40;
+                cursor: pointer;
+            }
         }
         &:first-child {
             pointer-events: none;
@@ -178,10 +180,12 @@ ul {
             }
         }
     }
-    &:hover {
-        cursor: pointer;
-        .gift_description > h3 {
-            color: $primary;
+    @media (hover: hover) {
+        &:hover {
+            cursor: pointer;
+            .gift_description > h3 {
+                color: $primary;
+            }
         }
     }
 }
@@ -240,10 +244,13 @@ footer {
     }
 }
 
-.contact_card:hover {
-    a > span, p {
-        color: $primary;
+@media (hover: hover) {
+    .contact_card:hover {
+        a > span, p {
+            color: $primary;
+        }
     }
+
 }
 
 .card_img {
@@ -278,26 +285,38 @@ footer {
     }
     .telegram {
         background-image: $telegram-logo;
-        &:hover {
-            background-image: $telegram-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $telegram-logo-red;;
+            }
+
         }
     }
     .facebook {
         background-image: $facebook-logo;
-        &:hover {
-            background-image: $facebook-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $facebook-logo-red;;
+            }
+
         }
     }
     .instagram {
         background-image: $instagram-logo;
-        &:hover {
-            background-image: $instagram-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $instagram-logo-red;;
+            }
+
         }
     }
     .x {
         background-image: $x-logo;
-        &:hover {
-            background-image: $x-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $x-logo-red;;
+            }
+
         }
     }
 }
@@ -313,6 +332,9 @@ footer {
     }
 }
 
-.rs_link:hover {
-    color: $primary;
+@media (hover: hover) {
+    .rs_link:hover {
+        color: $primary;
+    }
+
 }

@@ -138,6 +138,9 @@ html {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
   text-transform: uppercase;
   align-content: center;
   translate: 100%;
@@ -238,9 +241,11 @@ header .logo_box .logo_image {
   color: #181c29;
   border-radius: 10px;
 }
-.navigation_list li:hover a {
-  color: #ff4646;
-  background: rgba(255, 70, 70, 0.2);
+@media (hover: hover) {
+  .navigation_list li:hover a {
+    color: #ff4646;
+    background: rgba(255, 70, 70, 0.2);
+  }
 }
 @media (max-width: 768px) {
   .navigation_list {
@@ -304,9 +309,11 @@ header .logo_box .logo_image {
   border-radius: 20px;
   cursor: pointer;
 }
-.hero .hero_description .button_link p:hover {
-  background-color: #fff;
-  color: #181c29;
+@media (hover: hover) {
+  .hero .hero_description .button_link p:hover {
+    background-color: #fff;
+    color: #181c29;
+  }
 }
 
 /*About*/
@@ -388,7 +395,7 @@ header .logo_box .logo_image {
   text-transform: uppercase;
   color: #181c29;
 }
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .about_info_wrapper .about_info {
     margin: 46px 60px;
   }
@@ -483,14 +490,18 @@ header .logo_box .logo_image {
 .slider_pagination .button_left {
   background-image: url("../assets/icons/Button_left.png");
 }
-.slider_pagination .button_left:hover {
-  background-image: url("../assets/icons/Button_left_hover.png");
+@media (hover: hover) {
+  .slider_pagination .button_left:hover {
+    background-image: url("../assets/icons/Button_left_hover.png");
+  }
 }
 .slider_pagination .button_right {
   background-image: url("../assets/icons/Button_right.png");
 }
-.slider_pagination .button_right:hover {
-  background-image: url("../assets/icons/Button_right_hover.png");
+@media (hover: hover) {
+  .slider_pagination .button_right:hover {
+    background-image: url("../assets/icons/Button_right_hover.png");
+  }
 }
 
 .pag_btn {
@@ -596,11 +607,13 @@ header .logo_box .logo_image {
   text-transform: uppercase;
   color: #181c29;
 }
-.gifts_item:hover {
-  cursor: pointer;
-}
-.gifts_item:hover .gift_description > h3 {
-  color: #ff4646;
+@media (hover: hover) {
+  .gifts_item:hover {
+    cursor: pointer;
+  }
+  .gifts_item:hover .gift_description > h3 {
+    color: #ff4646;
+  }
 }
 
 .for_work {
@@ -660,9 +673,11 @@ header .logo_box .logo_image {
   border-radius: 20px;
   cursor: pointer;
 }
-.button_link p:hover {
-  background-color: #fff;
-  color: #181c29;
+@media (hover: hover) {
+  .button_link p:hover {
+    background-color: #fff;
+    color: #181c29;
+  }
 }
 
 .ny_counter {
@@ -792,10 +807,11 @@ footer {
   }
 }
 
-.contact_card:hover a > span, .contact_card:hover p {
-  color: #ff4646;
+@media (hover: hover) {
+  .contact_card:hover a > span, .contact_card:hover p {
+    color: #ff4646;
+  }
 }
-
 .card_img {
   width: 80px;
   height: 80px;
@@ -829,26 +845,34 @@ footer {
 .social .telegram {
   background-image: url("../assets/icons/telegram.svg");
 }
-.social .telegram:hover {
-  background-image: url("../assets/icons/telegram-red.svg");
+@media (hover: hover) {
+  .social .telegram:hover {
+    background-image: url("../assets/icons/telegram-red.svg");
+  }
 }
 .social .facebook {
   background-image: url("../assets/icons/facebook.svg");
 }
-.social .facebook:hover {
-  background-image: url("../assets/icons/facebook-red.svg");
+@media (hover: hover) {
+  .social .facebook:hover {
+    background-image: url("../assets/icons/facebook-red.svg");
+  }
 }
 .social .instagram {
   background-image: url("../assets/icons/instagram.svg");
 }
-.social .instagram:hover {
-  background-image: url("../assets/icons/instagram-red.svg");
+@media (hover: hover) {
+  .social .instagram:hover {
+    background-image: url("../assets/icons/instagram-red.svg");
+  }
 }
 .social .x {
   background-image: url("../assets/icons/X.svg");
 }
-.social .x:hover {
-  background-image: url("../assets/icons/X-red.svg");
+@media (hover: hover) {
+  .social .x:hover {
+    background-image: url("../assets/icons/X-red.svg");
+  }
 }
 
 .rs_contacts {
@@ -874,10 +898,11 @@ footer {
   color: #181c29;
 }
 
-.rs_link:hover {
-  color: #ff4646;
+@media (hover: hover) {
+  .rs_link:hover {
+    color: #ff4646;
+  }
 }
-
 /*Button top*/
 .button_top {
   background-image: url("../assets/icons/Button_top.svg");

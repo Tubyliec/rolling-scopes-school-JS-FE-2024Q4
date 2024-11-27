@@ -63,9 +63,12 @@ $tablet-margin: 60px 8px;
     background-color: $dark;
     border-radius: $primary-radius;
     cursor: pointer;
-    &:hover {
-        background-color: $static-white;
-        color: $dark;
+    @media (hover: hover) {
+        &:hover {
+            background-color: $static-white;
+            color: $dark;
+        }
+
     }
 }
 
@@ -76,12 +79,14 @@ $tablet-margin: 60px 8px;
             color: $dark;
             border-radius: 10px;
         }
-        &:hover {
-            a {
-                color: $primary;
-                background: $primary-opacity;
+        @media (hover: hover) {
+            &:hover {
+                a {
+                    color: $primary;
+                    background: $primary-opacity;
+                }
             }
+
         }
     }
 }
-
