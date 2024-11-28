@@ -76,13 +76,13 @@ html {
   justify-content: center;
 }
 
-.menu {
-  padding: 15px 10px;
+.menu_button {
+  margin: 15px 10px;
   display: none;
   background: transparent;
 }
 @media (max-width: 768px) {
-  .menu {
+  .menu_button {
     display: block;
   }
 }
@@ -618,4 +618,8 @@ footer {
 
 .visible {
   visibility: visible;
+}
+
+#pointer_normal {
+  pointer-events: auto;
 }/*# sourceMappingURL=gifts.css.map */
