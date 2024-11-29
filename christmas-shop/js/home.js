@@ -5,7 +5,7 @@ const HOURS = document.querySelector('.hours');
 const MINUTES = document.querySelector('.minutes');
 const SECONDS = document.querySelector('.seconds');
 
-const TARGET_DATE = new Date('2025-01-01T00:00:00')
+const TARGET_DATE = new Date(Date.UTC(2025, 0, 1, 0, 0, 0));
 
 
 
