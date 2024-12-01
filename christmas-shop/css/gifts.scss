@@ -5,7 +5,8 @@
 @use 'colors' as *;
 @use 'images' as *;
 @use 'variables' as *;
-@use 'variables' as *;
+@use 'burger' as *;
+@use 'modal' as *;
 
 /*Global*/
 
@@ -58,14 +59,10 @@ header {
             height: 24px;
         }
     }
-    .navigation_list {
-        @include flex-horizontal;
-        gap: 8px;
-        @include list_item_styles;
-        @media (max-width: 768px) {
-            display: none;
-        }
-    }
+    anchor-name: --my-anchor;
+}
+
+.navigation_panel {
     ul {
         li:first-child {
             padding: 12px 20px;
@@ -78,16 +75,17 @@ header {
     }
 }
 
-.burger_menu {
-    display: none;
-    background-image: $burger-button;
-    @extend %background-center;
-    width: 40px;
-    height: 40px;
+.navigation_list {
+    @include flex-horizontal;
+    gap: 8px;
+    @include list_item_styles;
     @media (max-width: 768px) {
-        display: inline-block;
+        @include flex-vertical;
+        gap: 20px;
     }
 }
+
+
 
 /*Best gifts*/
 
@@ -133,7 +131,6 @@ header {
                 background-color: $static-white-40;
                 cursor: pointer;
             }
-
         }
         &:first-child {
             pointer-events: none;
@@ -141,6 +138,11 @@ header {
         }
     }
 }
+
+.active_panel_items {
+    background-color: $static-white-40;
+}
+
 
 .best_gifts {
     margin: 0 auto;
@@ -345,5 +347,43 @@ footer {
     .rs_link:hover {
         color: $primary;
     }
-
 }
+
+/*Button top*/
+
+.button_top {
+    display: none;
+    visibility: hidden;
+    background-image: $top-button-img;
+    @extend %background-center;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+.pag_btn {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    cursor: pointer;
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}
+
+.not_displayed {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+}
+
+#pointer_normal {
+    pointer-events: auto;
+}
+
