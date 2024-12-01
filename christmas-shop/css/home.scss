@@ -5,6 +5,8 @@
 @use 'colors' as *;
 @use 'images' as *;
 @use 'variables' as *;
+@use 'burger' as *;
+@use 'modal' as *;
 
 /*Global*/
 
@@ -57,28 +59,19 @@ header {
             height: 24px;
         }
     }
-    .navigation_list {
-        @include flex-horizontal;
-        gap: 8px;
-        @include list_item_styles;
-        padding: 12px 0;
-        @media (max-width: 768px) {
-            display: none;
-        }
-    }
+    anchor-name: --my-anchor;
 }
 
-.burger_menu {
-    display: none;
-    background-image: $burger-button;
-    @extend %background-center;
-    width: 40px;
-    height: 40px;
+.navigation_list {
+    @include flex-horizontal;
+    gap: 8px;
+    @include list_item_styles;
+    padding: 12px 0;
     @media (max-width: 768px) {
-        display: inline-block;
+        @include flex-vertical;
+        gap: 20px;
     }
 }
-
 
 /*Hero*/
 
@@ -163,7 +156,7 @@ header {
         h2 {
             @include h2;
         }
-        @media (max-width: 800px) {
+        @media (max-width: 1000px) {
             margin: 46px 60px;
             p {
                 padding-right: 0;
@@ -209,6 +202,7 @@ header {
 }
 
 .slider {
+    position: relative;
     margin: 20px 0;
     display: flex;
     flex-direction: row;
@@ -236,27 +230,36 @@ header {
     .button_left {
         background-image: $left-button-img;
         @extend %background-center;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $left-button-img-hover;
+            }
+
+        }
     }
     .button_right {
         background-image: $right-button-img;
         @extend %background-center;
-    }
-    .pag_btn {
-        width: 56px;
-        height: 56px;
-        background-color: $primary;
-        cursor: pointer;
-        &:disabled {
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        &:hover {
-            background-image: $right-button-img-hover;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $right-button-img-hover;
+            }
+
         }
     }
 }
 
+.pag_btn {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    cursor: pointer;
+}
 
+.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
 
 /*Best gifts*/
 
@@ -319,11 +322,14 @@ header {
             }
         }
     }
-    &:hover {
-        cursor: pointer;
-        .gift_description > h3 {
-            color: $primary;
+    @media (hover: hover) {
+        &:hover {
+            cursor: pointer;
+            .gift_description > h3 {
+                color: $primary;
+            }
         }
+
     }
 }
 
@@ -443,10 +449,13 @@ footer {
     }
 }
 
-.contact_card:hover {
-    a > span, p {
-        color: $primary;
+@media (hover: hover) {
+    .contact_card:hover {
+        a > span, p {
+            color: $primary;
+        }
     }
+
 }
 
 .card_img {
@@ -481,26 +490,38 @@ footer {
     }
     .telegram {
         background-image: $telegram-logo;
-        &:hover {
-            background-image: $telegram-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $telegram-logo-red;;
+            }
+
         }
     }
     .facebook {
         background-image: $facebook-logo;
-        &:hover {
-            background-image: $facebook-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $facebook-logo-red;;
+            }
+
         }
     }
     .instagram {
         background-image: $instagram-logo;
-        &:hover {
-            background-image: $instagram-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $instagram-logo-red;;
+            }
+
         }
     }
     .x {
         background-image: $x-logo;
-        &:hover {
-            background-image: $x-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $x-logo-red;;
+            }
+
         }
     }
 }
@@ -516,6 +537,9 @@ footer {
     }
 }
 
-.rs_link:hover {
-    color: $primary;
+@media (hover: hover) {
+    .rs_link:hover {
+        color: $primary;
+    }
+
 }

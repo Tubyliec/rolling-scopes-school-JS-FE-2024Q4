@@ -8,6 +8,8 @@
     <title>Home</title>
 </head>
 <body>
+    <div class="popover_wrapper">
+    </div>
     <header>
         <a href="./home.html">
             <div class="logo_box">
@@ -24,8 +26,10 @@
                 <li><a href="#contact" class="navigation_link">contacts</a></li>
             </ul>
         </nav>
-        <div class="burger_menu">
-        </div>
+        <button class="menu_button" popovertarget="menu_popup">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger" popovertarget="menu_popup"></label>
+        </button>
     </header>
     <div class="container">
         <div class="hero_wrapper">
@@ -94,7 +98,7 @@
                     </div>
                 </div>
                 <div class="slider_pagination">
-                    <button class="button_left pag_btn" disabled></button>
+                    <button class="button_left pag_btn"></button>
                     <button class="button_right pag_btn"></button>
                 </div>
             </section>
@@ -106,50 +110,7 @@
                     <h2>especially for you</h2>
                 </div>
                 <div class="best_gifts">
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-work.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_work">For work</p>
-                                <h3>Console.log Guru</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-health.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_health">For health</p>
-                                <h3>Hydration Bot</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-work.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_work">For work</p>
-                                <h3>Merge Master</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-harmony.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_harmony">For harmony</p>
-                                <h3>Spontaneous Coding Philosopher</h3>
-                           </div>
-                        </div>
-                    </div>
+
                 </div>
             </section>
         </div>
@@ -164,22 +125,22 @@
                         <p>The New Year is Coming Soon...</p>
                         <div class="counter">
                             <div class="counter_item counter_days">
-                                <span class="value days">47</span>
+                                <span class="value days"></span>
                                 <span class="count_item_name">days</span>
                             </div>
                             <span class="separator">|</span>
                             <div class="counter_item counter_hours">
-                                <span class="value hours">5</span>
+                                <span class="value hours"></span>
                                 <span class="count_item_name">hours</span>
                             </div>
                             <span class="separator">|</span>
                             <div class="counter_item counter_minutes">
-                                <span class="value minutes">34</span>
+                                <span class="value minutes"></span>
                                 <span class="count_item_name">minutes</span>
                             </div>
                             <span class="separator">|</span>
                             <div class="counter_item counter_seconds">
-                                <span class="value seconds">12</span>
+                                <span class="value seconds"></span>
                                 <span class="count_item_name">seconds</span>
                             </div>
                         </div>
@@ -225,5 +186,19 @@
             </div>
         </footer>
     </div>
+    <div class="menu_popup" popover="manual" id="menu_popup">
+        <nav class="navigation_panel_burger">
+            <ul class="navigation_list">
+                <li><a href="./gifts.html" class="navigation_link">gifts</a></li>
+                <li><a href="#about" class="navigation_link">about</a></li>
+                <li><a href="#best" class="navigation_link">best</a></li>
+                <li><a href="#contact" class="navigation_link">contacts</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="modal_window" popover id="modal_window">
+    </div>
+    <script type="module" src="./js/home.js"></script>
+    <script src="./js/burger.js"></script>
 </body>
 </html>

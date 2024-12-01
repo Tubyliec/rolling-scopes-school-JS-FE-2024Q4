@@ -8,6 +8,8 @@
     <title>Gifts</title>
 </head>
 <body>
+    <div class="popover_wrapper">
+    </div>
     <header>
         <a href="./home.html">
             <div class="logo_box">
@@ -24,8 +26,10 @@
                 <li><a href="#contact" class="navigation_link">contacts</a></li>
             </ul>
         </nav>
-        <div class="burger_menu">
-        </div>
+        <button class="menu_button" popovertarget="menu_popup">
+            <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+            <label for="burger-checkbox" class="burger" popovertarget="menu_popup"></label>
+        </button>
     </header>
     <div class="container">
         <div class="best_gifts_wrapper" id="best">
@@ -42,138 +46,7 @@
                     </ul>
                 </div>
                 <div class="best_gifts">
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-work.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_work">For work</p>
-                                <h3>Console.log Guru</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-health.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_health">For health</p>
-                                <h3>Step Master</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-work.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_work">For work</p>
-                                <h3>Bug Magnet</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-work.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_work">For work</p>
-                                <h3>Shortcut Cheater</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-health.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_health">For health</p>
-                                <h3>Posture Levitation</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-harmony.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_harmony">For harmony</p>
-                                <h3>Bug Acceptance Guru</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-health.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_health">For health</p>
-                                <h3>Snack Resister</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-harmony.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_harmony">For harmony</p>
-                                <h3>Error Laugher</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-health.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_health">For health</p>
-                                <h3>Hydration Bot</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-work.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_work">For work</p>
-                                <h3>Merge Master</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-harmony.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_harmony">For harmony</p>
-                                <h3>Joy Charger</h3>
-                           </div>
-                        </div>
-                    </div>
-                    <div class="gifts_item">
-                        <div class="gift_img">
-                            <img src="./assets/images/gift-for-harmony.png" alt="gift-for-work">
-                        </div>
-                        <div class="gift_description_wrapper">
-                           <div class="gift_description">
-                                <p class="for_harmony">For harmony</p>
-                                <h3>Spontaneous Coding Philosopher</h3>
-                           </div>
-                        </div>
-                    </div>
+
                 </div>
             </section>
         </div>
@@ -215,5 +88,20 @@
             </div>
         </footer>
     </div>
+    <div class="menu_popup" popover="manual" id="menu_popup">
+        <nav class="navigation_panel_burger">
+            <ul class="navigation_list">
+                <li class="navigation_link" id="pointer_normal">gifts</li>
+                <li><a href="./home.html#about" class="navigation_link">about</a></li>
+                <li><a href="./home.html#best" class="navigation_link">best</a></li>
+                <li><a href="#contact" class="navigation_link">contacts</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="modal_window" popover id="modal_window">
+    </div>
+    <button class="button_top pag_btn"></button>
+    <script src="./js/burger.js"></script>
+    <script type="module" src="./js/gifts.js"></script>
 </body>
 </html>

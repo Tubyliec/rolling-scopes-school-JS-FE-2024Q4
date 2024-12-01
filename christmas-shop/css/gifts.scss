@@ -5,7 +5,8 @@
 @use 'colors' as *;
 @use 'images' as *;
 @use 'variables' as *;
-@use 'variables' as *;
+@use 'burger' as *;
+@use 'modal' as *;
 
 /*Global*/
 
@@ -58,14 +59,10 @@ header {
             height: 24px;
         }
     }
-    .navigation_list {
-        @include flex-horizontal;
-        gap: 8px;
-        @include list_item_styles;
-        @media (max-width: 768px) {
-            display: none;
-        }
-    }
+    anchor-name: --my-anchor;
+}
+
+.navigation_panel {
     ul {
         li:first-child {
             padding: 12px 20px;
@@ -78,16 +75,17 @@ header {
     }
 }
 
-.burger_menu {
-    display: none;
-    background-image: $burger-button;
-    @extend %background-center;
-    width: 40px;
-    height: 40px;
+.navigation_list {
+    @include flex-horizontal;
+    gap: 8px;
+    @include list_item_styles;
     @media (max-width: 768px) {
-        display: inline-block;
+        @include flex-vertical;
+        gap: 20px;
     }
 }
+
+
 
 /*Best gifts*/
 
@@ -128,16 +126,19 @@ header {
 
         }
         border-radius: 10px;
-        &:hover {
-            background-color: $static-white-40;
-            cursor: pointer;
-        }
-        &:first-child {
-            pointer-events: none;
-            background-color: $static-white-40;
+        @media (hover: hover) {
+            &:hover {
+                background-color: $static-white-40;
+                cursor: pointer;
+            }
         }
     }
 }
+
+.active_panel_items {
+    background-color: $static-white-40;
+}
+
 
 .best_gifts {
     margin: 0 auto;
@@ -186,10 +187,12 @@ header {
             }
         }
     }
-    &:hover {
-        cursor: pointer;
-        .gift_description > h3 {
-            color: $primary;
+    @media (hover: hover) {
+        &:hover {
+            cursor: pointer;
+            .gift_description > h3 {
+                color: $primary;
+            }
         }
     }
 }
@@ -248,10 +251,13 @@ footer {
     }
 }
 
-.contact_card:hover {
-    a > span, p {
-        color: $primary;
+@media (hover: hover) {
+    .contact_card:hover {
+        a > span, p {
+            color: $primary;
+        }
     }
+
 }
 
 .card_img {
@@ -286,26 +292,38 @@ footer {
     }
     .telegram {
         background-image: $telegram-logo;
-        &:hover {
-            background-image: $telegram-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $telegram-logo-red;;
+            }
+
         }
     }
     .facebook {
         background-image: $facebook-logo;
-        &:hover {
-            background-image: $facebook-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $facebook-logo-red;;
+            }
+
         }
     }
     .instagram {
         background-image: $instagram-logo;
-        &:hover {
-            background-image: $instagram-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $instagram-logo-red;;
+            }
+
         }
     }
     .x {
         background-image: $x-logo;
-        &:hover {
-            background-image: $x-logo-red;;
+        @media (hover: hover) {
+            &:hover {
+                background-image: $x-logo-red;;
+            }
+
         }
     }
 }
@@ -321,6 +339,47 @@ footer {
     }
 }
 
-.rs_link:hover {
-    color: $primary;
+@media (hover: hover) {
+    .rs_link:hover {
+        color: $primary;
+    }
+
+}
+
+/*Button top*/
+
+.button_top {
+    display: none;
+    visibility: hidden;
+    background-image: $top-button-img;
+    @extend %background-center;
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+.pag_btn {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    cursor: pointer;
+    &:disabled {
+        opacity: 0.4;
+        pointer-events: none;
+    }
+}
+
+.not_displayed {
+    display: none;
+}
+
+.visible {
+    visibility: visible;
+}
+
+#pointer_normal {
+    pointer-events: auto;
 }
