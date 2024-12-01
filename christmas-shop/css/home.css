@@ -161,6 +161,123 @@ html {
   }
 }
 
+.modal_window {
+  margin: auto auto;
+  border-radius: 20px;
+}
+
+.wrapper_open {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 5000px;
+  background: rgba(24, 28, 41, 0.8);
+}
+
+.modal_close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.modal_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: #ecf3f8;
+}
+.modal_block .gift_img {
+  max-width: 400px;
+}
+@media (max-width: 380px) {
+  .modal_block .gift_img {
+    max-width: 360px;
+  }
+}
+.modal_block .gift_description_wrapper {
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.modal_block .gift_description_wrapper .gift_description {
+  text-align: left;
+  padding: 20px;
+}
+.modal_block .gift_description_wrapper .gift_description h4 {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+.modal_block .gift_description_wrapper .gift_description h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 152%;
+  letter-spacing: 0.08em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  color: #181c29;
+}
+.modal_block .gift_description_wrapper .gift_description p {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 148%;
+  color: #181c29;
+}
+
+.superpowers {
+  text-align: left;
+  padding: 20px;
+}
+.superpowers h4 {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+
+.powers_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.powers_list ul {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 148%;
+  color: #181c29;
+}
+
+.powers_rate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.snowflakes_list {
+  margin-top: 5px;
+}
+.snowflakes_list img {
+  width: 16px;
+}
+
 /*Global*/
 * {
   transition: 0.5s;

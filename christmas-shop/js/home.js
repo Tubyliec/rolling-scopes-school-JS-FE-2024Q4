@@ -1,4 +1,14 @@
+// Import
+
+import {modalWindow} from './modal.js';
+import {getGifts} from './modal.js';
+import {bestGifts} from './modal.js';
+
 // Identifiers
+
+const GIFTS_CONTAINER = document.querySelector('.best_gifts');
+const POPOVER_WRAPPER = document.querySelector('.popover_wrapper');
+const POPUP_MODAL = document.querySelector('.modal_window');
 
 const DAYS = document.querySelector('.days');
 const HOURS = document.querySelector('.hours');
@@ -71,42 +81,6 @@ BUTTON_RIGHT.addEventListener("click", (e) => {
 });
 
 // Cards
-
-async function getGifts() {
-    const RESULT = await fetch('./assets/json/gifts.json');
-    const GIFTS = await RESULT.json();
-    return GIFTS;
-}
-
-
-async function bestGifts() {
-    const GIFTS_DATA = await getGifts();
-    let giftsArray = [];
-
-    for (i = 0; i < 4; i++) {
-        giftsArray[i] = Math.floor(Math.random() * (GIFTS_DATA.length - 1))
-        for (j = 0; j < i; j++) {
-            if (giftsArray[i] === giftsArray[j]) i--;
-          }
-    }
-
-    giftsArray.forEach(item => {
-        let newItem = document.createElement('div');
-        newItem.classList.add('gifts_item');
-        newItem.innerHTML = `
-        <div class="gift_img">
-            <img src="./assets/images/${GIFTS_DATA[item].category}.png" alt="gift">
-        </div>
-        <div class="gift_description_wrapper">
-            <div class="gift_description">
-                <p class="${GIFTS_DATA[item].category.toLowerCase().replace(" ", "_")}">${GIFTS_DATA[item].category}</p>
-                <h3>${GIFTS_DATA[item].name}</h3>
-            </div>
-        </div>
-        `;
-        document.querySelector('.best_gifts').appendChild(newItem);
-    });
-}
 
 bestGifts()
 
