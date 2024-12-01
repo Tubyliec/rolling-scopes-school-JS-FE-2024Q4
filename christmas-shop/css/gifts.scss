@@ -61,6 +61,19 @@ header {
     anchor-name: --my-anchor;
 }
 
+.navigation_panel {
+    ul {
+        li:first-child {
+            padding: 12px 20px;
+            border-radius: 10px;
+            pointer-events: none;
+            cursor: default;
+            background: $primary-opacity;
+            color: $primary;
+        }
+    }
+}
+
 .navigation_list {
     @include flex-horizontal;
     gap: 8px;
@@ -70,16 +83,8 @@ header {
         gap: 20px;
     }
 }
-ul {
-    li:first-child {
-        padding: 12px 20px;
-        border-radius: 10px;
-        pointer-events: none;
-        cursor: default;
-        background: $primary-opacity;
-        color: $primary;
-    }
-}
+
+
 
 /*Best gifts*/
 
@@ -126,12 +131,13 @@ ul {
                 cursor: pointer;
             }
         }
-        &:first-child {
-            pointer-events: none;
-            background-color: $static-white-40;
-        }
     }
 }
+
+.active_panel_items {
+    background-color: $static-white-40;
+}
+
 
 .best_gifts {
     margin: 0 auto;
@@ -363,6 +369,10 @@ footer {
         opacity: 0.4;
         pointer-events: none;
     }
+}
+
+.not_displayed {
+    display: none;
 }
 
 .visible {

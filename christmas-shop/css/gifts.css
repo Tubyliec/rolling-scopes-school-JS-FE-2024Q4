@@ -229,6 +229,15 @@ header .logo_box .logo_image {
   height: 24px;
 }
 
+.navigation_panel ul li:first-child {
+  padding: 12px 20px;
+  border-radius: 10px;
+  pointer-events: none;
+  cursor: default;
+  background: rgba(255, 70, 70, 0.2);
+  color: #ff4646;
+}
+
 .navigation_list {
   display: flex;
   flex-direction: row;
@@ -255,15 +264,6 @@ header .logo_box .logo_image {
     align-items: center;
     gap: 20px;
   }
-}
-
-ul li:first-child {
-  padding: 12px 20px;
-  border-radius: 10px;
-  pointer-events: none;
-  cursor: default;
-  background: rgba(255, 70, 70, 0.2);
-  color: #ff4646;
 }
 
 /*Best gifts*/
@@ -333,8 +333,8 @@ ul li:first-child {
     cursor: pointer;
   }
 }
-.buttons_panel_list li:first-child {
-  pointer-events: none;
+
+.active_panel_items {
   background-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -615,6 +615,10 @@ footer {
 .pag_btn:disabled {
   opacity: 0.4;
   pointer-events: none;
+}
+
+.not_displayed {
+  display: none;
 }
 
 .visible {
