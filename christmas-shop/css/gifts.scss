@@ -132,6 +132,10 @@ header {
                 cursor: pointer;
             }
         }
+        &:first-child {
+            pointer-events: none;
+            background-color: $static-white-40;
+        }
     }
 }
 
@@ -343,7 +347,6 @@ footer {
     .rs_link:hover {
         color: $primary;
     }
-
 }
 
 /*Button top*/
@@ -383,3 +386,4 @@ footer {
 #pointer_normal {
     pointer-events: auto;
 }
+
