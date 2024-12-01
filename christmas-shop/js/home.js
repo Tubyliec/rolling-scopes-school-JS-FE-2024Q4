@@ -7,10 +7,15 @@ const SECONDS = document.querySelector('.seconds');
 
 const TARGET_DATE = new Date(Date.UTC(2025, 0, 1, 0, 0, 0));
 
+const SLIDER = document.querySelector('.slider');
+const BUTTON_LEFT = document.querySelector('.button_left');
+const BUTTON_RIGHT = document.querySelector('.button_right');
 
+let currentStep = 0;
+let stepCount = 3;
+let stepWidth = 178;
 
 // Counter
-
 
 function countdown() {
     const CURRENT_DATE = new Date();
@@ -27,3 +32,40 @@ function countdown() {
 }
 
 setInterval(countdown, 1000);
+
+// Slider
+
+BUTTON_LEFT.classList.add('disabled');
+
+function widthCount() {
+    window.innerWidth <= 768 ? stepCount = 6 : stepCount = 3;
+    stepWidth = Math.round((SLIDER.scrollWidth - SLIDER.clientWidth) / stepCount)
+}
+
+function moveSlider() {
+    SLIDER.style.left = -currentStep * stepWidth + 'px';
+    if (currentStep === 0 && !BUTTON_LEFT.classList.contains('disabled')) {
+        BUTTON_LEFT.classList.add('disabled');
+    } else {
+        BUTTON_LEFT.classList.remove('disabled');
+    }
+    if (currentStep === stepCount && !BUTTON_RIGHT.classList.contains('disabled')) {
+        BUTTON_RIGHT.classList.add('disabled');
+    } else {
+        BUTTON_RIGHT.classList.remove('disabled');
+    }
+}
+
+BUTTON_LEFT.addEventListener("click", (e) => {
+    widthCount();
+    currentStep -= 1;
+    if (currentStep < 0) currentStep = 0;
+    moveSlider();
+});
+
+BUTTON_RIGHT.addEventListener("click", (e) => {
+    widthCount();
+    currentStep += 1;
+    if (currentStep > stepCount) currentStep = stepCount;
+    moveSlider();
+});

@@ -70,6 +70,7 @@ html {
 }
 
 .navigation_panel_burger {
+  padding-bottom: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -454,6 +455,7 @@ header .logo_box .logo_image {
 }
 
 .slider {
+  position: relative;
   margin: 20px 0;
   display: flex;
   flex-direction: row;
@@ -510,7 +512,8 @@ header .logo_box .logo_image {
   background-color: transparent;
   cursor: pointer;
 }
-.pag_btn:disabled {
+
+.disabled {
   opacity: 0.4;
   pointer-events: none;
 }
