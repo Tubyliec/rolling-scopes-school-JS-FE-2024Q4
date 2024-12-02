@@ -83,6 +83,33 @@ export async function allGifts(itemCategory) {
 
 export async function modalWindow(number) {
     const GIFTS_DATA = await getGifts();
+    const GIFTS_STAR_DATA = await getGifts();
+
+    let superpowersArray = [];
+    console.log(superpowersArray);
+    for (let i = 0; i < GIFTS_STAR_DATA.length; i++) {
+        superpowersArray.push(GIFTS_STAR_DATA[i].superpowers);
+    }
+    console.log(superpowersArray);
+    superpowersArray.forEach( item => {
+        for (let key in item) {
+            if (item[key] === '+500') {
+                item[key] = `<img src="./assets/icons/5stars.svg" alt="gift">`;
+            }
+            if (item[key] === '+400') {
+                item[key] = `<img src="./assets/icons/4stars.svg" alt="gift">`;
+            }
+            if (item[key] === '+300') {
+                item[key] = `<img src="./assets/icons/3stars.svg" alt="gift">`;
+            }
+            if (item[key] === '+200') {
+                item[key] = `<img src="./assets/icons/2stars.svg" alt="gift">`;
+            }
+            if (item[key] === '+100') {
+                item[key] = `<img src="./assets/icons/1stars.svg" alt="gift">`;
+            }
+        }
+    })
 
     let modalClose = document.createElement('div');
     modalClose.classList.add('modal_close');
@@ -122,34 +149,10 @@ export async function modalWindow(number) {
                             <li>${GIFTS_DATA[number].superpowers.dream}</li>
                         </ul>
                         <ul class="snowflakes_list">
-                            <li>
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                            </li>
-                            <li>
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                            </li>
-                            <li>
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                            </li>
-                            <li>
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                                <img src="./assets/icons/snowflake.svg" alt="snowflake">
-                            </li>
+                            <li>${superpowersArray[number].live}</li>
+                            <li>${superpowersArray[number].create}</li>
+                            <li>${superpowersArray[number].love}</li>
+                            <li>${superpowersArray[number].dream}</li>
                         </ul>
                     </div>
 
