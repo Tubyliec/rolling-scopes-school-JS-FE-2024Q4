@@ -372,6 +372,11 @@ header .logo_box .logo_image {
   }
 }
 @media (max-width: 768px) {
+  header .navigation_list {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
   .navigation_list {
     display: flex;
     flex-direction: column;
