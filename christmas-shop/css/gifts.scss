@@ -83,6 +83,14 @@ header {
         @include flex-vertical;
         gap: 20px;
     }
+    li:first-child {
+        padding: 12px 20px;
+        border-radius: 10px;
+        pointer-events: auto;
+        cursor: default;
+        background: $primary-opacity;
+        color: $primary;
+    }
 }
 
 
@@ -131,10 +139,6 @@ header {
                 background-color: $static-white-40;
                 cursor: pointer;
             }
-        }
-        &:first-child {
-            pointer-events: none;
-            background-color: $static-white-40;
         }
     }
 }
@@ -347,6 +351,7 @@ footer {
     .rs_link:hover {
         color: $primary;
     }
+
 }
 
 /*Button top*/
@@ -382,8 +387,3 @@ footer {
 .visible {
     visibility: visible;
 }
-
-#pointer_normal {
-    pointer-events: auto;
-}
-

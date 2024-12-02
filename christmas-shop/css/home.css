@@ -201,13 +201,14 @@ html {
 .modal_block .gift_description_wrapper {
   max-width: 400px;
   width: 100%;
+  gap: 8px;
   height: 100%;
   border-radius: 20px;
   background-color: #fff;
 }
 .modal_block .gift_description_wrapper .gift_description {
   text-align: left;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
 }
 .modal_block .gift_description_wrapper .gift_description h4 {
   font-weight: 600;
@@ -273,9 +274,6 @@ html {
 
 .snowflakes_list {
   margin-top: 5px;
-}
-.snowflakes_list img {
-  width: 16px;
 }
 
 /*Global*/
@@ -633,11 +631,6 @@ header .logo_box .logo_image {
 .disabled {
   opacity: 0.4;
   pointer-events: none;
-}
-@media (hover: hover) {
-  .slider_pagination .button_right:hover {
-    background-image: url("../assets/icons/Button_right_hover.png");
-  }
 }
 
 /*Best gifts*/

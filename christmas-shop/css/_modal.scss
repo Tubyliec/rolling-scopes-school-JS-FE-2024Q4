@@ -38,12 +38,13 @@
     .gift_description_wrapper {
         max-width: 400px;
         width: 100%;
+        gap: 8px;
         height: 100%;
         border-radius: $primary-radius;
         background-color: $static-white;
         .gift_description {
             text-align: left;
-            padding: 20px;
+            padding: 20px 20px 0 20px;
             h4 {
                 @include item_font;
                 padding-bottom: 10px;
@@ -82,8 +83,5 @@
 }
 
 .snowflakes_list {
-    img {
-        width: 16px;
-    }
     margin-top: 5px;
 }
