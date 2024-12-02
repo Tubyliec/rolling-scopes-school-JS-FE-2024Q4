@@ -80,6 +80,13 @@ BUTTON_RIGHT.addEventListener("click", (e) => {
     moveSlider();
 });
 
+window.addEventListener("resize", (e) => {
+    SLIDER.style.left = 0;
+    currentStep = 0;
+    BUTTON_LEFT.classList.add('disabled');
+    BUTTON_RIGHT.classList.remove('disabled');
+});
+
 // Cards
 
 bestGifts()

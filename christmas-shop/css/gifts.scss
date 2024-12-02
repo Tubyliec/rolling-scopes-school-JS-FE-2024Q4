@@ -83,6 +83,14 @@ header {
         @include flex-vertical;
         gap: 20px;
     }
+    li:first-child {
+        padding: 12px 20px;
+        border-radius: 10px;
+        pointer-events: auto;
+        cursor: default;
+        background: $primary-opacity;
+        color: $primary;
+    }
 }
 
 
@@ -378,8 +386,4 @@ footer {
 
 .visible {
     visibility: visible;
-}
-
-#pointer_normal {
-    pointer-events: auto;
 }
