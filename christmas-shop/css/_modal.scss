@@ -29,6 +29,9 @@
     @include flex-vertical-between;
     border-radius: $primary-radius;
     background-color: $content-background;
+    @media (max-width: 380px) {
+        max-width: 350px;
+    }
     .gift_img {
         max-width: 400px;
         @media (max-width: 380px) {
@@ -38,11 +41,11 @@
     .gift_description_wrapper {
         max-width: 400px;
         width: 100%;
-        gap: 8px;
         height: 100%;
         border-radius: $primary-radius;
         background-color: $static-white;
         .gift_description {
+
             text-align: left;
             padding: 20px 20px 0 20px;
             h4 {
@@ -51,6 +54,7 @@
             }
             h3 {
                 @include item_description_text;
+                padding-bottom: 8px;
             }
             p {
                 @include contact_rs_font;
