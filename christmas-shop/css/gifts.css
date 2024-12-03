@@ -190,6 +190,11 @@ html {
   border-radius: 20px;
   background-color: #ecf3f8;
 }
+@media (max-width: 380px) {
+  .modal_block {
+    max-width: 350px;
+  }
+}
 .modal_block .gift_img {
   max-width: 400px;
 }
@@ -201,7 +206,6 @@ html {
 .modal_block .gift_description_wrapper {
   max-width: 400px;
   width: 100%;
-  gap: 8px;
   height: 100%;
   border-radius: 20px;
   background-color: #fff;
@@ -227,6 +231,7 @@ html {
   font-family: Montserrat;
   text-transform: uppercase;
   color: #181c29;
+  padding-bottom: 8px;
 }
 .modal_block .gift_description_wrapper .gift_description p {
   font-family: Montserrat;

@@ -20,3 +20,9 @@ NAVIGATION_PANEL.addEventListener('click', function(e) {
         BURGER_CHECKBOX.checked = false;
     }
 });
+
+window.addEventListener("resize", (e) => {
+    BODY.classList.remove('no_scroll');
+    MENU_POPUP.hidePopover();
+    BURGER_CHECKBOX.checked = false;
+});

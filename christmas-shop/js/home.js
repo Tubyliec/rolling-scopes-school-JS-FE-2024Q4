@@ -35,10 +35,10 @@ function countdown() {
     const REMAINING_MINUTES = Math.floor(REMAINING_TIME % (1000 * 60 * 60) / (1000 * 60));
     const REMAINING_SECONDS = Math.floor(REMAINING_TIME % (1000 * 60) / 1000);
 
-    DAYS.innerText = REMAINING_DAYS.toString().padStart(2, '0')
-    HOURS.innerText = REMAINING_HOURS.toString().padStart(2, '0')
-    MINUTES.innerText = REMAINING_MINUTES.toString().padStart(2, '0')
-    SECONDS.innerText = REMAINING_SECONDS.toString().padStart(2, '0')
+    DAYS.innerText = REMAINING_DAYS.toString().padStart(1, '0')
+    HOURS.innerText = REMAINING_HOURS.toString().padStart(1, '0')
+    MINUTES.innerText = REMAINING_MINUTES.toString().padStart(1, '0')
+    SECONDS.innerText = REMAINING_SECONDS.toString().padStart(1, '0')
 }
 
 setInterval(countdown, 1000);
@@ -92,3 +92,8 @@ window.addEventListener("resize", (e) => {
 bestGifts()
 
 //
+
+POPOVER_WRAPPER.addEventListener('click', () => {
+    BODY.classList.remove('no_scroll');
+    POPOVER_WRAPPER.classList.remove('wrapper_open');
+});
