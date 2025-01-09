@@ -1,0 +1,26 @@
+/*Variables*/
+
+$primary-margin: 5rem auto;
+$secondary-margin: 1rem;
+$primary-padding: 0.2rem;
+
+%btn-text {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+%border {
+  border-radius: 0.5rem;
+  border: 0.1rem solid black;
+}
+%flex-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+%flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}

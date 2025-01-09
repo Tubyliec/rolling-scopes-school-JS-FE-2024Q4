@@ -1,0 +1,54 @@
+//Import
+@use "reset" as *;
+@use "variables" as *;
+/*Global*/
+.body-wrapper {
+  margin: $primary-margin;
+  max-width: 60%;
+  height: 90vh;
+  @extend %border;
+  @extend %flex-vertical;
+}
+
+.header {
+  @extend %flex-horizontal;
+  margin: $secondary-margin;
+}
+
+.difficulty-panel {
+  @extend %flex-horizontal;
+}
+
+.header-btn {
+  min-width: 7rem;
+  @extend %border;
+  padding: $primary-padding;
+  background-color: white;
+  @extend %btn-text;
+  &--active {
+    background-color: blue;
+  }
+}
+.round-panel {
+  @extend %flex-horizontal;
+  @extend %btn-text;
+  padding: $primary-padding;
+}
+.round-counter {
+  @extend %flex-horizontal;
+}
+.keyboard-wrapper {
+  @extend %flex-horizontal;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.key {
+  width: 7rem;
+  height: 7rem;
+  @extend %border;
+  @extend %btn-text;
+  padding: $primary-padding;
+  text-align: center;
+  align-content: center;
+}
