@@ -1,6 +1,12 @@
 import { createElement } from "./create-elements.js";
+import { startGame } from "./game.js";
 
 let currentElements = {};
+let gameState = {
+  liveCounter: 0,
+};
+
+let actionButtons = [];
 
 function createDom() {
   const domElements = {};
@@ -127,6 +133,7 @@ function createDom() {
     parent: domElements.gameBtnWrapper,
     classes: ["start-btn", "game-btn"],
   });
+  domElements.startButton.addEventListener("click", startGame);
   domElements.newButton = createElement({
     tag: "button",
     text: "new game",
@@ -156,7 +163,15 @@ function createDom() {
     startButton: domElements.startButton,
     newButton: domElements.newButton,
     repeatButton: domElements.repeatButton,
+    nextButton: domElements.nextButton,
   };
+
+  actionButtons = [
+    currentElements.startButton,
+    currentElements.newButton,
+    currentElements.repeatButton,
+    currentElements.nextButton,
+  ];
 }
 
-export { currentElements, createDom };
+export { currentElements, createDom, actionButtons, gameState };
