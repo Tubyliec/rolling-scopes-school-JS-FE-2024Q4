@@ -4,14 +4,16 @@
 /*Global*/
 .body-wrapper {
   margin: $primary-margin;
+  padding: $primary-padding;
   max-width: 60%;
-  height: 90vh;
   @extend %border;
   @extend %flex-vertical;
+  text-align: center;
 }
-
+/*Header*/
 .header {
   @extend %flex-horizontal;
+  @extend %flex-between;
   margin: $secondary-margin;
 }
 
@@ -22,33 +24,53 @@
 .header-btn {
   min-width: 7rem;
   @extend %border;
-  padding: $primary-padding;
+  padding: $secodary-padding;
   background-color: white;
   @extend %btn-text;
   &--active {
-    background-color: blue;
+    background-color: $primary-color;
   }
 }
 .round-panel {
   @extend %flex-horizontal;
   @extend %btn-text;
-  padding: $primary-padding;
+  padding: $secodary-padding;
 }
 .round-counter {
   @extend %flex-horizontal;
 }
+/*Title*/
+.title {
+  @extend %h1;
+}
+/*Input*/
+.input-section {
+  @extend %flex-horizontal;
+  @extend %flex-center;
+}
+.input-wrapper {
+  width: 50%;
+  text-align: center;
+  padding: $input-padding;
+}
+.input-field {
+  margin: $input-margin;
+  padding: $input-padding;
+  @extend %border;
+  text-align: center;
+  width: 80%;
+}
+/*Keyboard*/
 .keyboard-wrapper {
   @extend %flex-horizontal;
-  flex-flow: wrap;
-  justify-content: center;
-  align-items: center;
+  @extend %flex-center;
 }
 .key {
   width: 7rem;
   height: 7rem;
   @extend %border;
   @extend %btn-text;
-  padding: $primary-padding;
+  padding: $secodary-padding;
   text-align: center;
   align-content: center;
 }

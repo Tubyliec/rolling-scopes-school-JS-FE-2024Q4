@@ -55,12 +55,18 @@ html {
 }
 
 /*Variables*/
+/*Colors*/
+/*Text*/
 .header-btn, .round-panel, .key {
   font-size: 1.5rem;
   text-transform: uppercase;
 }
 
-.body-wrapper, .header-btn, .key {
+.title {
+  font-size: 5rem;
+}
+
+.body-wrapper, .header-btn, .input-field, .key {
   border-radius: 0.5rem;
   border: 0.1rem solid black;
 }
@@ -68,24 +74,34 @@ html {
 .body-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 2rem;
 }
 
-.header, .difficulty-panel, .round-panel, .round-counter, .keyboard-wrapper {
+.header, .difficulty-panel, .round-panel, .round-counter, .input-section, .keyboard-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 1rem;
+}
+
+.input-section, .keyboard-wrapper {
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  justify-content: space-between;
 }
 
 /*Global*/
 .body-wrapper {
-  margin: 5rem auto;
+  margin: 6rem auto;
+  padding: 2rem;
   max-width: 60%;
-  height: 90vh;
+  text-align: center;
 }
 
+/*Header*/
 .header {
   margin: 1rem;
 }
@@ -96,19 +112,29 @@ html {
   background-color: white;
 }
 .header-btn--active {
-  background-color: blue;
+  background-color: #ffb84d;
 }
 
 .round-panel {
   padding: 0.2rem;
 }
 
-.keyboard-wrapper {
-  flex-flow: wrap;
-  justify-content: center;
-  align-items: center;
+/*Title*/
+/*Input*/
+.input-wrapper {
+  width: 50%;
+  text-align: center;
+  padding: 1rem;
 }
 
+.input-field {
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  width: 80%;
+}
+
+/*Keyboard*/
 .key {
   width: 7rem;
   height: 7rem;
