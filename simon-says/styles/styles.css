@@ -1,0 +1,227 @@
+/*Reset configuration*/
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+a, a:link, a:visited, a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+/*Variables*/
+@font-face {
+  font-family: "Eater";
+  src: local("Eater"), url("../assets/fonts/Eater-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Iceberg";
+  src: local("Iceberg"), url("../assets/fonts/Iceberg-Regular.ttf") format("truetype");
+}
+.header-btn, .round-panel, .game-btn {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: Eater;
+}
+
+.title {
+  font-size: 5rem;
+  font-family: Eater;
+}
+
+.input-field, .key {
+  text-transform: uppercase;
+  font-family: Iceberg;
+  font-size: 2.5rem;
+}
+
+.body-wrapper, .header-btn, .input-field, .key, .game-btn {
+  border-radius: 0.5rem;
+  border: 0.1rem solid black;
+}
+
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.header, .difficulty-panel, .round-panel, .round-counter, .input-section, .keyboard-wrapper, .gamebtn-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.input-section, .keyboard-wrapper, .gamebtn-wrapper {
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  justify-content: space-between;
+}
+
+/*Global*/
+.body-wrapper {
+  margin: 6rem auto;
+  padding: 2rem;
+  max-width: 60%;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .body-wrapper {
+    gap: 1rem;
+    margin: 1rem auto;
+    padding: 0.5rem;
+  }
+}
+
+.no-display {
+  display: none;
+}
+
+/*Header*/
+.header {
+  margin: 1rem;
+}
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+
+.header-btn {
+  min-width: 7rem;
+  padding: 0 0.5rem;
+  background-color: white;
+  cursor: pointer;
+}
+.header-btn--active {
+  background-color: #ffb84d;
+}
+@media (max-width: 500px) {
+  .header-btn {
+    font-size: 1rem;
+    min-width: 4rem;
+  }
+}
+
+.round-panel {
+  padding: 0 0.5rem;
+}
+
+/*Title*/
+@media (max-width: 700px) {
+  .title {
+    font-size: 3.5rem;
+  }
+}
+
+/*Input*/
+.input-wrapper {
+  width: 60%;
+  text-align: center;
+}
+@media (max-width: 700px) {
+  .input-wrapper {
+    width: 80%;
+  }
+}
+@media (max-width: 400px) {
+  .input-wrapper {
+    width: 90%;
+  }
+}
+
+.input-field {
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: default;
+  width: 80%;
+  height: 3rem;
+}
+
+/*Keyboard*/
+.key {
+  width: 7rem;
+  height: 7rem;
+  padding: 0 0.5rem;
+  text-align: center;
+  align-content: center;
+  cursor: default;
+}
+@media (max-width: 700px) {
+  .key {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+/*Game buttons*/
+@media (max-width: 700px) {
+  .gamebtn-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.game-btn {
+  padding: 0 1rem;
+  background-color: white;
+  font-size: 3.5rem;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .game-btn {
+    font-size: 2.5rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
