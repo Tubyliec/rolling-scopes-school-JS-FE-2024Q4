@@ -149,7 +149,7 @@ html {
 }
 .header-btn:hover {
   background-color: #ffb84d;
-  scale: 1.1;
+  scale: 1.05;
 }
 @media (max-width: 500px) {
   .header-btn {
@@ -165,7 +165,7 @@ html {
 /*Title*/
 @media (max-width: 700px) {
   .title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -221,12 +221,12 @@ html {
 .game-btn {
   padding: 0 1rem;
   background-color: white;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   cursor: pointer;
 }
 .game-btn:hover {
   background-color: #ffb84d;
-  scale: 1.1;
+  scale: 1.01;
 }
 @media (max-width: 700px) {
   .game-btn {
