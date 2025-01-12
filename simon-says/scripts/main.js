@@ -144,6 +144,12 @@ const repeatButton = createElement({
   parent: gameBtnWrapper,
   classes: ["repeat-btn", "game-btn", "no-display"],
 });
+const nextButton = createElement({
+  tag: "button",
+  text: "next",
+  parent: gameBtnWrapper,
+  classes: ["next", "game-btn", "no-display"],
+});
 
 createKeyboard(numbersArray, keyboardWrapper);
 bodyElement.append(bodyWrapper);
