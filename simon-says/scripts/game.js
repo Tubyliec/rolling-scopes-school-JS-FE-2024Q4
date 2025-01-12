@@ -3,7 +3,6 @@ import { createKeyboard, removeAllChildNodes } from "./create-elements.js";
 // Difficulty
 function difficultySwap(array, parentElement) {
   array.forEach((element) => {
-    console.log(element);
     element.name.addEventListener("click", function (e) {
       element.name.classList.add("header-btn--active");
       array.forEach((item) => {

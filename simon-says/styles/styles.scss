@@ -9,26 +9,42 @@
   @extend %border;
   @extend %flex-vertical;
   text-align: center;
+  @media (max-width: 700px) {
+    gap: 1rem;
+    margin: $secondary-margin;
+    padding: 0.5rem;
+  }
+}
+.no-display {
+  display: none;
 }
 /*Header*/
 .header {
   @extend %flex-horizontal;
   @extend %flex-between;
-  margin: $secondary-margin;
+  margin: $header-margin;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
 }
-
 .difficulty-panel {
   @extend %flex-horizontal;
 }
-
 .header-btn {
   min-width: 7rem;
   @extend %border;
   padding: $secodary-padding;
   background-color: white;
   @extend %btn-text;
+  cursor: pointer;
   &--active {
     background-color: $primary-color;
+  }
+  @media (max-width: 500px) {
+    font-size: $small-size;
+    min-width: 4rem;
   }
 }
 .round-panel {
@@ -42,6 +58,9 @@
 /*Title*/
 .title {
   @extend %h1;
+  @media (max-width: 700px) {
+    font-size: $gamebtn-size;
+  }
 }
 /*Input*/
 .input-section {
@@ -49,16 +68,24 @@
   @extend %flex-center;
 }
 .input-wrapper {
-  width: 50%;
+  width: 60%;
   text-align: center;
-  padding: $input-padding;
+  @media (max-width: 700px) {
+    width: 80%;
+  }
+  @media (max-width: 400px) {
+    width: 90%;
+  }
 }
 .input-field {
   margin: $input-margin;
   padding: $input-padding;
   @extend %border;
   text-align: center;
+  @extend %key-text;
+  cursor: default;
   width: 80%;
+  height: 3rem;
 }
 /*Keyboard*/
 .keyboard-wrapper {
@@ -69,8 +96,33 @@
   width: 7rem;
   height: 7rem;
   @extend %border;
-  @extend %btn-text;
+  @extend %key-text;
   padding: $secodary-padding;
   text-align: center;
   align-content: center;
+  cursor: default;
+  @media (max-width: 700px) {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+/*Game buttons*/
+.gamebtn-wrapper {
+  @extend %flex-horizontal;
+  @extend %flex-center;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.game-btn {
+  @extend %border;
+  padding: $gamebtn-padding;
+  background-color: white;
+  @extend %btn-text;
+  font-size: $gamebtn-size;
+  cursor: pointer;
+  @media (max-width: 700px) {
+    font-size: $key-size;
+  }
 }

@@ -1,30 +1,59 @@
 /*Variables*/
-
 $primary-margin: 6rem auto;
-$secondary-margin: 1rem;
+$secondary-margin: 1rem auto;
+$header-margin: 1rem;
 $primary-padding: 2rem;
-$secodary-padding: 0.2rem;
+$secodary-padding: 0 0.5rem;
+$gamebtn-padding: 0 1rem;
 $input-margin: 1rem;
 $input-padding: 1rem;
-/*Colors*/
+
+$primary-size: 5rem;
+$button-size: 2rem;
+$gamebtn-size: 3.5rem;
+$key-size: 2.5rem;
+$small-size: 1rem;
+
+// Colors
 $primary-color: #ffb84d;
-/*Text*/
+// Fonts
+@font-face {
+  font-family: "Eater";
+  src:
+    local("Eater"),
+    url("../assets/fonts/Eater-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Iceberg";
+  src:
+    local("Iceberg"),
+    url("../assets/fonts/Iceberg-Regular.ttf") format("truetype");
+}
+// Text
 %btn-text {
-  font-size: 1.5rem;
+  font-size: $button-size;
   text-transform: uppercase;
+  font-family: Eater;
 }
 %h1 {
-  font-size: 5rem;
+  font-size: $primary-size;
+  font-family: Eater;
 }
+%key-text {
+  text-transform: uppercase;
+  font-family: Iceberg;
+  font-size: $key-size;
+}
+// Borders
 %border {
   border-radius: 0.5rem;
   border: 0.1rem solid black;
 }
-
+// Layout
 %flex-vertical {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
 }
 %flex-horizontal {
   display: flex;

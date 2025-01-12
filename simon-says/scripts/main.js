@@ -94,7 +94,7 @@ const inputSection = createElement({
   classes: ["input-section"],
 });
 const inputWrapper = createElement({
-  tag: "section",
+  tag: "div",
   parent: inputSection,
   classes: ["input-wrapper"],
 });
@@ -102,7 +102,7 @@ const inputField = createElement({
   tag: "input",
   parent: inputWrapper,
   classes: ["input-field"],
-  value: "Enter characters",
+  id: "input-field",
 });
 // Keyboard
 const keyboardSection = createElement({
@@ -111,9 +111,38 @@ const keyboardSection = createElement({
   classes: ["keyboard-section"],
 });
 const keyboardWrapper = createElement({
-  tag: "section",
+  tag: "div",
   parent: keyboardSection,
   classes: ["keyboard-wrapper"],
+});
+// Keyboard
+const gameBtnSection = createElement({
+  tag: "section",
+  parent: bodyWrapper,
+  classes: ["gamebtn-section"],
+});
+const gameBtnWrapper = createElement({
+  tag: "div",
+  parent: gameBtnSection,
+  classes: ["gamebtn-wrapper"],
+});
+const startButton = createElement({
+  tag: "button",
+  text: "start",
+  parent: gameBtnWrapper,
+  classes: ["start-btn", "game-btn"],
+});
+const newButton = createElement({
+  tag: "button",
+  text: "new game",
+  parent: gameBtnWrapper,
+  classes: ["new-btn", "game-btn", "no-display"],
+});
+const repeatButton = createElement({
+  tag: "button",
+  text: "repeat the sequense",
+  parent: gameBtnWrapper,
+  classes: ["repeat-btn", "game-btn", "no-display"],
 });
 
 createKeyboard(numbersArray, keyboardWrapper);
