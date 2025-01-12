@@ -82,7 +82,7 @@ html {
 
 .body-wrapper, .header-btn, .input-field, .key, .game-btn {
   border-radius: 0.5rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid #000000;
 }
 
 .body-wrapper {
@@ -141,11 +141,15 @@ html {
 .header-btn {
   min-width: 7rem;
   padding: 0 0.5rem;
-  background-color: white;
+  background-color: #ffffff;
   cursor: pointer;
 }
 .header-btn--active {
   background-color: #ffb84d;
+}
+.header-btn:hover {
+  background-color: #ffb84d;
+  scale: 1.1;
 }
 @media (max-width: 500px) {
   .header-btn {
@@ -219,6 +223,10 @@ html {
   background-color: white;
   font-size: 3.5rem;
   cursor: pointer;
+}
+.game-btn:hover {
+  background-color: #ffb84d;
+  scale: 1.1;
 }
 @media (max-width: 700px) {
   .game-btn {

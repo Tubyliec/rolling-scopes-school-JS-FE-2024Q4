@@ -16,6 +16,8 @@ $small-size: 1rem;
 
 // Colors
 $primary-color: #ffb84d;
+$secondary-color: #000000;
+$third-color: #ffffff;
 // Fonts
 @font-face {
   font-family: "Eater";
@@ -47,7 +49,11 @@ $primary-color: #ffb84d;
 // Borders
 %border {
   border-radius: 0.5rem;
-  border: 0.1rem solid black;
+  border: 0.1rem solid $secondary-color;
+}
+%border-hover {
+  border-radius: 0.5rem;
+  border: 0.1rem solid $primary-color;
 }
 // Layout
 %flex-vertical {
