@@ -210,6 +210,12 @@ html {
   }
 }
 
+.key--active {
+  background-color: #ffb84d;
+  scale: 1.01;
+  animation-delay: 300ms;
+}
+
 /*Game buttons*/
 @media (max-width: 700px) {
   .gamebtn-wrapper {
