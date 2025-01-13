@@ -126,6 +126,10 @@ html {
   display: none;
 }
 
+.no-events {
+  pointer-events: none;
+}
+
 /*Header*/
 .header {
   margin: 1rem;
@@ -202,18 +206,21 @@ html {
   text-align: center;
   align-content: center;
   cursor: default;
+  background-color: #ffffff;
+}
+.key:hover {
+  cursor: pointer;
+  background-color: #ffb84d;
+  scale: 1.01;
+}
+.key:disabled {
+  pointer-events: none;
 }
 @media (max-width: 700px) {
   .key {
     width: 4rem;
     height: 4rem;
   }
-}
-
-.key--active {
-  background-color: #ffb84d;
-  scale: 1.01;
-  animation-delay: 300ms;
 }
 
 /*Game buttons*/
@@ -233,6 +240,9 @@ html {
 .game-btn:hover {
   background-color: #ffb84d;
   scale: 1.01;
+}
+.game-btn:disabled {
+  pointer-events: none;
 }
 @media (max-width: 700px) {
   .game-btn {

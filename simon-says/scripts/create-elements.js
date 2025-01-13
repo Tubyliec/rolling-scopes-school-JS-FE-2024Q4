@@ -33,7 +33,7 @@ function createElement(options) {
 function createKeyboard(array, parentElement) {
   array.forEach((element) => {
     const newItem = createElement({
-      tag: "div",
+      tag: "button",
       parent: parentElement,
       text: element,
       classes: ["key"],

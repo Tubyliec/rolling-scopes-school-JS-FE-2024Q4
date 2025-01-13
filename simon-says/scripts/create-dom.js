@@ -1,13 +1,15 @@
 import { createElement } from "./create-elements.js";
-import { startGame } from "./game.js";
+import { startGame, repeatSequence } from "./game.js";
 
 let currentElements = {};
 let gameState = {
   liveCounter: 0,
   difficulty: "",
+  playing: false,
 };
 
 let actionButtons = [];
+let allKeys = [];
 
 function createDom() {
   const domElements = {};
@@ -147,6 +149,7 @@ function createDom() {
     parent: domElements.gameBtnWrapper,
     classes: ["repeat-btn", "game-btn", "no-display"],
   });
+  domElements.repeatButton.addEventListener("click", repeatSequence);
   domElements.nextButton = createElement({
     tag: "button",
     text: "next",
@@ -157,6 +160,7 @@ function createDom() {
 
   currentElements = {
     currentRound: domElements.currentRound,
+    difficultyPanel: domElements.difficultyPanel,
     easyDifficulty: domElements.easyDifficulty,
     mediumDifficulty: domElements.mediumDifficulty,
     hardDifficulty: domElements.hardDifficulty,
@@ -173,6 +177,8 @@ function createDom() {
     currentElements.repeatButton,
     currentElements.nextButton,
   ];
+
+  allKeys = currentElements.keyboardWrapper.children;
 }
 
-export { currentElements, createDom, actionButtons, gameState };
+export { currentElements, createDom, actionButtons, gameState, allKeys };

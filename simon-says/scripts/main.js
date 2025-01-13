@@ -1,12 +1,18 @@
 // Import
-import { createDom, currentElements, gameState } from "./create-dom.js";
+import {
+  createDom,
+  currentElements,
+  gameState,
+  allKeys,
+} from "./create-dom.js";
 import { createKeyboard } from "./create-elements.js";
 import { numbersArray, lettersArray, mixedArray } from "./data.js";
-import { difficultySwap, createSequense } from "./game.js";
+import { difficultySwap, createSequense, disableKeys } from "./game.js";
 
 // Create elements
 createDom();
 createKeyboard(numbersArray, currentElements.keyboardWrapper);
+disableKeys(allKeys);
 
 // Difficulty
 const difficultyLevels = [

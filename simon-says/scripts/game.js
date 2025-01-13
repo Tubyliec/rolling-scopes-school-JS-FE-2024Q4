@@ -1,6 +1,11 @@
 // Import
 import { createKeyboard, removeAllChildNodes } from "./create-elements.js";
-import { currentElements, actionButtons, gameState } from "./create-dom.js";
+import {
+  currentElements,
+  actionButtons,
+  gameState,
+  allKeys,
+} from "./create-dom.js";
 import { numbersArray, lettersArray, mixedArray } from "./data.js";
 
 // identifiers
@@ -40,6 +45,24 @@ function disableActionButtons(buttons) {
       element.classList.remove("no-display");
     }
   });
+}
+
+function disableDifficultyButtons() {
+  if (gameState.playing === true) {
+    currentElements.difficultyPanel.classList.add("no-events");
+  }
+}
+
+function disableKeys(keys) {
+  for (let i = 0; i < keys.length; i++) {
+    keys[i].disabled = true;
+  }
+}
+
+function enableKeys(keys) {
+  for (let i = 0; i < keys.length; i++) {
+    keys[i].disabled = false;
+  }
 }
 
 // Sequense
@@ -89,13 +112,40 @@ function createSequense() {
 // Game
 
 function startGame() {
+  gameState.playing = true;
+  disableDifficultyButtons();
   disableActionButtons(actionButtons);
   gameState.liveCounter += 1;
   currentElements.currentRound.textContent = gameState.liveCounter;
   createSequense();
   console.log(sequenceArray);
-  console.log(keysArray);
+  setTimeout(
+    () => {
+      enableKeys(allKeys);
+    },
+    1400 * 2 * gameState.liveCounter,
+  );
+}
+// Repeat
+
+function repeatSequence() {
+  disableKeys(allKeys);
+  showSequense(keysArray);
+  setTimeout(
+    () => {
+      enableKeys(allKeys);
+    },
+    1400 * 2 * gameState.liveCounter,
+  );
+  currentElements.repeatButton.disabled = true;
 }
 
+function newGame() {}
 // Export
-export { difficultySwap, startGame, createSequense };
+export {
+  difficultySwap,
+  startGame,
+  createSequense,
+  disableKeys,
+  repeatSequence,
+};
