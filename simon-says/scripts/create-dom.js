@@ -4,6 +4,7 @@ import { startGame } from "./game.js";
 let currentElements = {};
 let gameState = {
   liveCounter: 0,
+  difficulty: "",
 };
 
 let actionButtons = [];
