@@ -18,6 +18,9 @@
 .no-display {
   display: none;
 }
+.no-events {
+  pointer-events: none;
+}
 /*Header*/
 .header {
   @extend %flex-horizontal;
@@ -36,11 +39,15 @@
   min-width: 7rem;
   @extend %border;
   padding: $secodary-padding;
-  background-color: white;
+  background-color: $third-color;
   @extend %btn-text;
   cursor: pointer;
   &--active {
     background-color: $primary-color;
+  }
+  &:hover {
+    background-color: $primary-color;
+    scale: 1.05;
   }
   @media (max-width: 500px) {
     font-size: $small-size;
@@ -101,6 +108,15 @@
   text-align: center;
   align-content: center;
   cursor: default;
+  background-color: $third-color;
+  &:hover {
+    cursor: pointer;
+    background-color: $primary-color;
+    scale: 1.01;
+  }
+  &:disabled {
+    pointer-events: none;
+  }
   @media (max-width: 700px) {
     width: 4rem;
     height: 4rem;
@@ -122,6 +138,13 @@
   @extend %btn-text;
   font-size: $gamebtn-size;
   cursor: pointer;
+  &:hover {
+    background-color: $primary-color;
+    scale: 1.01;
+  }
+  &:disabled {
+    pointer-events: none;
+  }
   @media (max-width: 700px) {
     font-size: $key-size;
   }
