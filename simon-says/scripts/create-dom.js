@@ -1,5 +1,5 @@
 import { createElement } from "./create-elements.js";
-import { startGame, repeatSequence } from "./game.js";
+import { startGame, repeatSequence, resetGame } from "./game.js";
 
 let currentElements = {};
 let gameState = {
@@ -143,6 +143,7 @@ function createDom() {
     parent: domElements.gameBtnWrapper,
     classes: ["new-btn", "game-btn", "no-display"],
   });
+  domElements.newButton.addEventListener("click", resetGame);
   domElements.repeatButton = createElement({
     tag: "button",
     text: "repeat the sequense",

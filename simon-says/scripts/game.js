@@ -46,10 +46,24 @@ function disableActionButtons(buttons) {
     }
   });
 }
+function resetButtons(buttons) {
+  buttons.forEach((element) => {
+    if (element === currentElements.startButton) {
+      element.classList.remove("no-display");
+    } else {
+      element.classList.add("no-display");
+    }
+  });
+}
 
 function disableDifficultyButtons() {
   if (gameState.playing === true) {
     currentElements.difficultyPanel.classList.add("no-events");
+  }
+}
+function enableDifficultyButtons() {
+  if (gameState.playing === false) {
+    currentElements.difficultyPanel.classList.remove("no-events");
   }
 }
 
@@ -111,10 +125,7 @@ function createSequense() {
 
 // Game
 
-function startGame() {
-  gameState.playing = true;
-  disableDifficultyButtons();
-  disableActionButtons(actionButtons);
+function startRound() {
   gameState.liveCounter += 1;
   currentElements.currentRound.textContent = gameState.liveCounter;
   createSequense();
@@ -125,6 +136,14 @@ function startGame() {
     },
     1400 * 2 * gameState.liveCounter,
   );
+}
+
+function startGame() {
+  gameState.liveCounter = 0;
+  gameState.playing = true;
+  disableDifficultyButtons();
+  disableActionButtons(actionButtons);
+  startRound();
 }
 // Repeat
 
@@ -140,7 +159,15 @@ function repeatSequence() {
   currentElements.repeatButton.disabled = true;
 }
 
-function newGame() {}
+function resetGame() {
+  gameState.liveCounter = 0;
+  sequenceArray = [];
+  keysArray = [];
+  currentElements.currentRound.textContent = gameState.liveCounter;
+  gameState.playing = false;
+  enableDifficultyButtons();
+  resetButtons(actionButtons);
+}
 // Export
 export {
   difficultySwap,
@@ -148,4 +175,5 @@ export {
   createSequense,
   disableKeys,
   repeatSequence,
+  resetGame,
 };
