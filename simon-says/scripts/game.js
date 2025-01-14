@@ -127,7 +127,6 @@ function createSequense() {
 function input(keys) {
   let pressIndex = 0;
   let wrongAttempts = 0;
-  let finish = false;
 
   for (let key of keys) {
     function checkInput() {
@@ -137,12 +136,28 @@ function input(keys) {
       } else {
         currentElements.inputField.value = "Wrong key";
         wrongAttempts += 1;
+        currentElements.repeatButton.classList.add("scale");
+        setTimeout(
+          () => {
+            currentElements.repeatButton.classList.remove("scale");
+          },
+          1400 * 2 * gameState.liveCounter,
+        );
       }
       if (currentElements.inputField.value.length === sequenceArray.length) {
+        if (gameState.liveCounter === 5) {
+          currentElements.modalInfoText.textContent = "You win";
+          currentElements.modalWindow.showModal();
+          currentElements.nextButton.classList.add("no-display");
+          currentElements.repeatButton.classList.remove("no-display");
+        }
         currentElements.inputField.value = "Good job!";
         currentElements.repeatButton.classList.add("no-display");
         currentElements.nextButton.classList.remove("no-display");
-        finish = true;
+      }
+      if (wrongAttempts === 2) {
+        currentElements.modalInfoText.textContent = "You lose";
+        currentElements.modalWindow.showModal();
       }
     }
     key.onclick = checkInput;
