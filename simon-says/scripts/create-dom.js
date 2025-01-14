@@ -158,6 +158,36 @@ function createDom() {
     classes: ["next", "game-btn", "no-display"],
   });
   domElements.nextButton.addEventListener("click", startRound);
+
+  domElements.modalWindow = createElement({
+    tag: "dialog",
+    parent: domElements.bodyWrapper,
+    classes: ["modal"],
+  });
+
+  domElements.modalInfo = createElement({
+    tag: "div",
+    parent: domElements.modalWindow,
+    classes: ["modal-info"],
+  });
+
+  domElements.modalInfoText = createElement({
+    tag: "p",
+    text: "",
+    parent: domElements.modalInfo,
+    classes: ["modal-info__text"],
+  });
+
+  domElements.modalCLose = createElement({
+    tag: "button",
+    text: "close",
+    parent: domElements.modalInfo,
+    classes: ["modal-btn", "game-btn"],
+  });
+  domElements.modalCLose.addEventListener("click", () => {
+    domElements.modalWindow.close();
+  });
+
   bodyElement.append(domElements.bodyWrapper);
 
   currentElements = {
@@ -172,6 +202,8 @@ function createDom() {
     newButton: domElements.newButton,
     repeatButton: domElements.repeatButton,
     nextButton: domElements.nextButton,
+    modalWindow: domElements.modalWindow,
+    modalInfoText: domElements.modalInfoText,
   };
 
   actionButtons = [

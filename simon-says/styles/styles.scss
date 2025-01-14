@@ -91,6 +91,7 @@
   text-align: center;
   @extend %key-text;
   cursor: default;
+  pointer-events: none;
   width: 80%;
   height: 3rem;
 }
@@ -148,4 +149,36 @@
   @media (max-width: 700px) {
     font-size: $key-size;
   }
+}
+
+.modal {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 30%;
+  height: 30%;
+  @extend %border;
+  background-color: $third-color;
+  &::backdrop {
+    background-color: $primary-color;
+    opacity: 0.3;
+  }
+  @media (max-width: 800px) {
+    width: 50%;
+    height: 50%;
+  }
+}
+.modal-info {
+  @extend %flex-vertical;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-info__text {
+  @extend %h1;
+}
+
+.scale {
+  background-color: $primary-color;
+  scale: 1.01;
 }
