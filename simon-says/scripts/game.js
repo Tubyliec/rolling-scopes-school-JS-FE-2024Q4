@@ -135,6 +135,12 @@ function input(keys) {
         pressIndex += 1;
       } else {
         currentElements.inputField.value = "Wrong key";
+        setTimeout(
+          () => {
+            currentElements.inputField.value = null;
+          },
+          1400 * 2 * gameState.liveCounter,
+        );
         wrongAttempts += 1;
         currentElements.repeatButton.classList.add("scale");
         setTimeout(
