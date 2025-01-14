@@ -165,6 +165,7 @@ function createDom() {
     easyDifficulty: domElements.easyDifficulty,
     mediumDifficulty: domElements.mediumDifficulty,
     hardDifficulty: domElements.hardDifficulty,
+    inputField: domElements.inputField,
     keyboardWrapper: domElements.keyboardWrapper,
     startButton: domElements.startButton,
     newButton: domElements.newButton,

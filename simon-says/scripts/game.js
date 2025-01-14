@@ -12,6 +12,7 @@ import { numbersArray, lettersArray, mixedArray } from "./data.js";
 
 let sequenceArray = [];
 let keysArray = [];
+let inputArray = [];
 
 // Difficulty
 
@@ -123,9 +124,26 @@ function createSequense() {
   showSequense(keysArray);
 }
 
+function mouseInput(keys) {
+  for (let key of keys) {
+    key.addEventListener("click", function () {
+      inputArray.push(key.textContent);
+    });
+  }
+  for (let i = 0; i <= sequenceArray.lenght; i++) {
+    if (inputArray[i] === sequenceArray[i]) {
+      console.log(inputArray[i].textContent);
+      console.log(currentElements.inputField.value);
+      currentElements.inputField.value = inputArray[i];
+    }
+  }
+}
+
 // Game
 
 function startRound() {
+  disableKeys(allKeys);
+  disableKeys(actionButtons);
   gameState.liveCounter += 1;
   currentElements.currentRound.textContent = gameState.liveCounter;
   createSequense();
@@ -136,6 +154,13 @@ function startRound() {
     },
     1400 * 2 * gameState.liveCounter,
   );
+  setTimeout(
+    () => {
+      enableKeys(actionButtons);
+    },
+    1400 * 2 * gameState.liveCounter,
+  );
+  mouseInput(allKeys);
 }
 
 function startGame() {
@@ -168,6 +193,7 @@ function resetGame() {
   enableDifficultyButtons();
   resetButtons(actionButtons);
 }
+
 // Export
 export {
   difficultySwap,
@@ -176,4 +202,6 @@ export {
   disableKeys,
   repeatSequence,
   resetGame,
+  sequenceArray,
+  keysArray,
 };
