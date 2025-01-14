@@ -118,30 +118,44 @@ function createSequense() {
     } else {
       currentArray = mixedArray;
     }
-    sequenceArray.push(currentArray[index]);
+    sequenceArray.push(String(currentArray[index]));
     keysArray.push(currentElements.keyboardWrapper.childNodes[index]);
   }
   showSequense(keysArray);
 }
 
-function mouseInput(keys) {
+function input(keys) {
+  let pressIndex = 0;
+  let wrongAttempts = 0;
+  let finish = false;
+
   for (let key of keys) {
-    key.addEventListener("click", function () {
-      inputArray.push(key.textContent);
-    });
-  }
-  for (let i = 0; i <= sequenceArray.lenght; i++) {
-    if (inputArray[i] === sequenceArray[i]) {
-      console.log(inputArray[i].textContent);
-      console.log(currentElements.inputField.value);
-      currentElements.inputField.value = inputArray[i];
+    function checkInput() {
+      if (key.textContent === sequenceArray[pressIndex]) {
+        currentElements.inputField.value += key.textContent;
+        pressIndex += 1;
+      } else {
+        currentElements.inputField.value = "Wrong key";
+        wrongAttempts += 1;
+      }
+      if (currentElements.inputField.value.length === sequenceArray.length) {
+        currentElements.inputField.value = "Good job!";
+        currentElements.repeatButton.classList.add("no-display");
+        currentElements.nextButton.classList.remove("no-display");
+        finish = true;
+      }
     }
+    key.onclick = checkInput;
   }
 }
 
 // Game
 
 function startRound() {
+  sequenceArray = [];
+  keysArray = [];
+  currentElements.inputField.value = null;
+  disableActionButtons(actionButtons);
   disableKeys(allKeys);
   disableKeys(actionButtons);
   gameState.liveCounter += 1;
@@ -160,7 +174,7 @@ function startRound() {
     },
     1400 * 2 * gameState.liveCounter,
   );
-  mouseInput(allKeys);
+  input(allKeys);
 }
 
 function startGame() {
@@ -198,6 +212,7 @@ function resetGame() {
 export {
   difficultySwap,
   startGame,
+  startRound,
   createSequense,
   disableKeys,
   repeatSequence,

@@ -16,6 +16,7 @@ import {
 } from "./game.js";
 
 // Create elements
+
 createDom();
 createKeyboard(numbersArray, currentElements.keyboardWrapper);
 disableKeys(allKeys);
