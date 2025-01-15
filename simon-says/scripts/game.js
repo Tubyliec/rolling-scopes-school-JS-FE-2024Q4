@@ -151,15 +151,15 @@ function input(keys) {
         );
       }
       if (currentElements.inputField.value.length === sequenceArray.length) {
+        currentElements.inputField.value = "Good job!";
+        currentElements.repeatButton.classList.add("no-display");
+        currentElements.nextButton.classList.remove("no-display");
         if (gameState.liveCounter === 5) {
           currentElements.modalInfoText.textContent = "You win";
           currentElements.modalWindow.showModal();
           currentElements.nextButton.classList.add("no-display");
           currentElements.repeatButton.classList.remove("no-display");
         }
-        currentElements.inputField.value = "Good job!";
-        currentElements.repeatButton.classList.add("no-display");
-        currentElements.nextButton.classList.remove("no-display");
       }
       if (wrongAttempts === 2) {
         currentElements.modalInfoText.textContent = "You lose";
