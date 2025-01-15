@@ -192,6 +192,7 @@ html {
 .input-field {
   margin: 1rem;
   padding: 1rem;
+  color: #ffb84d;
   text-align: center;
   cursor: default;
   pointer-events: none;

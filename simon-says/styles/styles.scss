@@ -87,6 +87,7 @@
 .input-field {
   margin: $input-margin;
   padding: $input-padding;
+  color: $primary-color;
   @extend %border;
   text-align: center;
   @extend %key-text;
