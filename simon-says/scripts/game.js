@@ -81,13 +81,22 @@ function enableKeys(keys) {
 }
 
 // Sequense
+function showKey(key) {
+  const transform = [{ background: "#ffb84d" }, { transform: "scale(1.1)" }];
+  const timing = {
+    easing: "ease-out",
+    duration: 1000,
+  };
+  const animation = key.animate(transform, timing);
+  key.onclick = key.animate(transform, timing);
+}
 
 function showSequense(keys) {
   let index = 0;
 
   function showNext() {
     const key = keys[index];
-    const transform = [{ background: "#ffb84d" }];
+    const transform = [{ background: "#ffb84d" }, { transform: "scale(1.1)" }];
     const timing = {
       delay: 300,
       easing: "ease-out",
@@ -130,6 +139,7 @@ function input(keys) {
 
   for (let key of keys) {
     function checkInput() {
+      showKey(key);
       if (key.textContent === sequenceArray[pressIndex]) {
         currentElements.inputField.value += key.textContent;
         pressIndex += 1;
@@ -142,12 +152,6 @@ function input(keys) {
           1400 * 2 * gameState.liveCounter,
         );
         disableKeys(allKeys);
-        setTimeout(
-          () => {
-            enableKeys(allKeys);
-          },
-          1400 * 2 * gameState.liveCounter,
-        );
         wrongAttempts += 1;
         currentElements.repeatButton.classList.add("scale");
         setTimeout(
@@ -161,6 +165,7 @@ function input(keys) {
         currentElements.inputField.value = "Good job!";
         currentElements.repeatButton.classList.add("no-display");
         currentElements.nextButton.classList.remove("no-display");
+        disableKeys(allKeys);
         if (gameState.liveCounter === 5) {
           currentElements.modalInfoText.textContent = "You win";
           currentElements.modalWindow.showModal();
@@ -171,6 +176,7 @@ function input(keys) {
       if (wrongAttempts === 2) {
         currentElements.modalInfoText.textContent = "You lose";
         currentElements.modalWindow.showModal();
+        currentElements.repeatButton.disabled = true;
       }
     }
     key.onclick = checkInput;
