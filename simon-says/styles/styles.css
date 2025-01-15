@@ -218,6 +218,9 @@ html {
 .key:disabled {
   pointer-events: none;
 }
+.key:active {
+  scale: 1.1;
+}
 @media (max-width: 700px) {
   .key {
     width: 4rem;

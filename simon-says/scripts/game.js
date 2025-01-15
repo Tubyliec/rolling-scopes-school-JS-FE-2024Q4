@@ -84,8 +84,8 @@ function enableKeys(keys) {
 function showKey(key) {
   const transform = [{ background: "#ffb84d" }, { transform: "scale(1.1)" }];
   const timing = {
-    easing: "ease-out",
-    duration: 1000,
+    easing: "ease-in",
+    duration: 200,
   };
   const animation = key.animate(transform, timing);
   key.onclick = key.animate(transform, timing);
@@ -139,7 +139,6 @@ function input(keys) {
 
   for (let key of keys) {
     function checkInput() {
-      showKey(key);
       if (key.textContent === sequenceArray[pressIndex]) {
         currentElements.inputField.value += key.textContent;
         pressIndex += 1;
