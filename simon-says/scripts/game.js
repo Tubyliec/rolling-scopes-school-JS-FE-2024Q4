@@ -141,6 +141,13 @@ function input(keys) {
           },
           1400 * 2 * gameState.liveCounter,
         );
+        disableKeys(allKeys);
+        setTimeout(
+          () => {
+            enableKeys(allKeys);
+          },
+          1400 * 2 * gameState.liveCounter,
+        );
         wrongAttempts += 1;
         currentElements.repeatButton.classList.add("scale");
         setTimeout(
@@ -182,7 +189,7 @@ function startRound() {
   gameState.liveCounter += 1;
   currentElements.currentRound.textContent = gameState.liveCounter;
   createSequense();
-  console.log(sequenceArray);
+  console.log(`Simon says: ${sequenceArray}`);
   setTimeout(
     () => {
       enableKeys(allKeys);
