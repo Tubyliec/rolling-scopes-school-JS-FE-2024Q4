@@ -165,6 +165,7 @@ function input(keys) {
         currentElements.inputField.value = "Good job!";
         currentElements.repeatButton.classList.add("no-display");
         currentElements.nextButton.classList.remove("no-display");
+        disableKeys(allKeys);
         if (gameState.liveCounter === 5) {
           currentElements.modalInfoText.textContent = "You win";
           currentElements.modalWindow.showModal();
