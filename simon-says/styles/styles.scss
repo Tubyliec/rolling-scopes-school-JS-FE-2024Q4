@@ -119,6 +119,9 @@
   &:disabled {
     pointer-events: none;
   }
+  &:active {
+    scale: 1.1;
+  }
   @media (max-width: 700px) {
     width: 4rem;
     height: 4rem;
