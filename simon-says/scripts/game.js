@@ -172,6 +172,7 @@ function input(keys) {
         }
       }
       if (wrongAttempts === 2) {
+        disableKeys(allKeys);
         currentElements.modalInfoText.textContent = "You lose";
         currentElements.modalWindow.showModal();
         currentElements.repeatButton.disabled = true;
@@ -236,6 +237,7 @@ function resetGame() {
   gameState.liveCounter = 0;
   sequenceArray = [];
   keysArray = [];
+  currentElements.inputField.value = null;
   disableKeys(allKeys);
   currentElements.currentRound.textContent = gameState.liveCounter;
   gameState.playing = false;

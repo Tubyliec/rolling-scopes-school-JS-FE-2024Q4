@@ -184,8 +184,21 @@ function createDom() {
     parent: domElements.modalInfo,
     classes: ["modal-btn", "game-btn"],
   });
+
   domElements.modalCLose.addEventListener("click", () => {
     domElements.modalWindow.close();
+  });
+
+  domElements.modalNew = createElement({
+    tag: "button",
+    text: "new game",
+    parent: domElements.modalInfo,
+    classes: ["new-btn", "game-btn"],
+  });
+
+  domElements.modalNew.addEventListener("click", () => {
+    domElements.modalWindow.close();
+    resetGame();
   });
 
   bodyElement.append(domElements.bodyWrapper);
