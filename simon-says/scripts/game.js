@@ -135,7 +135,7 @@ function createSequense() {
 }
 
 function input(keys) {
-  let pressIndex = 0;
+  pressIndex = 0;
   let wrongAttempts = 0;
 
   for (let key of keys) {
@@ -143,6 +143,7 @@ function input(keys) {
       if (key.textContent === sequenceArray[pressIndex]) {
         currentElements.inputField.value += key.textContent;
         pressIndex += 1;
+        console.log(pressIndex);
       } else {
         let tempField = currentElements.inputField.value;
         currentElements.inputField.value = "Wrong key";
@@ -219,6 +220,7 @@ function startGame() {
 
 function repeatSequence() {
   disableKeys(allKeys);
+  currentElements.inputField.value = null;
   pressIndex = 0;
   showSequense(keysArray);
   setTimeout(
@@ -234,6 +236,7 @@ function resetGame() {
   gameState.liveCounter = 0;
   sequenceArray = [];
   keysArray = [];
+  disableKeys(allKeys);
   currentElements.currentRound.textContent = gameState.liveCounter;
   gameState.playing = false;
   enableDifficultyButtons();
