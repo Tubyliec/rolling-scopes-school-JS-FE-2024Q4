@@ -13,6 +13,7 @@ import { numbersArray, lettersArray, mixedArray } from "./data.js";
 let sequenceArray = [];
 let keysArray = [];
 let inputArray = [];
+let pressIndex = 0;
 
 // Difficulty
 
@@ -143,14 +144,11 @@ function input(keys) {
         currentElements.inputField.value += key.textContent;
         pressIndex += 1;
       } else {
+        let tempField = currentElements.inputField.value;
         currentElements.inputField.value = "Wrong key";
-        setTimeout(
-          () => {
-            currentElements.inputField.value = null;
-          },
-          1400 * 2 * gameState.liveCounter,
-        );
-        disableKeys(allKeys);
+        setTimeout(() => {
+          currentElements.inputField.value = tempField;
+        }, 1400 * gameState.liveCounter);
         wrongAttempts += 1;
         currentElements.repeatButton.classList.add("scale");
         setTimeout(
@@ -221,6 +219,7 @@ function startGame() {
 
 function repeatSequence() {
   disableKeys(allKeys);
+  pressIndex = 0;
   showSequense(keysArray);
   setTimeout(
     () => {
