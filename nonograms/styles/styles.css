@@ -1,0 +1,91 @@
+/*Reset configuration*/
+* {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+a, a:link, a:visited, a:hover {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ul li {
+  list-style: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+.gameboard, .cell {
+  border: 0.1rem solid #ffb84d;
+}
+
+.background--dark {
+  background-color: #858383;
+}
+
+.main-panel {
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.cell {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}/*# sourceMappingURL=styles.css.map */

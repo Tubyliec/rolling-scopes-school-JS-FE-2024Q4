@@ -1,0 +1,41 @@
+//Import
+@use "reset" as *;
+@use "variables" as *;
+// Global
+.background--dark {
+  background-color: $neutral-color;
+}
+
+.body-wrapper {
+}
+
+.main-panel {
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-wrapper {
+}
+//Board
+
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  width: fit-content;
+  @extend %borders-cell;
+}
+.cell {
+  width: 3rem;
+  height: 3rem;
+  @extend %borders-cell;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+  // color: transparent;
+  user-select: none;
+}
