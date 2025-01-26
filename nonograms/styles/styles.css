@@ -54,6 +54,10 @@ html {
   font-size: 10px;
 }
 
+@font-face {
+  font-family: "Griffy";
+  src: local("Griffy"), url("../assets/fonts/Griffy-Regular.ttf") format("truetype");
+}
 .top-info, .left-info, .top-wrapper, .left-wrapper, .gameboard, .cell {
   border: 0.1rem solid #ffb84d;
 }
@@ -84,6 +88,18 @@ html {
   width: fit-content;
 }
 
+.header-wrapper, .left-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .background--dark {
   background-color: #858383;
 }
@@ -97,11 +113,29 @@ html {
   align-items: center;
 }
 
+.header {
+  padding: 0.5rem;
+  background-color: #ffb84d;
+  align-content: center;
+}
+
+.header-wrapper {
+  margin: 0 auto;
+  justify-content: center;
+  width: 50%;
+}
+
+.name {
+  font-family: Griffy;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
 .board {
   display: grid;
   grid-gap: 0.2rem;
   grid-template: ". top" "left gameboard";
-  padding: 0.5rem;
+  padding: 0.2rem;
 }
 
 .top-info {
@@ -113,31 +147,28 @@ html {
 }
 
 .top-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: end;
   align-content: end;
 }
 .top-wrapper .info-nums {
-  width: 3rem;
-  margin: 0.3rem 0;
+  width: 2rem;
+  margin: 0.2rem 0;
 }
 
 .left-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   justify-content: end;
 }
 .left-wrapper .info-nums {
-  height: 3rem;
-  margin: 0 0.3rem;
+  height: 2rem;
+  margin: 0 0.5rem;
 }
 
 .info-nums {
   text-align: center;
   align-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 
 .gameboard {
@@ -145,8 +176,8 @@ html {
 }
 
 .cell {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;

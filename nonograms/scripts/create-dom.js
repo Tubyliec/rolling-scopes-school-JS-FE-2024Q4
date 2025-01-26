@@ -13,6 +13,20 @@ function createDom() {
     parent: domElements.bodyWrapper,
     classes: ["header"],
   });
+
+  domElements.headerWrapper = createElement({
+    tag: "div",
+    parent: domElements.header,
+    classes: ["header-wrapper"],
+  });
+
+  domElements.name = createElement({
+    tag: "p",
+    text: "nonograms",
+    parent: domElements.headerWrapper,
+    classes: ["name"],
+  });
+
   //Main
   domElements.mainPanel = createElement({
     tag: "main",

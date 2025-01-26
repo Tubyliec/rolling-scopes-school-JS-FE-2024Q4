@@ -1,6 +1,20 @@
+//Fonts
+
+@font-face {
+  font-family: "Griffy";
+  src:
+    local("Griffy"),
+    url("../assets/fonts/Griffy-Regular.ttf") format("truetype");
+}
+//Colors
+
 $primary-color: #ffb84d;
 $neutral-color: #858383;
 
+//Margins
+$align-margin: 0 auto;
+
+//Borders
 $border-neutral: 0.3rem solid $neutral-color;
 
 %borders-cell {
@@ -11,6 +25,8 @@ $border-neutral: 0.3rem solid $neutral-color;
   border: 0.2rem solid $primary-color;
   border-radius: 0.5rem;
 }
+
+//Aligning
 
 %align-center {
   text-align: center;
@@ -29,4 +45,16 @@ $border-neutral: 0.3rem solid $neutral-color;
   grid-template-rows: repeat(5, auto);
   justify-content: center;
   width: fit-content;
+}
+
+%flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

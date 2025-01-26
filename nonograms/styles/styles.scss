@@ -5,21 +5,35 @@
 .background--dark {
   background-color: $neutral-color;
 }
-
-.body-wrapper {
-}
-
+//Main
 .main-panel {
   width: 80%;
   height: 90vh;
-  margin: 0 auto;
+  margin: $align-margin;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.main-wrapper {
+//Header
+.header {
+  padding: 0.5rem;
+  background-color: $primary-color;
+  align-content: center;
 }
+
+.header-wrapper {
+  margin: $align-margin;
+  @extend %flex-row;
+  justify-content: center;
+  width: 50%;
+}
+
+.name {
+  font-family: Griffy;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
 //Board
 .board {
   display: grid;
@@ -28,7 +42,7 @@
     ". top"
     "left gameboard";
   @extend %borders-board;
-  padding: 0.5rem;
+  padding: 0.2rem;
 }
 
 .top-info {
@@ -44,34 +58,31 @@
 }
 
 .top-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @extend %flex-column;
   justify-content: end;
   @extend %borders-cell;
   align-content: end;
   .info-nums {
-    width: 3rem;
-    margin: 0.3rem 0;
+    width: 2rem;
+    margin: 0.2rem 0;
   }
 }
 
 .left-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @extend %flex-row;
   justify-content: end;
   @extend %align-center;
   @extend %borders-cell;
   .info-nums {
-    height: 3rem;
-    margin: 0 0.3rem;
+    height: 2rem;
+    margin: 0 0.5rem;
   }
 }
 
 .info-nums {
   text-align: center;
   align-content: center;
+  user-select: none;
 }
 
 .gameboard {
@@ -81,8 +92,8 @@
 }
 
 .cell {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
   @extend %borders-cell;
   @extend %align-center;
   cursor: pointer;
