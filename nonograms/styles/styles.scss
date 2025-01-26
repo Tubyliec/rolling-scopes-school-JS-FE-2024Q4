@@ -21,20 +21,70 @@
 .main-wrapper {
 }
 //Board
-
-.gameboard {
+.board {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-content: center;
-  width: fit-content;
+  grid-gap: 0.2rem;
+  grid-template:
+    ". top"
+    "left gameboard";
+  @extend %borders-board;
+  padding: 0.5rem;
+}
+
+.top-info {
+  grid-area: top;
+  @extend %grid-board;
   @extend %borders-cell;
 }
+
+.left-info {
+  grid-area: left;
+  @extend %grid-left;
+  @extend %borders-cell;
+}
+
+.top-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  @extend %borders-cell;
+  align-content: end;
+  .info-nums {
+    width: 3rem;
+    margin: 0.3rem 0;
+  }
+}
+
+.left-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  @extend %align-center;
+  @extend %borders-cell;
+  .info-nums {
+    height: 3rem;
+    margin: 0 0.3rem;
+  }
+}
+
+.info-nums {
+  text-align: center;
+  align-content: center;
+}
+
+.gameboard {
+  grid-area: gameboard;
+  @extend %grid-board;
+  @extend %borders-cell;
+}
+
 .cell {
   width: 3rem;
   height: 3rem;
   @extend %borders-cell;
-  text-align: center;
-  align-content: center;
+  @extend %align-center;
   cursor: pointer;
   // color: transparent;
   user-select: none;

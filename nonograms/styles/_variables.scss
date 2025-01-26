@@ -1,6 +1,32 @@
 $primary-color: #ffb84d;
 $neutral-color: #858383;
 
+$border-neutral: 0.3rem solid $neutral-color;
+
 %borders-cell {
   border: 0.1rem solid $primary-color;
+}
+
+%borders-board {
+  border: 0.2rem solid $primary-color;
+  border-radius: 0.5rem;
+}
+
+%align-center {
+  text-align: center;
+  align-content: center;
+}
+
+%grid-board {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  width: fit-content;
+}
+
+%grid-left {
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  justify-content: center;
+  width: fit-content;
 }

@@ -54,8 +54,34 @@ html {
   font-size: 10px;
 }
 
-.gameboard, .cell {
+.top-info, .left-info, .top-wrapper, .left-wrapper, .gameboard, .cell {
   border: 0.1rem solid #ffb84d;
+}
+
+.board {
+  border: 0.2rem solid #ffb84d;
+  border-radius: 0.5rem;
+}
+
+.left-wrapper, .cell {
+  text-align: center;
+  align-content: center;
+}
+
+.top-info, .gameboard {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.left-info {
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .background--dark {
@@ -71,19 +97,56 @@ html {
   align-items: center;
 }
 
-.gameboard {
+.board {
   display: grid;
-  grid-template-columns: repeat(5, auto);
-  justify-content: center;
-  width: -moz-fit-content;
-  width: fit-content;
+  grid-gap: 0.2rem;
+  grid-template: ". top" "left gameboard";
+  padding: 0.5rem;
+}
+
+.top-info {
+  grid-area: top;
+}
+
+.left-info {
+  grid-area: left;
+}
+
+.top-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  align-content: end;
+}
+.top-wrapper .info-nums {
+  width: 3rem;
+  margin: 0.3rem 0;
+}
+
+.left-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+.left-wrapper .info-nums {
+  height: 3rem;
+  margin: 0 0.3rem;
+}
+
+.info-nums {
+  text-align: center;
+  align-content: center;
+}
+
+.gameboard {
+  grid-area: gameboard;
 }
 
 .cell {
   width: 3rem;
   height: 3rem;
-  text-align: center;
-  align-content: center;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
