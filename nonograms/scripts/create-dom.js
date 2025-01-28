@@ -44,6 +44,42 @@ function createDom() {
     parent: domElements.mainWrapper,
     classes: ["difficulty-panel"],
   });
+  domElements.difficultyButtons = createElement({
+    tag: "div",
+    parent: domElements.difficultyPanel,
+    classes: ["difficulty-buttons"],
+  });
+  domElements.easyButton = createElement({
+    tag: "button",
+    text: "easy",
+    parent: domElements.difficultyButtons,
+    classes: ["dif-btn", "easy-btn"],
+  });
+
+  domElements.mediumButton = createElement({
+    tag: "button",
+    text: "medium",
+    parent: domElements.difficultyButtons,
+    classes: ["dif-btn", "medium-btn"],
+  });
+
+  domElements.hardButton = createElement({
+    tag: "button",
+    text: "hard",
+    parent: domElements.difficultyButtons,
+    classes: ["dif-btn", "hard-btn"],
+  });
+
+  domElements.patternsList = createElement({
+    tag: "div",
+    parent: domElements.difficultyPanel,
+    classes: ["patterns-list"],
+  });
+  domElements.fieldset = createElement({
+    tag: "div",
+    parent: domElements.patternsList,
+    classes: ["fieldset"],
+  });
   //Game panel
   domElements.gamePanel = createElement({
     tag: "section",

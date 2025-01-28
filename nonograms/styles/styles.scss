@@ -5,12 +5,22 @@
 .background--dark {
   background-color: $neutral-color;
 }
+.background--light {
+  background-color: #ffffff;
+}
+
 //Main
 .main-panel {
   width: 80%;
   height: 90vh;
   margin: $align-margin;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-wrapper {
+  @extend %flex-row;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
 }
@@ -32,40 +42,92 @@
   font-family: Griffy;
   font-size: 1.5rem;
   text-transform: uppercase;
+  color: #e2e1e0;
 }
 
 //Board
+
+//Difficulty panel
+.difficulty-panel {
+  @extend %flex-column;
+  gap: 0.1rem;
+  align-items: flex-start;
+  @extend %borders-section;
+  padding: $padding-medium;
+}
+.difficulty-buttons {
+  @extend %flex-row;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.dif-btn {
+  font-family: Griffy;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  align-content: center;
+  color: #e2e1e0;
+  width: 5rem;
+  height: 1.8rem;
+  background-color: $primary-color;
+  border-radius: 0.2rem;
+  opacity: 60%;
+  cursor: pointer;
+  &:hover {
+    opacity: 100%;
+  }
+  &:active {
+    opacity: 100%;
+    transform: scale(1.05);
+  }
+}
+//List
+.list-checkbox {
+  @extend %flex-row;
+  font-family: Griffy;
+  font-size: 1rem;
+  gap: 0.5rem;
+  padding: $padding-small;
+  text-transform: capitalize;
+}
+.input-check {
+  color: $primary-color;
+}
+//Gameboard
+.game-panel {
+  @extend %borders-section;
+}
 .board {
+  font-family: Griffy;
+  margin: $margin-medium;
   display: grid;
-  grid-gap: 0.2rem;
+  grid-gap: 0.3rem;
   grid-template:
     ". top"
     "left gameboard";
-  @extend %borders-board;
-  padding: 0.2rem;
 }
 
 .top-info {
   grid-area: top;
-  @extend %grid-board;
-  @extend %borders-cell;
+  @extend %flex-row;
+  border: $border-normal;
+  @extend %size-fit;
 }
 
 .left-info {
   grid-area: left;
-  @extend %grid-left;
-  @extend %borders-cell;
+  @extend %size-fit;
+  @extend %borders-info;
 }
 
 .top-wrapper {
   @extend %flex-column;
   justify-content: end;
-  @extend %borders-cell;
   align-content: end;
-  .info-nums {
-    width: 2rem;
-    margin: 0.2rem 0;
-  }
+  border-right: 0.001rem solid $primary-color;
+}
+.top-wrapper:nth-child(5n) {
+  border-right: $border-bold;
 }
 
 .left-wrapper {
@@ -73,30 +135,48 @@
   justify-content: end;
   @extend %align-center;
   @extend %borders-cell;
-  .info-nums {
-    height: 2rem;
-    margin: 0 0.5rem;
-  }
+}
+.left-wrapper:nth-child(5n) {
+  border-bottom: $border-bold;
 }
 
 .info-nums {
   text-align: center;
   align-content: center;
   user-select: none;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .gameboard {
   grid-area: gameboard;
-  @extend %grid-board;
-  @extend %borders-cell;
+  border: $border-normal;
+  @extend %size-fit;
+}
+
+.row {
+  display: flex;
 }
 
 .cell {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   @extend %borders-cell;
   @extend %align-center;
   cursor: pointer;
   // color: transparent;
   user-select: none;
+}
+
+.cell:nth-child(5n) {
+  border-right: $border-bold;
+}
+
+.row:nth-child(5n) {
+  border-bottom: $border-bold;
+}
+
+.row:last-child,
+.left-wrapper:last-child {
+  border-bottom: none;
 }

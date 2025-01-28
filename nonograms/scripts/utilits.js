@@ -1,10 +1,12 @@
-import { easy } from "./data.js";
+import { easy, medium, hard } from "./data.js";
+import { domElements } from "./create-dom.js";
 
 let gameState = {
   templateCellCounter: 0,
   currentCellCounter: 0,
   falseCellCounter: 0,
-  currentPattern: easy[0].array,
+  difficulty: medium,
+  currentPattern: medium.bird.array,
   horizontalNums: [],
   verticalNums: [],
 };
@@ -36,20 +38,20 @@ function cellProcessing() {
 }
 
 function rotateMatrix(matrix) {
-  const newMatrix = matrix;
+  const newMatrix = structuredClone(matrix);
   const matrixLength = matrix.length;
 
-  let array = [];
+  let newArray = [];
   for (let i = 0; i < matrixLength; i += 1) {
     let temp = [];
-    for (let j = matrixLength - 1; j >= 0; j -= 1) {
+    for (let j = 0; j < matrixLength; j += 1) {
       temp = [...temp, matrix[j][i]];
     }
-    array = [...array, [...temp]];
+    newArray = [...newArray, [...temp]];
   }
-  for (let i = 0; i < array.length; i += 1) {
-    for (let j = 0; j < array[0].length; j += 1) {
-      newMatrix[i][j] = array[i][j];
+  for (let i = 0; i < newArray.length; i += 1) {
+    for (let j = 0; j < newArray[0].length; j += 1) {
+      newMatrix[i][j] = newArray[i][j];
     }
   }
   return newMatrix;
@@ -77,6 +79,8 @@ function fullCellCounter(array) {
   let verticalNums = [];
 
   let rotatedArray = rotateMatrix(array);
+  console.log(array);
+  console.log(rotatedArray);
 
   countCells(array, horizontalNums);
   countCells(rotatedArray, verticalNums);
@@ -110,6 +114,9 @@ function createElement(options) {
   if (name.length != 0) {
     element.name = name;
   }
+  if (type.length != 0) {
+    element.type = type;
+  }
   if (parent != null) {
     parent.appendChild(element);
   }
@@ -117,11 +124,22 @@ function createElement(options) {
 }
 
 function createCells(array, parentElement) {
+  while (parentElement.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  let counter = 0;
   array.forEach((element) => {
+    counter += 1;
+    const tempClass = `row-${counter}`;
+    const newRow = createElement({
+      tag: "div",
+      parent: parentElement,
+      classes: ["row", tempClass],
+    });
     element.forEach((item) => {
       const newItem = createElement({
         tag: "div",
-        parent: parentElement,
+        parent: document.querySelector(`.${tempClass}`),
         text: item,
         classes: ["cell"],
       });
@@ -133,12 +151,14 @@ function createCells(array, parentElement) {
   });
 }
 
-function createInfo(array, parentElement, pattern, elementClass) {
+function createInfo(array, parentElement, elementClass) {
+  while (parentElement.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
   let counter = 0;
-  console.log(array);
   array.forEach((element) => {
     counter += 1;
-    const tempClass = `${elementClass}__${counter}`;
+    const tempClass = `${elementClass}-${counter}`;
     const newItem = createElement({
       tag: "div",
       parent: parentElement,
@@ -155,5 +175,35 @@ function createInfo(array, parentElement, pattern, elementClass) {
   });
 }
 
-export { createElement, createCells, createInfo, fullCellCounter };
+function createList(parentElement) {
+  while (parentElement.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  let counter = 0;
+  for (let key in gameState.difficulty) {
+    counter += 1;
+    const tempClass = `checkbox-${counter}`;
+    const newDiv = createElement({
+      tag: "div",
+      parent: parentElement,
+      classes: ["list-checkbox", tempClass],
+    });
+    const newInput = createElement({
+      tag: "input",
+      type: "checkbox",
+      parent: document.querySelector(`.${tempClass}`),
+      id: key,
+      classes: ["input-check"],
+    });
+    const newlabel = createElement({
+      tag: "label",
+      text: key,
+      parent: document.querySelector(`.${tempClass}`),
+      classes: ["input-label"],
+    });
+    newlabel.setAttribute("for", key);
+  }
+}
+
+export { createElement, createCells, createInfo, createList, fullCellCounter };
 export { gameState };
