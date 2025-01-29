@@ -1,17 +1,18 @@
 import { easy, medium, hard } from "./data.js";
 import { domElements } from "./create-dom.js";
-
+//Identifiers
 let gameState = {
   templateCellCounter: 0,
   currentCellCounter: 0,
   falseCellCounter: 0,
-  difficulty: medium,
-  currentPattern: medium.bird.array,
+  difficulty: easy,
+  currentPattern: easy.cross.array,
   horizontalNums: [],
   verticalNums: [],
+  difficultyButtons: [],
 };
-
-function cellProcessing() {
+//Processing elements
+function processCell() {
   if (this.classList.contains("background--dark")) {
     this.classList.remove("background--dark");
     if (this.textContent === "1") {
@@ -37,6 +38,23 @@ function cellProcessing() {
   }
 }
 
+function processDifficulty() {
+  gameState.difficultyButtons.forEach((element) => {
+    element.classList.remove("dif-btn--active");
+  });
+  this.classList.add("dif-btn--active");
+  gameState.difficulty = eval(this.textContent);
+  createList(domElements.fieldset);
+}
+
+function processRadio() {
+  let name = this.value;
+  console.log(this.value);
+  console.log(gameState.difficulty[this.value].array);
+  gameState.currentPattern = gameState.difficulty[this.value].array;
+  createGame();
+}
+//Accessory utils
 function rotateMatrix(matrix) {
   const newMatrix = structuredClone(matrix);
   const matrixLength = matrix.length;
@@ -79,8 +97,6 @@ function fullCellCounter(array) {
   let verticalNums = [];
 
   let rotatedArray = rotateMatrix(array);
-  console.log(array);
-  console.log(rotatedArray);
 
   countCells(array, horizontalNums);
   countCells(rotatedArray, verticalNums);
@@ -88,7 +104,7 @@ function fullCellCounter(array) {
   gameState.horizontalNums = horizontalNums;
   gameState.verticalNums = verticalNums;
 }
-
+//Creating elements
 function createElement(options) {
   const {
     tag = "div",
@@ -125,8 +141,16 @@ function createElement(options) {
 
 function createCells(array, parentElement) {
   while (parentElement.firstChild) {
-    parent.removeChild(parent.firstChild);
+    parentElement.removeChild(parentElement.firstChild);
   }
+  if (gameState.difficulty === easy) {
+    document.querySelector("body").style.setProperty("--cell-size", "4rem");
+  } else if (gameState.difficulty === medium) {
+    document.querySelector("body").style.setProperty("--cell-size", "2.5rem");
+  } else {
+    document.querySelector("body").style.setProperty("--cell-size", "1.5rem");
+  }
+
   let counter = 0;
   array.forEach((element) => {
     counter += 1;
@@ -146,14 +170,14 @@ function createCells(array, parentElement) {
       if (item === 1) {
         gameState.templateCellCounter += 1;
       }
-      newItem.addEventListener("click", cellProcessing);
+      newItem.addEventListener("click", processCell);
     });
   });
 }
 
 function createInfo(array, parentElement, elementClass) {
   while (parentElement.firstChild) {
-    parent.removeChild(parent.firstChild);
+    parentElement.removeChild(parentElement.firstChild);
   }
   let counter = 0;
   array.forEach((element) => {
@@ -177,7 +201,7 @@ function createInfo(array, parentElement, elementClass) {
 
 function createList(parentElement) {
   while (parentElement.firstChild) {
-    parent.removeChild(parent.firstChild);
+    parentElement.removeChild(parentElement.firstChild);
   }
   let counter = 0;
   for (let key in gameState.difficulty) {
@@ -190,20 +214,44 @@ function createList(parentElement) {
     });
     const newInput = createElement({
       tag: "input",
-      type: "checkbox",
+      type: "radio",
+      name: "pattern",
+      value: key,
       parent: document.querySelector(`.${tempClass}`),
       id: key,
-      classes: ["input-check"],
+      classes: ["input-radio"],
     });
     const newlabel = createElement({
       tag: "label",
       text: key,
       parent: document.querySelector(`.${tempClass}`),
-      classes: ["input-label"],
+      classes: ["input-radio"],
     });
     newlabel.setAttribute("for", key);
+    newInput.addEventListener("click", processRadio);
   }
 }
 
-export { createElement, createCells, createInfo, createList, fullCellCounter };
+function createGame() {
+  gameState.templateCellCounter = 0;
+  gameState.currentCellCounter = 0;
+  gameState.falseCellCounter = 0;
+  createCells(gameState.currentPattern, domElements.gameboard);
+  fullCellCounter(gameState.currentPattern);
+  createInfo(gameState.verticalNums, domElements.topInfo, "top-wrapper");
+  createInfo(gameState.horizontalNums, domElements.leftInfo, "left-wrapper");
+}
+
+//Export
+
+export {
+  createElement,
+  createCells,
+  createInfo,
+  createList,
+  createGame,
+  fullCellCounter,
+  processDifficulty,
+  processCell,
+};
 export { gameState };

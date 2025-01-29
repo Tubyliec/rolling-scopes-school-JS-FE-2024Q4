@@ -63,12 +63,8 @@ html {
   border-bottom: 0.001rem solid #7c95d3;
 }
 
-.left-info {
-  border: 0.15rem solid #7c95d3;
-}
-
 .difficulty-panel, .game-panel {
-  border: 0.15rem solid #7c95d3;
+  border: 0.2rem solid #7c95d3;
   border-radius: 0.5rem;
 }
 
@@ -101,6 +97,10 @@ html {
 
 .background--light {
   background-color: #ffffff;
+}
+
+body {
+  --cell-size: 3rem;
 }
 
 .main-panel {
@@ -149,11 +149,10 @@ html {
 }
 
 .dif-btn {
+  padding-top: 0.2rem;
   font-family: Griffy;
   font-size: 1rem;
   text-transform: uppercase;
-  text-align: center;
-  align-content: center;
   color: #e2e1e0;
   width: 5rem;
   height: 1.8rem;
@@ -166,6 +165,11 @@ html {
   opacity: 100%;
 }
 .dif-btn:active {
+  opacity: 100%;
+  transform: scale(1.05);
+}
+
+.dif-btn--active {
   opacity: 100%;
   transform: scale(1.05);
 }
@@ -191,22 +195,25 @@ html {
 }
 
 .top-info {
+  padding-left: 0.05rem;
   grid-area: top;
-  border: 0.1rem solid #7c95d3;
 }
 
 .left-info {
+  padding-top: 0.1rem;
   grid-area: left;
 }
 
 .top-wrapper {
   justify-content: end;
   align-content: end;
+}
+.top-wrapper:not(:last-child) {
   border-right: 0.001rem solid #7c95d3;
 }
 
-.top-wrapper:nth-child(5n) {
-  border-right: 0.15rem solid #7c95d3;
+.top-wrapper:not(:last-child):nth-child(5n) {
+  border-right: 0.2rem solid #7c95d3;
 }
 
 .left-wrapper {
@@ -214,7 +221,7 @@ html {
 }
 
 .left-wrapper:nth-child(5n) {
-  border-bottom: 0.15rem solid #7c95d3;
+  border-bottom: 0.2rem solid #7c95d3;
 }
 
 .info-nums {
@@ -223,8 +230,8 @@ html {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--cell-size);
+  height: var(--cell-size);
 }
 
 .gameboard {
@@ -237,20 +244,20 @@ html {
 }
 
 .cell {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--cell-size);
+  height: var(--cell-size);
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
 
-.cell:nth-child(5n) {
-  border-right: 0.15rem solid #7c95d3;
+.cell:not(:last-child):nth-child(5n) {
+  border-right: 0.2rem solid #7c95d3;
 }
 
 .row:nth-child(5n) {
-  border-bottom: 0.15rem solid #7c95d3;
+  border-bottom: 0.2rem solid #7c95d3;
 }
 
 .row:last-child,

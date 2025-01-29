@@ -8,6 +8,9 @@
 .background--light {
   background-color: #ffffff;
 }
+body {
+  --cell-size: 3rem;
+}
 
 //Main
 .main-panel {
@@ -61,11 +64,10 @@
   padding-bottom: 0.5rem;
 }
 .dif-btn {
+  padding-top: 0.2rem;
   font-family: Griffy;
   font-size: 1rem;
   text-transform: uppercase;
-  text-align: center;
-  align-content: center;
   color: #e2e1e0;
   width: 5rem;
   height: 1.8rem;
@@ -80,6 +82,11 @@
     opacity: 100%;
     transform: scale(1.05);
   }
+}
+
+.dif-btn--active {
+  opacity: 100%;
+  transform: scale(1.05);
 }
 //List
 .list-checkbox {
@@ -108,25 +115,28 @@
 }
 
 .top-info {
+  padding-left: 0.05rem;
   grid-area: top;
   @extend %flex-row;
-  border: $border-normal;
   @extend %size-fit;
 }
 
 .left-info {
+  padding-top: 0.1rem;
   grid-area: left;
   @extend %size-fit;
-  @extend %borders-info;
 }
 
 .top-wrapper {
   @extend %flex-column;
   justify-content: end;
   align-content: end;
-  border-right: 0.001rem solid $primary-color;
+
+  &:not(:last-child) {
+    border-right: 0.001rem solid $primary-color;
+  }
 }
-.top-wrapper:nth-child(5n) {
+.top-wrapper:not(:last-child):nth-child(5n) {
   border-right: $border-bold;
 }
 
@@ -144,8 +154,8 @@
   text-align: center;
   align-content: center;
   user-select: none;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--cell-size);
+  height: var(--cell-size);
 }
 
 .gameboard {
@@ -159,8 +169,8 @@
 }
 
 .cell {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--cell-size);
+  height: var(--cell-size);
   @extend %borders-cell;
   @extend %align-center;
   cursor: pointer;
@@ -168,7 +178,7 @@
   user-select: none;
 }
 
-.cell:nth-child(5n) {
+.cell:not(:last-child):nth-child(5n) {
   border-right: $border-bold;
 }
 

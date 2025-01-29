@@ -1,4 +1,4 @@
-import { createElement, createCells } from "./utilits.js";
+import { createElement, gameState, processDifficulty } from "./utilits.js";
 const domElements = {};
 
 function createDom() {
@@ -112,6 +112,16 @@ function createDom() {
     tag: "section",
     parent: domElements.mainWrapper,
     classes: ["control-panel"],
+  });
+
+  gameState.difficultyButtons = [
+    domElements.easyButton,
+    domElements.mediumButton,
+    domElements.hardButton,
+  ];
+
+  gameState.difficultyButtons.forEach((element) => {
+    element.addEventListener("click", processDifficulty);
   });
 
   bodyElement.append(domElements.bodyWrapper);
