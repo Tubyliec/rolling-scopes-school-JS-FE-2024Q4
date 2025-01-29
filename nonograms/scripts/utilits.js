@@ -28,6 +28,9 @@ function processCell() {
       gameState.falseCellCounter += 1;
     }
   }
+  if (this.classList.contains("cross--dark")) {
+    this.classList.remove("cross--dark");
+  }
   console.log(gameState.currentCellCounter);
   console.log(gameState.falseCellCounter);
   if (
@@ -35,6 +38,23 @@ function processCell() {
     gameState.falseCellCounter === 0
   ) {
     console.log("You win");
+  }
+}
+
+function processRightClick(event) {
+  event.preventDefault();
+  if (this.classList.contains("cross--dark")) {
+    this.classList.remove("cross--dark");
+  } else {
+    this.classList.add("cross--dark");
+  }
+  if (this.classList.contains("background--dark")) {
+    this.classList.remove("background--dark");
+    if (this.textContent === "1") {
+      gameState.currentCellCounter -= 1;
+    } else {
+      gameState.falseCellCounter -= 1;
+    }
   }
 }
 
@@ -144,11 +164,11 @@ function createCells(array, parentElement) {
     parentElement.removeChild(parentElement.firstChild);
   }
   if (gameState.difficulty === easy) {
-    document.querySelector("body").style.setProperty("--cell-size", "4rem");
+    document.querySelector("body").style.setProperty("--cell-size", "5rem");
   } else if (gameState.difficulty === medium) {
-    document.querySelector("body").style.setProperty("--cell-size", "2.5rem");
+    document.querySelector("body").style.setProperty("--cell-size", "3.5rem");
   } else {
-    document.querySelector("body").style.setProperty("--cell-size", "1.5rem");
+    document.querySelector("body").style.setProperty("--cell-size", "2.5rem");
   }
 
   let counter = 0;
@@ -171,6 +191,7 @@ function createCells(array, parentElement) {
         gameState.templateCellCounter += 1;
       }
       newItem.addEventListener("click", processCell);
+      newItem.addEventListener("contextmenu", processRightClick);
     });
   });
 }
@@ -225,7 +246,7 @@ function createList(parentElement) {
       tag: "label",
       text: key,
       parent: document.querySelector(`.${tempClass}`),
-      classes: ["input-radio"],
+      classes: ["input-label"],
     });
     newlabel.setAttribute("for", key);
     newInput.addEventListener("click", processRadio);

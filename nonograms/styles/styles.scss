@@ -9,21 +9,18 @@
   background-color: #ffffff;
 }
 body {
-  --cell-size: 3rem;
+  --cell-size: 5rem;
 }
-
 //Main
 .main-panel {
-  width: 80%;
-  height: 90vh;
   margin: $align-margin;
-  display: flex;
+  @extend %flex-column;
   justify-content: center;
-  align-items: center;
 }
 .main-wrapper {
+  height: 100vh;
   @extend %flex-row;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: center;
   align-items: center;
 }
@@ -43,7 +40,7 @@ body {
 
 .name {
   font-family: Griffy;
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   text-transform: uppercase;
   color: #e2e1e0;
 }
@@ -60,17 +57,17 @@ body {
 }
 .difficulty-buttons {
   @extend %flex-row;
-  gap: 0.5rem;
+  gap: 1rem;
   padding-bottom: 0.5rem;
 }
 .dif-btn {
   padding-top: 0.2rem;
   font-family: Griffy;
-  font-size: 1rem;
+  font-size: 2rem;
   text-transform: uppercase;
   color: #e2e1e0;
-  width: 5rem;
-  height: 1.8rem;
+  width: 10rem;
+  height: 3rem;
   background-color: $primary-color;
   border-radius: 0.2rem;
   opacity: 60%;
@@ -92,12 +89,12 @@ body {
 .list-checkbox {
   @extend %flex-row;
   font-family: Griffy;
-  font-size: 1rem;
+  font-size: 2rem;
   gap: 0.5rem;
   padding: $padding-small;
   text-transform: capitalize;
 }
-.input-check {
+.input-radio {
   color: $primary-color;
 }
 //Gameboard
@@ -176,6 +173,11 @@ body {
   cursor: pointer;
   // color: transparent;
   user-select: none;
+}
+
+.cross--dark {
+  background-image: url(../assets/icons/cross.png);
+  @extend %background-btn;
 }
 
 .cell:not(:last-child):nth-child(5n) {
