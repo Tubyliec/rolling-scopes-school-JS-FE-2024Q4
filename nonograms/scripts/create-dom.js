@@ -112,6 +112,12 @@ function createDom() {
     parent: domElements.patternsList,
     classes: ["fieldset"],
   });
+  //Control panel
+  domElements.controlPanel = createElement({
+    tag: "section",
+    parent: domElements.mainWrapper,
+    classes: ["control-panel"],
+  });
   //Game panel
   domElements.gamePanel = createElement({
     tag: "section",
@@ -139,11 +145,11 @@ function createDom() {
     classes: ["gameboard"],
   });
 
-  //Control panel
-  domElements.controlPanel = createElement({
-    tag: "section",
-    parent: domElements.mainWrapper,
-    classes: ["control-panel"],
+  //Modal window
+  domElements.modalWindow = createElement({
+    tag: "dialog",
+    parent: domElements.bodyWrapper,
+    classes: ["modal"],
   });
 
   gameState.difficultyButtons = [

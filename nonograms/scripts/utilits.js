@@ -2,7 +2,7 @@
 
 import { easy, medium, hard } from "./data.js";
 import { domElements } from "./create-dom.js";
-import { createList, createGame, updateTime } from "./create-elements.js";
+import { createList, createGame, createWinWindow } from "./create-elements.js";
 
 //Identifiers
 
@@ -82,6 +82,10 @@ function processCell() {
     gameState.falseCellCounter === 0
   ) {
     console.log("You win");
+    stopTimer();
+    createWinWindow(domElements.modalWindow);
+    domElements.modalWindow.showModal();
+    domElements.board.classList.add("no-events");
   }
 }
 
@@ -168,6 +172,12 @@ function fullCellCounter(array) {
   gameState.verticalNums = verticalNums;
 }
 
+function removeAllChilds(parentElement) {
+  while (parentElement.firstChild) {
+    parentElement.removeChild(parentElement.firstChild);
+  }
+}
+
 //Export
 
 export {
@@ -180,5 +190,6 @@ export {
   processRadio,
   processCell,
   countCells,
+  removeAllChilds,
 };
 export { gameState };

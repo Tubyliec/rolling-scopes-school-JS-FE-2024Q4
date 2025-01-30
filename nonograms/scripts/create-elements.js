@@ -12,6 +12,7 @@ import {
   processDifficulty,
   processRadio,
   processCell,
+  removeAllChilds,
 } from "./utilits.js";
 
 //Creating elements
@@ -51,9 +52,7 @@ function createElement(options) {
 }
 
 function createCells(array, parentElement) {
-  while (parentElement.firstChild) {
-    parentElement.removeChild(parentElement.firstChild);
-  }
+  removeAllChilds(parentElement);
   if (gameState.difficulty === easy) {
     document.querySelector("body").style.setProperty("--cell-size", "5rem");
   } else if (gameState.difficulty === medium) {
@@ -94,9 +93,7 @@ function createCells(array, parentElement) {
 }
 
 function createInfo(array, parentElement, elementClass) {
-  while (parentElement.firstChild) {
-    parentElement.removeChild(parentElement.firstChild);
-  }
+  removeAllChilds(parentElement);
   let counter = 0;
   array.forEach((element) => {
     counter += 1;
@@ -118,9 +115,7 @@ function createInfo(array, parentElement, elementClass) {
 }
 
 function createList(parentElement) {
-  while (parentElement.firstChild) {
-    parentElement.removeChild(parentElement.firstChild);
-  }
+  removeAllChilds(parentElement);
   let counter = 0;
   for (let key in gameState.difficulty) {
     counter += 1;
@@ -150,14 +145,31 @@ function createList(parentElement) {
   }
 }
 
-function updateTime() {
-  let minutes = 0;
-  let seconds = 0;
+function createWinWindow(parentElement) {
+  removeAllChilds(parentElement);
+  domElements.modalInfo = createElement({
+    tag: "div",
+    parent: parentElement,
+    classes: ["modal-info"],
+  });
 
-  seconds++;
+  domElements.modalInfoText = createElement({
+    tag: "p",
+    text: `Great! You have solved the nonogram in ${gameState.time.minutes * 60 + gameState.time.seconds} seconds!`,
+    parent: domElements.modalInfo,
+    classes: ["modal-info__text"],
+  });
 
-  gameState.timerElements[0].textContent = `${minutes.toString().padStart(2, "0")}`;
-  gameState.timerElements[1].textContent = `${seconds.toString().padStart(2, "0")}`;
+  domElements.modalCLose = createElement({
+    tag: "button",
+    text: "close",
+    parent: domElements.modalInfo,
+    classes: ["modal-btn", "dif-btn"],
+  });
+
+  domElements.modalCLose.addEventListener("click", () => {
+    domElements.modalWindow.close();
+  });
 }
 
 // Create game
@@ -167,6 +179,7 @@ function createGame() {
   gameState.currentCellCounter = 0;
   gameState.falseCellCounter = 0;
   resetTimer();
+  domElements.board.classList.remove("no-events");
   createCells(gameState.currentPattern, domElements.gameboard);
   fullCellCounter(gameState.currentPattern);
   createInfo(gameState.verticalNums, domElements.topInfo, "top-wrapper");
@@ -179,5 +192,5 @@ export {
   createCells,
   createInfo,
   createList,
-  updateTime,
+  createWinWindow,
 };

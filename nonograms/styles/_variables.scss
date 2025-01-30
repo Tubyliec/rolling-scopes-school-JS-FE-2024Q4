@@ -15,6 +15,7 @@ $dark-color: #262626;
 //Margins
 $align-margin: 0 auto;
 $margin-medium: 0.5rem;
+$margin-big: 2rem;
 
 //Paddings
 $padding-small: 0.1rem;
@@ -88,4 +89,11 @@ $border-normal: 0.1rem solid $primary-color;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+}
+
+//Fonts
+
+%header-text {
+  font-family: Griffy;
+  font-size: 3.5rem;
 }
