@@ -18,6 +18,7 @@ body {
   justify-content: center;
 }
 .main-wrapper {
+  margin: 1rem;
   height: 100vh;
   @extend %flex-row;
   gap: 2rem;
@@ -28,13 +29,13 @@ body {
 .header {
   padding: 0.5rem;
   background-color: $primary-color;
-  align-content: center;
 }
 
 .header-wrapper {
   margin: $align-margin;
   @extend %flex-row;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   width: 50%;
 }
 
@@ -45,13 +46,32 @@ body {
   color: #e2e1e0;
 }
 
+.options {
+  @extend %flex-row;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer {
+  width: 8rem;
+  @extend %flex-row;
+  @extend %flex-evenly;
+}
+
+.time {
+  text-align: center;
+  font-family: Griffy;
+  font-size: 2rem;
+  color: #e2e1e0;
+}
+
 //Board
 
 //Difficulty panel
 .difficulty-panel {
   @extend %flex-column;
   gap: 0.1rem;
-  align-items: flex-start;
+  justify-content: center;
   @extend %borders-section;
   padding: $padding-medium;
 }
@@ -86,6 +106,14 @@ body {
   transform: scale(1.05);
 }
 //List
+
+.fieldset {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+}
+
 .list-checkbox {
   @extend %flex-row;
   font-family: Griffy;
@@ -128,7 +156,7 @@ body {
   @extend %flex-column;
   justify-content: end;
   align-content: end;
-
+  border-bottom: 0.001rem solid $primary-color;
   &:not(:last-child) {
     border-right: 0.001rem solid $primary-color;
   }

@@ -1,4 +1,5 @@
-import { createElement, gameState, processDifficulty } from "./utilits.js";
+import { gameState, processDifficulty } from "./utilits.js";
+import { createElement } from "./create-elements.js";
 const domElements = {};
 
 function createDom() {
@@ -25,6 +26,37 @@ function createDom() {
     text: "nonograms",
     parent: domElements.headerWrapper,
     classes: ["name"],
+  });
+
+  domElements.options = createElement({
+    tag: "div",
+    parent: domElements.headerWrapper,
+    classes: ["options"],
+  });
+
+  domElements.timer = createElement({
+    tag: "div",
+    parent: domElements.options,
+    classes: ["timer"],
+  });
+
+  domElements.minutes = createElement({
+    tag: "span",
+    parent: domElements.timer,
+    text: "00",
+    classes: ["time"],
+  });
+  domElements.timeSeparator = createElement({
+    tag: "span",
+    parent: domElements.timer,
+    text: " : ",
+    classes: ["time"],
+  });
+  domElements.seconds = createElement({
+    tag: "span",
+    parent: domElements.timer,
+    text: "00",
+    classes: ["time"],
   });
 
   //Main
@@ -119,6 +151,8 @@ function createDom() {
     domElements.mediumButton,
     domElements.hardButton,
   ];
+
+  gameState.timerElements = [domElements.minutes, domElements.seconds];
 
   gameState.difficultyButtons.forEach((element) => {
     element.addEventListener("click", processDifficulty);

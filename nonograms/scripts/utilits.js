@@ -1,6 +1,11 @@
+//Import
+
 import { easy, medium, hard } from "./data.js";
 import { domElements } from "./create-dom.js";
+import { createList, createGame, updateTime } from "./create-elements.js";
+
 //Identifiers
+
 let gameState = {
   templateCellCounter: 0,
   currentCellCounter: 0,
@@ -10,8 +15,47 @@ let gameState = {
   horizontalNums: [],
   verticalNums: [],
   difficultyButtons: [],
+  timerElements: [],
+  timerState: undefined,
+  time: {
+    minutes: 0,
+    seconds: 0,
+  },
 };
+
+//Timer
+
+function startTimer() {
+  gameState.time.seconds += 1;
+  if (gameState.time.seconds === 60) {
+    gameState.time.minutes += 1;
+    gameState.time.seconds = 0;
+  }
+  gameState.timerElements[0].textContent = `${gameState.time.minutes.toString().padStart(2, "0")}`;
+  gameState.timerElements[1].textContent = `${gameState.time.seconds.toString().padStart(2, "0")}`;
+}
+
+function processTimerEvent() {
+  if (gameState.timerState === undefined) {
+    gameState.timerState = setInterval(startTimer, 1000);
+  }
+}
+
+function stopTimer() {
+  clearInterval(gameState.timerState);
+}
+
+function resetTimer() {
+  stopTimer();
+  gameState.timerState = undefined;
+  gameState.time.minutes = 0;
+  gameState.time.seconds = 0;
+  gameState.timerElements[0].textContent = `${gameState.time.minutes.toString().padStart(2, "0")}`;
+  gameState.timerElements[1].textContent = `${gameState.time.seconds.toString().padStart(2, "0")}`;
+}
+
 //Processing elements
+
 function processCell() {
   if (this.classList.contains("background--dark")) {
     this.classList.remove("background--dark");
@@ -69,12 +113,11 @@ function processDifficulty() {
 
 function processRadio() {
   let name = this.value;
-  console.log(this.value);
-  console.log(gameState.difficulty[this.value].array);
   gameState.currentPattern = gameState.difficulty[this.value].array;
   createGame();
 }
 //Accessory utils
+
 function rotateMatrix(matrix) {
   const newMatrix = structuredClone(matrix);
   const matrixLength = matrix.length;
@@ -124,155 +167,18 @@ function fullCellCounter(array) {
   gameState.horizontalNums = horizontalNums;
   gameState.verticalNums = verticalNums;
 }
-//Creating elements
-function createElement(options) {
-  const {
-    tag = "div",
-    text = "",
-    parent,
-    classes = [],
-    id = "",
-    type = "text",
-    name = "",
-    value = "",
-  } = options;
-  const element = document.createElement(tag);
-  element.textContent = text;
-  if (classes.length != 0) {
-    element.classList.add(...classes);
-  }
-  if (id.length != 0) {
-    element.id = id;
-  }
-  if (value.length != 0) {
-    element.value = value;
-  }
-  if (name.length != 0) {
-    element.name = name;
-  }
-  if (type.length != 0) {
-    element.type = type;
-  }
-  if (parent != null) {
-    parent.appendChild(element);
-  }
-  return element;
-}
-
-function createCells(array, parentElement) {
-  while (parentElement.firstChild) {
-    parentElement.removeChild(parentElement.firstChild);
-  }
-  if (gameState.difficulty === easy) {
-    document.querySelector("body").style.setProperty("--cell-size", "5rem");
-  } else if (gameState.difficulty === medium) {
-    document.querySelector("body").style.setProperty("--cell-size", "3.5rem");
-  } else {
-    document.querySelector("body").style.setProperty("--cell-size", "2.5rem");
-  }
-
-  let counter = 0;
-  array.forEach((element) => {
-    counter += 1;
-    const tempClass = `row-${counter}`;
-    const newRow = createElement({
-      tag: "div",
-      parent: parentElement,
-      classes: ["row", tempClass],
-    });
-    element.forEach((item) => {
-      const newItem = createElement({
-        tag: "div",
-        parent: document.querySelector(`.${tempClass}`),
-        text: item,
-        classes: ["cell"],
-      });
-      if (item === 1) {
-        gameState.templateCellCounter += 1;
-      }
-      newItem.addEventListener("click", processCell);
-      newItem.addEventListener("contextmenu", processRightClick);
-    });
-  });
-}
-
-function createInfo(array, parentElement, elementClass) {
-  while (parentElement.firstChild) {
-    parentElement.removeChild(parentElement.firstChild);
-  }
-  let counter = 0;
-  array.forEach((element) => {
-    counter += 1;
-    const tempClass = `${elementClass}-${counter}`;
-    const newItem = createElement({
-      tag: "div",
-      parent: parentElement,
-      classes: [elementClass, tempClass],
-    });
-    element.forEach((item) => {
-      const newItem = createElement({
-        tag: "div",
-        parent: document.querySelector(`.${tempClass}`),
-        text: item,
-        classes: ["info-nums"],
-      });
-    });
-  });
-}
-
-function createList(parentElement) {
-  while (parentElement.firstChild) {
-    parentElement.removeChild(parentElement.firstChild);
-  }
-  let counter = 0;
-  for (let key in gameState.difficulty) {
-    counter += 1;
-    const tempClass = `checkbox-${counter}`;
-    const newDiv = createElement({
-      tag: "div",
-      parent: parentElement,
-      classes: ["list-checkbox", tempClass],
-    });
-    const newInput = createElement({
-      tag: "input",
-      type: "radio",
-      name: "pattern",
-      value: key,
-      parent: document.querySelector(`.${tempClass}`),
-      id: key,
-      classes: ["input-radio"],
-    });
-    const newlabel = createElement({
-      tag: "label",
-      text: key,
-      parent: document.querySelector(`.${tempClass}`),
-      classes: ["input-label"],
-    });
-    newlabel.setAttribute("for", key);
-    newInput.addEventListener("click", processRadio);
-  }
-}
-
-function createGame() {
-  gameState.templateCellCounter = 0;
-  gameState.currentCellCounter = 0;
-  gameState.falseCellCounter = 0;
-  createCells(gameState.currentPattern, domElements.gameboard);
-  fullCellCounter(gameState.currentPattern);
-  createInfo(gameState.verticalNums, domElements.topInfo, "top-wrapper");
-  createInfo(gameState.horizontalNums, domElements.leftInfo, "left-wrapper");
-}
 
 //Export
 
 export {
-  createElement,
-  createCells,
-  createInfo,
-  createList,
-  createGame,
+  processRightClick,
   fullCellCounter,
+  processTimerEvent,
+  stopTimer,
+  resetTimer,
   processDifficulty,
+  processRadio,
   processCell,
+  countCells,
 };
 export { gameState };
