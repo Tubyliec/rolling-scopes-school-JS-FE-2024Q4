@@ -71,8 +71,11 @@ body {
   font-size: 2rem;
   color: #e2e1e0;
 }
-
-//Board
+//Control panel
+.control-panel {
+  @extend %flex-column;
+  gap: 1rem;
+}
 
 //Difficulty panel
 .difficulty-panel {
@@ -90,27 +93,26 @@ body {
 .dif-btn {
   padding-top: 0.2rem;
   font-family: Griffy;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   color: #e2e1e0;
-  width: 10rem;
+  padding: 0.2rem;
+  min-width: 10rem;
   height: 3rem;
   background-color: $primary-color;
   border-radius: 0.2rem;
-  opacity: 60%;
+  opacity: 80%;
   cursor: pointer;
   &:hover {
     opacity: 100%;
-  }
-  &:active {
-    opacity: 100%;
-    transform: scale(1.05);
+    background-color: #786cd3;
   }
 }
 
 .dif-btn--active {
   opacity: 100%;
   transform: scale(1.05);
+  background-color: #8d54d3;
 }
 //List
 
@@ -131,6 +133,12 @@ body {
 }
 .input-radio {
   color: $primary-color;
+}
+
+.buttons-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
 }
 //Gameboard
 .game-panel {
@@ -229,7 +237,7 @@ body {
 }
 
 .modal {
-  @extend %header-text;
+  @extend %header-secondary;
   inset: 0.5rem;
   margin: auto;
   position: relative;

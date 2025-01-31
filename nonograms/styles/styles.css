@@ -78,7 +78,7 @@ html {
   flex-direction: row;
 }
 
-.main-panel, .difficulty-panel, .top-wrapper, .modal-info {
+.main-panel, .control-panel, .difficulty-panel, .top-wrapper, .modal-info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,9 +102,14 @@ html {
   background-position: center;
 }
 
-.name, .modal {
+.name {
   font-family: Griffy;
   font-size: 3.5rem;
+}
+
+.modal {
+  font-family: Griffy;
+  font-size: 2.5rem;
 }
 
 .background--dark {
@@ -171,6 +176,10 @@ body {
   color: #e2e1e0;
 }
 
+.control-panel {
+  gap: 1rem;
+}
+
 .difficulty-panel {
   gap: 0.1rem;
   justify-content: center;
@@ -185,27 +194,26 @@ body {
 .dif-btn {
   padding-top: 0.2rem;
   font-family: Griffy;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: uppercase;
   color: #e2e1e0;
-  width: 10rem;
+  padding: 0.2rem;
+  min-width: 10rem;
   height: 3rem;
   background-color: #7c95d3;
   border-radius: 0.2rem;
-  opacity: 60%;
+  opacity: 80%;
   cursor: pointer;
 }
 .dif-btn:hover {
   opacity: 100%;
-}
-.dif-btn:active {
-  opacity: 100%;
-  transform: scale(1.05);
+  background-color: #786cd3;
 }
 
 .dif-btn--active {
   opacity: 100%;
   transform: scale(1.05);
+  background-color: #8d54d3;
 }
 
 .fieldset {
@@ -226,6 +234,12 @@ body {
 
 .input-radio {
   color: #7c95d3;
+}
+
+.buttons-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.7rem;
 }
 
 .board {

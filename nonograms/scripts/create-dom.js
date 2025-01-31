@@ -70,10 +70,16 @@ function createDom() {
     parent: domElements.mainPanel,
     classes: ["main-wrapper"],
   });
-  //Difficulty panel
-  domElements.difficultyPanel = createElement({
+  //Control panel
+  domElements.controlPanel = createElement({
     tag: "section",
     parent: domElements.mainWrapper,
+    classes: ["control-panel"],
+  });
+  //Difficulty panel
+  domElements.difficultyPanel = createElement({
+    tag: "div",
+    parent: domElements.controlPanel,
     classes: ["difficulty-panel"],
   });
   domElements.difficultyButtons = createElement({
@@ -112,12 +118,48 @@ function createDom() {
     parent: domElements.patternsList,
     classes: ["fieldset"],
   });
-  //Control panel
-  domElements.controlPanel = createElement({
-    tag: "section",
-    parent: domElements.mainWrapper,
-    classes: ["control-panel"],
+  domElements.buttonsPanel = createElement({
+    tag: "div",
+    parent: domElements.controlPanel,
+    classes: ["buttons-panel"],
   });
+  domElements.scoreButton = createElement({
+    tag: "button",
+    text: "Score",
+    parent: domElements.buttonsPanel,
+    classes: ["dif-btn"],
+  });
+  domElements.solutionButton = createElement({
+    tag: "button",
+    text: "Solution",
+    parent: domElements.buttonsPanel,
+    classes: ["dif-btn"],
+  });
+  domElements.resetButton = createElement({
+    tag: "button",
+    text: "Reset game",
+    parent: domElements.buttonsPanel,
+    classes: ["dif-btn"],
+  });
+  domElements.solutionButton = createElement({
+    tag: "button",
+    text: "Random game",
+    parent: domElements.buttonsPanel,
+    classes: ["dif-btn"],
+  });
+  domElements.solutionButton = createElement({
+    tag: "button",
+    text: "Save game",
+    parent: domElements.buttonsPanel,
+    classes: ["dif-btn"],
+  });
+  domElements.solutionButton = createElement({
+    tag: "button",
+    text: "Continue last game",
+    parent: domElements.buttonsPanel,
+    classes: ["dif-btn"],
+  });
+
   //Game panel
   domElements.gamePanel = createElement({
     tag: "section",
