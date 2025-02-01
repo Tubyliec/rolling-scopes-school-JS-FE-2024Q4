@@ -1,7 +1,7 @@
 //Import
 
 import { domElements } from "./create-dom.js";
-import { easy, medium, hard } from "./data.js";
+import { easy, medium, hard, sounds } from "./data.js";
 import { gameState } from "./utilits.js";
 import {
   processRightClick,
@@ -232,7 +232,6 @@ function createScoreTable(parentElement) {
       classes: ["table-row", tempClass],
     });
     for (let i = 0; i < 3; i += 1) {
-      console.log(element);
       let text = "";
       if (i === 0) {
         text = element.name;

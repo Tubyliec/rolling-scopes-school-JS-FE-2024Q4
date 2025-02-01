@@ -19,7 +19,6 @@ let gameState = {
   currentPattern: easy.cross.array,
   horizontalNums: [],
   verticalNums: [],
-  difficultyButtons: [],
   timerElements: [],
   timerState: undefined,
   time: {
@@ -34,7 +33,9 @@ let gameState = {
     seconds: null,
   },
   ratingList: [],
+  difficultyButtons: [],
   controlButtons: [],
+  toogleButtons: [],
   isSoundOn: true,
 };
 
@@ -198,13 +199,23 @@ function processToogle() {
       : (gameState.isSoundOn = true);
   }
 }
-//Process buttons
+
 function processControlButtons() {
   if (this === domElements.scoreButton) {
     createScoreTable(domElements.modalWindow);
     domElements.modalWindow.showModal();
   }
 }
+
+function buttonsSound() {
+  if (this.classList.contains("dif-btn")) {
+    playSound(sounds.button);
+  }
+  if (this.classList.contains("toogle-btn")) {
+    playSound(sounds.switch);
+  }
+}
+
 //Accessory utils
 
 function rotateMatrix(matrix) {
@@ -279,5 +290,6 @@ export {
   countCells,
   removeAllChilds,
   refreshRating,
+  buttonsSound,
 };
 export { gameState };

@@ -2,7 +2,7 @@ import {
   gameState,
   processDifficulty,
   processControlButtons,
-  processRightClick,
+  buttonsSound,
   processToogle,
 } from "./utilits.js";
 import { createElement } from "./create-elements.js";
@@ -91,7 +91,6 @@ function createDom() {
     classes: ["toogle-btn"],
   });
   domElements.audioToogler.setAttribute("data-name", "audio");
-  domElements.audioToogler.addEventListener("click", processToogle);
   domElements.audioTooglerLabel = createElement({
     tag: "label",
     parent: domElements.audioButtonWrapper,
@@ -291,14 +290,26 @@ function createDom() {
     domElements.continueButton,
   ];
 
+  gameState.toogleButtons = [
+    domElements.audioToogler,
+    domElements.themeToogler,
+  ];
+
   gameState.timerElements = [domElements.minutes, domElements.seconds];
 
   gameState.difficultyButtons.forEach((element) => {
     element.addEventListener("click", processDifficulty);
+    element.addEventListener("click", buttonsSound);
   });
 
   gameState.controlButtons.forEach((element) => {
     element.addEventListener("click", processControlButtons);
+    element.addEventListener("click", buttonsSound);
+  });
+
+  gameState.toogleButtons.forEach((element) => {
+    element.addEventListener("click", buttonsSound);
+    element.addEventListener("click", processToogle);
   });
 
   bodyElement.append(domElements.bodyWrapper);
