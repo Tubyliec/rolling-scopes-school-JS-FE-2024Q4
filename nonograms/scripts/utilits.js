@@ -2,7 +2,12 @@
 
 import { easy, medium, hard } from "./data.js";
 import { domElements } from "./create-dom.js";
-import { createList, createGame, createWinWindow } from "./create-elements.js";
+import {
+  createList,
+  createGame,
+  createWinWindow,
+  createScoreTable,
+} from "./create-elements.js";
 
 //Identifiers
 
@@ -21,8 +26,58 @@ let gameState = {
     minutes: 0,
     seconds: 0,
   },
+  scoreItem: {
+    name: null,
+    difficulty: null,
+    time: null,
+    minutes: null,
+    seconds: null,
+  },
+  ratingList: [],
+  controlButtons: [],
 };
 
+//Score
+function createRating() {
+  document.querySelectorAll(".input-radio").forEach((element) => {
+    if (element.checked === true) {
+      gameState.scoreItem.name = element.value;
+    }
+  });
+  gameState.difficultyButtons.forEach((element) => {
+    if (element.classList.contains("dif-btn--active")) {
+      gameState.scoreItem.difficulty = element.textContent;
+    }
+  });
+  refreshRating();
+
+  gameState.ratingList.push(gameState.scoreItem);
+  window.localStorage.setItem(
+    "ratingList",
+    JSON.stringify(gameState.ratingList),
+  );
+}
+
+function refreshRating() {
+  gameState.scoreItem.minutes = gameState.time.minutes;
+  gameState.scoreItem.seconds = gameState.time.seconds;
+  gameState.scoreItem.time = `${gameState.time.minutes.toString().padStart(2, "0")} : ${gameState.time.seconds.toString().padStart(2, "0")}`;
+
+  gameState.ratingList = JSON.parse(window.localStorage.getItem("ratingList"));
+  if (!gameState.ratingList) {
+    gameState.ratingList = [];
+  }
+  if (gameState.ratingList.length > 1) {
+    gameState.ratingList.sort(function (a, b) {
+      let aValue = a.minutes * 60 + a.seconds;
+      let bValue = b.minutes * 60 + b.seconds;
+      return aValue - bValue;
+    });
+  }
+  if (gameState.ratingList.length === 5) {
+    gameState.ratingList = gameState.ratingList.slice(0, 4);
+  }
+}
 //Timer
 
 function startTimer() {
@@ -86,6 +141,7 @@ function processCell() {
     createWinWindow(domElements.modalWindow);
     domElements.modalWindow.showModal();
     domElements.board.classList.add("no-events");
+    createRating();
   }
 }
 
@@ -116,9 +172,15 @@ function processDifficulty() {
 }
 
 function processRadio() {
-  let name = this.value;
   gameState.currentPattern = gameState.difficulty[this.value].array;
   createGame();
+}
+//Process buttons
+function processControlButtons() {
+  if (this === domElements.scoreButton) {
+    createScoreTable(domElements.modalWindow);
+    domElements.modalWindow.showModal();
+  }
 }
 //Accessory utils
 
@@ -189,7 +251,9 @@ export {
   processDifficulty,
   processRadio,
   processCell,
+  processControlButtons,
   countCells,
   removeAllChilds,
+  refreshRating,
 };
 export { gameState };

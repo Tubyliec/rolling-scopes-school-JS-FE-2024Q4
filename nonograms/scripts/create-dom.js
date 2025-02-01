@@ -1,4 +1,8 @@
-import { gameState, processDifficulty } from "./utilits.js";
+import {
+  gameState,
+  processDifficulty,
+  processControlButtons,
+} from "./utilits.js";
 import { createElement } from "./create-elements.js";
 const domElements = {};
 
@@ -129,6 +133,7 @@ function createDom() {
     parent: domElements.buttonsPanel,
     classes: ["dif-btn"],
   });
+
   domElements.solutionButton = createElement({
     tag: "button",
     text: "Solution",
@@ -141,19 +146,19 @@ function createDom() {
     parent: domElements.buttonsPanel,
     classes: ["dif-btn"],
   });
-  domElements.solutionButton = createElement({
+  domElements.randomButton = createElement({
     tag: "button",
     text: "Random game",
     parent: domElements.buttonsPanel,
     classes: ["dif-btn"],
   });
-  domElements.solutionButton = createElement({
+  domElements.saveButton = createElement({
     tag: "button",
     text: "Save game",
     parent: domElements.buttonsPanel,
     classes: ["dif-btn"],
   });
-  domElements.solutionButton = createElement({
+  domElements.continueButton = createElement({
     tag: "button",
     text: "Continue last game",
     parent: domElements.buttonsPanel,
@@ -200,10 +205,23 @@ function createDom() {
     domElements.hardButton,
   ];
 
+  gameState.controlButtons = [
+    domElements.scoreButton,
+    domElements.solutionButton,
+    domElements.resetButton,
+    domElements.randomButton,
+    domElements.saveButton,
+    domElements.continueButton,
+  ];
+
   gameState.timerElements = [domElements.minutes, domElements.seconds];
 
   gameState.difficultyButtons.forEach((element) => {
     element.addEventListener("click", processDifficulty);
+  });
+
+  gameState.controlButtons.forEach((element) => {
+    element.addEventListener("click", processControlButtons);
   });
 
   bodyElement.append(domElements.bodyWrapper);

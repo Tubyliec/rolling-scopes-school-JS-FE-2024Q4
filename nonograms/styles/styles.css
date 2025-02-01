@@ -73,12 +73,12 @@ html {
   align-content: center;
 }
 
-.main-wrapper, .header-wrapper, .options, .timer, .difficulty-buttons, .list-checkbox, .top-info, .left-wrapper {
+.main-wrapper, .header-wrapper, .options, .timer, .difficulty-buttons, .list-checkbox, .top-info, .left-wrapper, .table-row {
   display: flex;
   flex-direction: row;
 }
 
-.main-panel, .control-panel, .difficulty-panel, .top-wrapper, .modal-info {
+.main-panel, .control-panel, .difficulty-panel, .top-wrapper, .modal, .modal-info, .score-wrapper, .score-table {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,9 +107,14 @@ html {
   font-size: 3.5rem;
 }
 
-.modal {
+.modal-info__text, .score-table__name {
   font-family: Griffy;
-  font-size: 2.5rem;
+  font-size: 3rem;
+}
+
+.score-table {
+  font-family: Griffy;
+  font-size: 2rem;
 }
 
 .background--dark {
@@ -330,11 +335,11 @@ body {
   inset: 0.5rem;
   margin: auto;
   position: relative;
-  align-content: center;
-  justify-self: center;
+  align-items: center;
   border-radius: 0.5rem;
   width: 50%;
-  height: 50%;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: var(--background-color);
 }
 .modal::backdrop {
@@ -350,4 +355,31 @@ body {
 
 .modal-info__text {
   text-align: center;
+}
+
+.score-wrapper {
+  text-transform: capitalize;
+  gap: 2rem;
+  margin: 2rem;
+  width: 80%;
+}
+
+.score-table {
+  width: 100%;
+}
+
+.score-table__header {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.table-body {
+  width: 100%;
+}
+
+.table-row {
+  justify-content: space-between;
+  border-bottom: 0.1rem solid #7c95d3;
+  padding: 0.5rem 1rem;
 }/*# sourceMappingURL=styles.css.map */

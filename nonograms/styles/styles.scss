@@ -237,15 +237,14 @@ body {
 }
 
 .modal {
-  @extend %header-secondary;
   inset: 0.5rem;
   margin: auto;
   position: relative;
-  align-content: center;
-  justify-self: center;
+  @extend %flex-column;
+  align-items: center;
   border-radius: 0.5rem;
   width: 50%;
-  height: 50%;
+  height: fit-content;
   background-color: var(--background-color);
   &::backdrop {
     background-color: var(--primary-color);
@@ -261,5 +260,40 @@ body {
 }
 
 .modal-info__text {
+  @extend %header-secondary;
   text-align: center;
+}
+
+.score-wrapper {
+  @extend %flex-column;
+  text-transform: capitalize;
+  gap: 2rem;
+  margin: $margin-big;
+  width: 80%;
+}
+
+.score-table {
+  @extend %flex-column;
+  @extend %text-medium;
+  width: 100%;
+}
+
+.score-table__header {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.score-table__name {
+  @extend %header-secondary;
+}
+.table-body {
+  width: 100%;
+}
+
+.table-row {
+  @extend %flex-row;
+  justify-content: space-between;
+  border-bottom: $border-normal;
+  padding: 0.5rem 1rem;
 }

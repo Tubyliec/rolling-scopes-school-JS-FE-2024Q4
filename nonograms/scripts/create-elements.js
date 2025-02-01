@@ -13,6 +13,7 @@ import {
   processRadio,
   processCell,
   removeAllChilds,
+  refreshRating,
 } from "./utilits.js";
 
 //Creating elements
@@ -172,6 +173,95 @@ function createWinWindow(parentElement) {
   });
 }
 
+function createScoreTable(parentElement) {
+  removeAllChilds(parentElement);
+  refreshRating();
+  domElements.scoreWrapper = createElement({
+    tag: "div",
+    parent: parentElement,
+    classes: ["score-wrapper"],
+  });
+  domElements.scoreName = createElement({
+    tag: "p",
+    parent: domElements.scoreWrapper,
+    text: "score table",
+    classes: ["score-table__name"],
+  });
+  domElements.scoreTable = createElement({
+    tag: "div",
+    parent: domElements.scoreWrapper,
+    classes: ["score-table"],
+  });
+  domElements.scoreTableBody = createElement({
+    tag: "div",
+    parent: domElements.scoreTable,
+    classes: ["table-body"],
+  });
+
+  domElements.scoreTableHeader = createElement({
+    tag: "div",
+    parent: domElements.scoreTableBody,
+    classes: ["score-table__header", "table-row"],
+  });
+  domElements.scoreTableHeaderName = createElement({
+    tag: "p",
+    text: "name",
+    parent: domElements.scoreTableHeader,
+    classes: ["header-name", "table-item"],
+  });
+  domElements.scoreTableHeaderDifficulty = createElement({
+    tag: "p",
+    text: "difficulty",
+    parent: domElements.scoreTableHeader,
+    classes: ["header-difficulty", "table-item"],
+  });
+  domElements.scoreTableHeaderTime = createElement({
+    tag: "p",
+    text: "time",
+    parent: domElements.scoreTableHeader,
+    classes: ["header-time", "table-item"],
+  });
+
+  gameState.ratingList.forEach((element) => {
+    let counter = 0;
+    counter += 1;
+    const tempClass = `rating-row-${counter}`;
+    const newRow = createElement({
+      tag: "div",
+      parent: domElements.scoreTableBody,
+      classes: ["table-row", tempClass],
+    });
+    for (let i = 0; i < 3; i += 1) {
+      console.log(element);
+      let text = "";
+      if (i === 0) {
+        text = element.name;
+      } else if (i === 1) {
+        text = element.difficulty;
+      } else {
+        text = element.time;
+      }
+      const newItem = createElement({
+        tag: "div",
+        text: text,
+        parent: newRow,
+        classes: ["table-item"],
+      });
+    }
+  });
+
+  domElements.modalCLose = createElement({
+    tag: "button",
+    text: "close",
+    parent: domElements.scoreWrapper,
+    classes: ["modal-btn", "dif-btn"],
+  });
+
+  domElements.modalCLose.addEventListener("click", () => {
+    domElements.modalWindow.close();
+  });
+}
+
 // Create game
 
 function createGame() {
@@ -193,4 +283,5 @@ export {
   createInfo,
   createList,
   createWinWindow,
+  createScoreTable,
 };
