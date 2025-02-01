@@ -238,6 +238,7 @@ const sounds = {
   wipe: "assets/audio/wipe.mp3",
   button: "assets/audio/button.mp3",
   switch: "assets/audio/switch.mp3",
+  click: "assets/audio/click.mp3",
   fanfare: "assets/audio/fanfare.mp3",
 };
 

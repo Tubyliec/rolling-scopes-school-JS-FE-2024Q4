@@ -189,6 +189,7 @@ function processDifficulty() {
 
 function processRadio() {
   gameState.currentPattern = gameState.difficulty[this.value].array;
+  playSound(sounds.click);
   createGame();
 }
 
