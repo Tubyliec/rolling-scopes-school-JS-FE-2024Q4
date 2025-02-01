@@ -229,6 +229,18 @@ function processControlButtons() {
     createScoreTable(domElements.modalWindow);
     domElements.modalWindow.showModal();
   }
+  if (this === domElements.solutionButton) {
+    const cellArray = document.querySelectorAll(".cell");
+    domElements.board.classList.add("no-events");
+    cellArray.forEach((element) => {
+      console.log(element);
+      element.classList.remove("background--dark");
+      element.classList.remove("cross--dark");
+      if (element.textContent == 1) {
+        element.classList.add("background--dark");
+      }
+    });
+  }
 }
 
 function buttonsSound() {
