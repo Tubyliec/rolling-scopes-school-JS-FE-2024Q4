@@ -2,6 +2,8 @@ import {
   gameState,
   processDifficulty,
   processControlButtons,
+  processRightClick,
+  processToogle,
 } from "./utilits.js";
 import { createElement } from "./create-elements.js";
 const domElements = {};
@@ -32,15 +34,9 @@ function createDom() {
     classes: ["name"],
   });
 
-  domElements.options = createElement({
-    tag: "div",
-    parent: domElements.headerWrapper,
-    classes: ["options"],
-  });
-
   domElements.timer = createElement({
     tag: "div",
-    parent: domElements.options,
+    parent: domElements.headerWrapper,
     classes: ["timer"],
   });
 
@@ -63,6 +59,87 @@ function createDom() {
     classes: ["time"],
   });
 
+  domElements.options = createElement({
+    tag: "div",
+    parent: domElements.headerWrapper,
+    classes: ["options"],
+  });
+
+  domElements.audioButton = createElement({
+    tag: "div",
+    parent: domElements.options,
+    classes: ["panel-btn"],
+  });
+
+  domElements.audioButtonWrapper = createElement({
+    tag: "div",
+    parent: domElements.audioButton,
+    classes: ["btn-wrapper"],
+  });
+
+  domElements.audioOnImg = createElement({
+    tag: "div",
+    parent: domElements.audioButtonWrapper,
+    classes: ["button-img", "audio-on"],
+  });
+
+  domElements.audioToogler = createElement({
+    tag: "input",
+    type: "checkbox",
+    parent: domElements.audioButtonWrapper,
+    id: ["audio-toogle"],
+    classes: ["toogle-btn"],
+  });
+  domElements.audioToogler.setAttribute("data-name", "audio");
+  domElements.audioToogler.addEventListener("click", processToogle);
+  domElements.audioTooglerLabel = createElement({
+    tag: "label",
+    parent: domElements.audioButtonWrapper,
+    classes: ["toogle-label"],
+  });
+  domElements.audioTooglerLabel.setAttribute("for", "audio-toogle");
+  domElements.audioOffImg = createElement({
+    tag: "div",
+    parent: domElements.audioButtonWrapper,
+    classes: ["button-img", "audio-off"],
+  });
+
+  domElements.themeButton = createElement({
+    tag: "div",
+    parent: domElements.options,
+    classes: ["panel-btn"],
+  });
+
+  domElements.themeButtonWrapper = createElement({
+    tag: "div",
+    parent: domElements.themeButton,
+    classes: ["btn-wrapper"],
+  });
+
+  domElements.themeOnImg = createElement({
+    tag: "div",
+    parent: domElements.themeButtonWrapper,
+    classes: ["button-img", "theme-on"],
+  });
+
+  domElements.themeToogler = createElement({
+    tag: "input",
+    type: "checkbox",
+    parent: domElements.themeButtonWrapper,
+    id: ["theme-toogle"],
+    classes: ["toogle-btn"],
+  });
+  domElements.themeTooglerLabel = createElement({
+    tag: "label",
+    parent: domElements.themeButtonWrapper,
+    classes: ["toogle-label"],
+  });
+  domElements.themeTooglerLabel.setAttribute("for", "theme-toogle");
+  domElements.themeOffImg = createElement({
+    tag: "div",
+    parent: domElements.themeButtonWrapper,
+    classes: ["button-img", "theme-off"],
+  });
   //Main
   domElements.mainPanel = createElement({
     tag: "main",

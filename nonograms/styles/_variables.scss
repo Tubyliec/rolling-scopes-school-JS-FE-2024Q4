@@ -19,7 +19,8 @@ $margin-big: 2rem;
 
 //Paddings
 $padding-small: 0.1rem;
-$padding-medium: 1rem;
+$padding-panel: 0.5rem;
+$padding-medium: 1.5rem;
 
 //Borders
 $border-neutral: 0.3rem solid $neutral-color;
@@ -28,6 +29,7 @@ $border-cell: 0.001rem solid $primary-color;
 
 $border-bold: 0.2rem solid $primary-color;
 $border-normal: 0.1rem solid $primary-color;
+$border-normal-white: 0.1rem solid white;
 
 %borders-cell {
   border-right: 0.001rem solid $primary-color;

@@ -73,7 +73,7 @@ html {
   align-content: center;
 }
 
-.main-wrapper, .header-wrapper, .options, .timer, .difficulty-buttons, .list-checkbox, .top-info, .left-wrapper, .table-row {
+.main-wrapper, .header-wrapper, .options, .timer, .btn-wrapper, .difficulty-buttons, .list-checkbox, .top-info, .left-wrapper, .table-row {
   display: flex;
   flex-direction: row;
 }
@@ -96,7 +96,7 @@ html {
   justify-content: space-evenly;
 }
 
-.cross--dark {
+.button-img, .cross--dark {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -155,9 +155,12 @@ body {
 
 .header-wrapper {
   margin: 0 auto;
+  padding: 0.5rem;
   justify-content: space-around;
   align-items: center;
   width: 50%;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .name {
@@ -168,6 +171,7 @@ body {
 .options {
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 
 .timer {
@@ -181,6 +185,61 @@ body {
   color: #e2e1e0;
 }
 
+.btn-wrapper {
+  gap: 0.4rem;
+}
+
+.toogle-btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: relative;
+  display: inline-block;
+  width: 3.2rem;
+  height: 1.8rem;
+  background: var(--background-color);
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+}
+.toogle-btn::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  background-color: var(--primary-color);
+  width: 1.5rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  left: 0.1rem;
+  top: 0.1rem;
+  transform: translateX(0);
+}
+
+.button-img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.audio-on {
+  background-image: url(../assets/icons/volume-medium-white-icon.svg);
+}
+
+.audio-off {
+  background-image: url(../assets/icons/volume-muted-white-icon.svg);
+}
+
+.theme-on {
+  background-image: url(../assets/icons/sun-icon.png);
+}
+
+.theme-off {
+  background-image: url(../assets/icons/moon-icon.png);
+}
+
+.toogle-btn:checked::after {
+  transform: translateX(100%);
+}
+
 .control-panel {
   gap: 1rem;
 }
@@ -188,7 +247,7 @@ body {
 .difficulty-panel {
   gap: 0.1rem;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .difficulty-buttons {
@@ -202,7 +261,7 @@ body {
   font-size: 1.5rem;
   text-transform: uppercase;
   color: #e2e1e0;
-  padding: 0.2rem;
+  padding: 0.5rem;
   min-width: 10rem;
   height: 3rem;
   background-color: #7c95d3;

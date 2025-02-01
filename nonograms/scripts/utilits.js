@@ -1,6 +1,6 @@
 //Import
 
-import { easy, medium, hard } from "./data.js";
+import { easy, medium, hard, sounds } from "./data.js";
 import { domElements } from "./create-dom.js";
 import {
   createList,
@@ -35,7 +35,17 @@ let gameState = {
   },
   ratingList: [],
   controlButtons: [],
+  isSoundOn: true,
 };
+
+//Play sounds
+
+function playSound(source) {
+  const audio = new Audio(source);
+  if (gameState.isSoundOn === true) {
+    audio.play();
+  }
+}
 
 //Score
 function createRating() {
@@ -114,6 +124,7 @@ function resetTimer() {
 function processCell() {
   if (this.classList.contains("background--dark")) {
     this.classList.remove("background--dark");
+    playSound(sounds.wipe);
     if (this.textContent === "1") {
       gameState.currentCellCounter -= 1;
     } else {
@@ -121,6 +132,7 @@ function processCell() {
     }
   } else {
     this.classList.add("background--dark");
+    playSound(sounds.pencil);
     if (this.textContent === "1") {
       gameState.currentCellCounter += 1;
     } else {
@@ -139,6 +151,7 @@ function processCell() {
     console.log("You win");
     stopTimer();
     createWinWindow(domElements.modalWindow);
+    playSound(sounds.fanfare);
     domElements.modalWindow.showModal();
     domElements.board.classList.add("no-events");
     createRating();
@@ -149,8 +162,10 @@ function processRightClick(event) {
   event.preventDefault();
   if (this.classList.contains("cross--dark")) {
     this.classList.remove("cross--dark");
+    playSound(sounds.wipe);
   } else {
     this.classList.add("cross--dark");
+    playSound(sounds.cross);
   }
   if (this.classList.contains("background--dark")) {
     this.classList.remove("background--dark");
@@ -174,6 +189,14 @@ function processDifficulty() {
 function processRadio() {
   gameState.currentPattern = gameState.difficulty[this.value].array;
   createGame();
+}
+
+function processToogle() {
+  if (this.dataset.name === "audio") {
+    this.checked === true
+      ? (gameState.isSoundOn = false)
+      : (gameState.isSoundOn = true);
+  }
 }
 //Process buttons
 function processControlButtons() {
@@ -252,6 +275,7 @@ export {
   processRadio,
   processCell,
   processControlButtons,
+  processToogle,
   countCells,
   removeAllChilds,
   refreshRating,
