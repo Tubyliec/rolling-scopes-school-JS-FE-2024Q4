@@ -144,8 +144,6 @@ function processCell() {
   if (this.classList.contains("cross--dark")) {
     this.classList.remove("cross--dark");
   }
-  console.log(gameState.currentCellCounter);
-  console.log(gameState.falseCellCounter);
   if (
     gameState.currentCellCounter === gameState.templateCellCounter &&
     gameState.falseCellCounter === 0
@@ -249,6 +247,25 @@ function processControlButtons() {
       resetTimer();
       domElements.board.classList.remove("no-events");
     });
+  }
+  if (this === domElements.randomButton) {
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    let randomDifficultyNumber = getRandomInt(3);
+    let randomPatternNumber = getRandomInt(5);
+
+    let randomDifficulty = gameState.difficultyButtons[randomDifficultyNumber];
+    randomDifficulty.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true }),
+    );
+
+    let patternsArray = document.querySelectorAll(".input-radio");
+    let randomPattern = patternsArray[randomPatternNumber];
+    randomPattern.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true }),
+    );
   }
 }
 
