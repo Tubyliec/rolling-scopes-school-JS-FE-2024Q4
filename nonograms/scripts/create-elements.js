@@ -54,12 +54,22 @@ function createElement(options) {
 
 function createCells(array, parentElement) {
   removeAllChilds(parentElement);
-  if (gameState.difficulty === easy) {
-    document.querySelector("body").style.setProperty("--cell-size", "5rem");
-  } else if (gameState.difficulty === medium) {
-    document.querySelector("body").style.setProperty("--cell-size", "3.5rem");
+  if (window.screen.width >= 600) {
+    if (gameState.difficulty === easy) {
+      document.body.style.setProperty("--cell-size", "5rem");
+    } else if (gameState.difficulty === medium) {
+      document.body.style.setProperty("--cell-size", "3.5rem");
+    } else {
+      document.body.style.setProperty("--cell-size", "2.5rem");
+    }
   } else {
-    document.querySelector("body").style.setProperty("--cell-size", "2.5rem");
+    if (gameState.difficulty === easy) {
+      document.body.style.setProperty("--cell-size", "3.5rem");
+    } else if (gameState.difficulty === medium) {
+      document.body.style.setProperty("--cell-size", "2rem");
+    } else {
+      document.body.style.setProperty("--cell-size", "1.5rem");
+    }
   }
 
   let counter = 0;
@@ -170,6 +180,7 @@ function createWinWindow(parentElement) {
 
   domElements.modalCLose.addEventListener("click", () => {
     domElements.modalWindow.close();
+    removeAllChilds(parentElement);
   });
 }
 
@@ -258,6 +269,7 @@ function createScoreTable(parentElement) {
 
   domElements.modalCLose.addEventListener("click", () => {
     domElements.modalWindow.close();
+    removeAllChilds(parentElement);
   });
 }
 

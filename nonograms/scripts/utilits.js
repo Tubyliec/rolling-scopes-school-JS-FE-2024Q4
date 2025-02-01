@@ -37,6 +37,7 @@ let gameState = {
   controlButtons: [],
   toogleButtons: [],
   isSoundOn: true,
+  isLightTheme: true,
 };
 
 //Play sounds
@@ -143,8 +144,6 @@ function processCell() {
   if (this.classList.contains("cross--dark")) {
     this.classList.remove("cross--dark");
   }
-  console.log(gameState.currentCellCounter);
-  console.log(gameState.falseCellCounter);
   if (
     gameState.currentCellCounter === gameState.templateCellCounter &&
     gameState.falseCellCounter === 0
@@ -189,6 +188,7 @@ function processDifficulty() {
 
 function processRadio() {
   gameState.currentPattern = gameState.difficulty[this.value].array;
+  playSound(sounds.click);
   createGame();
 }
 
@@ -198,12 +198,74 @@ function processToogle() {
       ? (gameState.isSoundOn = false)
       : (gameState.isSoundOn = true);
   }
+  if (this.dataset.name === "theme") {
+    if (this.checked === true) {
+      document.body.style.setProperty("--background-color", "#121212");
+      document.body.style.setProperty("--primary-color", "#333333");
+      document.body.style.setProperty("--border-color", "#f9f6f4");
+      document.body.style.setProperty("--active-color", "#308eaf");
+      document.body.style.setProperty("--dark-color", "#f9f6f4");
+      document.body.style.setProperty("--panel-color", "#308eaf");
+      document.body.style.setProperty("--light-color", "#121212");
+    } else {
+      document.body.style.setProperty(
+        "--background-color",
+        "linear-gradient(90deg, rgba(249,246,244,1) 0%, rgba(249,244,246,1) 100%)",
+      );
+      document.body.style.setProperty("--primary-color", "#308eaf");
+      document.body.style.setProperty("--border-color", "#308eaf");
+      document.body.style.setProperty("--dark-color", "#1b1c1d");
+      document.body.style.setProperty("--active-color", "#3663bb");
+      document.body.style.setProperty("--panel-color", "#f9f6f4");
+      document.body.style.setProperty("--light-color", "#f9f6f4");
+    }
+  }
 }
 
 function processControlButtons() {
+  const cellArray = document.querySelectorAll(".cell");
   if (this === domElements.scoreButton) {
     createScoreTable(domElements.modalWindow);
     domElements.modalWindow.showModal();
+  }
+  if (this === domElements.solutionButton) {
+    domElements.board.classList.add("no-events");
+    cellArray.forEach((element) => {
+      element.classList.remove("background--dark");
+      element.classList.remove("cross--dark");
+      if (element.textContent == 1) {
+        element.classList.add("background--dark");
+      }
+    });
+  }
+  if (this === domElements.resetButton) {
+    cellArray.forEach((element) => {
+      element.classList.remove("background--dark");
+      element.classList.remove("cross--dark");
+      gameState.currentCellCounter = 0;
+      gameState.falseCellCounter = 0;
+      resetTimer();
+      domElements.board.classList.remove("no-events");
+    });
+  }
+  if (this === domElements.randomButton) {
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    let randomDifficultyNumber = getRandomInt(3);
+    let randomPatternNumber = getRandomInt(5);
+
+    let randomDifficulty = gameState.difficultyButtons[randomDifficultyNumber];
+    randomDifficulty.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true }),
+    );
+
+    let patternsArray = document.querySelectorAll(".input-radio");
+    let randomPattern = patternsArray[randomPatternNumber];
+    randomPattern.dispatchEvent(
+      new MouseEvent("click", { bubbles: true, cancelable: true }),
+    );
   }
 }
 

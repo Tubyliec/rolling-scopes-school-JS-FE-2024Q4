@@ -8,8 +8,9 @@
 }
 //Colors
 
-$primary-color: #7c95d3;
-$neutral-color: #56617d;
+$primary-color: var(--primary-color);
+$border-color: var(--border-color);
+$neutral-color: var(--neutral-color);
 $dark-color: #262626;
 
 //Margins
@@ -23,33 +24,31 @@ $padding-panel: 0.5rem;
 $padding-medium: 1.5rem;
 
 //Borders
-$border-neutral: 0.3rem solid $neutral-color;
 $border-dark: 0.3rem solid $dark-color;
-$border-cell: 0.001rem solid $primary-color;
+$border-cell: 0.001rem solid $border-color;
 
-$border-bold: 0.2rem solid $primary-color;
-$border-normal: 0.1rem solid $primary-color;
-$border-normal-white: 0.1rem solid white;
+$border-bold: 0.2rem solid $border-color;
+$border-normal: 0.1rem solid $border-color;
 
 %borders-cell {
-  border-right: 0.001rem solid $primary-color;
-  border-bottom: 0.001rem solid $primary-color;
+  border-right: 0.001rem solid $border-color;
+  border-bottom: 0.001rem solid $border-color;
 }
 %borders-info {
   border: $border-bold;
 }
 %borders-left {
-  border-left: 0.1rem solid $primary-color;
-  border-right: 0.1rem solid $primary-color;
+  border-left: 0.1rem solid $border-color;
+  border-right: 0.1rem solid $border-color;
 }
 
 %borders-top {
-  border-top: 0.1rem solid $primary-color;
-  border-bottom: 0.1rem solid $primary-color;
+  border-top: 0.1rem solid $border-color;
+  border-bottom: 0.1rem solid $border-color;
 }
 
 %borders-board {
-  border: 0.1rem solid $primary-color;
+  border: 0.1rem solid $border-color;
 }
 
 %borders-section {

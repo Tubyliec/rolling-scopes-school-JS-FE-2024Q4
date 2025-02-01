@@ -9,3 +9,5 @@ createGame();
 createList(domElements.fieldset);
 domElements.easyButton.classList.add("dif-btn--active");
 document.getElementById("cross").checked = true;
+
+window.addEventListener("resize", createGame);
