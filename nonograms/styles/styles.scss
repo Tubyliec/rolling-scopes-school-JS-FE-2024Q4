@@ -131,18 +131,18 @@ body {
 }
 
 .audio-on {
-  background-image: url(../assets/icons/volume-medium-white-icon.svg);
+  background-image: url("../assets/icons/volume.png");
 }
 
 .audio-off {
-  background-image: url(../assets/icons/volume-muted-white-icon.svg);
+  background-image: url("../assets/icons/volume-muted.png");
 }
 .theme-on {
-  background-image: url(../assets/icons/sun-icon.png);
+  background-image: url("../assets/icons/sun-icon.png");
 }
 
 .theme-off {
-  background-image: url(../assets/icons/moon-icon.png);
+  background-image: url("../assets/icons/moon-icon.png");
 }
 .toogle-btn:checked {
   &::after {
