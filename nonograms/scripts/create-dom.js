@@ -128,6 +128,7 @@ function createDom() {
     id: ["theme-toogle"],
     classes: ["toogle-btn"],
   });
+  domElements.themeToogler.setAttribute("data-name", "theme");
   domElements.themeTooglerLabel = createElement({
     tag: "label",
     parent: domElements.themeButtonWrapper,

@@ -59,12 +59,12 @@ html {
   src: local("Griffy"), url("../assets/fonts/Griffy-Regular.ttf") format("truetype");
 }
 .left-wrapper, .cell {
-  border-right: 0.001rem solid #7c95d3;
-  border-bottom: 0.001rem solid #7c95d3;
+  border-right: 0.001rem solid var(--border-color);
+  border-bottom: 0.001rem solid var(--border-color);
 }
 
 .difficulty-panel, .game-panel {
-  border: 0.2rem solid #7c95d3;
+  border: 0.2rem solid var(--border-color);
   border-radius: 0.5rem;
 }
 
@@ -118,7 +118,7 @@ html {
 }
 
 .background--dark {
-  background-color: #56617d;
+  background-color: var(--neutral-color);
 }
 
 .background--light {
@@ -131,8 +131,23 @@ html {
 
 body {
   --cell-size: 5rem;
-  --primary-color: #7c95d3;
-  --background-color: #ffffff;
+  --primary-color: #308eaf;
+  --border-color: #308eaf;
+  --background-toogler: #f9f6f4;
+  --background-color: linear-gradient(
+    90deg,
+    rgba(249, 246, 244, 1) 0%,
+    rgba(249, 244, 246, 1) 100%
+  );
+  --light-color: #f9f6f4;
+  --neutral-color: #ffd700;
+  --active-color: #3663bb;
+  --dark-color: #1b1c1d;
+  --panel-color: #f9f6f4;
+}
+
+.body-wrapper {
+  background-color: var(--background-color);
 }
 
 .main-panel {
@@ -150,12 +165,13 @@ body {
 .header {
   width: 100vw;
   padding: 0.5rem 0;
-  background-color: #7c95d3;
+  background-color: var(--primary-color);
 }
 
 .header-wrapper {
   margin: 0 auto;
   padding: 0.5rem;
+  color: var(--panel-color);
   justify-content: space-around;
   align-items: center;
   width: 50%;
@@ -165,7 +181,6 @@ body {
 
 .name {
   text-transform: uppercase;
-  color: #e2e1e0;
 }
 
 .options {
@@ -182,7 +197,6 @@ body {
   text-align: center;
   font-family: Griffy;
   font-size: 2rem;
-  color: #e2e1e0;
 }
 
 .btn-wrapper {
@@ -197,7 +211,7 @@ body {
   display: inline-block;
   width: 3.2rem;
   height: 1.8rem;
-  background: var(--background-color);
+  background: var(--panel-color);
   border-radius: 1rem;
   outline: none;
   cursor: pointer;
@@ -210,8 +224,8 @@ body {
   width: 1.5rem;
   height: 1.6rem;
   border-radius: 50%;
-  left: 0.1rem;
-  top: 0.1rem;
+  left: 0.11rem;
+  top: 0.11rem;
   transform: translateX(0);
 }
 
@@ -264,24 +278,25 @@ body {
   padding: 0.5rem;
   min-width: 10rem;
   height: 3rem;
-  background-color: #7c95d3;
+  background-color: var(--primary-color);
   border-radius: 0.2rem;
   opacity: 80%;
   cursor: pointer;
 }
 .dif-btn:hover {
   opacity: 100%;
-  background-color: #786cd3;
+  background-color: var(--active-color);
 }
 
 .dif-btn--active {
   opacity: 100%;
   transform: scale(1.05);
-  background-color: #8d54d3;
+  background-color: var(--active-color);
 }
 
 .fieldset {
   display: grid;
+  color: var(--dark-color);
   grid-template-columns: repeat(3, 1fr);
   row-gap: 0.5rem;
   -moz-column-gap: 1rem;
@@ -297,7 +312,7 @@ body {
 }
 
 .input-radio {
-  color: #7c95d3;
+  color: var(--primary-color);
 }
 
 .buttons-panel {
@@ -308,6 +323,7 @@ body {
 
 .board {
   font-family: Griffy;
+  color: var(--dark-color);
   margin: 0.5rem;
   display: grid;
   grid-gap: 0.3rem;
@@ -327,14 +343,14 @@ body {
 .top-wrapper {
   justify-content: end;
   align-content: end;
-  border-bottom: 0.001rem solid #7c95d3;
+  border-bottom: 0.001rem solid var(--border-color);
 }
 .top-wrapper:not(:last-child) {
-  border-right: 0.001rem solid #7c95d3;
+  border-right: 0.001rem solid var(--border-color);
 }
 
 .top-wrapper:not(:last-child):nth-child(5n) {
-  border-right: 0.2rem solid #7c95d3;
+  border-right: 0.2rem solid var(--border-color);
 }
 
 .left-wrapper {
@@ -342,7 +358,7 @@ body {
 }
 
 .left-wrapper:nth-child(5n) {
-  border-bottom: 0.2rem solid #7c95d3;
+  border-bottom: 0.2rem solid var(--border-color);
 }
 
 .info-nums {
@@ -357,7 +373,7 @@ body {
 
 .gameboard {
   grid-area: gameboard;
-  border: 0.1rem solid #7c95d3;
+  border: 0.1rem solid var(--border-color);
 }
 
 .row {
@@ -378,11 +394,11 @@ body {
 }
 
 .cell:not(:last-child):nth-child(5n) {
-  border-right: 0.2rem solid #7c95d3;
+  border-right: 0.2rem solid var(--border-color);
 }
 
 .row:nth-child(5n) {
-  border-bottom: 0.2rem solid #7c95d3;
+  border-bottom: 0.2rem solid var(--border-color);
 }
 
 .row:last-child,
@@ -399,7 +415,7 @@ body {
   width: 50%;
   height: -moz-fit-content;
   height: fit-content;
-  background-color: var(--background-color);
+  background-color: var(--light-color);
 }
 .modal::backdrop {
   background-color: var(--primary-color);
@@ -417,6 +433,7 @@ body {
 }
 
 .score-wrapper {
+  color: var(--dark-color);
   text-transform: capitalize;
   gap: 2rem;
   margin: 2rem;
@@ -429,7 +446,7 @@ body {
 
 .score-table__header {
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: white;
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
@@ -439,6 +456,6 @@ body {
 
 .table-row {
   justify-content: space-between;
-  border-bottom: 0.1rem solid #7c95d3;
+  border-bottom: 0.1rem solid var(--border-color);
   padding: 0.5rem 1rem;
 }/*# sourceMappingURL=styles.css.map */

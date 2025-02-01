@@ -37,6 +37,7 @@ let gameState = {
   controlButtons: [],
   toogleButtons: [],
   isSoundOn: true,
+  isLightTheme: true,
 };
 
 //Play sounds
@@ -198,6 +199,28 @@ function processToogle() {
     this.checked === true
       ? (gameState.isSoundOn = false)
       : (gameState.isSoundOn = true);
+  }
+  if (this.dataset.name === "theme") {
+    if (this.checked === true) {
+      document.body.style.setProperty("--background-color", "#121212");
+      document.body.style.setProperty("--primary-color", "#333333");
+      document.body.style.setProperty("--border-color", "#f9f6f4");
+      document.body.style.setProperty("--active-color", "#308eaf");
+      document.body.style.setProperty("--dark-color", "#f9f6f4");
+      document.body.style.setProperty("--panel-color", "#308eaf");
+      document.body.style.setProperty("--light-color", "#121212");
+    } else {
+      document.body.style.setProperty(
+        "--background-color",
+        "linear-gradient(90deg, rgba(249,246,244,1) 0%, rgba(249,244,246,1) 100%)",
+      );
+      document.body.style.setProperty("--primary-color", "#308eaf");
+      document.body.style.setProperty("--border-color", "#308eaf");
+      document.body.style.setProperty("--dark-color", "#1b1c1d");
+      document.body.style.setProperty("--active-color", "#3663bb");
+      document.body.style.setProperty("--panel-color", "#f9f6f4");
+      document.body.style.setProperty("--light-color", "#f9f6f4");
+    }
   }
 }
 
