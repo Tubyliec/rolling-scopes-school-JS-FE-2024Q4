@@ -39,16 +39,19 @@ body {
   justify-content: center;
 }
 .main-wrapper {
-  padding: 2rem;
+  padding: 2rem 0;
   min-height: 85vh;
   @extend %flex-row;
   gap: 2rem;
   justify-content: center;
   align-items: center;
+  @media (max-width: 950px) {
+    flex-direction: column-reverse;
+  }
 }
 //Header
 .header {
-  width: 100vw;
+  width: 100%;
   padding: 0.5rem 0;
   background-color: $primary-color;
 }
@@ -68,6 +71,9 @@ body {
 .name {
   @extend %header-text;
   text-transform: uppercase;
+  @media (max-width: 500px) {
+    font-size: 3rem;
+  }
 }
 
 .options {
@@ -156,11 +162,18 @@ body {
   justify-content: center;
   @extend %borders-section;
   padding: $padding-medium;
+  @media (max-width: 500px) {
+    flex-direction: row;
+    gap: 2rem;
+  }
 }
 .difficulty-buttons {
   @extend %flex-row;
   gap: 1rem;
   padding-bottom: 0.5rem;
+  @media (max-width: 500px) {
+    flex-direction: column;
+  }
 }
 .dif-btn {
   padding-top: 0.2rem;
@@ -168,7 +181,7 @@ body {
   font-size: 1.5rem;
   text-transform: uppercase;
   color: #e2e1e0;
-  padding: 0.5rem;
+
   min-width: 10rem;
   height: 3rem;
   background-color: $primary-color;
@@ -178,6 +191,9 @@ body {
   &:hover {
     opacity: 100%;
     background-color: var(--active-color);
+  }
+  @media (max-width: 500px) {
+    font-size: 1rem;
   }
 }
 
@@ -194,6 +210,9 @@ body {
   grid-template-columns: repeat(3, 1fr);
   row-gap: 0.5rem;
   column-gap: 1rem;
+  @media (max-width: 500px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .list-checkbox {
@@ -203,6 +222,9 @@ body {
   gap: 0.5rem;
   padding: $padding-small;
   text-transform: capitalize;
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
 }
 .input-radio {
   color: $primary-color;
@@ -351,6 +373,9 @@ body {
   @extend %flex-column;
   @extend %text-medium;
   width: 100%;
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+  }
 }
 
 .score-table__header {
@@ -361,6 +386,9 @@ body {
 
 .score-table__name {
   @extend %header-secondary;
+  @media (max-width: 500px) {
+    font-size: 2rem;
+  }
 }
 .table-body {
   width: 100%;
