@@ -64,7 +64,7 @@ html {
 }
 
 .difficulty-panel, .game-panel {
-  border: 0.2rem solid var(--border-color);
+  border: 0.3rem solid var(--border-color);
   border-radius: 0.5rem;
 }
 
@@ -140,7 +140,7 @@ body {
     rgba(249, 244, 246, 1) 100%
   );
   --light-color: #f9f6f4;
-  --neutral-color: #ffd700;
+  --neutral-color: #434343;
   --active-color: #3663bb;
   --dark-color: #1b1c1d;
   --panel-color: #f9f6f4;
@@ -362,17 +362,16 @@ body {
   color: var(--dark-color);
   margin: 0.5rem;
   display: grid;
-  grid-gap: 0.3rem;
   grid-template: ". top" "left gameboard";
 }
 
 .top-info {
-  padding-left: 0.05rem;
+  padding-left: 0.08rem;
   grid-area: top;
 }
 
 .left-info {
-  padding-top: 0.1rem;
+  padding: 0.1rem 0;
   grid-area: left;
 }
 
@@ -386,7 +385,7 @@ body {
 }
 
 .top-wrapper:not(:last-child):nth-child(5n) {
-  border-right: 0.2rem solid var(--border-color);
+  border-right: 0.3rem solid var(--border-color);
 }
 
 .left-wrapper {
@@ -394,7 +393,7 @@ body {
 }
 
 .left-wrapper:nth-child(5n) {
-  border-bottom: 0.2rem solid var(--border-color);
+  border-bottom: 0.3rem solid var(--border-color);
 }
 
 .info-nums {
@@ -431,11 +430,11 @@ body {
 }
 
 .cell:not(:last-child):nth-child(5n) {
-  border-right: 0.2rem solid var(--border-color);
+  border-right: 0.3rem solid var(--border-color);
 }
 
 .row:nth-child(5n) {
-  border-bottom: 0.2rem solid var(--border-color);
+  border-bottom: 0.3rem solid var(--border-color);
 }
 
 .row:last-child,
@@ -467,6 +466,7 @@ body {
 
 .modal-info__text {
   text-align: center;
+  color: var(--dark-color);
 }
 
 .score-wrapper {

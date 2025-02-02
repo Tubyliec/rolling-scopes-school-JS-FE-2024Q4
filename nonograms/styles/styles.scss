@@ -24,7 +24,7 @@ body {
     rgba(249, 244, 246, 1) 100%
   );
   --light-color: #f9f6f4;
-  --neutral-color: #ffd700;
+  --neutral-color: #434343;
   --active-color: #3663bb;
   --dark-color: #1b1c1d;
   --panel-color: #f9f6f4;
@@ -244,21 +244,20 @@ body {
   color: var(--dark-color);
   margin: $margin-medium;
   display: grid;
-  grid-gap: 0.3rem;
   grid-template:
     ". top"
     "left gameboard";
 }
 
 .top-info {
-  padding-left: 0.05rem;
+  padding-left: 0.08rem;
   grid-area: top;
   @extend %flex-row;
   @extend %size-fit;
 }
 
 .left-info {
-  padding-top: 0.1rem;
+  padding: 0.1rem 0;
   grid-area: left;
   @extend %size-fit;
 }
@@ -358,6 +357,7 @@ body {
 .modal-info__text {
   @extend %header-secondary;
   text-align: center;
+  color: var(--dark-color);
 }
 
 .score-wrapper {
