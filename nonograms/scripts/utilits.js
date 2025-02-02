@@ -38,6 +38,16 @@ let gameState = {
   toogleButtons: [],
   isSoundOn: true,
   isLightTheme: true,
+  savedGame: {
+    difficulty: "easy",
+    pattern: "cross",
+    array: [],
+    savedArray: [],
+    currentCellCounter: 0,
+    falseCellCounter: 0,
+    minutes: 0,
+    seconds: 0,
+  },
 };
 
 //Play sounds
@@ -47,6 +57,46 @@ function playSound(source) {
   if (gameState.isSoundOn === true) {
     audio.play();
   }
+}
+
+//Save game
+
+function saveGame() {
+  gameState.savedGame.currentCellCounter = gameState.currentCellCounter;
+  gameState.savedGame.falseCellCounter = gameState.falseCellCounter;
+  gameState.savedGame.minutes = gameState.time.minutes;
+  gameState.savedGame.seconds = gameState.time.seconds;
+  gameState.savedGame.savedArray = gameState.savedGame.array;
+  window.localStorage.setItem("savedGame", JSON.stringify(gameState.savedGame));
+}
+
+function loadGame() {
+  const loadedState = JSON.parse(window.localStorage.getItem("savedGame"));
+
+  gameState.savedGame.pattern = loadedState.pattern;
+  gameState.savedGame.difficulty = loadedState.difficulty;
+
+  gameState.difficultyButtons.forEach((element) => {
+    if (element.textContent === gameState.savedGame.difficulty) {
+      element.dispatchEvent(
+        new MouseEvent("click", { bubbles: true, cancelable: true }),
+      );
+    }
+  });
+  let patternsArray = document.querySelectorAll(".input-radio");
+  patternsArray.forEach((element) => {
+    if (element.value === gameState.savedGame.pattern) {
+      element.dispatchEvent(
+        new MouseEvent("click", { bubbles: true, cancelable: true }),
+      );
+    }
+  });
+  gameState.savedGame.savedArray = loadedState.savedArray;
+  gameState.currentCellCounter = loadedState.currentCellCounter;
+  gameState.falseCellCounter = loadedState.falseCellCounter;
+  gameState.time.minutes = loadedState.minutes;
+  gameState.time.seconds = loadedState.seconds;
+  processTimerEvent();
 }
 
 //Score
@@ -127,6 +177,8 @@ function processCell() {
   if (this.classList.contains("background--dark")) {
     this.classList.remove("background--dark");
     playSound(sounds.wipe);
+    gameState.savedGame.array[this.dataset.x - 1][this.dataset.y - 1] =
+      this.textContent;
     if (this.textContent === "1") {
       gameState.currentCellCounter -= 1;
     } else {
@@ -135,6 +187,7 @@ function processCell() {
   } else {
     this.classList.add("background--dark");
     playSound(sounds.pencil);
+    gameState.savedGame.array[this.dataset.x - 1][this.dataset.y - 1] = 2;
     if (this.textContent === "1") {
       gameState.currentCellCounter += 1;
     } else {
@@ -143,6 +196,8 @@ function processCell() {
   }
   if (this.classList.contains("cross--dark")) {
     this.classList.remove("cross--dark");
+    gameState.savedGame.array[this.dataset.x - 1][this.dataset.y - 1] =
+      this.textContent;
   }
   if (
     gameState.currentCellCounter === gameState.templateCellCounter &&
@@ -162,10 +217,13 @@ function processRightClick(event) {
   event.preventDefault();
   if (this.classList.contains("cross--dark")) {
     this.classList.remove("cross--dark");
+    gameState.savedGame.array[this.dataset.x - 1][this.dataset.y - 1] =
+      this.textContent;
     playSound(sounds.wipe);
   } else {
     this.classList.add("cross--dark");
     playSound(sounds.cross);
+    gameState.savedGame.array[this.dataset.x - 1][this.dataset.y - 1] = 3;
   }
   if (this.classList.contains("background--dark")) {
     this.classList.remove("background--dark");
@@ -183,11 +241,13 @@ function processDifficulty() {
   });
   this.classList.add("dif-btn--active");
   gameState.difficulty = eval(this.textContent);
+  gameState.savedGame.difficulty = this.textContent;
   createList(domElements.fieldset);
 }
 
 function processRadio() {
   gameState.currentPattern = gameState.difficulty[this.value].array;
+  gameState.savedGame.pattern = this.value;
   playSound(sounds.click);
   createGame();
 }
@@ -286,6 +346,27 @@ function processControlButtons() {
     randomPattern.dispatchEvent(
       new MouseEvent("click", { bubbles: true, cancelable: true }),
     );
+  }
+  if (this === domElements.saveButton) {
+    saveGame();
+  }
+  if (this === domElements.continueButton) {
+    loadGame();
+    console.log(gameState.templateCellCounter);
+    console.log(gameState.currentCellCounter);
+    const cellArray = document.querySelectorAll(".cell");
+    cellArray.forEach((element) => {
+      element.classList.remove("background--dark");
+      element.classList.remove("cross--dark");
+      const xNum = element.dataset.x - 1;
+      const yNum = element.dataset.y - 1;
+      if (gameState.savedGame.savedArray[xNum][yNum] == 2) {
+        element.classList.add("background--dark");
+      }
+      if (gameState.savedGame.savedArray[xNum][yNum] == 3) {
+        element.classList.add("cross--dark");
+      }
+    });
   }
 }
 

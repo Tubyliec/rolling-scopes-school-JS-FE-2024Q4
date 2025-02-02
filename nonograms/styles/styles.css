@@ -420,6 +420,7 @@ body {
   width: var(--cell-size);
   height: var(--cell-size);
   cursor: pointer;
+  color: transparent;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
