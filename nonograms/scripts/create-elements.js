@@ -74,6 +74,8 @@ function createCells(array, parentElement) {
 
   let counter = 0;
   array.forEach((element) => {
+    let cellCounter = 0;
+
     counter += 1;
     const tempClass = `row-${counter}`;
     const newRow = createElement({
@@ -82,15 +84,21 @@ function createCells(array, parentElement) {
       classes: ["row", tempClass],
     });
     element.forEach((item) => {
+      cellCounter += 1;
       const newItem = createElement({
         tag: "div",
         parent: document.querySelector(`.${tempClass}`),
         text: item,
         classes: ["cell"],
       });
+
+      newItem.setAttribute("data-x", counter);
+      newItem.setAttribute("data-y", cellCounter);
+
       if (item === 1) {
         gameState.templateCellCounter += 1;
       }
+
       newItem.addEventListener("click", processCell);
       newItem.addEventListener("click", processTimerEvent, {
         once: true,
@@ -285,6 +293,7 @@ function createGame() {
   fullCellCounter(gameState.currentPattern);
   createInfo(gameState.verticalNums, domElements.topInfo, "top-wrapper");
   createInfo(gameState.horizontalNums, domElements.leftInfo, "left-wrapper");
+  gameState.savedGame.array = structuredClone(gameState.currentPattern);
 }
 
 export {
