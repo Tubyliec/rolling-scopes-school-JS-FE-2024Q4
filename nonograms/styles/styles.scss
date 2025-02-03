@@ -192,6 +192,10 @@ body {
     opacity: 100%;
     background-color: var(--active-color);
   }
+  &:disabled {
+    opacity: 50%;
+    cursor: default;
+  }
   @media (max-width: 500px) {
     font-size: 1rem;
   }

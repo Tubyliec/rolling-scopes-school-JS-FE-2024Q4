@@ -284,11 +284,15 @@ function createScoreTable(parentElement) {
 // Create game
 
 function createGame() {
+  if (window.localStorage.getItem("savedGame") === null) {
+    domElements.continueButton.setAttribute("disabled", "");
+  }
   gameState.templateCellCounter = 0;
   gameState.currentCellCounter = 0;
   gameState.falseCellCounter = 0;
   resetTimer();
   domElements.board.classList.remove("no-events");
+  domElements.saveButton.removeAttribute("disabled", "");
   createCells(gameState.currentPattern, domElements.gameboard);
   fullCellCounter(gameState.currentPattern);
   createInfo(gameState.verticalNums, domElements.topInfo, "top-wrapper");
