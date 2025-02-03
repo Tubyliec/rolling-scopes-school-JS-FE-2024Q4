@@ -62,6 +62,7 @@ function playSound(source) {
 //Save game
 
 function saveGame() {
+  domElements.continueButton.removeAttribute("disabled", "");
   gameState.savedGame.currentCellCounter = gameState.currentCellCounter;
   gameState.savedGame.falseCellCounter = gameState.falseCellCounter;
   gameState.savedGame.minutes = gameState.time.minutes;
@@ -310,6 +311,7 @@ function processControlButtons() {
   }
   if (this === domElements.solutionButton) {
     domElements.board.classList.add("no-events");
+    domElements.saveButton.setAttribute("disabled", "");
     cellArray.forEach((element) => {
       element.classList.remove("background--dark");
       element.classList.remove("cross--dark");
@@ -319,6 +321,7 @@ function processControlButtons() {
     });
   }
   if (this === domElements.resetButton) {
+    domElements.saveButton.removeAttribute("disabled", "");
     cellArray.forEach((element) => {
       element.classList.remove("background--dark");
       element.classList.remove("cross--dark");
