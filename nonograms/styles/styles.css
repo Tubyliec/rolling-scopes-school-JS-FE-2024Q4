@@ -451,6 +451,7 @@ body {
   margin: auto;
   position: relative;
   align-items: center;
+  border: 0.001rem solid white;
   border-radius: 0.5rem;
   width: 50%;
   height: -moz-fit-content;
