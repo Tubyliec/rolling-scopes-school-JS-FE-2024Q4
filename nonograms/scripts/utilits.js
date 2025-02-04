@@ -33,6 +33,7 @@ let gameState = {
     seconds: null,
   },
   ratingList: [],
+  topList: [],
   difficultyButtons: [],
   controlButtons: [],
   toogleButtons: [],
@@ -113,8 +114,8 @@ function createRating() {
       gameState.scoreItem.difficulty = element.textContent;
     }
   });
-  refreshRating();
 
+  refreshRating();
   gameState.ratingList.push(gameState.scoreItem);
   window.localStorage.setItem(
     "ratingList",
@@ -131,15 +132,15 @@ function refreshRating() {
   if (!gameState.ratingList) {
     gameState.ratingList = [];
   }
-  if (gameState.ratingList.length > 1) {
-    gameState.ratingList.sort(function (a, b) {
+
+  gameState.topList = gameState.ratingList.slice(-5);
+
+  if (gameState.topList.length > 1) {
+    gameState.topList.sort(function (a, b) {
       let aValue = a.minutes * 60 + a.seconds;
       let bValue = b.minutes * 60 + b.seconds;
       return aValue - bValue;
     });
-  }
-  if (gameState.ratingList.length === 5) {
-    gameState.ratingList = gameState.ratingList.slice(0, 4);
   }
 }
 //Timer

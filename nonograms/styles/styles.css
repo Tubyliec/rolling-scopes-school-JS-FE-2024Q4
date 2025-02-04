@@ -511,4 +511,8 @@ body {
   justify-content: space-between;
   border-bottom: 0.1rem solid var(--border-color);
   padding: 0.5rem 1rem;
+}
+
+.table-item {
+  min-width: 5rem;
 }/*# sourceMappingURL=styles.css.map */
