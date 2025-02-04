@@ -93,6 +93,7 @@ function loadGame() {
     }
   });
   gameState.savedGame.savedArray = loadedState.savedArray;
+  gameState.savedGame.array = loadedState.savedArray;
   gameState.currentCellCounter = loadedState.currentCellCounter;
   gameState.falseCellCounter = loadedState.falseCellCounter;
   gameState.time.minutes = loadedState.minutes;
