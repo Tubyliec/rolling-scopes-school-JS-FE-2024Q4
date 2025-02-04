@@ -241,7 +241,7 @@ function createScoreTable(parentElement) {
     classes: ["header-time", "table-item"],
   });
 
-  gameState.ratingList.forEach((element) => {
+  gameState.topList.forEach((element) => {
     let counter = 0;
     counter += 1;
     const tempClass = `rating-row-${counter}`;
