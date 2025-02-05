@@ -104,17 +104,6 @@ function loadGame() {
 
 //Score
 function createRating() {
-  document.querySelectorAll(".input-radio").forEach((element) => {
-    if (element.checked === true) {
-      gameState.scoreItem.name = element.value;
-    }
-  });
-  gameState.difficultyButtons.forEach((element) => {
-    if (element.classList.contains("dif-btn--active")) {
-      gameState.scoreItem.difficulty = element.textContent;
-    }
-  });
-
   refreshRating();
   gameState.ratingList.push(gameState.scoreItem);
   window.localStorage.setItem(
@@ -244,7 +233,6 @@ function processDifficulty() {
   });
   this.classList.add("dif-btn--active");
   gameState.difficulty = eval(this.textContent);
-  gameState.savedGame.difficulty = this.textContent;
   createList(domElements.fieldset);
 }
 
@@ -270,6 +258,11 @@ function processToogle() {
       document.body.style.setProperty("--dark-color", "#f9f6f4");
       document.body.style.setProperty("--panel-color", "#308eaf");
       document.body.style.setProperty("--light-color", "#121212");
+      document.body.style.setProperty("--neutral-color", "#308eaf");
+      document.body.style.setProperty(
+        "--cross",
+        `url("../assets/icons/cross-pr.png")`,
+      );
       domElements.audioOnImg.style.setProperty(
         "background-image",
         `url("./assets/icons/volume-pr.png")`,
@@ -297,10 +290,12 @@ function processToogle() {
       document.body.style.removeProperty("--active-color");
       document.body.style.removeProperty("--panel-color");
       document.body.style.removeProperty("--light-color");
+      document.body.style.removeProperty("--neutral-color");
       domElements.audioOnImg.style.removeProperty("background-image");
       domElements.audioOffImg.style.removeProperty("background-image");
       domElements.themeOnImg.style.removeProperty("background-image");
       domElements.themeOffImg.style.removeProperty("background-image");
+      document.body.style.removeProperty("--cross");
     }
   }
 }
@@ -331,6 +326,7 @@ function processControlButtons() {
       gameState.falseCellCounter = 0;
       resetTimer();
       domElements.board.classList.remove("no-events");
+      gameState.savedGame.array = structuredClone(gameState.currentPattern);
     });
   }
   if (this === domElements.randomButton) {

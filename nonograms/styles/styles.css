@@ -144,6 +144,7 @@ body {
   --active-color: #3663bb;
   --dark-color: #1b1c1d;
   --panel-color: #f9f6f4;
+  --cross: url(../assets/icons/cross.png);
 }
 
 .body-wrapper {
@@ -430,7 +431,7 @@ body {
 }
 
 .cross--dark {
-  background-image: url(../assets/icons/cross.png);
+  background-image: var(--cross);
 }
 
 .cell:not(:last-child):nth-child(5n) {

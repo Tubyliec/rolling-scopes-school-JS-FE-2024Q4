@@ -298,6 +298,17 @@ function createGame() {
   createInfo(gameState.verticalNums, domElements.topInfo, "top-wrapper");
   createInfo(gameState.horizontalNums, domElements.leftInfo, "left-wrapper");
   gameState.savedGame.array = structuredClone(gameState.currentPattern);
+  document.querySelectorAll(".input-radio").forEach((element) => {
+    if (element.checked === true) {
+      gameState.scoreItem.name = element.value;
+    }
+  });
+  gameState.difficultyButtons.forEach((element) => {
+    if (element.classList.contains("dif-btn--active")) {
+      gameState.scoreItem.difficulty = element.textContent;
+      gameState.savedGame.difficulty = element.textContent;
+    }
+  });
 }
 
 export {

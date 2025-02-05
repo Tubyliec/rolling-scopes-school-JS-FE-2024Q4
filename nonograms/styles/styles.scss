@@ -28,6 +28,8 @@ body {
   --active-color: #3663bb;
   --dark-color: #1b1c1d;
   --panel-color: #f9f6f4;
+
+  --cross: url(../assets/icons/cross.png);
 }
 .body-wrapper {
   background-color: var(--background-color);
@@ -318,7 +320,7 @@ body {
 }
 
 .cross--dark {
-  background-image: url(../assets/icons/cross.png);
+  background-image: var(--cross);
   @extend %background-btn;
 }
 
