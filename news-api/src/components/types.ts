@@ -1,10 +1,10 @@
-export interface ISource {
+export type source = {
     id: string | null;
     name: string;
-}
+};
 
 export interface IArticle {
-    source: ISource;
+    source: source;
     author: string;
     title: string;
     description: string;
@@ -13,3 +13,7 @@ export interface IArticle {
     publishedAt: string;
     content: string;
 }
+
+export type newsSource = {
+    [x: string]: string;
+};
