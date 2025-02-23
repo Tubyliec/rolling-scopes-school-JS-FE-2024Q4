@@ -26,3 +26,6 @@ export enum Methods {
     PUT = 'PUT',
     DELETE = 'DELETE',
 }
+
+export type GetNews = { articles?: IArticle[] };
+export type GetSources = { sources?: NewsSource[] };
