@@ -20,4 +20,9 @@ export type NewsSource = {
 
 export type RequestOptions = Record<string, string | number | boolean>;
 
-export type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE';
+export enum Methods {
+    GET = 'GET',
+    POST = 'POST',
+    PUT = 'PUT',
+    DELETE = 'DELETE',
+}
