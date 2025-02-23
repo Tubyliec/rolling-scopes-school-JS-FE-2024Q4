@@ -1,10 +1,10 @@
-export type source = {
+export type Source = {
     id: string | null;
     name: string;
 };
 
 export interface IArticle {
-    source: source;
+    source: Source;
     author: string;
     title: string;
     description: string;
@@ -14,6 +14,10 @@ export interface IArticle {
     content: string;
 }
 
-export type newsSource = {
+export type NewsSource = {
     [x: string]: string;
 };
+
+export type RequestOptions = Record<string, string | number | boolean>;
+
+export type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE';
