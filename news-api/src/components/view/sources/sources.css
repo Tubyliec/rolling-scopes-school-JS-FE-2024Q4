@@ -1,11 +1,16 @@
 .sources {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     width: 100%;
-    height: 120px;
+    height: 140px;
     overflow: auto;
+    justify-content: center;
     align-items: center;
-    font: 300 1em 'Fira Sans', sans-serif;
+    font:
+        300 1em 'Fira Sans',
+        sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #30c5ff black;
 }
 
 .source__item {
@@ -31,4 +36,13 @@
 .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+    .sources {
+        height: 100px;
+    }
+    .source__item {
+        padding: 0.5em;
+    }
 }

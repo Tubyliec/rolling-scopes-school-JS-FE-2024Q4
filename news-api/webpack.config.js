@@ -13,7 +13,18 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'img/[name][ext]',
+                },
+            },
             { test: /\.ts$/i, use: 'ts-loader' },
+            {
+                test: /\.html$/,
+                use: ['html-loader'],
+            },
         ],
     },
     resolve: {
