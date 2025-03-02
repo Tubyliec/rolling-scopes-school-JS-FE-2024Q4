@@ -1,4 +1,6 @@
-import { RequestOptions, Methods } from '../types';
+import { RequestOptions } from '../../models/types/request-options.type';
+import { Methods } from '../../models/enums/methods.enum';
+import { callbackType } from '../../models/types/callback.type';
 
 class Loader {
     private baseLink: string;
@@ -39,7 +41,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load<T>(method: Methods, endpoint: string, callback: (data: T) => void, options = {}): void {
+    private load<T>(method: Methods, endpoint: string, callback: callbackType<T>, options = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())

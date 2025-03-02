@@ -1,5 +1,5 @@
 import './sources.css';
-import { NewsSource } from '../../types';
+import { NewsSource } from '../../../models/types/new-source.type';
 
 class Sources {
     public draw(data: NewsSource[]) {

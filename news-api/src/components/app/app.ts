@@ -1,6 +1,7 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { GetNews, GetSources } from '../types';
+import { GetNews } from '../../models/types/get-news.type';
+import { GetSources } from '../../models/types/get-sources.type';
 
 class App {
     private controller: AppController;
