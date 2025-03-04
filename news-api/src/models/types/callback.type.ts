@@ -1,1 +1,1 @@
-export type callbackType<T> = (data: T) => void;
+export type CallbackType<T> = (data: T) => void;
