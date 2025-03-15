@@ -1,5 +1,6 @@
-import { IsHtmlElement } from './models/interfaces/types/is-html-element.type';
-import { mainView } from './view/main/main';
+import { IsHtmlElement } from './models/types/is-html-element.type';
+import { MainView } from './view/main/main';
+import { Name } from './view/name/name';
 
 export class App {
   constructor() {
@@ -7,7 +8,7 @@ export class App {
   }
 
   createAppView(): void {
-    const main: IsHtmlElement = new mainView().getElement();
+    const main: IsHtmlElement = new MainView().getElement();
     if (main) {
       document.body.append(main);
     }

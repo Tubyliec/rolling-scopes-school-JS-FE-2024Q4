@@ -1,5 +1,19 @@
+body {
+  --color-primary: #2596be;
+  --color-light: #dfe3f0;
+  background: var(--color-primary);
+}
+
 .main-section {
-  margin: 0 auto;
-  width: 70%;
-  height: 100vh;
+  margin: 3vh auto;
+  max-width: 50%;
+  height: 90vh;
+  border: 0.05rem solid var(--color-light);
+  border-radius: 1rem;
+  color: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
 }
