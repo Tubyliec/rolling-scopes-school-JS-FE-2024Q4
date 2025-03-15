@@ -6,7 +6,7 @@ import { Name } from '../name/name';
 import { ViewCreator } from '../view-creator';
 import './main.scss';
 
-const cssClasses = ['main-section'];
+const cssClasses: string[] = ['main-section'];
 
 export class MainView extends ViewCreator {
   public list: IsHtmlElement;

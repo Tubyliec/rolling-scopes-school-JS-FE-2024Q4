@@ -5,7 +5,7 @@ import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
 import './option-field.scss';
 
-const cssClasses = ['option'];
+const cssClasses: string[] = ['option'];
 
 export class OptionCreator extends HtmlElementCreator {
   public primaryInput: IsHtmlElement;
@@ -16,9 +16,9 @@ export class OptionCreator extends HtmlElementCreator {
   constructor(options: CreateOptions, optionOptions: ListOptions) {
     super(options);
     this.createHtmlElement();
-    this.labelElement = this.createlabel(optionOptions);
-    this.primaryInput = this.createPrimaryInput(optionOptions);
-    this.secondaryInput = this.createSecondaryInput(optionOptions);
+    this.labelElement = OptionCreator.createlabel(optionOptions);
+    this.primaryInput = OptionCreator.createPrimaryInput(optionOptions);
+    this.secondaryInput = OptionCreator.createSecondaryInput(optionOptions);
     this.deleteButton = new ButtonCreator(options, 'Delete').getHtmlElement();
     this.deleteButton?.classList.add('button--delete');
     if (this.element && this.deleteButton) {
@@ -31,39 +31,45 @@ export class OptionCreator extends HtmlElementCreator {
     }
   }
 
-  public createHtmlElement(): void {
-    this.element = document.createElement('li');
-    this.setCss(cssClasses);
-  }
-
-  public createPrimaryInput(optionOptions: ListOptions): HTMLElement {
-    const primaryInput = document.createElement('input');
+  public static createPrimaryInput(optionOptions: ListOptions): HTMLElement {
+    const primaryInput: HTMLInputElement = document.createElement('input');
     primaryInput.placeholder = 'Title';
     if (optionOptions.id) {
-      primaryInput.id = optionOptions.id;
+      primaryInput.id = `${optionOptions.id}-primary`;
+    }
+    if (optionOptions.title) {
+      primaryInput.value = optionOptions.title;
     }
     primaryInput.classList.add('input', 'primary-input');
     return primaryInput;
   }
 
-  public createSecondaryInput(optionOptions: ListOptions): HTMLElement {
-    const secondaryInput = document.createElement('input');
+  public static createSecondaryInput(optionOptions: ListOptions): HTMLElement {
+    const secondaryInput: HTMLInputElement = document.createElement('input');
     secondaryInput.placeholder = 'Weight';
     secondaryInput.type = 'number';
     if (optionOptions.weight) {
       secondaryInput.value = optionOptions.weight;
     }
+    if (optionOptions.id) {
+      secondaryInput.id = `${optionOptions.id}-secondary`;
+    }
     secondaryInput.classList.add('input', 'secondary-input');
     return secondaryInput;
   }
 
-  public createlabel(optionOptions: ListOptions): HTMLElement {
-    const labelElement = document.createElement('label');
+  public static createlabel(optionOptions: ListOptions): HTMLElement {
+    const labelElement: HTMLLabelElement = document.createElement('label');
     labelElement.classList.add('label');
     if (optionOptions.id) {
-      labelElement.htmlFor = optionOptions.id;
+      labelElement.htmlFor = `${optionOptions.id}-primary`;
       labelElement.textContent = optionOptions.id;
     }
     return labelElement;
+  }
+
+  public createHtmlElement(): void {
+    this.element = document.createElement('li');
+    this.setCss(cssClasses);
   }
 }

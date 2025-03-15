@@ -2,7 +2,7 @@ import type { CreateOptions } from '../../models/interfaces/create-options.inter
 import { HtmlElementCreator } from '../html-element-creator';
 import './button.scss';
 
-const cssClasses = ['main-button'];
+const cssClasses: string[] = ['main-button'];
 
 export class ButtonCreator extends HtmlElementCreator {
   constructor(options: CreateOptions, text: string) {

@@ -1,4 +1,5 @@
 import type { CreateOptions } from '../models/interfaces/create-options.interface';
+import type { EventFunction } from '../models/types/event-callback.type';
 import type { IsHtmlElement } from '../models/types/is-html-element.type';
 
 export class HtmlElementCreator {
@@ -17,6 +18,9 @@ export class HtmlElementCreator {
     this.element = document.createElement(options.tag);
     this.setCss(options.classes);
     this.setText(options.text);
+    if (options.callback) {
+      this.setCallback(options.callback);
+    }
   }
 
   public appendElement(elements: IsHtmlElement[]): void {
@@ -40,6 +44,12 @@ export class HtmlElementCreator {
   public setText(text: string = ''): void {
     if (this.element) {
       this.element.textContent = text;
+    }
+  }
+
+  public setCallback(callback: EventFunction): void {
+    if (typeof callback === 'function' && this.element) {
+      this.element.addEventListener('click', (event) => callback(event));
     }
   }
 }

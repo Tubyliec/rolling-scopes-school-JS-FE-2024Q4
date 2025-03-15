@@ -3,10 +3,10 @@ import { MainView } from './view/main/main';
 
 export class App {
   constructor() {
-    this.createAppView();
+    App.createAppView();
   }
 
-  public createAppView(): void {
+  public static createAppView(): void {
     const main: IsHtmlElement = new MainView().getElement();
     if (main) {
       document.body.append(main);
