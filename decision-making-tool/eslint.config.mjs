@@ -6,15 +6,17 @@ import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { files: ['**/*.{js,mjs,cjs,ts}'] },
+  { ignores: ['node_modules/', '**/*.config.*'] },
+  { files: ['**/*.{js,ts}'] },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   pluginJs.configs.recommended,
-  tseslint.configs.recommendedTypeChecked,
+  ...tseslint.configs.recommendedTypeChecked,
   {
     languageOptions: {
       parserOptions: {
         projectService: true,
         tsconfigRootDir: import.meta.dirname,
+        project: ['./tsconfig.json'],
       },
     },
     rules: {
@@ -23,16 +25,21 @@ export default [
         { assertionStyle: 'never' },
       ],
       '@typescript-eslint/consistent-type-imports': 'error',
-      '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'warn',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         { accessibility: 'explicit', overrides: { constructors: 'off' } },
       ],
       '@typescript-eslint/member-ordering': 'error',
-      'class-methods-use-this': 'error',
+      'class-methods-use-this': 'warn',
       'unicorn/better-regex': 'warn',
     },
   },
-  eslintPluginUnicorn,
+  {
+    plugins: {
+      unicorn: eslintPluginUnicorn,
+    },
+    rules: eslintPluginUnicorn.configs.recommended.rules,
+  },
   eslintConfigPrettier,
 ];

@@ -1,12 +1,12 @@
-import { CreateOptions } from '../../models/interfaces/create-options.interface';
+import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import { ViewCreator } from '../view-creator';
-const scssClasses = ['name'];
+const cssClasses = ['name'];
 
 export class Name extends ViewCreator {
   constructor() {
     const options: CreateOptions = {
       tag: 'h1',
-      classes: [...scssClasses],
+      classes: [...cssClasses],
       text: 'Decision Making Tool',
     };
     super(options);

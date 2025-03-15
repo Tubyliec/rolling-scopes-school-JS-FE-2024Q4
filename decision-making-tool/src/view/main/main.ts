@@ -1,27 +1,27 @@
-import { CreateOptions } from '../../models/interfaces/create-options.interface';
-import { IsHtmlElement } from '../../models/types/is-html-element.type';
+import type { CreateOptions } from '../../models/interfaces/create-options.interface';
+import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
 import { List } from '../list/list';
 import { Name } from '../name/name';
 import { ViewCreator } from '../view-creator';
 import './main.scss';
 
-const scssClasses = ['main-section'];
+const cssClasses = ['main-section'];
 
 export class MainView extends ViewCreator {
-  list: IsHtmlElement;
-  nameElement: IsHtmlElement;
-  addButton: IsHtmlElement;
-  pastButton: IsHtmlElement;
-  clearButton: IsHtmlElement;
-  saveButton: IsHtmlElement;
-  loadButton: IsHtmlElement;
-  startButton: IsHtmlElement;
+  public list: IsHtmlElement;
+  public nameElement: IsHtmlElement;
+  public addButton: IsHtmlElement;
+  public pastButton: IsHtmlElement;
+  public clearButton: IsHtmlElement;
+  public saveButton: IsHtmlElement;
+  public loadButton: IsHtmlElement;
+  public startButton: IsHtmlElement;
 
   constructor() {
     const options: CreateOptions = {
       tag: 'main',
-      classes: [...scssClasses],
+      classes: [...cssClasses],
     };
     super(options);
     this.createElementView(options);

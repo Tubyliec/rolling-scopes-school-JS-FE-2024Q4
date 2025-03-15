@@ -8,3 +8,9 @@
   color: var(--color-light);
   font-size: 1rem;
 }
+
+.main-button:hover {
+  cursor: pointer;
+  scale: 1.01;
+  background: var(--color-secondary);
+}

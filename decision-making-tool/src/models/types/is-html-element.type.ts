@@ -1,1 +1,1 @@
-export type IsHtmlElement = HTMLElement | null;
+export type IsHtmlElement = HTMLElement | null | undefined;

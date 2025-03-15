@@ -1,18 +1,18 @@
-import { CreateOptions } from '../models/interfaces/create-options.interface';
-import { IsHtmlElement } from '../models/types/is-html-element.type';
+import type { CreateOptions } from '../models/interfaces/create-options.interface';
+import type { IsHtmlElement } from '../models/types/is-html-element.type';
 import { HtmlElementCreator } from '../utils/html-element-creator';
 
 export class ViewCreator {
-  elementViewCreator: HtmlElementCreator;
+  public elementViewCreator: HtmlElementCreator;
   constructor(options: CreateOptions) {
     this.elementViewCreator = this.createElementView(options);
   }
 
-  getElement(): IsHtmlElement {
+  public getElement(): IsHtmlElement {
     return this.elementViewCreator.getHtmlElement();
   }
 
-  createElementView(options: CreateOptions) {
+  public createElementView(options: CreateOptions): HtmlElementCreator {
     const elementOptions: CreateOptions = {
       tag: options.tag,
       classes: options.classes,

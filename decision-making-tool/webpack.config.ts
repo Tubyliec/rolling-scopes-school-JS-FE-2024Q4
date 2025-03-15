@@ -1,5 +1,5 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from 'node:path';
+import type webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpackDevServer from 'webpack-dev-server';
 

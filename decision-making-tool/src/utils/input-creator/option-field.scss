@@ -1,0 +1,45 @@
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  gap: 0.5rem;
+  border-radius: 0.3rem;
+  border: 0.05rem solid var(--color-light);
+  box-shadow: 0 0 0.2rem 0.05rem var(--color-light);
+  padding: 0.4rem;
+  margin: 0;
+}
+
+.label {
+  border-radius: 0.3rem;
+  border: 0.05rem solid var(--color-light);
+  padding: 0.4rem;
+}
+.label:hover {
+  cursor: pointer;
+}
+
+.input {
+  color: var(--color-light);
+  background: var(--color-third);
+  &::placeholder {
+    color: var(--color-light);
+  }
+  border-radius: 0.3rem;
+  border: 0.05rem solid var(--color-light);
+  padding: 0.5rem;
+}
+
+.primary-input {
+  width: 50%;
+}
+
+.secondary-input {
+  max-width: 3rem;
+}
+
+.button--delete {
+  width: 5rem;
+  box-shadow: none;
+}
