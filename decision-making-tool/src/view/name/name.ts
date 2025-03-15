@@ -1,5 +1,6 @@
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import { ViewCreator } from '../view-creator';
+import './name.scss';
 const cssClasses = ['name'];
 
 export class Name extends ViewCreator {

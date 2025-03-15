@@ -9,12 +9,18 @@
   box-shadow: 0 0 0.2rem 0.05rem var(--color-light);
   padding: 0.4rem;
   margin: 0;
+  @media (max-width: 800px) {
+    font-size: 0.7rem;
+  }
 }
 
 .label {
   border-radius: 0.3rem;
   border: 0.05rem solid var(--color-light);
   padding: 0.4rem;
+  @media (max-width: 800px) {
+    font-size: 0.7rem;
+  }
 }
 .label:hover {
   cursor: pointer;
@@ -29,17 +35,29 @@
   border-radius: 0.3rem;
   border: 0.05rem solid var(--color-light);
   padding: 0.5rem;
+  @media (max-width: 800px) {
+    font-size: 0.7rem;
+  }
 }
 
 .primary-input {
-  width: 50%;
+  width: 70%;
 }
 
 .secondary-input {
   max-width: 3rem;
+  @media (max-width: 800px) {
+    max-width: 2.5rem;
+  }
 }
 
 .button--delete {
-  width: 5rem;
+  max-width: 4rem;
   box-shadow: none;
+  padding: 0.4rem;
+  @media (max-width: 800px) {
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    max-width: 3rem;
+  }
 }
