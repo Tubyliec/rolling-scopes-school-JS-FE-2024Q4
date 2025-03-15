@@ -1,4 +1,3 @@
-import { ButtonOptions } from '../../models/interfaces/button-options.interface';
 import { CreateOptions } from '../../models/interfaces/create-options.interface';
 import { HtmlElementCreator } from '../html-element-creator';
 import './button.scss';
