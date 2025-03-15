@@ -19,10 +19,12 @@ export class HtmlElementCreator {
     this.setText(options.text);
   }
 
-  appendElement(htmlElement: IsHtmlElement): void {
-    if (this.element && htmlElement) {
-      this.element.append(htmlElement);
-    }
+  appendElement(elements: IsHtmlElement[]): void {
+    elements.forEach((htmlElement): void => {
+      if (this.element && htmlElement) {
+        this.element.append(htmlElement);
+      }
+    });
   }
 
   setCss(classes: string[]): void {
