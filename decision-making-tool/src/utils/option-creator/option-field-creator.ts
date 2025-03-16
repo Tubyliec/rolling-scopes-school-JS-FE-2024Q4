@@ -1,7 +1,7 @@
-import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+import { ButtonsActions } from '../buttons-actions/buttons-actions';
 
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
@@ -28,7 +28,7 @@ export class OptionFieldCreator extends HtmlElementCreator {
     this.secondaryInput =
       OptionFieldCreator.createSecondaryInput(optionOptions);
     this.deleteButton = new ButtonCreator(options, 'Delete', () =>
-      this.deleteOption(index),
+      ButtonsActions.deleteOption(index, this.element),
     ).getHtmlElement();
     this.deleteButton?.classList.add('button--delete');
     this.optionIndex = index;
@@ -82,10 +82,5 @@ export class OptionFieldCreator extends HtmlElementCreator {
   public createHtmlElement(): void {
     this.element = document.createElement('li');
     this.setCss(cssClasses);
-  }
-
-  public deleteOption(index: number): void {
-    optionsArray[index] = {};
-    this.element?.remove();
   }
 }
