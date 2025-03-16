@@ -3,6 +3,7 @@ import type { CreateOptions } from '../../models/interfaces/create-options.inter
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { OptionFieldCreator } from '../option-creator/option-field-creator';
+import { StorageActions } from '../storage-actions/storage-actions';
 
 export abstract class ButtonsActions {
   public static addOption(parentElement: IsHtmlElement): void {
@@ -28,6 +29,7 @@ export abstract class ButtonsActions {
     if (newOption) {
       parentElement?.append(newOption);
     }
+    StorageActions.saveFaleToStorage(optionsArray);
   }
 
   public static deleteOption(
@@ -36,6 +38,7 @@ export abstract class ButtonsActions {
   ): void {
     optionsArray[index] = {};
     currentElement?.remove();
+    StorageActions.saveFaleToStorage(optionsArray);
   }
 
   public static clearList(element: IsHtmlElement): void {
@@ -45,6 +48,7 @@ export abstract class ButtonsActions {
       }
     }
     optionsArray.length = 0;
+    StorageActions.saveFaleToStorage(optionsArray);
   }
 
   public static saveToFile(fileName: string = 'options.json'): void {

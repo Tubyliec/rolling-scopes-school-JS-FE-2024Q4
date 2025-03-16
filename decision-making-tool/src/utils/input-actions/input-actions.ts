@@ -1,4 +1,5 @@
 import { optionsArray } from '../../data/options';
+import { StorageActions } from '../storage-actions/storage-actions';
 
 export abstract class InputActions {
   public static saveValue(index: number, role: string): void {
@@ -9,5 +10,6 @@ export abstract class InputActions {
         optionsArray[index].weight = event.target.value;
       }
     }
+    StorageActions.saveFaleToStorage(optionsArray);
   }
 }
