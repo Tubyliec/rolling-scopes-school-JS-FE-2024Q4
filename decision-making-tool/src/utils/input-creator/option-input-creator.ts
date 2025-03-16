@@ -13,7 +13,10 @@ export class OptionInputCreator extends InputCreator {
       optionOptions.title &&
       this.element instanceof HTMLInputElement
     ) {
-      this.element.value = optionOptions.title;
+      this.element.value =
+        inputOptions.role === 'primary'
+          ? (optionOptions.title ?? '')
+          : (optionOptions.weight ?? '');
     }
   }
 }

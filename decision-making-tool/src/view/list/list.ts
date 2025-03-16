@@ -4,6 +4,7 @@ import type { ListOptions } from '../../models/interfaces/list-options.interface
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { OptionFieldCreator } from '../../utils/option-creator/option-field-creator';
+import { StorageActions } from '../../utils/storage-actions/storage-actions';
 import { ViewCreator } from '../view-creator';
 import './list.scss';
 
@@ -35,7 +36,15 @@ export class List extends ViewCreator {
   }
 
   public createOptionsList(options: CreateOptions): void {
+    optionsArray.length = 0;
+    const importedArray: ListOptions[] =
+      StorageActions.loadFromStorage('optionsArray');
+    optionsArray.length = 0;
+    for (const option of importedArray) {
+      optionsArray.push(option);
+    }
     const optionsItems: ListOptions[] = optionsArray;
+    console.log(importedArray);
     if (optionsArray.length > 0) {
       for (const optionsItem of optionsItems) {
         if (Object.keys(optionsItem).length > 0) {

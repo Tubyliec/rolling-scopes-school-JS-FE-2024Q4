@@ -34,6 +34,8 @@ export default [
       'class-methods-use-this': 'warn',
       'unicorn/better-regex': 'warn',
       '@typescript-eslint/no-unsafe-assignment': 'error',
+      '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+      '@typescript-eslint/consistent-type-assertions': 'warn',
     },
   },
   {
