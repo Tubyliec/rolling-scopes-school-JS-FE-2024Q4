@@ -9,7 +9,7 @@ import './option-field.scss';
 
 const cssClasses: string[] = ['option'];
 
-export class OptionCreator extends HtmlElementCreator {
+export class OptionFieldCreator extends HtmlElementCreator {
   public primaryInput: IsHtmlElement;
   public secondaryInput: IsHtmlElement;
   public labelElement: IsHtmlElement;
@@ -23,11 +23,12 @@ export class OptionCreator extends HtmlElementCreator {
   ) {
     super(options);
     this.createHtmlElement();
-    this.labelElement = OptionCreator.createlabel(optionOptions);
-    this.primaryInput = OptionCreator.createPrimaryInput(optionOptions);
-    this.secondaryInput = OptionCreator.createSecondaryInput(optionOptions);
-    this.deleteButton = new ButtonCreator(options, 'Delete', (event: Event) =>
-      this.deleteOption(event, index),
+    this.labelElement = OptionFieldCreator.createlabel(optionOptions);
+    this.primaryInput = OptionFieldCreator.createPrimaryInput(optionOptions);
+    this.secondaryInput =
+      OptionFieldCreator.createSecondaryInput(optionOptions);
+    this.deleteButton = new ButtonCreator(options, 'Delete', () =>
+      this.deleteOption(index),
     ).getHtmlElement();
     this.deleteButton?.classList.add('button--delete');
     this.optionIndex = index;
@@ -83,7 +84,7 @@ export class OptionCreator extends HtmlElementCreator {
     this.setCss(cssClasses);
   }
 
-  public deleteOption(event: Event, index: number): void {
+  public deleteOption(index: number): void {
     optionsArray[index] = {};
     this.element?.remove();
   }

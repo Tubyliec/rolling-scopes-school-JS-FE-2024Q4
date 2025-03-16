@@ -1,5 +1,6 @@
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
 import { List } from '../list/list';
 import { Name } from '../name/name';
@@ -29,9 +30,8 @@ export class MainView extends ViewCreator {
     this.list = new List().getElement();
     this.addButton = new ButtonCreator(options, 'Add option').getHtmlElement();
     this.pastButton = new ButtonCreator(options, 'Past list').getHtmlElement();
-    this.clearButton = new ButtonCreator(
-      options,
-      'Clear list',
+    this.clearButton = new ButtonCreator(options, 'Clear list', () =>
+      ButtonsActions.clearList(this.list),
     ).getHtmlElement();
     this.saveButton = new ButtonCreator(
       options,

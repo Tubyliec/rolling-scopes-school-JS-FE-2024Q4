@@ -2,7 +2,7 @@ import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
-import { OptionCreator } from '../../utils/input-creator/option-field-creator';
+import { OptionFieldCreator } from '../../utils/option-creator/option-field-creator';
 import { ViewCreator } from '../view-creator';
 import './list.scss';
 
@@ -25,7 +25,7 @@ export class List extends ViewCreator {
     optionOptions: ListOptions,
     index: number,
   ): IsHtmlElement {
-    const optionItem = new OptionCreator(
+    const optionItem = new OptionFieldCreator(
       options,
       optionOptions,
       index,
