@@ -5,6 +5,7 @@ import { ButtonsActions } from '../buttons-actions/buttons-actions';
 
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
+import { InputActions } from '../input-actions/input-actions';
 import { OptionInputCreator } from '../input-creator/option-input-creator';
 import './option-field.scss';
 
@@ -25,8 +26,18 @@ export class OptionFieldCreator extends HtmlElementCreator {
     super(options);
     this.createHtmlElement();
     this.labelElement = OptionFieldCreator.createlabel(optionOptions);
-    const primaryOption = { placeholder: 'Title', role: 'primary' };
-    const secondaryOption = { placeholder: 'Title', role: 'primary' };
+    const primaryOption = {
+      placeholder: 'Title',
+      role: 'primary',
+      callback: (): void =>
+        InputActions.saveValue(this.optionIndex, primaryOption.role),
+    };
+    const secondaryOption = {
+      placeholder: 'Weight',
+      role: 'secondary',
+      callback: (): void =>
+        InputActions.saveValue(this.optionIndex, secondaryOption.role),
+    };
     this.primaryInput = new OptionInputCreator(
       primaryOption,
       optionOptions,
@@ -50,23 +61,6 @@ export class OptionFieldCreator extends HtmlElementCreator {
     if (this.element && this.deleteButton) {
       this.element.append(this.deleteButton);
     }
-  }
-
-  public static createInput(
-    optionOptions: ListOptions,
-    placeholder: string,
-    role: string,
-  ): HTMLElement {
-    const input: HTMLInputElement = document.createElement('input');
-    input.placeholder = placeholder;
-    if (optionOptions.id) {
-      input.id = `${optionOptions.id}-${role}`;
-    }
-    if (optionOptions.title) {
-      input.value = optionOptions.title;
-    }
-    input.classList.add('input', `${role}-input`);
-    return input;
   }
 
   public static createlabel(optionOptions: ListOptions): HTMLElement {
