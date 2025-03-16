@@ -28,7 +28,9 @@ export class MainView extends ViewCreator {
     this.createElementView(options);
     this.nameElement = new Name().getElement();
     this.list = new List().getElement();
-    this.addButton = new ButtonCreator(options, 'Add option').getHtmlElement();
+    this.addButton = new ButtonCreator(options, 'Add option', () =>
+      ButtonsActions.addOption(this.list),
+    ).getHtmlElement();
     this.pastButton = new ButtonCreator(options, 'Past list').getHtmlElement();
     this.clearButton = new ButtonCreator(options, 'Clear list', () =>
       ButtonsActions.clearList(this.list),

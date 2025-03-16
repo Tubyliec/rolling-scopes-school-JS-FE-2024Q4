@@ -2,6 +2,7 @@ import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { OptionFieldCreator } from '../../utils/option-creator/option-field-creator';
 import { ViewCreator } from '../view-creator';
 import './list.scss';
@@ -35,24 +36,28 @@ export class List extends ViewCreator {
 
   public createOptionsList(options: CreateOptions): void {
     const optionsItems: ListOptions[] = optionsArray;
-    for (const optionsItem of optionsItems) {
-      if (Object.keys(optionsItem).length > 0) {
-        const optionOptions: ListOptions = {
-          id: `#${optionsItems.indexOf(optionsItem) + 1}`,
-          title: optionsItem.title,
-          weight: optionsItem.weight,
-        };
-        const optionElement: IsHtmlElement = List.createOption(
-          options,
-          optionOptions,
-          optionsItems.indexOf(optionsItem),
-        );
-        const ulElement: IsHtmlElement = this.element;
+    if (optionsArray.length > 0) {
+      for (const optionsItem of optionsItems) {
+        if (Object.keys(optionsItem).length > 0) {
+          const optionOptions: ListOptions = {
+            id: `#${optionsItems.indexOf(optionsItem) + 1}`,
+            title: optionsItem.title,
+            weight: optionsItem.weight,
+          };
+          const optionElement: IsHtmlElement = List.createOption(
+            options,
+            optionOptions,
+            optionsItems.indexOf(optionsItem),
+          );
+          const ulElement: IsHtmlElement = this.element;
 
-        if (ulElement && optionElement) {
-          ulElement.append(optionElement);
+          if (ulElement && optionElement) {
+            ulElement.append(optionElement);
+          }
         }
       }
+    } else {
+      ButtonsActions.addOption(this.element);
     }
   }
 }
