@@ -24,9 +24,16 @@ export class OptionFieldCreator extends HtmlElementCreator {
     super(options);
     this.createHtmlElement();
     this.labelElement = OptionFieldCreator.createlabel(optionOptions);
-    this.primaryInput = OptionFieldCreator.createPrimaryInput(optionOptions);
-    this.secondaryInput =
-      OptionFieldCreator.createSecondaryInput(optionOptions);
+    this.primaryInput = OptionFieldCreator.createInput(
+      optionOptions,
+      'Title',
+      'primary',
+    );
+    this.secondaryInput = OptionFieldCreator.createInput(
+      optionOptions,
+      'Weight',
+      'secondary',
+    );
     this.deleteButton = new ButtonCreator(options, 'Delete', () =>
       ButtonsActions.deleteOption(index, this.element),
     ).getHtmlElement();
@@ -42,31 +49,21 @@ export class OptionFieldCreator extends HtmlElementCreator {
     }
   }
 
-  public static createPrimaryInput(optionOptions: ListOptions): HTMLElement {
-    const primaryInput: HTMLInputElement = document.createElement('input');
-    primaryInput.placeholder = 'Title';
+  public static createInput(
+    optionOptions: ListOptions,
+    placeholder: string,
+    role: string,
+  ): HTMLElement {
+    const input: HTMLInputElement = document.createElement('input');
+    input.placeholder = placeholder;
     if (optionOptions.id) {
-      primaryInput.id = `${optionOptions.id}-primary`;
+      input.id = `${optionOptions.id}-${role}`;
     }
     if (optionOptions.title) {
-      primaryInput.value = optionOptions.title;
+      input.value = optionOptions.title;
     }
-    primaryInput.classList.add('input', 'primary-input');
-    return primaryInput;
-  }
-
-  public static createSecondaryInput(optionOptions: ListOptions): HTMLElement {
-    const secondaryInput: HTMLInputElement = document.createElement('input');
-    secondaryInput.placeholder = 'Weight';
-    secondaryInput.type = 'number';
-    if (optionOptions.weight) {
-      secondaryInput.value = optionOptions.weight;
-    }
-    if (optionOptions.id) {
-      secondaryInput.id = `${optionOptions.id}-secondary`;
-    }
-    secondaryInput.classList.add('input', 'secondary-input');
-    return secondaryInput;
+    input.classList.add('input', `${role}-input`);
+    return input;
   }
 
   public static createlabel(optionOptions: ListOptions): HTMLElement {
