@@ -35,9 +35,8 @@ export class MainView extends ViewCreator {
     this.clearButton = new ButtonCreator(options, 'Clear list', () =>
       ButtonsActions.clearList(this.list),
     ).getHtmlElement();
-    this.saveButton = new ButtonCreator(
-      options,
-      'Save list to file',
+    this.saveButton = new ButtonCreator(options, 'Save list to file', () =>
+      ButtonsActions.saveToFile(),
     ).getHtmlElement();
     this.loadButton = new ButtonCreator(
       options,

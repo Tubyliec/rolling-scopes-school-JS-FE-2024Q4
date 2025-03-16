@@ -46,4 +46,17 @@ export abstract class ButtonsActions {
     }
     optionsArray.length = 0;
   }
+
+  public static saveToFile(fileName: string = 'options.json'): void {
+    const fileInJson = JSON.stringify(optionsArray);
+    const blob = new Blob([fileInJson], { type: 'application/json' });
+    const fakeUrl = URL.createObjectURL(blob);
+    const fakeLink = document.createElement('a');
+    fakeLink.href = fakeUrl;
+    fakeLink.download = fileName;
+    document.body.append(fakeLink);
+    fakeLink.click();
+    fakeLink.remove();
+    URL.revokeObjectURL(fakeUrl);
+  }
 }
