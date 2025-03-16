@@ -5,6 +5,7 @@ import { ButtonsActions } from '../buttons-actions/buttons-actions';
 
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
+import { OptionInputCreator } from '../input-creator/option-input-creator';
 import './option-field.scss';
 
 const cssClasses: string[] = ['option'];
@@ -24,28 +25,30 @@ export class OptionFieldCreator extends HtmlElementCreator {
     super(options);
     this.createHtmlElement();
     this.labelElement = OptionFieldCreator.createlabel(optionOptions);
-    this.primaryInput = OptionFieldCreator.createInput(
+    const primaryOption = { placeholder: 'Title', role: 'primary' };
+    const secondaryOption = { placeholder: 'Title', role: 'primary' };
+    this.primaryInput = new OptionInputCreator(
+      primaryOption,
       optionOptions,
-      'Title',
-      'primary',
-    );
-    this.secondaryInput = OptionFieldCreator.createInput(
+    ).getHtmlElement();
+    this.secondaryInput = new OptionInputCreator(
+      secondaryOption,
       optionOptions,
-      'Weight',
-      'secondary',
-    );
+    ).getHtmlElement();
     this.deleteButton = new ButtonCreator(options, 'Delete', () =>
       ButtonsActions.deleteOption(index, this.element),
     ).getHtmlElement();
     this.deleteButton?.classList.add('button--delete');
     this.optionIndex = index;
+    this.element?.append(this.labelElement);
+    if (this.primaryInput instanceof HTMLElement) {
+      this.element?.append(this.primaryInput);
+    }
+    if (this.secondaryInput instanceof HTMLElement) {
+      this.element?.append(this.secondaryInput);
+    }
     if (this.element && this.deleteButton) {
-      this.element.append(
-        this.labelElement,
-        this.primaryInput,
-        this.secondaryInput,
-        this.deleteButton,
-      );
+      this.element.append(this.deleteButton);
     }
   }
 

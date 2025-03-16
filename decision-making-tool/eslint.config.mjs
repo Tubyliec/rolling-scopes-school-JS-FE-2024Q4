@@ -33,6 +33,7 @@ export default [
       '@typescript-eslint/member-ordering': 'error',
       'class-methods-use-this': 'warn',
       'unicorn/better-regex': 'warn',
+      '@typescript-eslint/no-unsafe-assignment': 'error',
     },
   },
   {
