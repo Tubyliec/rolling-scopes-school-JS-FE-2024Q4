@@ -1,6 +1,8 @@
+import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
 import './option-field.scss';
@@ -12,15 +14,23 @@ export class OptionCreator extends HtmlElementCreator {
   public secondaryInput: IsHtmlElement;
   public labelElement: IsHtmlElement;
   public deleteButton: IsHtmlElement;
+  public optionIndex: number;
 
-  constructor(options: CreateOptions, optionOptions: ListOptions) {
+  constructor(
+    options: CreateOptions,
+    optionOptions: ListOptions,
+    index: number,
+  ) {
     super(options);
     this.createHtmlElement();
     this.labelElement = OptionCreator.createlabel(optionOptions);
     this.primaryInput = OptionCreator.createPrimaryInput(optionOptions);
     this.secondaryInput = OptionCreator.createSecondaryInput(optionOptions);
-    this.deleteButton = new ButtonCreator(options, 'Delete').getHtmlElement();
+    this.deleteButton = new ButtonCreator(options, 'Delete', (event: Event) =>
+      this.deleteOption(event, index),
+    ).getHtmlElement();
     this.deleteButton?.classList.add('button--delete');
+    this.optionIndex = index;
     if (this.element && this.deleteButton) {
       this.element.append(
         this.labelElement,
@@ -71,5 +81,10 @@ export class OptionCreator extends HtmlElementCreator {
   public createHtmlElement(): void {
     this.element = document.createElement('li');
     this.setCss(cssClasses);
+  }
+
+  public deleteOption(event: Event, index: number): void {
+    optionsArray[index] = {};
+    this.element?.remove();
   }
 }

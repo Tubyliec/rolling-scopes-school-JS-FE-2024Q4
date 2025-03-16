@@ -23,10 +23,12 @@ export class List extends ViewCreator {
   public static createOption(
     options: CreateOptions,
     optionOptions: ListOptions,
+    index: number,
   ): IsHtmlElement {
     const optionItem = new OptionCreator(
       options,
       optionOptions,
+      index,
     ).getHtmlElement();
     return optionItem;
   }
@@ -43,6 +45,7 @@ export class List extends ViewCreator {
         const optionElement: IsHtmlElement = List.createOption(
           options,
           optionOptions,
+          optionsItems.indexOf(optionsItem),
         );
         const ulElement: IsHtmlElement = this.element;
 
