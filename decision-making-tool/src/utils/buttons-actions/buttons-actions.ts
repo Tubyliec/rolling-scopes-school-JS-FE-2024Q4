@@ -2,6 +2,7 @@ import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+import { AdditionalUtilities } from '../additional-utils/additional-utilities';
 import { OptionFieldCreator } from '../option-creator/option-field-creator';
 import { StorageActions } from '../storage-actions/storage-actions';
 
@@ -42,11 +43,7 @@ export abstract class ButtonsActions {
   }
 
   public static clearList(element: IsHtmlElement): void {
-    if (element) {
-      while (element.firstChild) {
-        element.firstChild?.remove();
-      }
-    }
+    AdditionalUtilities.clearElement(element);
     optionsArray.length = 0;
     StorageActions.saveFaleToStorage(optionsArray);
   }

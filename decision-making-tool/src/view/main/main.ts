@@ -1,5 +1,6 @@
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
 import { CanvasCreator } from '../canvas/canvas-creator';
@@ -57,7 +58,6 @@ export class MainView extends ViewCreator {
     this.startButton = new ButtonCreator(mainButtonClasses, 'Start', () =>
       this.NavigateToPicker(this.getElement()),
     ).getHtmlElement();
-    this.canvas = new CanvasCreator(400, 400).getHtmlElement();
     this.backButton = new ButtonCreator(pickerButtonClasses, 'Back', () =>
       this.NavigateToMain(this.getElement()),
     ).getHtmlElement();
@@ -78,6 +78,7 @@ export class MainView extends ViewCreator {
   }
 
   public appendPickerItems(): void {
+    this.canvas = new CanvasCreator(400, 400).getHtmlElement();
     this.elementViewCreator.appendElement([
       this.nameElement,
       this.backButton,
@@ -86,12 +87,12 @@ export class MainView extends ViewCreator {
   }
 
   public NavigateToPicker(element: IsHtmlElement): void {
-    ButtonsActions.clearList(element);
+    AdditionalUtilities.clearElement(element);
     this.appendPickerItems();
   }
 
   public NavigateToMain(element: IsHtmlElement): void {
-    ButtonsActions.clearList(element);
+    AdditionalUtilities.clearElement(element);
     this.appendMainItems();
   }
 }

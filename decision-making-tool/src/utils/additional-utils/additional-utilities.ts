@@ -1,3 +1,5 @@
+import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+
 export abstract class AdditionalUtilities {
   public static getRandomColor(): string {
     const letters = '0123456789ABCDEF';
@@ -10,5 +12,13 @@ export abstract class AdditionalUtilities {
 
   public static degreesToRadians(deg: number): number {
     return deg * (Math.PI / 180);
+  }
+
+  public static clearElement(element: IsHtmlElement): void {
+    if (element) {
+      while (element.firstChild) {
+        element.firstChild?.remove();
+      }
+    }
   }
 }
