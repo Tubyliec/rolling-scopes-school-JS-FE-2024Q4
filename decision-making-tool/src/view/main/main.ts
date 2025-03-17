@@ -2,6 +2,7 @@ import type { CreateOptions } from '../../models/interfaces/create-options.inter
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
+import { CanvasCreator } from '../canvas/canvas-creator';
 import { List } from '../list/list';
 import { Name } from '../name/name';
 import { ViewCreator } from '../view-creator';
@@ -18,6 +19,7 @@ export class MainView extends ViewCreator {
   public saveButton: IsHtmlElement;
   public loadButton: IsHtmlElement;
   public startButton: IsHtmlElement;
+  public canvas: IsHtmlElement;
 
   constructor() {
     const options: CreateOptions = {
@@ -43,6 +45,7 @@ export class MainView extends ViewCreator {
       'Load list from file',
     ).getHtmlElement();
     this.startButton = new ButtonCreator(options, 'Start').getHtmlElement();
+    this.canvas = new CanvasCreator(400, 400).getHtmlElement();
     this.elementViewCreator.appendElement([
       this.nameElement,
       this.list,
@@ -52,6 +55,7 @@ export class MainView extends ViewCreator {
       this.saveButton,
       this.loadButton,
       this.startButton,
+      this.canvas,
     ]);
   }
 }
