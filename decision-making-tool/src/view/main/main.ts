@@ -44,8 +44,14 @@ export class MainView extends ViewCreator {
       options,
       'Load list from file',
     ).getHtmlElement();
-    this.startButton = new ButtonCreator(options, 'Start').getHtmlElement();
+    this.startButton = new ButtonCreator(options, 'Start', () =>
+      this.NavigateToPicker(this.getElement()),
+    ).getHtmlElement();
     this.canvas = new CanvasCreator(400, 400).getHtmlElement();
+    this.appendMainItems();
+  }
+
+  public appendMainItems(): void {
     this.elementViewCreator.appendElement([
       this.nameElement,
       this.list,
@@ -55,7 +61,15 @@ export class MainView extends ViewCreator {
       this.saveButton,
       this.loadButton,
       this.startButton,
-      this.canvas,
     ]);
+  }
+
+  public appendPickerItems(): void {
+    this.elementViewCreator.appendElement([this.nameElement, this.canvas]);
+  }
+
+  public NavigateToPicker(element: IsHtmlElement): void {
+    ButtonsActions.clearList(element);
+    this.appendPickerItems();
   }
 }
