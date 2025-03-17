@@ -20,34 +20,47 @@ export class MainView extends ViewCreator {
   public loadButton: IsHtmlElement;
   public startButton: IsHtmlElement;
   public canvas: IsHtmlElement;
+  public backButton: IsHtmlElement;
 
   constructor() {
     const options: CreateOptions = {
       tag: 'main',
       classes: [...cssClasses],
     };
+
+    const mainButtonClasses: string[] = ['button', 'main__button'];
+    const pickerButtonClasses: string[] = ['button', 'picker__button'];
+
     super(options);
     this.createElementView(options);
     this.nameElement = new Name().getElement();
     this.list = new List().getElement();
-    this.addButton = new ButtonCreator(options, 'Add option', () =>
+    this.addButton = new ButtonCreator(mainButtonClasses, 'Add option', () =>
       ButtonsActions.addOption(this.list),
     ).getHtmlElement();
-    this.pastButton = new ButtonCreator(options, 'Past list').getHtmlElement();
-    this.clearButton = new ButtonCreator(options, 'Clear list', () =>
+    this.pastButton = new ButtonCreator(
+      mainButtonClasses,
+      'Past list',
+    ).getHtmlElement();
+    this.clearButton = new ButtonCreator(mainButtonClasses, 'Clear list', () =>
       ButtonsActions.clearList(this.list),
     ).getHtmlElement();
-    this.saveButton = new ButtonCreator(options, 'Save list to file', () =>
-      ButtonsActions.saveToFile(),
+    this.saveButton = new ButtonCreator(
+      mainButtonClasses,
+      'Save list to file',
+      () => ButtonsActions.saveToFile(),
     ).getHtmlElement();
     this.loadButton = new ButtonCreator(
-      options,
+      mainButtonClasses,
       'Load list from file',
     ).getHtmlElement();
-    this.startButton = new ButtonCreator(options, 'Start', () =>
+    this.startButton = new ButtonCreator(mainButtonClasses, 'Start', () =>
       this.NavigateToPicker(this.getElement()),
     ).getHtmlElement();
     this.canvas = new CanvasCreator(400, 400).getHtmlElement();
+    this.backButton = new ButtonCreator(pickerButtonClasses, 'Back', () =>
+      this.NavigateToMain(this.getElement()),
+    ).getHtmlElement();
     this.appendMainItems();
   }
 
@@ -65,11 +78,20 @@ export class MainView extends ViewCreator {
   }
 
   public appendPickerItems(): void {
-    this.elementViewCreator.appendElement([this.nameElement, this.canvas]);
+    this.elementViewCreator.appendElement([
+      this.nameElement,
+      this.backButton,
+      this.canvas,
+    ]);
   }
 
   public NavigateToPicker(element: IsHtmlElement): void {
     ButtonsActions.clearList(element);
     this.appendPickerItems();
+  }
+
+  public NavigateToMain(element: IsHtmlElement): void {
+    ButtonsActions.clearList(element);
+    this.appendMainItems();
   }
 }

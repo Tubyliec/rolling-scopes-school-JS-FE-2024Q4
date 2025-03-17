@@ -46,10 +46,11 @@ export class OptionFieldCreator extends HtmlElementCreator {
       secondaryOption,
       optionOptions,
     ).getHtmlElement();
-    this.deleteButton = new ButtonCreator(options, 'Delete', () =>
-      ButtonsActions.deleteOption(index, this.element),
+    this.deleteButton = new ButtonCreator(
+      ['button', 'button__delete'],
+      'Delete',
+      () => ButtonsActions.deleteOption(index, this.element),
     ).getHtmlElement();
-    this.deleteButton?.classList.add('button--delete');
     this.optionIndex = index;
     this.element?.append(this.labelElement);
     if (this.primaryInput instanceof HTMLElement) {

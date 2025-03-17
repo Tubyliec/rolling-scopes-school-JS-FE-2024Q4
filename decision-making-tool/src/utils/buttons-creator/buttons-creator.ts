@@ -3,11 +3,14 @@ import type { EventFunction } from '../../models/types/event-callback.type';
 import { HtmlElementCreator } from '../html-element-creator';
 import './button.scss';
 
-const cssClasses: string[] = ['main-button'];
-
 export class ButtonCreator extends HtmlElementCreator {
-  constructor(options: CreateOptions, text: string, callback?: EventFunction) {
+  constructor(classes: string[], text: string, callback?: EventFunction) {
+    const options: CreateOptions = {
+      tag: 'button',
+      classes: [...classes],
+    };
     super(options);
+    this.setCss([...classes]);
     this.setText(text);
     if (callback) {
       this.setCallback(callback);
@@ -16,6 +19,5 @@ export class ButtonCreator extends HtmlElementCreator {
 
   public createHtmlElement(): void {
     this.element = document.createElement('button');
-    this.setCss([...cssClasses]);
   }
 }
