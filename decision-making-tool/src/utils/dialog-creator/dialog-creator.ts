@@ -2,6 +2,7 @@ import type { CreateOptions } from '../../models/interfaces/create-options.inter
 import { AdditionalUtilities } from '../additional-utils/additional-utilities';
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
+import { TextAreaCreator } from '../text-area-creator.ts/text-area';
 import './dialog.scss';
 
 const cssClasses: string[] = ['dialog'];
@@ -14,7 +15,6 @@ export class DialogCreator extends HtmlElementCreator {
     };
     super(options);
     this.backdropClose();
-    this.createValidOptions();
   }
 
   public backdropClose(): void {
@@ -30,6 +30,7 @@ export class DialogCreator extends HtmlElementCreator {
 
           if (!clickedInBackdrop) {
             this.element.close();
+            this.element.remove();
           }
         }
       });
@@ -57,9 +58,27 @@ export class DialogCreator extends HtmlElementCreator {
     }
   }
 
+  public createPasteDialog(): void {
+    AdditionalUtilities.clearElement(this.element);
+    const textArea = new TextAreaCreator();
+    if (this.element && textArea.element) {
+      this.element.append(textArea.element);
+    }
+    const buttonClasses: string[] = ['button', 'paste__button'];
+    const cancelButton = new ButtonCreator(buttonClasses, 'Cancel', () =>
+      this.closeDialog(),
+    );
+    const confirmButton = new ButtonCreator(buttonClasses, 'Confirm');
+    if (this.element && cancelButton.element && confirmButton.element) {
+      this.element.append(cancelButton.element);
+      this.element.append(confirmButton.element);
+    }
+  }
+
   public closeDialog(): void {
     if (this.element instanceof HTMLDialogElement) {
       this.element.close();
+      this.element.remove();
     }
   }
 }

@@ -1,8 +1,8 @@
 import { DialogCreator } from '../../utils/dialog-creator/dialog-creator';
 
-export class WarningDialogCreator extends DialogCreator {
+export class PastDialogCreator extends DialogCreator {
   constructor() {
     super();
-    this.createValidOptions();
+    this.createPasteDialog();
   }
 }

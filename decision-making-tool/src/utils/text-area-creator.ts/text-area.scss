@@ -1,0 +1,18 @@
+.text-area {
+  grid-area: textarea;
+  padding: 1rem;
+  font-size: 1.3rem;
+  resize: none;
+  text-align: center;
+  border: 0.05rem solid var(--color-light);
+  border-radius: 0.5rem;
+  background: #0b6c8a;
+  color: var(--color-light);
+  @media (max-width: 800px) {
+    font-size: 0.8rem;
+  }
+}
+
+.text-area::placeholder {
+  color: var(--color-light);
+}

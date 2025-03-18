@@ -4,8 +4,8 @@ import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
-import { DialogCreator } from '../../utils/dialog-creator/dialog-creator';
 import { CanvasCreator } from '../canvas/canvas-creator';
+import { WarningDialogCreator } from '../dialogs/warning-dialog-creator';
 import { List } from '../list/list';
 import { Name } from '../name/name';
 import { ViewCreator } from '../view-creator';
@@ -43,9 +43,8 @@ export class MainView extends ViewCreator {
     this.addButton = new ButtonCreator(mainButtonClasses, 'Add option', () =>
       ButtonsActions.addOption(this.list),
     ).getHtmlElement();
-    this.pastButton = new ButtonCreator(
-      mainButtonClasses,
-      'Past list',
+    this.pastButton = new ButtonCreator(mainButtonClasses, 'Past list', () =>
+      ButtonsActions.pasteList(),
     ).getHtmlElement();
     this.clearButton = new ButtonCreator(mainButtonClasses, 'Clear list', () =>
       ButtonsActions.clearList(this.list),
@@ -65,10 +64,7 @@ export class MainView extends ViewCreator {
     this.backButton = new ButtonCreator(pickerButtonClasses, 'Back', () =>
       this.NavigateToMain(this.getElement()),
     ).getHtmlElement();
-    this.dialog = new DialogCreator().getHtmlElement();
-    if (this.dialog instanceof HTMLDialogElement) {
-      document.body.append(this.dialog);
-    }
+
     this.appendMainItems();
   }
 
@@ -103,11 +99,13 @@ export class MainView extends ViewCreator {
         this.usefulOptionsCount += 1;
       }
     }
-    if (
-      this.usefulOptionsCount < 2 &&
-      this.dialog instanceof HTMLDialogElement
-    ) {
-      this.dialog.showModal();
+    if (this.usefulOptionsCount < 2) {
+      this.dialog = new WarningDialogCreator().getHtmlElement();
+      if (this.dialog && this.dialog instanceof HTMLDialogElement) {
+        document.body.append(this.dialog);
+        this.dialog.showModal();
+      }
+
       this.usefulOptionsCount = 0;
     } else {
       AdditionalUtilities.clearElement(element);

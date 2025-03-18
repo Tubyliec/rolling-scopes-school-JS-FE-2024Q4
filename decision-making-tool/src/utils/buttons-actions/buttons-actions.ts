@@ -2,6 +2,7 @@ import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
+import { PastDialogCreator } from '../../view/dialogs/past-dialog-creator';
 import { AdditionalUtilities } from '../additional-utils/additional-utilities';
 import { OptionFieldCreator } from '../option-creator/option-field-creator';
 import { StorageActions } from '../storage-actions/storage-actions';
@@ -59,5 +60,14 @@ export abstract class ButtonsActions {
     fakeLink.click();
     fakeLink.remove();
     URL.revokeObjectURL(fakeUrl);
+  }
+
+  public static pasteList(): void {
+    const pasteDialog = new PastDialogCreator().getHtmlElement();
+    if (pasteDialog && pasteDialog instanceof HTMLDialogElement) {
+      document.body.append(pasteDialog);
+      pasteDialog.showModal();
+      pasteDialog.classList.add('dialog__paste');
+    }
   }
 }
