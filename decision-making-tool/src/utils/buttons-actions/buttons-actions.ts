@@ -70,4 +70,37 @@ export abstract class ButtonsActions {
       pasteDialog.classList.add('dialog__paste');
     }
   }
+
+  public static async loadFile(): Promise<ListOptions[]> {
+    return new Promise((resolve, reject) => {
+      const fakeInput = document.createElement('input');
+      fakeInput.type = 'file';
+      fakeInput.accept = '.json';
+
+      fakeInput.addEventListener('change', () => {
+        const file = fakeInput.files?.[0];
+
+        if (!file) {
+          return;
+        }
+
+        file
+          .text()
+          .then((fileContent) => {
+            try {
+              const dataFromJson = JSON.parse(fileContent) as ListOptions[];
+              resolve(dataFromJson);
+            } catch (error) {
+              reject(new Error(String(error)));
+            }
+          })
+          .catch((error) => {
+            reject(new Error(String(error)));
+          });
+      });
+
+      fakeInput.click();
+      console.log();
+    });
+  }
 }

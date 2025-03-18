@@ -4,6 +4,7 @@ import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
+import { StorageActions } from '../../utils/storage-actions/storage-actions';
 import { CanvasCreator } from '../canvas/canvas-creator';
 import { WarningDialogCreator } from '../dialogs/warning-dialog-creator';
 import { List } from '../list/list';
@@ -57,6 +58,9 @@ export class MainView extends ViewCreator {
     this.loadButton = new ButtonCreator(
       mainButtonClasses,
       'Load list from file',
+      async () => {
+        await this.loadDataFromJson();
+      },
     ).getHtmlElement();
     this.startButton = new ButtonCreator(mainButtonClasses, 'Start', () =>
       this.NavigateToPicker(this.getElement()),
@@ -117,5 +121,25 @@ export class MainView extends ViewCreator {
   public NavigateToMain(element: IsHtmlElement): void {
     AdditionalUtilities.clearElement(element);
     this.appendMainItems();
+  }
+
+  public async loadDataFromJson(): Promise<void> {
+    try {
+      const loadedOptions = await ButtonsActions.loadFile();
+      optionsArray.length = 0;
+      for (const option of loadedOptions) {
+        optionsArray.push(option);
+      }
+      StorageActions.saveFaleToStorage(optionsArray);
+      if (this.list) {
+        this.list = new List().getElement();
+        if (this.list && this.getElement()) {
+          AdditionalUtilities.clearElement(this.getElement());
+          this.appendMainItems();
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
