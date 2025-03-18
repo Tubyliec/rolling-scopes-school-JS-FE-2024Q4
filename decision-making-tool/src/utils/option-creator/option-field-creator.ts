@@ -46,6 +46,10 @@ export class OptionFieldCreator extends HtmlElementCreator {
       secondaryOption,
       optionOptions,
     ).getHtmlElement();
+    if (this.secondaryInput instanceof HTMLInputElement) {
+      this.secondaryInput.type = 'number';
+    }
+
     this.deleteButton = new ButtonCreator(
       ['button', 'button__delete'],
       'Delete',
