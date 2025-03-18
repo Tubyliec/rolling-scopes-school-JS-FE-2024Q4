@@ -11,6 +11,10 @@ body {
   }
 }
 
+body:has(.dialog[open]) {
+  overflow: hidden;
+}
+
 .main-section {
   margin: 3% auto;
   padding: 2% 0;

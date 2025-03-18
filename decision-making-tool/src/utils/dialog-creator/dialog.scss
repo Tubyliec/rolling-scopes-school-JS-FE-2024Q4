@@ -1,0 +1,23 @@
+.dialog {
+  border: 0.05rem solid var(--color-light);
+  border-radius: 1rem;
+  width: 50%;
+  height: 30%;
+  background: var(--color-primary);
+  justify-items: center;
+  &::backdrop {
+    background: var(--color-primary);
+    opacity: 0.5;
+  }
+}
+
+.dialog__text {
+  font-size: 2rem;
+  color: var(--color-light);
+  text-align: center;
+}
+
+.dialog__button {
+  font-size: 1.5rem;
+  max-width: 10rem;
+}

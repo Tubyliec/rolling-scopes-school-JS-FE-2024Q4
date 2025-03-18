@@ -1,8 +1,10 @@
+import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
+import { DialogCreator } from '../../utils/dialog-creator/dialog-creator';
 import { CanvasCreator } from '../canvas/canvas-creator';
 import { List } from '../list/list';
 import { Name } from '../name/name';
@@ -22,6 +24,8 @@ export class MainView extends ViewCreator {
   public startButton: IsHtmlElement;
   public canvas: IsHtmlElement;
   public backButton: IsHtmlElement;
+  public dialog: IsHtmlElement;
+  public usefulOptionsCount: number = 0;
 
   constructor() {
     const options: CreateOptions = {
@@ -61,6 +65,10 @@ export class MainView extends ViewCreator {
     this.backButton = new ButtonCreator(pickerButtonClasses, 'Back', () =>
       this.NavigateToMain(this.getElement()),
     ).getHtmlElement();
+    this.dialog = new DialogCreator().getHtmlElement();
+    if (this.dialog instanceof HTMLDialogElement) {
+      document.body.append(this.dialog);
+    }
     this.appendMainItems();
   }
 
@@ -87,8 +95,25 @@ export class MainView extends ViewCreator {
   }
 
   public NavigateToPicker(element: IsHtmlElement): void {
-    AdditionalUtilities.clearElement(element);
-    this.appendPickerItems();
+    const items = [...optionsArray].filter(function (element) {
+      return Object.keys(element).length > 0;
+    });
+    for (const item of items) {
+      if (item.weight || item.title) {
+        this.usefulOptionsCount += 1;
+      }
+    }
+    if (
+      this.usefulOptionsCount < 2 &&
+      this.dialog instanceof HTMLDialogElement
+    ) {
+      this.dialog.showModal();
+      this.usefulOptionsCount = 0;
+    } else {
+      AdditionalUtilities.clearElement(element);
+      this.appendPickerItems();
+      this.usefulOptionsCount = 0;
+    }
   }
 
   public NavigateToMain(element: IsHtmlElement): void {
