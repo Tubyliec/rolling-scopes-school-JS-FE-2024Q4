@@ -1,11 +1,12 @@
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
+import type { EventInputFunction } from '../../models/types/event-input.type';
 import { HtmlElementCreator } from '../html-element-creator';
 import './text-area.scss';
 
 const cssClasses: string[] = ['text-area'];
 
 export class TextAreaCreator extends HtmlElementCreator {
-  constructor() {
+  constructor(callback: EventInputFunction) {
     const options: CreateOptions = {
       tag: 'textarea',
       classes: [...cssClasses],
@@ -13,6 +14,7 @@ export class TextAreaCreator extends HtmlElementCreator {
     super(options);
     this.setPlaceholder('Paste a list of new options in a CSV-like format');
     this.setSize(15, 50);
+    this.setCallback(callback);
   }
 
   public setPlaceholder(text: string): void {
@@ -24,6 +26,12 @@ export class TextAreaCreator extends HtmlElementCreator {
     if (this.element && this.element instanceof HTMLTextAreaElement) {
       this.element.rows = rows;
       this.element.cols = cols;
+    }
+  }
+
+  public setCallback(callback: EventInputFunction): void {
+    if (typeof callback === 'function' && this.element) {
+      this.element.addEventListener('change', (event) => callback(event));
     }
   }
 }

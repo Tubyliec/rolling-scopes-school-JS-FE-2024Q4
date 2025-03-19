@@ -1,4 +1,9 @@
-import { optionsArray } from '../../data/options';
+import {
+  objectsArray,
+  optionsArray,
+  parsedValue,
+  textAreaValue,
+} from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
@@ -102,5 +107,36 @@ export abstract class ButtonsActions {
       fakeInput.click();
       console.log();
     });
+  }
+
+  public static parseStringToArrays(): void {
+    objectsArray.length = 0;
+    if (textAreaValue[0]) {
+      parsedValue.length = 0;
+      const lines = textAreaValue[0].trim().split('\n');
+      for (const line of lines) {
+        const values = line.split(',').map((value) => value.trim());
+        parsedValue.push(values);
+      }
+      for (
+        let valueIndex = 0;
+        valueIndex <= parsedValue.length;
+        valueIndex += 1
+      ) {
+        const optionId: number = valueIndex + 1 + optionsArray.length;
+        const value = parsedValue[valueIndex];
+        if (value) {
+          const newObject = {
+            id: `#${optionId}`,
+            title: value[0],
+            weight: value[1],
+          };
+          objectsArray.push(newObject);
+        }
+      }
+    }
+    for (const object of objectsArray) {
+      optionsArray.push(object);
+    }
   }
 }

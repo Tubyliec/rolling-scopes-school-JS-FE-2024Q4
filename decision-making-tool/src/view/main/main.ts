@@ -6,6 +6,7 @@ import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { ButtonCreator } from '../../utils/buttons-creator/buttons-creator';
 import { StorageActions } from '../../utils/storage-actions/storage-actions';
 import { CanvasCreator } from '../canvas/canvas-creator';
+import { PastDialogCreator } from '../dialogs/past-dialog-creator';
 import { WarningDialogCreator } from '../dialogs/warning-dialog-creator';
 import { List } from '../list/list';
 import { Name } from '../name/name';
@@ -26,6 +27,7 @@ export class MainView extends ViewCreator {
   public canvas: IsHtmlElement;
   public backButton: IsHtmlElement;
   public dialog: IsHtmlElement;
+  public pasteDialog: IsHtmlElement;
   public usefulOptionsCount: number = 0;
   public nullCount: number = 0;
 
@@ -46,7 +48,7 @@ export class MainView extends ViewCreator {
       ButtonsActions.addOption(this.list),
     ).getHtmlElement();
     this.pastButton = new ButtonCreator(mainButtonClasses, 'Past list', () =>
-      ButtonsActions.pasteList(),
+      this.pasteDialogCreator(),
     ).getHtmlElement();
     this.clearButton = new ButtonCreator(mainButtonClasses, 'Clear list', () =>
       ButtonsActions.clearList(this.list),
@@ -72,7 +74,6 @@ export class MainView extends ViewCreator {
 
     this.appendMainItems();
   }
-
   public appendMainItems(): void {
     this.elementViewCreator.appendElement([
       this.nameElement,
@@ -148,6 +149,38 @@ export class MainView extends ViewCreator {
       }
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  public pasteDialogCreator(): void {
+    this.pasteDialog = new PastDialogCreator().getHtmlElement();
+    if (this.pasteDialog && this.pasteDialog instanceof HTMLDialogElement) {
+      document.body.append(this.pasteDialog);
+      this.pasteDialog.showModal();
+      this.pasteDialog.classList.add('dialog__paste');
+      const buttonClasses: string[] = ['button', 'paste__button'];
+      const confirmButton = new ButtonCreator(buttonClasses, 'Confirm', () =>
+        this.pasteText(),
+      ).getHtmlElement();
+      if (confirmButton instanceof HTMLElement) {
+        this.pasteDialog.append(confirmButton);
+      }
+    }
+  }
+
+  public pasteText(): void {
+    ButtonsActions.parseStringToArrays();
+    StorageActions.saveFaleToStorage(optionsArray);
+    if (this.list) {
+      this.list = new List().getElement();
+      if (this.list && this.getElement()) {
+        AdditionalUtilities.clearElement(this.getElement());
+        this.appendMainItems();
+      }
+    }
+    if (this.pasteDialog instanceof HTMLDialogElement) {
+      this.pasteDialog.close();
+      this.pasteDialog.remove();
     }
   }
 }

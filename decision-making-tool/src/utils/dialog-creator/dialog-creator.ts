@@ -2,6 +2,7 @@ import type { CreateOptions } from '../../models/interfaces/create-options.inter
 import { AdditionalUtilities } from '../additional-utils/additional-utilities';
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
+import { InputActions } from '../input-actions/input-actions';
 import { TextAreaCreator } from '../text-area-creator.ts/text-area';
 import './dialog.scss';
 
@@ -60,7 +61,7 @@ export class DialogCreator extends HtmlElementCreator {
 
   public createPasteDialog(): void {
     AdditionalUtilities.clearElement(this.element);
-    const textArea = new TextAreaCreator();
+    const textArea = new TextAreaCreator(() => InputActions.saveAreaValue());
     if (this.element && textArea.element) {
       this.element.append(textArea.element);
     }
@@ -68,10 +69,9 @@ export class DialogCreator extends HtmlElementCreator {
     const cancelButton = new ButtonCreator(buttonClasses, 'Cancel', () =>
       this.closeDialog(),
     );
-    const confirmButton = new ButtonCreator(buttonClasses, 'Confirm');
-    if (this.element && cancelButton.element && confirmButton.element) {
+
+    if (this.element && cancelButton.element) {
       this.element.append(cancelButton.element);
-      this.element.append(confirmButton.element);
     }
   }
 

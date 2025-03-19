@@ -44,18 +44,6 @@ export class CanvasCreator extends HtmlElementCreator {
 
   public draw(): void {
     if (this.ctx) {
-      this.ctx.beginPath();
-      this.ctx.arc(
-        this.centerX,
-        this.centerY,
-        this.radius - 30,
-        AdditionalUtilities.degreesToRadians(0),
-        AdditionalUtilities.degreesToRadians(360),
-      );
-      this.ctx.fillStyle = 'white';
-      this.ctx.lineTo(this.centerX, this.centerY);
-      this.ctx.fill();
-
       let startDegree: number = this.currentDegree;
 
       const weightArray: number[] = [];
@@ -97,7 +85,12 @@ export class CanvasCreator extends HtmlElementCreator {
           this.ctx.textAlign = 'center';
           this.ctx.fillStyle = 'white';
           this.ctx.font = 'bold 20px serif';
-          this.ctx.fillText(namesArray[index], 70, 10);
+          if (namesArray[index].length > 10) {
+            this.ctx.fillText(`${namesArray[index].slice(0, 8)} ...`, 90, 10);
+          } else {
+            this.ctx.fillText(namesArray[index], 80, 10);
+          }
+
           this.ctx.restore();
           this.ctx.closePath();
           startDegree = endDegree;

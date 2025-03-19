@@ -1,4 +1,4 @@
-import { optionsArray } from '../../data/options';
+import { optionsArray, textAreaValue } from '../../data/options';
 import { StorageActions } from '../storage-actions/storage-actions';
 
 export abstract class InputActions {
@@ -11,5 +11,11 @@ export abstract class InputActions {
       }
     }
     StorageActions.saveFaleToStorage(optionsArray);
+  }
+
+  public static saveAreaValue(): void {
+    if (event && event.target instanceof HTMLTextAreaElement) {
+      textAreaValue[0] = event.target.value;
+    }
   }
 }
