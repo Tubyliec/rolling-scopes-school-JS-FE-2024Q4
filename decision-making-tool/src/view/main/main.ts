@@ -27,6 +27,7 @@ export class MainView extends ViewCreator {
   public backButton: IsHtmlElement;
   public dialog: IsHtmlElement;
   public usefulOptionsCount: number = 0;
+  public nullCount: number = 0;
 
   constructor() {
     const options: CreateOptions = {
@@ -101,9 +102,15 @@ export class MainView extends ViewCreator {
     for (const item of items) {
       if (item.weight || item.title) {
         this.usefulOptionsCount += 1;
+        if (Number(item.weight) === 0) {
+          this.nullCount += 1;
+        }
       }
     }
-    if (this.usefulOptionsCount < 2) {
+    if (
+      this.usefulOptionsCount < 2 ||
+      this.usefulOptionsCount - this.nullCount < 2
+    ) {
       this.dialog = new WarningDialogCreator().getHtmlElement();
       if (this.dialog && this.dialog instanceof HTMLDialogElement) {
         document.body.append(this.dialog);
@@ -111,6 +118,7 @@ export class MainView extends ViewCreator {
       }
 
       this.usefulOptionsCount = 0;
+      this.nullCount = 0;
     } else {
       AdditionalUtilities.clearElement(element);
       this.appendPickerItems();

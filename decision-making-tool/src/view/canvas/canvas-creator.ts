@@ -31,9 +31,13 @@ export class CanvasCreator extends HtmlElementCreator {
     this.centerY = height / 2;
     this.radius = width / 2;
 
-    this.items = [...optionsArray].filter(function (element) {
-      return Object.keys(element).length > 0;
-    });
+    this.items = [...optionsArray]
+      .sort(function () {
+        return Math.random() - 0.5;
+      })
+      .filter(function (element) {
+        return Object.keys(element).length > 0;
+      });
     this.currentDegree = 0;
     this.draw();
   }

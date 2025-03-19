@@ -1,7 +1,7 @@
-import type { EventFunction } from '../types/event-callback.type';
+import type { EventInputFunction } from '../types/event-input.type';
 
 export interface InputOptions {
   placeholder: string;
   role: string;
-  callback?: EventFunction;
+  callback?: EventInputFunction;
 }

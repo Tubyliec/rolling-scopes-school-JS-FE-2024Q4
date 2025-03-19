@@ -1,6 +1,6 @@
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { InputOptions } from '../../models/interfaces/input-options.interface';
-import type { EventFunction } from '../../models/types/event-callback.type';
+import type { EventInputFunction } from '../../models/types/event-input.type';
 import { HtmlElementCreator } from '../html-element-creator';
 import './input.scss';
 
@@ -20,7 +20,7 @@ export class InputCreator extends HtmlElementCreator {
     }
   }
 
-  public setCallback(callback: EventFunction): void {
+  public setCallback(callback: EventInputFunction): void {
     if (typeof callback === 'function' && this.element) {
       this.element.addEventListener('change', (event) => callback(event));
     }
