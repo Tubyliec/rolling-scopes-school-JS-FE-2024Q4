@@ -80,20 +80,24 @@ export class CanvasCreator extends HtmlElementCreator {
           this.ctx.stroke();
           this.ctx.closePath();
 
-          this.ctx.save();
-          this.ctx.translate(this.centerX, this.centerY);
-          this.ctx.rotate(
-            AdditionalUtilities.degreesToRadians((startDegree + endDegree) / 2),
-          );
-          this.ctx.textAlign = 'center';
-          this.ctx.fillStyle = 'white';
-          this.ctx.font = 'bold 20px serif';
-          this.ctx.shadowBlur = 10;
-          this.ctx.shadowColor = 'black';
-          if (namesArray[index].length > 10) {
-            this.ctx.fillText(`${namesArray[index].slice(0, 8)} ...`, 90, 10);
-          } else {
-            this.ctx.fillText(namesArray[index], 80, 10);
+          if (step > 30) {
+            this.ctx.save();
+            this.ctx.translate(this.centerX, this.centerY);
+            this.ctx.rotate(
+              AdditionalUtilities.degreesToRadians(
+                (startDegree + endDegree) / 2,
+              ),
+            );
+            this.ctx.textAlign = 'center';
+            this.ctx.fillStyle = 'white';
+            this.ctx.font = 'bold 20px serif';
+            this.ctx.shadowBlur = 10;
+            this.ctx.shadowColor = 'black';
+            if (namesArray[index].length > 10) {
+              this.ctx.fillText(`${namesArray[index].slice(0, 8)} ...`, 90, 10);
+            } else {
+              this.ctx.fillText(namesArray[index], 100, 10);
+            }
           }
 
           this.ctx.restore();
