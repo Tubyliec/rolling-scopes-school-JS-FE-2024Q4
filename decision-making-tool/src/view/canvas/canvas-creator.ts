@@ -35,6 +35,9 @@ export class CanvasCreator extends HtmlElementCreator {
       .sort(function () {
         return Math.random() - 0.5;
       })
+      .filter((item) => {
+        return item.title && Number(item.weight) > 0;
+      })
       .filter(function (element) {
         return Object.keys(element).length > 0;
       });
@@ -85,6 +88,8 @@ export class CanvasCreator extends HtmlElementCreator {
           this.ctx.textAlign = 'center';
           this.ctx.fillStyle = 'white';
           this.ctx.font = 'bold 20px serif';
+          this.ctx.shadowBlur = 10;
+          this.ctx.shadowColor = 'black';
           if (namesArray[index].length > 10) {
             this.ctx.fillText(`${namesArray[index].slice(0, 8)} ...`, 90, 10);
           } else {

@@ -30,6 +30,7 @@ export class MainView extends ViewCreator {
   public pasteDialog: IsHtmlElement;
   public usefulOptionsCount: number = 0;
   public nullCount: number = 0;
+  public startPickerButton: IsHtmlElement;
 
   constructor() {
     const options: CreateOptions = {
@@ -71,6 +72,10 @@ export class MainView extends ViewCreator {
     this.backButton = new ButtonCreator(pickerButtonClasses, 'Back', () =>
       this.NavigateToMain(this.getElement()),
     ).getHtmlElement();
+    this.startPickerButton = new ButtonCreator(
+      pickerButtonClasses,
+      'Start',
+    ).getHtmlElement();
 
     this.appendMainItems();
   }
@@ -92,6 +97,7 @@ export class MainView extends ViewCreator {
     this.elementViewCreator.appendElement([
       this.nameElement,
       this.backButton,
+      this.startPickerButton,
       this.canvas,
     ]);
   }
@@ -103,7 +109,7 @@ export class MainView extends ViewCreator {
     for (const item of items) {
       if (item.weight || item.title) {
         this.usefulOptionsCount += 1;
-        if (Number(item.weight) === 0) {
+        if (Number(item.weight) <= 0) {
           this.nullCount += 1;
         }
       }
