@@ -35,6 +35,15 @@ export class DialogCreator extends HtmlElementCreator {
           }
         }
       });
+      this.element.addEventListener('keydown', (event) => {
+        if (
+          this.element instanceof HTMLDialogElement &&
+          event.key === 'Escape'
+        ) {
+          this.element.close();
+          this.element.remove();
+        }
+      });
     }
   }
 
