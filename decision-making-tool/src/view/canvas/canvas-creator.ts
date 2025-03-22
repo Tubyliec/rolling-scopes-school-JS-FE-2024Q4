@@ -1,4 +1,5 @@
 import { optionsArray } from '../../data/options';
+import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
 import { HtmlElementCreator } from '../../utils/html-element-creator';
@@ -18,7 +19,7 @@ export class CanvasCreator extends HtmlElementCreator {
   public currentDegree: number;
 
   constructor(width: number, height: number) {
-    const options = { tag: 'canvas', classes: [...cssClasses] };
+    const options: CreateOptions = { tag: 'canvas', classes: [...cssClasses] };
     super(options);
     if (this.element instanceof HTMLCanvasElement) {
       this.element.width = width;
@@ -62,8 +63,8 @@ export class CanvasCreator extends HtmlElementCreator {
       }
       for (let index = 0; index < this.items.length; index += 1) {
         if (Object.keys(this.items).length > 0) {
-          const step = (weightArray[index] / weightSum) * 360;
-          const endDegree = startDegree + step;
+          const step: number = (weightArray[index] / weightSum) * 360;
+          const endDegree: number = startDegree + step;
           this.ctx.fillStyle = AdditionalUtilities.getRandomColor();
           this.ctx.strokeStyle = 'white';
           this.ctx.lineWidth = 3;

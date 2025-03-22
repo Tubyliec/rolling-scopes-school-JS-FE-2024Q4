@@ -1,8 +1,8 @@
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
+import type { InputOptions } from '../../models/interfaces/input-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { ButtonsActions } from '../buttons-actions/buttons-actions';
-
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
 import { HtmlElementCreator } from '../html-element-creator';
 import { InputActions } from '../input-actions/input-actions';
@@ -26,13 +26,13 @@ export class OptionFieldCreator extends HtmlElementCreator {
     super(options);
     this.createHtmlElement();
     this.labelElement = OptionFieldCreator.createlabel(optionOptions);
-    const primaryOption = {
+    const primaryOption: InputOptions = {
       placeholder: 'Title',
       role: 'primary',
       callback: (): void =>
         InputActions.saveValue(this.optionIndex, primaryOption.role),
     };
-    const secondaryOption = {
+    const secondaryOption: InputOptions = {
       placeholder: 'Weight',
       role: 'secondary',
       callback: (): void =>

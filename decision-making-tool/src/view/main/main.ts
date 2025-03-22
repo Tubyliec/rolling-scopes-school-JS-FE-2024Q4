@@ -1,5 +1,6 @@
 import { optionsArray } from '../../data/options';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
+import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
 import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
 import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
@@ -103,7 +104,7 @@ export class MainView extends ViewCreator {
   }
 
   public NavigateToPicker(element: IsHtmlElement): void {
-    const items = [...optionsArray].filter(function (element) {
+    const items: ListOptions[] = [...optionsArray].filter(function (element) {
       return Object.keys(element).length > 0;
     });
     for (const item of items) {
@@ -140,7 +141,7 @@ export class MainView extends ViewCreator {
 
   public async loadDataFromJson(): Promise<void> {
     try {
-      const loadedOptions = await ButtonsActions.loadFile();
+      const loadedOptions: ListOptions[] = await ButtonsActions.loadFile();
       optionsArray.length = 0;
       for (const option of loadedOptions) {
         optionsArray.push(option);
@@ -165,8 +166,10 @@ export class MainView extends ViewCreator {
       this.pasteDialog.showModal();
       this.pasteDialog.classList.add('dialog__paste');
       const buttonClasses: string[] = ['button', 'paste__button'];
-      const confirmButton = new ButtonCreator(buttonClasses, 'Confirm', () =>
-        this.pasteText(),
+      const confirmButton: IsHtmlElement = new ButtonCreator(
+        buttonClasses,
+        'Confirm',
+        () => this.pasteText(),
       ).getHtmlElement();
       if (confirmButton instanceof HTMLElement) {
         this.pasteDialog.append(confirmButton);

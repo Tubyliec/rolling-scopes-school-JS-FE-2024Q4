@@ -10,7 +10,7 @@ const cssClasses: string[] = ['dialog'];
 
 export class DialogCreator extends HtmlElementCreator {
   constructor() {
-    const options = {
+    const options: CreateOptions = {
       tag: 'dialog',
       classes: [...cssClasses],
     };
@@ -22,8 +22,8 @@ export class DialogCreator extends HtmlElementCreator {
     if (this.element) {
       this.element.addEventListener('click', (event) => {
         if (this.element instanceof HTMLDialogElement) {
-          const backdropArea = this.element.getBoundingClientRect();
-          const clickedInBackdrop =
+          const backdropArea: DOMRect = this.element.getBoundingClientRect();
+          const clickedInBackdrop: boolean =
             event.clientX >= backdropArea.left &&
             event.clientX <= backdropArea.right &&
             event.clientY >= backdropArea.top &&
@@ -54,13 +54,15 @@ export class DialogCreator extends HtmlElementCreator {
       tag: 'p',
       classes: [...cssClasses],
     };
-    const text = new HtmlElementCreator(textOptions);
+    const text: HtmlElementCreator = new HtmlElementCreator(textOptions);
     text.setText(
       'Please add at least 2 valid options. An option is considered valid if its title is not empty and its weight is greater than 0',
     );
     const buttonClasses: string[] = ['button', 'dialog__button'];
-    const button = new ButtonCreator(buttonClasses, 'Close', () =>
-      this.closeDialog(),
+    const button: ButtonCreator = new ButtonCreator(
+      buttonClasses,
+      'Close',
+      () => this.closeDialog(),
     );
     if (this.element && text.element && button.element) {
       this.element.append(text.element);
@@ -70,13 +72,17 @@ export class DialogCreator extends HtmlElementCreator {
 
   public createPasteDialog(): void {
     AdditionalUtilities.clearElement(this.element);
-    const textArea = new TextAreaCreator(() => InputActions.saveAreaValue());
+    const textArea: TextAreaCreator = new TextAreaCreator(() =>
+      InputActions.saveAreaValue(),
+    );
     if (this.element && textArea.element) {
       this.element.append(textArea.element);
     }
     const buttonClasses: string[] = ['button', 'paste__button'];
-    const cancelButton = new ButtonCreator(buttonClasses, 'Cancel', () =>
-      this.closeDialog(),
+    const cancelButton: ButtonCreator = new ButtonCreator(
+      buttonClasses,
+      'Cancel',
+      () => this.closeDialog(),
     );
 
     if (this.element && cancelButton.element) {

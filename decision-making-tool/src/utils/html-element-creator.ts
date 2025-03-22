@@ -49,7 +49,9 @@ export class HtmlElementCreator {
 
   public setCallback(callback: EventFunction): void {
     if (typeof callback === 'function' && this.element) {
-      this.element.addEventListener('click', (event) => callback(event));
+      this.element.addEventListener('click', (event) => {
+        void callback(event);
+      });
     }
   }
 }
