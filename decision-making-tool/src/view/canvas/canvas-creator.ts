@@ -36,11 +36,12 @@ export class CanvasCreator extends HtmlElementCreator {
       .sort(function () {
         return Math.random() - 0.5;
       })
-      .filter((item) => {
-        return item.title && Number(item.weight) > 0;
-      })
       .filter(function (element) {
-        return Object.keys(element).length > 0;
+        return (
+          Object.keys(element).length > 0 &&
+          element.title &&
+          Number(element.weight) > 0
+        );
       });
     this.currentDegree = 0;
     this.draw();
