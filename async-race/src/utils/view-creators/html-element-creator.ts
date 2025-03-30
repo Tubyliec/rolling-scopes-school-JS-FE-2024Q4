@@ -10,4 +10,11 @@ export abstract class HTMLElementCreator {
   public createElements(options: ElementOptions): void {
     this.element = document.createElement(options.tag);
   }
+
+  public getElement(): HTMLElement {
+    if (!this.element) {
+      throw new Error('Element not created');
+    }
+    return this.element;
+  }
 }

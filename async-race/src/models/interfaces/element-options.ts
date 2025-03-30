@@ -1,4 +1,4 @@
 export interface ElementOptions {
-  tag: 'string';
-  css?: 'string[]';
+  tag: string;
+  css?: string[];
 }
