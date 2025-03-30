@@ -1,1 +1,1 @@
-export type RenderOptions = 'garage' | 'winners';
+export type PageName = 'garage' | 'winners';
