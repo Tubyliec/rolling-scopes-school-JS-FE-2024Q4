@@ -1,4 +1,4 @@
-import type { ElementOptions } from '../../models/interfaces/element-options';
+import type { ElementOptions } from '../../models/interfaces/element-options.interface';
 import { HTMLElementCreator } from './html-element-creator';
 
 export class PageCreator extends HTMLElementCreator {

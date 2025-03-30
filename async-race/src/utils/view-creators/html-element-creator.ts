@@ -1,7 +1,8 @@
-import type { ElementOptions } from '../../models/interfaces/element-options';
+import type { ElementOptions } from '../../models/interfaces/element-options.interface';
+import type { IsHTMLElement } from '../../models/types/is-html-element.type';
 
 export abstract class HTMLElementCreator {
-  public element: HTMLElement | undefined;
+  public element: IsHTMLElement;
   constructor(options: ElementOptions) {
     this.element = undefined;
     this.createElements(options);

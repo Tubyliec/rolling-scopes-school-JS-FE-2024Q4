@@ -1,4 +1,4 @@
-import type { ElementOptions } from '../../../models/interfaces/element-options';
+import type { ElementOptions } from '../../../models/interfaces/element-options.interface';
 import { PageCreator } from '../../../utils/view-creators/page-creator';
 
 export class GarageView extends PageCreator {
