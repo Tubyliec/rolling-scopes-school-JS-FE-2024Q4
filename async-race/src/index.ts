@@ -1,3 +1,3 @@
 import { App } from './view/app';
 
-new App();
+export const app = new App();

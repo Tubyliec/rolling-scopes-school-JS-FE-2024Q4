@@ -4,6 +4,8 @@ import { router } from '../router/router';
 import { ViewUtilities } from '../utils/accessory-utils/view-utilities';
 import { GarageView } from './pages/garage/garage-view';
 import { WinnersView } from './pages/winners/winners-wiev';
+import './app.scss';
+import './pages/pages.scss';
 
 export class App {
   private container: HTMLElement;
@@ -20,10 +22,18 @@ export class App {
     this.init();
     this.router = new router(this);
     this.renderApp('garage');
+    // this.render();
+  }
+
+  public render(): void {
+    if (this.garage) {
+      this.container.append(this.garage.getElement());
+    }
   }
 
   public renderApp(pageName: PageName): void {
     ViewUtilities.clearElement(this.container);
+
     if (pageName === 'garage') {
       this.currentPage = this.garage?.getElement();
     } else if (pageName === 'winners') {
@@ -37,7 +47,7 @@ export class App {
   }
 
   private init(): void {
-    this.garage = new GarageView({ tag: 'section' });
-    this.winners = new WinnersView({ tag: 'section' });
+    this.garage = new GarageView({ tag: 'div', css: ['page', 'garage'] });
+    this.winners = new WinnersView({ tag: 'div', css: ['page', 'winners'] });
   }
 }
