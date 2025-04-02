@@ -9,6 +9,11 @@ export class WinnersView extends PageCreator {
     super(options);
     this.navBar = undefined;
     this.addNav();
+    this.addHeader(this.element, {
+      tag: 'h1',
+      css: ['page-header'],
+      text: 'Winners()',
+    });
   }
 
   public addNav(): void {

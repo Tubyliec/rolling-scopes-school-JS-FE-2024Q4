@@ -8,6 +8,11 @@ export class GarageView extends PageCreator {
   constructor(options: ElementOptions) {
     super(options);
     this.addNav();
+    this.addHeader(this.element, {
+      tag: 'h1',
+      css: ['page-header'],
+      text: 'Garage()',
+    });
   }
 
   public addNav(): void {
