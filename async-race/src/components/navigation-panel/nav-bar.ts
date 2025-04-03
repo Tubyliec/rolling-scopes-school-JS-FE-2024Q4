@@ -2,8 +2,8 @@ import { HTMLElementCreator } from '../../utils/view-creators/html-element-creat
 import type { ElementOptions } from '../../models/interfaces/element-options.interface';
 import { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import type { IsHTMLElement } from '../../models/types/is-html-element.type';
-import './navigation.scss';
 import { NavActions } from '../../utils/buttons-processing/nav-actions';
+import './navigation.scss';
 
 export class NavBar extends HTMLElementCreator {
   private garageButton: IsHTMLElement;
