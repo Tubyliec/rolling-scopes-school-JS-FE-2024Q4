@@ -2,6 +2,7 @@ import { FlagImage } from '../../assets/images/flag';
 import type { ElementOptions } from '../../models/interfaces/element-options.interface';
 import type { Car } from '../../models/types/car.type';
 import type { IsHTMLElement } from '../../models/types/is-html-element.type';
+import { ControlActions } from '../../utils/buttons-processing/control-actions';
 import { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import { ViewCreator } from '../../utils/view-creators/view-creator';
 import './car-way.scss';
@@ -53,6 +54,11 @@ export class CarWay extends ViewCreator {
       tag: 'button',
       css: ['control-button'],
       text: 'Remove',
+      callback: (): void => {
+        if (this.element) {
+          ControlActions.removeCar(this.element);
+        }
+      },
     }).getElement();
     this.carName = new ViewCreator({
       tag: 'span',

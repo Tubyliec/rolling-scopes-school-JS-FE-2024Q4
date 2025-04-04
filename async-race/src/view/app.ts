@@ -6,6 +6,7 @@ import { GarageView } from './pages/garage/garage-view';
 import { WinnersView } from './pages/winners/winners-wiev';
 import './app.scss';
 import './pages/pages.scss';
+import { domElements } from '../data/dom-elements';
 
 export class App {
   private container: HTMLElement;
@@ -48,6 +49,7 @@ export class App {
 
   private init(): void {
     this.garage = new GarageView({ tag: 'div', css: ['page', 'garage'] });
+    domElements.garageView = this.garage;
     this.winners = new WinnersView({ tag: 'div', css: ['page', 'winners'] });
   }
 }

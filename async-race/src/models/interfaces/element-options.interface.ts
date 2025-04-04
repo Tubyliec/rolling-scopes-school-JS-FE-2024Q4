@@ -5,4 +5,5 @@ export interface ElementOptions {
   css: string[];
   text?: string;
   callback?: CallbackNav;
+  id?: number;
 }

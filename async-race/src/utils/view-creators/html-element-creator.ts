@@ -1,3 +1,4 @@
+import type { GarageContainer } from '../../components/garage-container/garage-container';
 import type { ElementOptions } from '../../models/interfaces/element-options.interface';
 import type { IsHTMLElement } from '../../models/types/is-html-element.type';
 
@@ -11,6 +12,9 @@ export abstract class HTMLElementCreator {
   public createElement(options: ElementOptions): void {
     this.element = document.createElement(options.tag);
     this.setCssClasses(options.css);
+    if (options.id) {
+      this.setId(options.id);
+    }
   }
 
   public getElement(): HTMLElement {
@@ -34,7 +38,15 @@ export abstract class HTMLElementCreator {
     }
   }
 
-  public addInnerElement(element: HTMLElement | HTMLElementCreator): void {
+  public setId(id: number): void {
+    if (this.element) {
+      this.element.id = id.toString();
+    }
+  }
+
+  public addInnerElement(
+    element: HTMLElement | HTMLElementCreator | GarageContainer,
+  ): void {
     if (this.element && element instanceof HTMLElementCreator) {
       this.element.append(element.getElement());
     } else if (this.element && element instanceof HTMLElement) {

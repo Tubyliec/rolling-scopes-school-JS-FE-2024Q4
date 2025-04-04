@@ -1,8 +1,11 @@
+import { domElements } from '../../data/dom-elements';
 import type { ElementOptions } from '../../models/interfaces/element-options.interface';
 import type { Car } from '../../models/types/car.type';
 import type { CarsList } from '../../models/types/cars-list.type';
 import type { IsHTMLElement } from '../../models/types/is-html-element.type';
 import { Api } from '../../services/api';
+import { ViewUtilities } from '../../utils/accessory-utils/view-utilities';
+import { PagginationActions } from '../../utils/buttons-processing/paggination-actions';
 import { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import { HTMLElementCreator } from '../../utils/view-creators/html-element-creator';
 import { ViewCreator } from '../../utils/view-creators/view-creator';
@@ -13,8 +16,8 @@ export class GarageContainer extends HTMLElementCreator {
   public pageNumber: IsHTMLElement;
   public carsContainer: IsHTMLElement;
   public paginationButtons: IsHTMLElement;
-  public prevButton: IsHTMLElement;
-  public nextButton: IsHTMLElement;
+  public prevButton: ButtonsCreator | undefined;
+  public nextButton: ButtonsCreator | undefined;
 
   public carsPageNumber = 1;
   public items: Car[];
@@ -24,6 +27,7 @@ export class GarageContainer extends HTMLElementCreator {
     super(options);
     this.items = [];
     this.count = '';
+    this.nextButton = undefined;
     this.addPageNumber();
     this.addCarsContainer();
     this.addPaginationButtons();
@@ -34,7 +38,7 @@ export class GarageContainer extends HTMLElementCreator {
     this.pageNumber = new ViewCreator({
       tag: 'h2',
       css: ['page-number'],
-      text: 'Page#',
+      text: `Page #${this.carsPageNumber}`,
     }).element;
     if (this.pageNumber) this.addInnerElement(this.pageNumber);
   }
@@ -56,15 +60,25 @@ export class GarageContainer extends HTMLElementCreator {
       tag: 'button',
       css: ['pag-button'],
       text: 'Previous',
-    }).element;
+      callback: (): void => {
+        PagginationActions.prevButton();
+      },
+    });
+    domElements.prevButton = this.prevButton;
     this.nextButton = new ButtonsCreator({
       tag: 'button',
       css: ['pag-button'],
       text: 'Next',
-    }).element;
+      callback: (): void => {
+        PagginationActions.NextButton();
+      },
+    });
+    domElements.nextButton = this.nextButton;
     if (this.paginationButtons) this.addInnerElement(this.paginationButtons);
-    if (this.prevButton) this.paginationButtons?.append(this.prevButton);
-    if (this.nextButton) this.paginationButtons?.append(this.nextButton);
+    if (this.prevButton)
+      this.paginationButtons?.append(this.prevButton.getElement());
+    if (this.nextButton)
+      this.paginationButtons?.append(this.nextButton.getElement());
   }
 
   public async updateGarage(): Promise<void> {
@@ -75,10 +89,16 @@ export class GarageContainer extends HTMLElementCreator {
   }
 
   public addCar(): void {
+    ViewUtilities.clearElement(this.carsContainer);
+    if (this.carsPageNumber <= 1)
+      domElements.prevButton?.getElement()?.setAttribute('disabled', 'true');
+    if (this.pageNumber) {
+      this.pageNumber.textContent = `Page #${this.carsPageNumber}`;
+    }
     void this.updateGarage().then(() => {
       for (const item of this.items) {
         const car = new CarWay(
-          { tag: 'div', css: ['car-way'] },
+          { tag: 'div', css: ['car-way'], id: item.id },
           item,
         ).getElement();
         this.carsContainer?.append(car);
