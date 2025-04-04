@@ -7,6 +7,9 @@
 
 .cars-container {
   min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .pagination-buttons {
@@ -20,5 +23,6 @@
   font-size: 2rem;
   &:hover {
     cursor: pointer;
+    scale: 1.05;
   }
 }

@@ -1,0 +1,57 @@
+.car-way {
+  border-bottom: 0.5rem dotted black;
+}
+
+.control-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.control-button {
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.car-name {
+  font-size: 2rem;
+}
+
+.car-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.car-button {
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  &:hover {
+    cursor: pointer;
+    scale: 1.05;
+  }
+}
+
+.trip-container {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.car {
+  width: 150px;
+}
+
+.car-image {
+}
+
+.flag-image {
+  height: 10rem;
+  position: absolute;
+  right: 30%;
+}

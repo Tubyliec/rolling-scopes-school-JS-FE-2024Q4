@@ -1,4 +1,4 @@
-import { GarageContainer } from '../../../components/navigation-panel/garage-container/garage-container';
+import { GarageContainer } from '../../../components/garage-container/garage-container';
 import { NavBar } from '../../../components/navigation-panel/nav-bar';
 import type { ElementOptions } from '../../../models/interfaces/element-options.interface';
 import type { IsHTMLElement } from '../../../models/types/is-html-element.type';
