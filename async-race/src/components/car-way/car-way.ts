@@ -95,7 +95,12 @@ export class CarWay extends ViewCreator {
       tag: 'button',
       css: ['car-button'],
       text: 'Stop',
+      callback: (): void => {
+        void Driving.stopDriving(this.id, this);
+      },
     }).getElement();
+    if (this.stopButton instanceof HTMLButtonElement)
+      this.stopButton.disabled = true;
     this.tripContainer = new ViewCreator({
       tag: 'div',
       css: ['trip-container'],

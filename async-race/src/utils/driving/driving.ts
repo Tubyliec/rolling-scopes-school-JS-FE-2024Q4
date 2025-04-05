@@ -12,6 +12,8 @@ export class Driving {
     const drivingResult: Winner = { id: 0, time: 0, wins: 0 };
     if (element.startButton instanceof HTMLButtonElement)
       element.startButton.disabled = true;
+    if (element.stopButton instanceof HTMLButtonElement)
+      element.stopButton.disabled = false;
     if (car && flag) {
       const engine: Engine = await Api.getStartEngine(id);
       const { velocity, distance } = engine;
@@ -26,13 +28,23 @@ export class Driving {
       const { success } = driveState;
       if (!success) globalThis.cancelAnimationFrame(animationState[id].id);
       if (success) {
-        if (element.startButton instanceof HTMLButtonElement)
-          element.startButton.disabled = false;
         drivingResult.wins = 1;
         drivingResult.id = id;
         drivingResult.time = time;
         void Api.sendWinner(drivingResult);
       }
     }
+  }
+
+  public static async stopDriving(id: number, element: CarWay): Promise<void> {
+    if (element.startButton instanceof HTMLButtonElement)
+      element.startButton.disabled = false;
+    await Api.getStopEngine(id);
+    const car = element.car;
+    if (car) car.style.transform = 'translateX(0)';
+    if (animationState[id])
+      globalThis.cancelAnimationFrame(animationState[id].id);
+    if (element.stopButton instanceof HTMLButtonElement)
+      element.stopButton.disabled = true;
   }
 }

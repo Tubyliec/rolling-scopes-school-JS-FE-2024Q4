@@ -37,6 +37,16 @@ export class Api {
     return response.json() as Promise<Engine>;
   }
 
+  public static async getStopEngine(id: number): Promise<Engine> {
+    const response = await fetch(
+      `http://localhost:3000/engine?id=${id}&status=started`,
+      {
+        method: 'PATCH',
+      },
+    );
+    return response.json() as Promise<Engine>;
+  }
+
   public static async getDriveStatus(
     id: number,
   ): Promise<{ success: boolean }> {
