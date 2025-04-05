@@ -23,7 +23,7 @@ export class CarControlPanel extends HTMLElementCreator {
     this.addInnerElement(this.raceContainer);
     this.raceButton = new ButtonsCreator({
       tag: 'button',
-      css: ['race-button'],
+      css: ['button', 'race-button'],
       text: 'Race',
       callback: (): void => {
         RaceControlActions.Race();
@@ -32,7 +32,7 @@ export class CarControlPanel extends HTMLElementCreator {
     this.addInnerElement(this.raceButton);
     this.resetButton = new ButtonsCreator({
       tag: 'button',
-      css: ['race-button'],
+      css: ['button', 'race-button'],
       text: 'Reset',
       callback: (): void => {
         RaceControlActions.Reset();

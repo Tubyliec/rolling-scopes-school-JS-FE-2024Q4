@@ -19,14 +19,14 @@ export class NavBar extends HTMLElementCreator {
   public createView(): void {
     this.garageButton = new ButtonsCreator({
       tag: 'button',
-      css: ['nav-bar__button'],
+      css: ['button', 'nav-bar__button'],
       text: 'Garage',
       callback: (): void => NavActions.navigateToPage('garage'),
     }).getElement();
     this.addInnerElement(this.garageButton);
     this.winnersButton = new ButtonsCreator({
       tag: 'button',
-      css: ['nav-bar__button'],
+      css: ['button', 'nav-bar__button'],
       text: 'Winners',
       callback: (): void => NavActions.navigateToPage('winners'),
     }).getElement();

@@ -59,7 +59,7 @@ export class GarageContainer extends HTMLElementCreator {
     }).element;
     this.prevButton = new ButtonsCreator({
       tag: 'button',
-      css: ['pag-button'],
+      css: ['button', 'pag-button'],
       text: 'Previous',
       callback: (): void => {
         PagginationActions.prevButton();
@@ -68,7 +68,7 @@ export class GarageContainer extends HTMLElementCreator {
     domElements.prevButton = this.prevButton;
     this.nextButton = new ButtonsCreator({
       tag: 'button',
-      css: ['pag-button'],
+      css: ['button', 'pag-button'],
       text: 'Next',
       callback: (): void => {
         PagginationActions.NextButton();
