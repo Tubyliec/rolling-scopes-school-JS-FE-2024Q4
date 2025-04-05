@@ -1,19 +1,15 @@
 import type { CarWay } from '../../components/car-way/car-way';
 import { animationState } from '../../data/animation-state';
-import type { DrivingResult } from '../../models/interfaces/driving-result.interface';
-import type { DrivingStatus } from '../../models/types/driving-status.type';
 import type { Engine } from '../../models/types/engine.type';
+import type { Winner } from '../../models/types/winner.type';
 import { Api } from '../../services/api';
 import { Animation } from '../animation/animation';
 
 export class Driving {
-  public static async startDriving(
-    id: number,
-    element: CarWay,
-  ): Promise<DrivingStatus> {
+  public static async startDriving(id: number, element: CarWay): Promise<void> {
     const car = element.car;
     const flag = element.flag;
-    const drivingResult: DrivingResult = { success: true, id: 0, time: 0 };
+    const drivingResult: Winner = { id: 0, time: 0, wins: 0 };
     if (element.startButton instanceof HTMLButtonElement)
       element.startButton.disabled = true;
     if (car && flag) {
@@ -29,11 +25,14 @@ export class Driving {
       const driveState = await Api.getDriveStatus(id);
       const { success } = driveState;
       if (!success) globalThis.cancelAnimationFrame(animationState[id].id);
-      drivingResult.success = success;
-      drivingResult.id = id;
-      drivingResult.time = time;
+      if (success) {
+        if (element.startButton instanceof HTMLButtonElement)
+          element.startButton.disabled = false;
+        drivingResult.wins = 1;
+        drivingResult.id = id;
+        drivingResult.time = time;
+        void Api.sendWinner(drivingResult);
+      }
     }
-
-    return drivingResult;
   }
 }
