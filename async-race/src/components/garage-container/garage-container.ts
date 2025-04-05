@@ -83,7 +83,6 @@ export class GarageContainer extends HTMLElementCreator {
 
   public async updateGarage(): Promise<void> {
     const { items, count }: CarsList = await Api.getCars(this.carsPageNumber);
-    console.log(items, count);
     this.items = items;
     this.count = count;
   }

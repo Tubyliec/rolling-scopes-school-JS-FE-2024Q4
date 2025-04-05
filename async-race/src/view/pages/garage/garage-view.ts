@@ -40,6 +40,5 @@ export class GarageView extends PageCreator {
   public async updateCarsCount(): Promise<void> {
     const count = await Api.getCarsCount();
     this.CarCount = count;
-    console.log(count);
   }
 }

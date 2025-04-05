@@ -3,6 +3,7 @@ import type { ElementOptions } from '../../models/interfaces/element-options.int
 import type { Car } from '../../models/types/car.type';
 import type { IsHTMLElement } from '../../models/types/is-html-element.type';
 import { ControlActions } from '../../utils/buttons-processing/control-actions';
+import { Driving } from '../../utils/driving/driving';
 import { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import { ViewCreator } from '../../utils/view-creators/view-creator';
 import './car-way.scss';
@@ -19,10 +20,12 @@ export class CarWay extends ViewCreator {
   public car: IsHTMLElement;
   public startButton: IsHTMLElement;
   public stopButton: IsHTMLElement;
+  public id: number;
   constructor(options: ElementOptions, carOptions: Car) {
     super(options);
     this.image = '';
     this.init(carOptions.color, carOptions.name);
+    this.id = carOptions.id;
   }
 
   public init(color: string, carName: string): void {
@@ -37,7 +40,10 @@ export class CarWay extends ViewCreator {
     }).getElement();
     this.car.insertAdjacentHTML('afterbegin', this.image);
     this.tripContainer?.append(this.car);
-    this.tripContainer?.insertAdjacentHTML('beforeend', FlagImage);
+    this.flag?.insertAdjacentHTML('beforeend', FlagImage);
+    if (this.tripContainer && this.flag) {
+      this.tripContainer.append(this.flag);
+    }
   }
 
   public createControlContainer(carName: string): void {
@@ -81,6 +87,9 @@ export class CarWay extends ViewCreator {
       tag: 'button',
       css: ['car-button'],
       text: 'Start',
+      callback: (): void => {
+        void Driving.startDriving(this.id, this);
+      },
     }).getElement();
     this.stopButton = new ButtonsCreator({
       tag: 'button',
@@ -96,6 +105,11 @@ export class CarWay extends ViewCreator {
       this.stopButton,
       this.tripContainer,
     );
+
+    this.flag = new ViewCreator({
+      tag: 'div',
+      css: ['flag'],
+    }).getElement();
   }
 
   public createCarImage(color: string): void {
