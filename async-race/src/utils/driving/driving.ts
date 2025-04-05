@@ -31,7 +31,6 @@ export class Driving {
         drivingResult.wins = 1;
         drivingResult.id = id;
         drivingResult.time = time;
-        void Api.sendWinner(drivingResult);
       }
     }
   }

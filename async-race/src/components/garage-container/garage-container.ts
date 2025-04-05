@@ -1,4 +1,5 @@
 import { domElements } from '../../data/dom-elements';
+import { raceCars } from '../../data/race-state';
 import type { ElementOptions } from '../../models/interfaces/element-options.interface';
 import type { Car } from '../../models/types/car.type';
 import type { CarsList } from '../../models/types/cars-list.type';
@@ -95,12 +96,14 @@ export class GarageContainer extends HTMLElementCreator {
       this.pageNumber.textContent = `Page #${this.carsPageNumber}`;
     }
     void this.updateGarage().then(() => {
+      raceCars.length = 0;
       for (const item of this.items) {
         const car = new CarWay(
           { tag: 'div', css: ['car-way'], id: item.id },
           item,
-        ).getElement();
-        this.carsContainer?.append(car);
+        );
+        this.carsContainer?.append(car.getElement());
+        raceCars.push(car);
       }
     });
   }

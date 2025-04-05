@@ -53,12 +53,12 @@ export class CarWay extends ViewCreator {
     }).getElement();
     this.selectButton = new ButtonsCreator({
       tag: 'button',
-      css: ['control-button'],
+      css: ['button', 'control-button'],
       text: 'Select',
     }).getElement();
     this.removeButton = new ButtonsCreator({
       tag: 'button',
-      css: ['control-button'],
+      css: ['button', 'control-button'],
       text: 'Remove',
       callback: (): void => {
         if (this.element) {
@@ -85,7 +85,7 @@ export class CarWay extends ViewCreator {
     }).getElement();
     this.startButton = new ButtonsCreator({
       tag: 'button',
-      css: ['car-button'],
+      css: ['car-button', 'button'],
       text: 'Start',
       callback: (): void => {
         void Driving.startDriving(this.id, this);
@@ -93,7 +93,7 @@ export class CarWay extends ViewCreator {
     }).getElement();
     this.stopButton = new ButtonsCreator({
       tag: 'button',
-      css: ['car-button'],
+      css: ['car-button', 'button'],
       text: 'Stop',
       callback: (): void => {
         void Driving.stopDriving(this.id, this);

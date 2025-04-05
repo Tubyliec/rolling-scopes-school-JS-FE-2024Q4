@@ -1,0 +1,14 @@
+.car-control-panel {
+  display: flex;
+  gap: 1rem;
+}
+
+.race-button {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  &:hover {
+    cursor: pointer;
+    scale: 1.05;
+  }
+}

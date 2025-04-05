@@ -9,14 +9,6 @@
   gap: 1rem;
 }
 
-.control-button {
-  padding: 0.2rem 1rem;
-  border-radius: 0.5rem;
-  &:hover {
-    cursor: pointer;
-  }
-}
-
 .car-name {
   font-size: 2rem;
 }
@@ -29,12 +21,6 @@
 
 .car-button {
   height: 3rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  &:hover {
-    cursor: pointer;
-    scale: 1.05;
-  }
 }
 
 .trip-container {

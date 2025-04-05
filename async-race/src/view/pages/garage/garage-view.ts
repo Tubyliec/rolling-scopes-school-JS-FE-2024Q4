@@ -1,3 +1,4 @@
+import { CarControlPanel } from '../../../components/car-control-panel/car-control-panel';
 import { GarageContainer } from '../../../components/garage-container/garage-container';
 import { NavBar } from '../../../components/navigation-panel/nav-bar';
 import { domElements } from '../../../data/dom-elements';
@@ -8,6 +9,7 @@ import { ViewUtilities } from '../../../utils/accessory-utils/view-utilities';
 import { PageCreator } from '../../../utils/view-creators/page-creator';
 
 export class GarageView extends PageCreator {
+  private CarControlPanel: IsHTMLElement;
   private navBar: IsHTMLElement;
   private garageContainer: GarageContainer | undefined;
   private CarCount: string | null;
@@ -27,6 +29,11 @@ export class GarageView extends PageCreator {
   public init(options: ElementOptions): void {
     this.navBar = new NavBar({ tag: 'nav', css: ['nav-bar'] }).getElement();
     this.addInnerElement(this.navBar);
+    this.CarControlPanel = new CarControlPanel({
+      tag: 'div',
+      css: ['car-control-panel'],
+    }).getElement();
+    this.addInnerElement(this.CarControlPanel);
     this.addHeader(this.element, {
       tag: 'h1',
       css: ['page-header'],
