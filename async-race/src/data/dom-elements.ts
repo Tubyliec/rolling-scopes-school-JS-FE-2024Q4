@@ -5,4 +5,5 @@ export const domElements: DomElements = {
   garageContainer: undefined,
   prevButton: undefined,
   nextButton: undefined,
+  carControlPanel: undefined,
 };

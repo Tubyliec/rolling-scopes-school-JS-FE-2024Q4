@@ -20,6 +20,20 @@ export class Api {
     return response.headers.get('X-Total-Count') || '0';
   }
 
+  public static async getCreateCar(car: {
+    name: string;
+    color: string;
+  }): Promise<Response> {
+    const response = await fetch(`http://localhost:3000/garage`, {
+      method: 'POST',
+      body: JSON.stringify(car),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    return response;
+  }
+
   public static async getDeleteCarById(id: number): Promise<Car> {
     const response = await fetch(`http://localhost:3000/garage/${id}`, {
       method: 'DELETE',

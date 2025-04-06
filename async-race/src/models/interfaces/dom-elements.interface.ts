@@ -1,3 +1,4 @@
+import type { CarControlPanel } from '../../components/car-control-panel/car-control-panel';
 import type { GarageContainer } from '../../components/garage-container/garage-container';
 import type { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import type { GarageView } from '../../view/pages/garage/garage-view';
@@ -7,4 +8,5 @@ export interface DomElements {
   garageContainer: GarageContainer | undefined;
   prevButton: ButtonsCreator | undefined;
   nextButton: ButtonsCreator | undefined;
+  carControlPanel: CarControlPanel | undefined;
 }
