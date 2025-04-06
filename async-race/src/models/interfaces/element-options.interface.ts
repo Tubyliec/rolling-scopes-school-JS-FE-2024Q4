@@ -6,4 +6,6 @@ export interface ElementOptions {
   text?: string;
   callback?: CallbackNav;
   id?: number;
+  placeholder?: string;
+  type?: string;
 }

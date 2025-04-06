@@ -1,8 +1,32 @@
 .car-control-panel {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.control-input {
+  border: solid 0.1rem black;
+  border-radius: 0.5rem;
+}
+
+.name-input {
+  padding: 0.5rem 1rem;
+}
+
+.race-container {
+  display: flex;
   gap: 1rem;
 }
 
 .race-button {
   font-size: 2rem;
+}
+
+.create-button {
+  min-width: 12rem;
 }

@@ -1,9 +1,9 @@
+import type { ElementOptions } from '../../../models/interfaces/element-options.interface';
+import type { IsHTMLElement } from '../../../models/types/is-html-element.type';
 import { CarControlPanel } from '../../../components/car-control-panel/car-control-panel';
 import { GarageContainer } from '../../../components/garage-container/garage-container';
 import { NavBar } from '../../../components/navigation-panel/nav-bar';
 import { domElements } from '../../../data/dom-elements';
-import type { ElementOptions } from '../../../models/interfaces/element-options.interface';
-import type { IsHTMLElement } from '../../../models/types/is-html-element.type';
 import { Api } from '../../../services/api';
 import { ViewUtilities } from '../../../utils/accessory-utils/view-utilities';
 import { PageCreator } from '../../../utils/view-creators/page-creator';

@@ -6,4 +6,6 @@ export const domElements: DomElements = {
   prevButton: undefined,
   nextButton: undefined,
   carControlPanel: undefined,
+  updateCarName: undefined,
+  updateCarColor: undefined,
 };

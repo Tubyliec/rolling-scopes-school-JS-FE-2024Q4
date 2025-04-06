@@ -60,4 +60,8 @@ html {
     cursor: pointer;
     scale: 1.05;
   }
+  &:disabled {
+    cursor: default;
+    scale: 1;
+  }
 }

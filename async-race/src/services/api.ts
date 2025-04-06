@@ -1,5 +1,6 @@
 import type { Car } from '../models/types/car.type';
 import type { CarsList } from '../models/types/cars-list.type';
+import type { CreatedCar } from '../models/types/created-car.type';
 import type { Engine } from '../models/types/engine.type';
 import type { Winner } from '../models/types/winner.type';
 
@@ -32,6 +33,17 @@ export class Api {
       },
     });
     return response;
+  }
+
+  public static updateCar(id: number, body: CreatedCar): Promise<void>;
+  public static async updateCar(id: number, body: CreatedCar): Promise<void> {
+    await fetch(`http://localhost:3000/garage/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   public static async getDeleteCarById(id: number): Promise<Car> {

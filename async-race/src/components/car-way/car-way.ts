@@ -21,11 +21,15 @@ export class CarWay extends ViewCreator {
   public startButton: IsHTMLElement;
   public stopButton: IsHTMLElement;
   public id: number;
+  public color: string;
+  public name: string;
   constructor(options: ElementOptions, carOptions: Car) {
     super(options);
     this.image = '';
     this.init(carOptions.color, carOptions.name);
     this.id = carOptions.id;
+    this.color = carOptions.color;
+    this.name = carOptions.name;
   }
 
   public init(color: string, carName: string): void {
@@ -55,6 +59,11 @@ export class CarWay extends ViewCreator {
       tag: 'button',
       css: ['button', 'control-button'],
       text: 'Select',
+      callback: (): void => {
+        if (this.element) {
+          ControlActions.selectCar(this);
+        }
+      },
     }).getElement();
     this.removeButton = new ButtonsCreator({
       tag: 'button',
