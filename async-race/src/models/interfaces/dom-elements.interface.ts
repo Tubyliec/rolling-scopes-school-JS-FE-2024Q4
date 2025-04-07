@@ -2,6 +2,7 @@ import type { CarControlPanel } from '../../components/car-control-panel/car-con
 import type { GarageContainer } from '../../components/garage-container/garage-container';
 import type { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import type { InputCreator } from '../../utils/view-creators/input-creator';
+import type { ViewCreator } from '../../utils/view-creators/view-creator';
 import type { GarageView } from '../../view/pages/garage/garage-view';
 
 export interface DomElements {
@@ -12,4 +13,5 @@ export interface DomElements {
   carControlPanel: CarControlPanel | undefined;
   updateCarName: InputCreator | undefined;
   updateCarColor: InputCreator | undefined;
+  raceContainer: ViewCreator | undefined;
 }

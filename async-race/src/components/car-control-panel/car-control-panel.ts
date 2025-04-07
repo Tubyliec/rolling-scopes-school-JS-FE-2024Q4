@@ -123,13 +123,14 @@ export class CarControlPanel extends HTMLElementCreator {
       tag: 'div',
       css: ['race-container'],
     });
+    domElements.raceContainer = this.raceContainer;
     this.addInnerElement(this.raceContainer);
     this.raceButton = new ButtonsCreator({
       tag: 'button',
       css: ['button', 'race-button'],
       text: 'Race',
       callback: (): void => {
-        RaceControlActions.race(this);
+        void RaceControlActions.race(this);
       },
     }).getElement();
     this.raceContainer.addInnerElement(this.raceButton);

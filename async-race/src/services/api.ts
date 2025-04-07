@@ -16,6 +16,11 @@ export class Api {
     };
   }
 
+  public static async getCar(id: string): Promise<Car> {
+    const response = await fetch(`http://localhost:3000/garage/${id}`);
+    return (await response.json()) as Car;
+  }
+
   public static async getCarsCount(): Promise<string> {
     const response = await fetch(`http://localhost:3000/garage?_limit=5`);
     return response.headers.get('X-Total-Count') || '0';

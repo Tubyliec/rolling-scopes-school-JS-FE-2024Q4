@@ -8,4 +8,5 @@ export const domElements: DomElements = {
   carControlPanel: undefined,
   updateCarName: undefined,
   updateCarColor: undefined,
+  raceContainer: undefined,
 };

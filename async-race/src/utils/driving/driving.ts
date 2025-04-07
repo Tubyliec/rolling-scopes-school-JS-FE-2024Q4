@@ -1,5 +1,6 @@
 import type { CarWay } from '../../components/car-way/car-way';
 import { animationState } from '../../data/animation-state';
+import { succesArray } from '../../data/race-state';
 import type { Engine } from '../../models/types/engine.type';
 import type { Winner } from '../../models/types/winner.type';
 import { Api } from '../../services/api';
@@ -28,9 +29,9 @@ export class Driving {
       const { success } = driveState;
       if (!success) globalThis.cancelAnimationFrame(animationState[id].id);
       if (success) {
-        drivingResult.wins = 1;
         drivingResult.id = id;
-        drivingResult.time = time;
+        drivingResult.time = Number((time / 1000).toFixed(2));
+        succesArray.push(drivingResult);
       }
     }
   }
