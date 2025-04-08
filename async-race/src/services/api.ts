@@ -103,6 +103,8 @@ export class Api {
   }
 
   public static async createWinner(body: Winner): Promise<void> {
+    const winner = body;
+    winner.wins = 1;
     await fetch(`http://localhost:3000/winners`, {
       method: 'POST',
       body: JSON.stringify(body),

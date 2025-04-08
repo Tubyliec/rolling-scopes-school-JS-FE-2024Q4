@@ -28,6 +28,7 @@ export class CarControlPanel extends HTMLElementCreator {
   public raceButton: IsHTMLElement;
   public resetButton: IsHTMLElement;
   public generateCarsButton: IsHTMLElement;
+  public winnerText: ViewCreator | undefined;
 
   constructor(options: ElementOptions) {
     super(options);

@@ -14,4 +14,5 @@ export interface DomElements {
   updateCarName: InputCreator | undefined;
   updateCarColor: InputCreator | undefined;
   raceContainer: ViewCreator | undefined;
+  winnerText: ViewCreator | undefined;
 }

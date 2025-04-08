@@ -20,7 +20,7 @@ export class RaceControlActions {
         console.log(succesArray);
         const winner = succesArray[0];
         console.log(winner);
-        void Api.updateWinner(winner.id, winner);
+        void Api.sendWinner(winner);
         return winner;
       })
       .then(async (winner) => {
@@ -28,12 +28,14 @@ export class RaceControlActions {
         console.log(winnerCar.name);
         domElements.raceContainer?.element?.insertAdjacentText(
           'beforeend',
-          `Winner: ${winnerCar.name} time: ${winner.time}`,
+          `Winner: ${winnerCar.name} - time: ${winner.time}`,
         );
         succesArray.length = 0;
       });
   }
   public static reset(controlElement: CarControlPanel): void {
+    const lastChild = domElements.raceContainer?.element?.lastChild;
+    if (lastChild instanceof Text) lastChild.remove();
     if (controlElement.raceButton instanceof HTMLButtonElement)
       controlElement.raceButton.disabled = false;
     if (controlElement.resetButton instanceof HTMLButtonElement)

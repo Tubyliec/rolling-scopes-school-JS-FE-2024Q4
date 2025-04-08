@@ -92,7 +92,7 @@ export class GarageContainer extends HTMLElementCreator {
     ViewUtilities.clearElement(this.carsContainer);
     if (this.carsPageNumber <= 1)
       domElements.prevButton?.getElement()?.setAttribute('disabled', 'true');
-    if (this.count && Number(this.count) <= 7)
+    if (!this.count && Number(this.count) <= 7)
       domElements.nextButton?.getElement()?.setAttribute('disabled', 'true');
     if (this.pageNumber) {
       this.pageNumber.textContent = `Page #${this.carsPageNumber}`;

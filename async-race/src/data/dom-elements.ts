@@ -9,4 +9,5 @@ export const domElements: DomElements = {
   updateCarName: undefined,
   updateCarColor: undefined,
   raceContainer: undefined,
+  winnerText: undefined,
 };
