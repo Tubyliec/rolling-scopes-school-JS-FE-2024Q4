@@ -1,5 +1,5 @@
 import type { CarWay } from '../../components/car-way/car-way';
-import { updatedId } from '../../data/creation-car-data';
+import { updatedCar, updatedId } from '../../data/creation-car-data';
 import { domElements } from '../../data/dom-elements';
 import { Api } from '../../services/api';
 
@@ -18,9 +18,11 @@ export class ControlActions {
 
     if (nameInput instanceof HTMLInputElement && nameInput.type === 'text') {
       nameInput.value = element.name;
+      updatedCar.name = element.name;
     }
     if (colorInput instanceof HTMLInputElement && colorInput.type === 'color') {
       colorInput.value = element.color;
+      updatedCar.color = element.color;
     }
   }
 }

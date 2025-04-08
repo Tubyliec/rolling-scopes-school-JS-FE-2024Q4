@@ -5,10 +5,11 @@ import { Api } from '../../services/api';
 export class createCarActions {
   public static createCar(carOptions: CreatedCar): void {
     if (carOptions.name !== '' && carOptions.color !== '') {
-      void Api.getCreateCar(carOptions);
-      domElements.garageView?.renderView();
-      carOptions.name = '';
-      carOptions.color = '#000000';
+      void Api.getCreateCar(carOptions).then(() => {
+        domElements.garageView?.renderView();
+        carOptions.name = '';
+        carOptions.color = '#000000';
+      });
     }
   }
 
