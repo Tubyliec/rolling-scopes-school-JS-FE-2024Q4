@@ -2,6 +2,7 @@ import { NavBar } from '../../../components/navigation-panel/nav-bar';
 import { WinnersContainer } from '../../../components/winners-container/winners-container';
 import type { ElementOptions } from '../../../models/interfaces/element-options.interface';
 import type { IsHTMLElement } from '../../../models/types/is-html-element.type';
+import { ViewUtilities } from '../../../utils/accessory-utils/view-utilities';
 import { PageCreator } from '../../../utils/view-creators/page-creator';
 
 export class WinnersView extends PageCreator {
@@ -12,11 +13,6 @@ export class WinnersView extends PageCreator {
     super(options);
     this.navBar = undefined;
     this.addNav();
-    this.addHeader(this.element, {
-      tag: 'h1',
-      css: ['page-header'],
-      text: 'Winners()',
-    });
     this.renderWinners();
   }
 
@@ -26,6 +22,9 @@ export class WinnersView extends PageCreator {
   }
 
   public renderWinners(): void {
+    if (this.winnersTable && this.winnersTable.element) {
+      ViewUtilities.clearElement(this.winnersTable.element);
+    }
     this.winnersTable = new WinnersContainer({
       tag: 'div',
       css: ['winners-container'],

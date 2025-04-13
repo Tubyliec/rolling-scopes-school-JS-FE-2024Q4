@@ -51,5 +51,6 @@ export class App {
     this.garage = new GarageView({ tag: 'div', css: ['page', 'garage'] });
     domElements.garageView = this.garage;
     this.winners = new WinnersView({ tag: 'div', css: ['page', 'winners'] });
+    domElements.winnersView = this.winners;
   }
 }

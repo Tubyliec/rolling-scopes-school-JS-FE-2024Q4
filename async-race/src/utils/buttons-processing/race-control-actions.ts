@@ -31,6 +31,9 @@ export class RaceControlActions {
           `Winner: ${winnerCar.name} - time: ${winner.time}`,
         );
         succesArray.length = 0;
+      })
+      .then(() => {
+        domElements.winnersView?.renderWinners();
       });
   }
   public static reset(controlElement: CarControlPanel): void {

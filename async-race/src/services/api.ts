@@ -1,3 +1,4 @@
+import type { Winners } from '../models/interfaces/winners.interface';
 import type { Car } from '../models/types/car.type';
 import type { CarsList } from '../models/types/cars-list.type';
 import type { CreatedCar } from '../models/types/created-car.type';
@@ -92,6 +93,29 @@ export class Api {
       : { success: false };
   }
 
+  public static async getWinners({
+    page,
+    limit = 10,
+    sort,
+    order,
+  }: {
+    page: number;
+    limit?: number;
+    sort?: string | null;
+    order?: string | null;
+  }): Promise<Winners> {
+    const response = await fetch(
+      `http://localhost:3000/winners?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`,
+    );
+
+    const winners = (await response.json()) as Winner[];
+
+    return {
+      winners: winners,
+      count: response.headers.get('X-Total-Count'),
+    };
+  }
+
   public static async getWinner(id: number): Promise<Winner> {
     const response = await fetch(`http://localhost:3000/winners/${id}`);
     return response.json() as Promise<Winner>;
@@ -137,5 +161,9 @@ export class Api {
         time: Math.min(winner.time, winnerState.time),
       });
     }
+  }
+
+  public static async deleteWinner(id: number): Promise<void> {
+    await fetch(`http://localhost:3000/winners/${id}`, { method: 'DELETE' });
   }
 }

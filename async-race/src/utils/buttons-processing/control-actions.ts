@@ -9,6 +9,9 @@ export class ControlActions {
     void Api.getDeleteCarById(Number(element.id)).then(() =>
       domElements.garageView?.renderView(),
     );
+    void Api.deleteWinner(Number(element.id)).then(() =>
+      domElements.winnersView?.renderWinners(),
+    );
   }
 
   public static selectCar(element: CarWay): void {

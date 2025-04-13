@@ -19,7 +19,7 @@ export class Driving {
       const engine: Engine = await Api.getStartEngine(id);
       const { velocity, distance } = engine;
       const time = Math.round(distance / velocity);
-      const distanceBetweenElements = Animation.getDistance(car, flag) + 80;
+      const distanceBetweenElements = Animation.getDistance(car, flag) + 70;
       animationState[id] = Animation.animation(
         car,
         distanceBetweenElements,
