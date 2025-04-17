@@ -5,17 +5,11 @@ export class BaseElementCreator {
   public element;
 
   constructor(options: ElementOptions) {
-    this.element = this.createElement(options.tag);
+    this.element = document.createElement(options.tag);
     if (options.css) this.setCssClasses(options.css);
     if (options.id) this.setId(options.id);
     if (options.text) this.setTextContent(options.text);
     if (options.attribute) this.setAttribute(options.attribute);
-  }
-
-  public createElement<K extends keyof HTMLElementTagNameMap>(
-    tag: K,
-  ): HTMLElementTagNameMap[K] {
-    return document.createElement(tag);
   }
 
   public removeElement(): void {

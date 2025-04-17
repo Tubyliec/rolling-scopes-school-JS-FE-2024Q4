@@ -6,6 +6,5 @@ export interface ElementOptions {
   text?: string;
   id?: number;
   placeholder?: string;
-  type?: string;
   attribute?: Attribute;
 }
