@@ -5,6 +5,5 @@ export interface ElementOptions {
   css?: string[];
   text?: string;
   id?: number;
-  placeholder?: string;
   attribute?: Attribute;
 }
