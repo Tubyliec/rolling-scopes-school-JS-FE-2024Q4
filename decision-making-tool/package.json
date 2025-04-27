@@ -11,7 +11,7 @@
     "prettier-unknown": "prettier '**/*.ts' --write --ignore-unknown",
     "lint": "eslint . --ext .ts",
     "stylelint": "stylelint '**/*.scss'",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install decision-making-tool/.husky"
   },
   "keywords": [],
   "author": "",
