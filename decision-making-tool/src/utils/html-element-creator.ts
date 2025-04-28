@@ -23,11 +23,11 @@ export class HtmlElementCreator {
   }
 
   public appendElement(elements: IsHtmlElement[]): void {
+    const htmlFragment = document.createDocumentFragment();
     for (const htmlElement of elements) {
-      if (this.element && htmlElement) {
-        this.element.append(htmlElement);
-      }
+      if (htmlElement) htmlFragment.append(htmlElement);
     }
+    if (this.element) this.element.append(htmlFragment);
   }
 
   public setCss(classes: string[]): void {
