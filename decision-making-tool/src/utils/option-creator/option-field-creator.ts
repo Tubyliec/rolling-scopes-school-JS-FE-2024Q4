@@ -9,8 +9,6 @@ import { InputActions } from '../input-actions/input-actions';
 import { OptionInputCreator } from '../input-creator/option-input-creator';
 import './option-field.scss';
 
-const cssClasses: string[] = ['option'];
-
 export class OptionFieldCreator extends HtmlElementCreator {
   public primaryInput?: IsHtmlElement;
   public secondaryInput?: IsHtmlElement;
@@ -25,7 +23,6 @@ export class OptionFieldCreator extends HtmlElementCreator {
   ) {
     super(options);
     this.optionIndex = index;
-    this.createHtmlElement();
     this.labelElement = OptionFieldCreator.createLabel(optionOptions);
     const primaryOption: InputOptions = {
       placeholder: 'Title',
@@ -73,10 +70,5 @@ export class OptionFieldCreator extends HtmlElementCreator {
       labelElement.textContent = optionOptions.id;
     }
     return labelElement;
-  }
-
-  public createHtmlElement(): void {
-    this.element = document.createElement('li');
-    this.setCss(cssClasses);
   }
 }

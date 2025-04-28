@@ -29,7 +29,7 @@ export class List extends ViewCreator {
     index: number,
   ): IsHtmlElement {
     const optionItem = new OptionFieldCreator(
-      options,
+      { tag: Tags.LI, classes: ['option'] },
       optionOptions,
       index,
     ).getHtmlElement();
