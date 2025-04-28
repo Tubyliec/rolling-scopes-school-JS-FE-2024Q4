@@ -36,7 +36,7 @@ export class MainView extends ViewCreator {
   constructor() {
     const options: CreateOptions = {
       tag: 'main',
-      classes: [...cssClasses],
+      classes: cssClasses,
     };
 
     const mainButtonClasses: string[] = ['button', 'main__button'];
@@ -146,7 +146,7 @@ export class MainView extends ViewCreator {
       for (const option of loadedOptions) {
         optionsArray.push(option);
       }
-      StorageActions.saveFaleToStorage(optionsArray);
+      StorageActions.saveFileToStorage(optionsArray);
       if (this.list) {
         this.list = new List().getElement();
         if (this.list && this.getElement()) {
@@ -171,7 +171,7 @@ export class MainView extends ViewCreator {
         'Confirm',
         () => this.pasteText(),
       ).getHtmlElement();
-      if (confirmButton instanceof HTMLElement) {
+      if (confirmButton) {
         this.pasteDialog.append(confirmButton);
       }
     }
@@ -179,7 +179,7 @@ export class MainView extends ViewCreator {
 
   public pasteText(): void {
     ButtonsActions.parseStringToArrays();
-    StorageActions.saveFaleToStorage(optionsArray);
+    StorageActions.saveFileToStorage(optionsArray);
     if (this.list) {
       this.list = new List().getElement();
       if (this.list && this.getElement()) {

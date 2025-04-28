@@ -10,7 +10,7 @@ export abstract class InputActions {
         optionsArray[index].weight = event.target.value;
       }
     }
-    StorageActions.saveFaleToStorage(optionsArray);
+    StorageActions.saveFileToStorage(optionsArray);
   }
 
   public static saveAreaValue(): void {

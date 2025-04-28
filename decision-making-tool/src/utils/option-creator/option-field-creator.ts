@@ -25,7 +25,7 @@ export class OptionFieldCreator extends HtmlElementCreator {
   ) {
     super(options);
     this.createHtmlElement();
-    this.labelElement = OptionFieldCreator.createlabel(optionOptions);
+    this.labelElement = OptionFieldCreator.createLabel(optionOptions);
     const primaryOption: InputOptions = {
       placeholder: 'Title',
       role: 'primary',
@@ -68,7 +68,7 @@ export class OptionFieldCreator extends HtmlElementCreator {
     }
   }
 
-  public static createlabel(optionOptions: ListOptions): HTMLElement {
+  public static createLabel(optionOptions: ListOptions): HTMLElement {
     const labelElement: HTMLLabelElement = document.createElement('label');
     labelElement.classList.add('label');
     if (optionOptions.id) {

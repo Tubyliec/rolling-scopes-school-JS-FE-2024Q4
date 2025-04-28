@@ -37,7 +37,7 @@ export abstract class ButtonsActions {
     if (newOption) {
       parentElement?.append(newOption);
     }
-    StorageActions.saveFaleToStorage(optionsArray);
+    StorageActions.saveFileToStorage(optionsArray);
   }
 
   public static deleteOption(
@@ -46,13 +46,13 @@ export abstract class ButtonsActions {
   ): void {
     optionsArray[index] = {};
     currentElement?.remove();
-    StorageActions.saveFaleToStorage(optionsArray);
+    StorageActions.saveFileToStorage(optionsArray);
   }
 
   public static clearList(element: IsHtmlElement): void {
     AdditionalUtilities.clearElement(element);
     optionsArray.length = 0;
-    StorageActions.saveFaleToStorage(optionsArray);
+    StorageActions.saveFileToStorage(optionsArray);
   }
 
   public static saveToFile(fileName: string = 'options.json'): void {
@@ -106,9 +106,7 @@ export abstract class ButtonsActions {
             reject(new Error(String(error)));
           });
       });
-
       fakeInput.click();
-      console.log();
     });
   }
 
@@ -138,8 +136,6 @@ export abstract class ButtonsActions {
         }
       }
     }
-    for (const object of objectsArray) {
-      optionsArray.push(object);
-    }
+    optionsArray.push(...objectsArray);
   }
 }

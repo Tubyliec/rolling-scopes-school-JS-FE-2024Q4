@@ -3,10 +3,9 @@ import type { EventFunction } from '../models/types/event-callback.type';
 import type { IsHtmlElement } from '../models/types/is-html-element.type';
 
 export class HtmlElementCreator {
-  public element: IsHtmlElement;
+  public element: IsHtmlElement | undefined;
 
   constructor(options: CreateOptions) {
-    this.element = undefined;
     this.createHtmlElement(options);
   }
 

@@ -2,7 +2,7 @@ import type { ListOptions } from '../../models/interfaces/list-options.interface
 import type { IsString } from '../../models/types/is-string.type';
 
 export abstract class StorageActions {
-  public static saveFaleToStorage(file: ListOptions[]): void {
+  public static saveFileToStorage(file: ListOptions[]): void {
     const savedFile: string = JSON.stringify(file);
     localStorage.setItem('optionsArray', savedFile);
   }

@@ -42,6 +42,7 @@ export class DialogCreator extends HtmlElementCreator {
         ) {
           this.element.close();
           this.element.remove();
+          event.stopPropagation();
         }
       });
     }

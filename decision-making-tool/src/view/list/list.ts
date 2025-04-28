@@ -15,7 +15,7 @@ export class List extends ViewCreator {
   constructor() {
     const options: CreateOptions = {
       tag: 'ul',
-      classes: [...cssClasses],
+      classes: cssClasses,
     };
     super(options);
     this.element = this.createElementView(options).getHtmlElement();
@@ -36,7 +36,6 @@ export class List extends ViewCreator {
   }
 
   public createOptionsList(options: CreateOptions): void {
-    optionsArray.length = 0;
     const importedArray: ListOptions[] =
       StorageActions.loadFromStorage('optionsArray');
     optionsArray.length = 0;
