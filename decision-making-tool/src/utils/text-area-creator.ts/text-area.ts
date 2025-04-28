@@ -1,5 +1,6 @@
 import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
+import type { Size } from '../../models/interfaces/size.interface';
 import type { EventInputFunction } from '../../models/types/event-input.type';
 import { HtmlElementCreator } from '../html-element-creator';
 import './text-area.scss';
@@ -11,10 +12,12 @@ export class TextAreaCreator extends HtmlElementCreator {
     const options: CreateOptions = {
       tag: Tags.TEXTAREA,
       classes: [...cssClasses],
+      placeholder: 'Paste a list of new options in a CSV-like format',
+      fieldSize: { rows: 15, cols: 50 },
     };
     super(options);
-    this.setPlaceholder('Paste a list of new options in a CSV-like format');
-    this.setSize(15, 50);
+    if (options.placeholder) this.setPlaceholder(options.placeholder);
+    if (options.fieldSize) this.setSize(options.fieldSize);
     this.setCallback(callback);
   }
 
@@ -23,10 +26,10 @@ export class TextAreaCreator extends HtmlElementCreator {
       this.element.placeholder = text;
   }
 
-  public setSize(rows: number, cols: number): void {
+  public setSize(size: Size): void {
     if (this.element && this.element instanceof HTMLTextAreaElement) {
-      this.element.rows = rows;
-      this.element.cols = cols;
+      this.element.rows = size.rows;
+      this.element.cols = size.cols;
     }
   }
 
