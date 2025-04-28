@@ -66,10 +66,7 @@ export class DialogCreator extends HtmlElementCreator {
       'Close',
       () => this.closeDialog(),
     );
-    if (this.element && text.element && button.element) {
-      this.element.append(text.element);
-      this.element.append(button.element);
-    }
+    this.appendElement([text.element, button.element]);
   }
 
   public createPasteDialog(): void {

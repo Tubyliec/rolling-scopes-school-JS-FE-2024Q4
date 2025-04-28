@@ -57,16 +57,12 @@ export class OptionFieldCreator extends HtmlElementCreator {
       'Delete',
       () => ButtonsActions.deleteOption(index, this.element),
     ).getHtmlElement();
-    this.element?.append(this.labelElement);
-    if (this.primaryInput instanceof HTMLElement) {
-      this.element?.append(this.primaryInput);
-    }
-    if (this.secondaryInput instanceof HTMLElement) {
-      this.element?.append(this.secondaryInput);
-    }
-    if (this.element && this.deleteButton) {
-      this.element.append(this.deleteButton);
-    }
+    this.appendElement([
+      this.labelElement,
+      this.primaryInput,
+      this.secondaryInput,
+      this.deleteButton,
+    ]);
   }
 
   public static createLabel(optionOptions: ListOptions): HTMLElement {
