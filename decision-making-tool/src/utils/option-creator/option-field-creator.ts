@@ -12,11 +12,11 @@ import './option-field.scss';
 const cssClasses: string[] = ['option'];
 
 export class OptionFieldCreator extends HtmlElementCreator {
-  public primaryInput: IsHtmlElement;
-  public secondaryInput: IsHtmlElement;
-  public labelElement: IsHtmlElement;
-  public deleteButton: IsHtmlElement;
-  public optionIndex: number;
+  public primaryInput?: IsHtmlElement;
+  public secondaryInput?: IsHtmlElement;
+  public labelElement?: IsHtmlElement;
+  public deleteButton?: IsHtmlElement;
+  public optionIndex?: number;
 
   constructor(
     options: CreateOptions,
@@ -24,19 +24,24 @@ export class OptionFieldCreator extends HtmlElementCreator {
     index: number,
   ) {
     super(options);
+    this.optionIndex = index;
     this.createHtmlElement();
     this.labelElement = OptionFieldCreator.createLabel(optionOptions);
     const primaryOption: InputOptions = {
       placeholder: 'Title',
       role: 'primary-input',
-      callback: (): void =>
-        InputActions.saveValue(this.optionIndex, primaryOption.role),
+      callback: (): void => {
+        if (this.optionIndex)
+          InputActions.saveValue(this.optionIndex, primaryOption.role);
+      },
     };
     const secondaryOption: InputOptions = {
       placeholder: 'Weight',
       role: 'secondary-input',
-      callback: (): void =>
-        InputActions.saveValue(this.optionIndex, secondaryOption.role),
+      callback: (): void => {
+        if (this.optionIndex)
+          InputActions.saveValue(this.optionIndex, secondaryOption.role);
+      },
     };
     this.primaryInput = new OptionInputCreator(
       primaryOption,
@@ -55,7 +60,6 @@ export class OptionFieldCreator extends HtmlElementCreator {
       'Delete',
       () => ButtonsActions.deleteOption(index, this.element),
     ).getHtmlElement();
-    this.optionIndex = index;
     this.element?.append(this.labelElement);
     if (this.primaryInput instanceof HTMLElement) {
       this.element?.append(this.primaryInput);
