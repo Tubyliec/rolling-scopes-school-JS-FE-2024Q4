@@ -18,11 +18,20 @@ export class InputCreator extends HtmlElementCreator {
     if (this.element instanceof HTMLInputElement) {
       this.element.placeholder = inputOptions.placeholder;
     }
+    if (inputOptions.type) {
+      this.setType(inputOptions.type);
+    }
   }
 
   public setCallback(callback: EventInputFunction): void {
     if (typeof callback === 'function' && this.element) {
       this.element.addEventListener('change', (event) => callback(event));
+    }
+  }
+
+  public setType(type: string): void {
+    if (this.element instanceof HTMLInputElement) {
+      this.element.type = type;
     }
   }
 }

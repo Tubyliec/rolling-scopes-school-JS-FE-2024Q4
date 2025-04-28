@@ -38,6 +38,7 @@ export class OptionFieldCreator extends HtmlElementCreator {
     const secondaryOption: InputOptions = {
       placeholder: 'Weight',
       role: 'secondary-input',
+      type: 'number',
       callback: (): void => {
         if (this.optionIndex)
           InputActions.saveValue(this.optionIndex, secondaryOption.role);
@@ -51,10 +52,6 @@ export class OptionFieldCreator extends HtmlElementCreator {
       secondaryOption,
       optionOptions,
     ).getHtmlElement();
-    if (this.secondaryInput instanceof HTMLInputElement) {
-      this.secondaryInput.type = 'number';
-    }
-
     this.deleteButton = new ButtonCreator(
       ['button', 'button__delete'],
       'Delete',

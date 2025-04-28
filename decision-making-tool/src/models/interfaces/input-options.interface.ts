@@ -4,4 +4,5 @@ export interface InputOptions {
   placeholder: string;
   role: 'primary-input' | 'secondary-input';
   callback?: EventInputFunction;
+  type?: 'number' | 'text';
 }
