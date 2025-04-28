@@ -9,10 +9,9 @@ export class InputCreator extends HtmlElementCreator {
   constructor(inputOptions: InputOptions) {
     const options: CreateOptions = {
       tag: Tags.INPUT,
-      classes: ['input', `${inputOptions.role}-input`],
+      classes: ['input', inputOptions.role],
     };
     super(options);
-    this.createHtmlElement(options);
     if (inputOptions.callback) {
       this.setCallback(inputOptions.callback);
     }

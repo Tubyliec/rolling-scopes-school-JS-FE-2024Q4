@@ -4,9 +4,9 @@ import { StorageActions } from '../storage-actions/storage-actions';
 export abstract class InputActions {
   public static saveValue(index: number, role: string): void {
     if (event && event.target instanceof HTMLInputElement) {
-      if (role === 'primary') {
+      if (role === 'primary-input') {
         optionsArray[index].title = event.target.value;
-      } else if (role === 'secondary') {
+      } else if (role === 'secondary-input') {
         optionsArray[index].weight = event.target.value;
       }
     }

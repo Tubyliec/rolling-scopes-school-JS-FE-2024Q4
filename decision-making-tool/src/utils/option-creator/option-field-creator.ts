@@ -28,13 +28,13 @@ export class OptionFieldCreator extends HtmlElementCreator {
     this.labelElement = OptionFieldCreator.createLabel(optionOptions);
     const primaryOption: InputOptions = {
       placeholder: 'Title',
-      role: 'primary',
+      role: 'primary-input',
       callback: (): void =>
         InputActions.saveValue(this.optionIndex, primaryOption.role),
     };
     const secondaryOption: InputOptions = {
       placeholder: 'Weight',
-      role: 'secondary',
+      role: 'secondary-input',
       callback: (): void =>
         InputActions.saveValue(this.optionIndex, secondaryOption.role),
     };
