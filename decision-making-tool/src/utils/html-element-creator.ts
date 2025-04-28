@@ -15,8 +15,8 @@ export class HtmlElementCreator {
 
   public createHtmlElement(options: CreateOptions): void {
     this.element = document.createElement(options.tag);
-    this.setCss(options.classes);
-    this.setText(options.text);
+    if (options.classes) this.setCss(options.classes);
+    if (options.text) this.setText(options.text);
     if (options.callback) {
       this.setCallback(options.callback);
     }

@@ -1,4 +1,4 @@
-import { optionsArray } from '../../data/options';
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
@@ -6,6 +6,7 @@ import { ButtonsActions } from '../../utils/buttons-actions/buttons-actions';
 import { OptionFieldCreator } from '../../utils/option-creator/option-field-creator';
 import { StorageActions } from '../../utils/storage-actions/storage-actions';
 import { ViewCreator } from '../view-creator';
+import { optionsArray } from '../../data/options';
 import './list.scss';
 
 const cssClasses: string[] = ['list'];
@@ -14,7 +15,7 @@ export class List extends ViewCreator {
   public element: IsHtmlElement;
   constructor() {
     const options: CreateOptions = {
-      tag: 'ul',
+      tag: Tags.UL,
       classes: cssClasses,
     };
     super(options);

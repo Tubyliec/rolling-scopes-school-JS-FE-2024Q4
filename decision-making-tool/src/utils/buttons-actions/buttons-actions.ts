@@ -12,6 +12,7 @@ import {
   parsedValue,
   textAreaValue,
 } from '../../data/options';
+import { Tags } from '../../models/enums/tags.enum';
 
 export abstract class ButtonsActions {
   public static addOption(parentElement: IsHtmlElement): void {
@@ -23,7 +24,7 @@ export abstract class ButtonsActions {
     };
     optionsItems.push(newItem);
     const options: CreateOptions = {
-      tag: 'li',
+      tag: Tags.LI,
       classes: [...cssClasses],
     };
     const optionOptions: ListOptions = {

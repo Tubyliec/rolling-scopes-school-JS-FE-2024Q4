@@ -1,3 +1,4 @@
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { EventInputFunction } from '../../models/types/event-input.type';
 import { HtmlElementCreator } from '../html-element-creator';
@@ -8,7 +9,7 @@ const cssClasses: string[] = ['text-area'];
 export class TextAreaCreator extends HtmlElementCreator {
   constructor(callback: EventInputFunction) {
     const options: CreateOptions = {
-      tag: 'textarea',
+      tag: Tags.TEXTAREA,
       classes: [...cssClasses],
     };
     super(options);

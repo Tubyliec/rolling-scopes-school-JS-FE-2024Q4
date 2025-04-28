@@ -1,3 +1,4 @@
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { InputOptions } from '../../models/interfaces/input-options.interface';
 import type { EventInputFunction } from '../../models/types/event-input.type';
@@ -7,7 +8,7 @@ import './input.scss';
 export class InputCreator extends HtmlElementCreator {
   constructor(inputOptions: InputOptions) {
     const options: CreateOptions = {
-      tag: 'input',
+      tag: Tags.INPUT,
       classes: ['input', `${inputOptions.role}-input`],
     };
     super(options);

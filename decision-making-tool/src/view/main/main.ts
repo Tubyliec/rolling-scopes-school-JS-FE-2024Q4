@@ -1,4 +1,5 @@
 import { optionsArray } from '../../data/options';
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import type { IsHtmlElement } from '../../models/types/is-html-element.type';
@@ -35,7 +36,7 @@ export class MainView extends ViewCreator {
 
   constructor() {
     const options: CreateOptions = {
-      tag: 'main',
+      tag: Tags.MAIN,
       classes: cssClasses,
     };
 

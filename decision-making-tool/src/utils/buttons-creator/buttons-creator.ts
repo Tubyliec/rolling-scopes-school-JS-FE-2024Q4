@@ -1,3 +1,4 @@
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { EventFunction } from '../../models/types/event-callback.type';
 import { HtmlElementCreator } from '../html-element-creator';
@@ -6,7 +7,7 @@ import './button.scss';
 export class ButtonCreator extends HtmlElementCreator {
   constructor(classes: string[], text: string, callback?: EventFunction) {
     const options: CreateOptions = {
-      tag: 'button',
+      tag: Tags.BUTTON,
       classes: [...classes],
     };
     super(options);

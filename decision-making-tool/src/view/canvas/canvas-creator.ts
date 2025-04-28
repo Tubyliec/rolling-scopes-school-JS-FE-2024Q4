@@ -1,4 +1,5 @@
 import { optionsArray } from '../../data/options';
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import type { ListOptions } from '../../models/interfaces/list-options.interface';
 import { AdditionalUtilities } from '../../utils/additional-utils/additional-utilities';
@@ -19,7 +20,10 @@ export class CanvasCreator extends HtmlElementCreator {
   public currentDegree: number;
 
   constructor(width: number, height: number) {
-    const options: CreateOptions = { tag: 'canvas', classes: [...cssClasses] };
+    const options: CreateOptions = {
+      tag: Tags.CANVAS,
+      classes: [...cssClasses],
+    };
     super(options);
     if (this.element instanceof HTMLCanvasElement) {
       this.element.width = width;

@@ -1,0 +1,15 @@
+export enum Tags {
+  MAIN = 'main',
+  DIV = 'div',
+  SPAN = 'span',
+  P = 'p',
+  A = 'a',
+  BUTTON = 'button',
+  INPUT = 'input',
+  UL = 'ul',
+  LI = 'li',
+  DIALOG = 'dialog',
+  TEXTAREA = 'textarea',
+  CANVAS = 'canvas',
+  H1 = 'h1',
+}

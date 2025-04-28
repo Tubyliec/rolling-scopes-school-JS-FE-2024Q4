@@ -1,3 +1,4 @@
+import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import { AdditionalUtilities } from '../additional-utils/additional-utilities';
 import { ButtonCreator } from '../buttons-creator/buttons-creator';
@@ -11,7 +12,7 @@ const cssClasses: string[] = ['dialog'];
 export class DialogCreator extends HtmlElementCreator {
   constructor() {
     const options: CreateOptions = {
-      tag: 'dialog',
+      tag: Tags.DIALOG,
       classes: [...cssClasses],
     };
     super(options);
@@ -52,7 +53,7 @@ export class DialogCreator extends HtmlElementCreator {
     AdditionalUtilities.clearElement(this.element);
     const cssClasses: string[] = ['dialog__text'];
     const textOptions: CreateOptions = {
-      tag: 'p',
+      tag: Tags.P,
       classes: [...cssClasses],
     };
     const text: HtmlElementCreator = new HtmlElementCreator(textOptions);
