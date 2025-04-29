@@ -125,7 +125,6 @@ export class MainView extends ViewCreator {
         document.body.append(this.dialog);
         this.dialog.showModal();
       }
-
       this.usefulOptionsCount = 0;
       this.nullCount = 0;
     } else {

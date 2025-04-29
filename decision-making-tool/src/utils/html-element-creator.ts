@@ -4,6 +4,7 @@ import type { IsHtmlElement } from '../models/types/is-html-element.type';
 
 export class HtmlElementCreator {
   public element: IsHtmlElement | undefined;
+  public clickHandler?: (event: Event) => void;
 
   constructor(options: CreateOptions) {
     this.createHtmlElement(options);
@@ -48,9 +49,17 @@ export class HtmlElementCreator {
 
   public setCallback(callback: EventFunction): void {
     if (typeof callback === 'function' && this.element) {
-      this.element.addEventListener('click', (event) => {
+      this.clickHandler = (event: Event): void => {
         void callback(event);
-      });
+      };
+      this.element.addEventListener('click', this.clickHandler);
+    }
+  }
+
+  public cleanCallback(): void {
+    if (this.element && this.clickHandler) {
+      this.element.removeEventListener('click', this.clickHandler);
+      this.clickHandler = undefined;
     }
   }
 }
