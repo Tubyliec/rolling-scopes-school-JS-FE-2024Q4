@@ -35,7 +35,17 @@ export class TextAreaCreator extends HtmlElementCreator {
 
   public setCallback(callback: EventInputFunction): void {
     if (typeof callback === 'function' && this.element) {
-      this.element.addEventListener('change', (event) => callback(event));
+      this.eventHandler = (event: Event): void => {
+        void callback(event);
+      };
+      this.element.addEventListener('change', this.eventHandler);
+    }
+  }
+
+  public cleanCallback(): void {
+    if (this.element && this.eventHandler) {
+      this.element.removeEventListener('change', this.eventHandler);
+      this.eventHandler = undefined;
     }
   }
 }
