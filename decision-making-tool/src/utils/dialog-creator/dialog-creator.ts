@@ -1,7 +1,7 @@
 import { Tags } from '../../models/enums/tags.enum';
 import type { CreateOptions } from '../../models/interfaces/create-options.interface';
 import { AdditionalUtilities } from '../additional-utils/additional-utilities';
-import { ButtonCreator } from '../buttons-creator/buttons-creator';
+import { createButton } from '../buttons-creator/buttons-factory';
 import { HtmlElementCreator } from '../html-element-creator';
 import { InputActions } from '../input-actions/input-actions';
 import { TextAreaCreator } from '../text-area-creator.ts/text-area';
@@ -67,13 +67,12 @@ export class DialogCreator extends HtmlElementCreator {
     text.setText(
       'Please add at least 2 valid options. An option is considered valid if its title is not empty and its weight is greater than 0',
     );
-    const buttonClasses: string[] = ['button', 'dialog__button'];
-    const button: ButtonCreator = new ButtonCreator(
-      buttonClasses,
-      'Close',
-      () => this.closeDialog(),
-    );
-    this.appendElement([text.element, button.element]);
+    const button: HTMLButtonElement = createButton({
+      text: 'Close',
+      classNames: ['button', 'dialog__button'],
+      clickHandler: () => this.closeDialog(),
+    });
+    this.appendElement([text.element, button]);
   }
 
   public createPasteDialog(): void {
@@ -84,15 +83,13 @@ export class DialogCreator extends HtmlElementCreator {
     if (this.element && textArea.element) {
       this.element.append(textArea.element);
     }
-    const buttonClasses: string[] = ['button', 'paste__button'];
-    const cancelButton: ButtonCreator = new ButtonCreator(
-      buttonClasses,
-      'Cancel',
-      () => this.closeDialog(),
-    );
-
-    if (this.element && cancelButton.element) {
-      this.element.append(cancelButton.element);
+    const button: HTMLButtonElement = createButton({
+      text: 'Cancel',
+      classNames: ['button', 'paste__button'],
+      clickHandler: () => this.closeDialog(),
+    });
+    if (this.element) {
+      this.element.append(button);
     }
   }
 

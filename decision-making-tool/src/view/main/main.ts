@@ -39,14 +39,17 @@ export class MainView extends ViewCreator {
       tag: Tags.MAIN,
       classes: cssClasses,
     };
-
-    const mainButtonClasses: string[] = ['button', 'main__button'];
-    const pickerButtonClasses: string[] = ['button', 'picker__button'];
-
     super(options);
     this.createElementView(options);
     this.nameElement = new Name().getElement();
     this.list = new List().getElement();
+    this.addButtons();
+    this.appendMainItems();
+  }
+
+  public addButtons(): void {
+    const mainButtonClasses: string[] = ['button', 'main__button'];
+    const pickerButtonClasses: string[] = ['button', 'picker__button'];
     this.addButton = new ButtonCreator(mainButtonClasses, 'Add option', () =>
       ButtonsActions.addOption(this.list),
     ).getHtmlElement();
@@ -78,9 +81,8 @@ export class MainView extends ViewCreator {
       pickerButtonClasses,
       'Start',
     ).getHtmlElement();
-
-    this.appendMainItems();
   }
+
   public appendMainItems(): void {
     this.elementViewCreator.appendElement([
       this.nameElement,
