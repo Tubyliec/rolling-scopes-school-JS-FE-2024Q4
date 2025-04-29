@@ -122,7 +122,7 @@ export abstract class ButtonsActions {
       }
       for (
         let valueIndex: number = 0;
-        valueIndex <= parsedValue.length;
+        valueIndex <= parsedValue.length - 1;
         valueIndex += 1
       ) {
         const optionId: number = valueIndex + 1 + optionsArray.length;

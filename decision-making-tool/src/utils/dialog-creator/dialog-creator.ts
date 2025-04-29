@@ -19,33 +19,40 @@ export class DialogCreator extends HtmlElementCreator {
     this.backdropClose();
   }
 
+  public backdropClickHandler = (event: MouseEvent): void => {
+    if (this.element) {
+      const backdropArea: DOMRect = this.element.getBoundingClientRect();
+      const clickedInBackdrop: boolean =
+        event.clientX >= backdropArea.left &&
+        event.clientX <= backdropArea.right &&
+        event.clientY >= backdropArea.top &&
+        event.clientY <= backdropArea.bottom;
+
+      if (!clickedInBackdrop) {
+        this.cleanElement();
+      }
+    }
+  };
+
+  public backdropEcsHandler = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      this.cleanElement();
+    }
+  };
+
+  public cleanElement(): void {
+    if (this.element instanceof HTMLDialogElement) {
+      this.element.close();
+      this.element.remove();
+      this.element.removeEventListener('click', this.backdropClickHandler);
+      this.element.removeEventListener('keydown', this.backdropEcsHandler);
+    }
+  }
+
   public backdropClose(): void {
     if (this.element) {
-      this.element.addEventListener('click', (event) => {
-        if (this.element instanceof HTMLDialogElement) {
-          const backdropArea: DOMRect = this.element.getBoundingClientRect();
-          const clickedInBackdrop: boolean =
-            event.clientX >= backdropArea.left &&
-            event.clientX <= backdropArea.right &&
-            event.clientY >= backdropArea.top &&
-            event.clientY <= backdropArea.bottom;
-
-          if (!clickedInBackdrop) {
-            this.element.close();
-            this.element.remove();
-          }
-        }
-      });
-      this.element.addEventListener('keydown', (event) => {
-        if (
-          this.element instanceof HTMLDialogElement &&
-          event.key === 'Escape'
-        ) {
-          this.element.close();
-          this.element.remove();
-          event.stopPropagation();
-        }
-      });
+      this.element.addEventListener('click', this.backdropClickHandler);
+      this.element.addEventListener('keydown', this.backdropEcsHandler);
     }
   }
 
@@ -90,9 +97,6 @@ export class DialogCreator extends HtmlElementCreator {
   }
 
   public closeDialog(): void {
-    if (this.element instanceof HTMLDialogElement) {
-      this.element.close();
-      this.element.remove();
-    }
+    this.cleanElement();
   }
 }
