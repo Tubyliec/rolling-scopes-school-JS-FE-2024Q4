@@ -44,12 +44,11 @@ export class List extends ViewCreator {
       optionsArray.push(option);
     }
     const optionsItems: ListOptions[] = optionsArray;
-    console.log(importedArray);
     if (optionsArray.length > 0) {
-      for (const optionsItem of optionsItems) {
+      for (const [index, optionsItem] of optionsItems.entries()) {
         if (Object.keys(optionsItem).length > 0) {
           const optionOptions: ListOptions = {
-            id: `#${optionsItems.indexOf(optionsItem) + 1}`,
+            id: `#${index + 1}`,
             title: optionsItem.title,
             weight: optionsItem.weight,
           };
