@@ -3,7 +3,7 @@ import type { IsHtmlElement } from '../models/types/is-html-element.type';
 import { HtmlElementCreator } from '../utils/html-element-creator';
 
 export class ViewCreator {
-  public elementViewCreator: HtmlElementCreator;
+  public elementViewCreator: HtmlElementCreator<HTMLElement>;
   constructor(options: CreateOptions) {
     this.elementViewCreator = this.createElementView(options);
   }
@@ -12,7 +12,9 @@ export class ViewCreator {
     return this.elementViewCreator.getHtmlElement();
   }
 
-  public createElementView(options: CreateOptions): HtmlElementCreator {
+  public createElementView(
+    options: CreateOptions,
+  ): HtmlElementCreator<HTMLElement> {
     const elementOptions: CreateOptions = {
       tag: options.tag,
       classes: options.classes,

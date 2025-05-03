@@ -7,7 +7,7 @@ import './text-area.scss';
 
 const cssClasses: string[] = ['text-area'];
 
-export class TextAreaCreator extends HtmlElementCreator {
+export class TextAreaCreator extends HtmlElementCreator<HTMLTextAreaElement> {
   constructor(callback: EventInputFunction) {
     const options: CreateOptions = {
       tag: Tags.TEXTAREA,
@@ -22,12 +22,11 @@ export class TextAreaCreator extends HtmlElementCreator {
   }
 
   public setPlaceholder(text: string): void {
-    if (this.element && this.element instanceof HTMLTextAreaElement)
-      this.element.placeholder = text;
+    if (this.element) this.element.placeholder = text;
   }
 
   public setSize(size: Size): void {
-    if (this.element && this.element instanceof HTMLTextAreaElement) {
+    if (this.element) {
       this.element.rows = size.rows;
       this.element.cols = size.cols;
     }

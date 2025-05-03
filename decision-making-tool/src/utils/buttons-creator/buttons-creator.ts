@@ -4,7 +4,7 @@ import type { EventFunction } from '../../models/types/event-callback.type';
 import { HtmlElementCreator } from '../html-element-creator';
 import './button.scss';
 
-export class ButtonCreator extends HtmlElementCreator {
+export class ButtonCreator extends HtmlElementCreator<HTMLButtonElement> {
   constructor(classes: string[], text: string, callback?: EventFunction) {
     const options: CreateOptions = {
       tag: Tags.BUTTON,

@@ -9,7 +9,7 @@ import './canvas.scss';
 
 const cssClasses: string[] = ['canvas-field'];
 
-export class CanvasCreator extends HtmlElementCreator {
+export class CanvasCreator extends HtmlElementCreator<HTMLCanvasElement> {
   public ctx: CanvasRenderingContext2D | undefined | null = undefined;
   public canvasWidth: number = 0;
   public canvasHeight: number = 0;
@@ -25,7 +25,7 @@ export class CanvasCreator extends HtmlElementCreator {
       classes: [...cssClasses],
     };
     super(options);
-    if (this.element instanceof HTMLCanvasElement) {
+    if (this.element) {
       this.element.width = width;
       this.element.height = height;
       this.ctx = this.element.getContext('2d');

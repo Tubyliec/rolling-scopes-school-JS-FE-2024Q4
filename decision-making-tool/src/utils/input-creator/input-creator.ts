@@ -5,7 +5,7 @@ import type { EventInputFunction } from '../../models/types/event-input.type';
 import { HtmlElementCreator } from '../html-element-creator';
 import './input.scss';
 
-export class InputCreator extends HtmlElementCreator {
+export class InputCreator extends HtmlElementCreator<HTMLInputElement> {
   constructor(inputOptions: InputOptions) {
     const options: CreateOptions = {
       tag: Tags.INPUT,
@@ -15,9 +15,9 @@ export class InputCreator extends HtmlElementCreator {
     if (inputOptions.callback) {
       this.setCallback(inputOptions.callback);
     }
-    if (this.element instanceof HTMLInputElement) {
-      this.element.placeholder = inputOptions.placeholder;
-    }
+
+    if (this.element) this.element.placeholder = inputOptions.placeholder;
+
     if (inputOptions.type) {
       this.setType(inputOptions.type);
     }
@@ -40,8 +40,6 @@ export class InputCreator extends HtmlElementCreator {
   }
 
   public setType(type: string): void {
-    if (this.element instanceof HTMLInputElement) {
-      this.element.type = type;
-    }
+    if (this.element) this.element.type = type;
   }
 }

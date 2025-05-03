@@ -9,7 +9,7 @@ import './dialog.scss';
 
 const cssClasses: string[] = ['dialog'];
 
-export class DialogCreator extends HtmlElementCreator {
+export class DialogCreator extends HtmlElementCreator<HTMLDialogElement> {
   constructor() {
     const options: CreateOptions = {
       tag: Tags.DIALOG,
@@ -41,7 +41,7 @@ export class DialogCreator extends HtmlElementCreator {
   };
 
   public cleanElement(): void {
-    if (this.element instanceof HTMLDialogElement) {
+    if (this.element) {
       this.element.close();
       this.element.remove();
       this.element.removeEventListener('click', this.backdropClickHandler);
@@ -63,7 +63,8 @@ export class DialogCreator extends HtmlElementCreator {
       tag: Tags.P,
       classes: [...cssClasses],
     };
-    const text: HtmlElementCreator = new HtmlElementCreator(textOptions);
+    const text: HtmlElementCreator<HTMLParagraphElement> =
+      new HtmlElementCreator(textOptions);
     text.setText(
       'Please add at least 2 valid options. An option is considered valid if its title is not empty and its weight is greater than 0',
     );

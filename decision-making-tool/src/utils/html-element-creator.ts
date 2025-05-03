@@ -2,20 +2,20 @@ import type { CreateOptions } from '../models/interfaces/create-options.interfac
 import type { EventFunction } from '../models/types/event-callback.type';
 import type { IsHtmlElement } from '../models/types/is-html-element.type';
 
-export class HtmlElementCreator {
-  public element: IsHtmlElement | undefined;
+export class HtmlElementCreator<T extends HTMLElement> {
+  public element: T | undefined;
   public eventHandler?: (event: Event) => void;
 
   constructor(options: CreateOptions) {
     this.createHtmlElement(options);
   }
 
-  public getHtmlElement(): IsHtmlElement {
+  public getHtmlElement(): T | undefined {
     return this.element;
   }
 
   public createHtmlElement(options: CreateOptions): void {
-    this.element = document.createElement(options.tag);
+    this.element = document.createElement(options.tag) as T;
     if (options.classes) this.setCss(options.classes);
     if (options.text) this.setText(options.text);
     if (options.callback) {

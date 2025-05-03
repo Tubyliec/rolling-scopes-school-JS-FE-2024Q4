@@ -9,7 +9,7 @@ import { InputActions } from '../input-actions/input-actions';
 import { OptionInputCreator } from '../input-creator/option-input-creator';
 import './option-field.scss';
 
-export class OptionFieldCreator extends HtmlElementCreator {
+export class OptionFieldCreator extends HtmlElementCreator<HTMLLIElement> {
   public primaryInput?: IsHtmlElement;
   public secondaryInput?: IsHtmlElement;
   public labelElement?: IsHtmlElement;
