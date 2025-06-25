@@ -5,6 +5,7 @@ import { HTMLElementCreator } from '../../utils/view-creators/html-element-creat
 import { ViewCreator } from '../../utils/view-creators/view-creator';
 import { WinnersHeader } from '../../utils/view-creators/winners-header';
 import { WinnersRow } from '../../utils/view-creators/winners-row';
+import { Winners } from '../../models/interfaces/winners.interface';
 
 export class WinnersContainer extends HTMLElementCreator {
   public winnersHeader: WinnersHeader | undefined;
@@ -47,20 +48,22 @@ export class WinnersContainer extends HTMLElementCreator {
   }
 
   public async addWinners(): Promise<void> {
-    await Api.getWinners({ page: 1 }).then(async (item) => {
+    try {
+      const item: Winners = await Api.getWinners({ page: 1 });
       ViewUtilities.clearElement(this.element);
       this.winnersCount = Number(item.count);
       this.init();
-      for (let index = 1; index < item.winners.length; index += 1) {
-        const Car = await Api.getCar(item.winners[index - 1].id.toString());
+      for (let index = 0; index < item.winners.length; index += 1) {
+        const Car = await Api.getCar(item.winners[index].id.toString());
         const row = new WinnersRow({
-          winner: item.winners[index - 1],
+          winner: item.winners[index],
           winnerData: Car,
-          WinnerNumber: index,
+          WinnerNumber: index + 1,
         });
-
         this.winnersTable?.addInnerElement(row);
       }
-    });
+    } catch (error) {
+      throw error;
+    }
   }
 }

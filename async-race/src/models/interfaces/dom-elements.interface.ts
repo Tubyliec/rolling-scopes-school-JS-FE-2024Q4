@@ -7,14 +7,14 @@ import type { GarageView } from '../../view/pages/garage/garage-view';
 import type { WinnersView } from '../../view/pages/winners/winners-wiev';
 
 export interface DomElements {
-  garageView: GarageView | undefined;
-  winnersView: WinnersView | undefined;
-  garageContainer: GarageContainer | undefined;
-  prevButton: ButtonsCreator | undefined;
-  nextButton: ButtonsCreator | undefined;
-  carControlPanel: CarControlPanel | undefined;
-  updateCarName: InputCreator | undefined;
-  updateCarColor: InputCreator | undefined;
-  raceContainer: ViewCreator | undefined;
-  winnerText: ViewCreator | undefined;
+  garageView: GarageView | null;
+  winnersView: WinnersView | null;
+  garageContainer: GarageContainer | null;
+  prevButton: ButtonsCreator | null;
+  nextButton: ButtonsCreator | null;
+  carControlPanel: CarControlPanel | null;
+  updateCarName: InputCreator | null;
+  updateCarColor: InputCreator | null;
+  raceContainer: ViewCreator | null;
+  winnerText: ViewCreator | null;
 }

@@ -71,7 +71,7 @@ export class GarageContainer extends HTMLElementCreator {
       css: ['button', 'pag-button'],
       text: 'Next',
       callback: (): void => {
-        PagginationActions.NextButton();
+        PagginationActions.nextButton();
       },
     });
     domElements.nextButton = this.nextButton;
@@ -88,15 +88,18 @@ export class GarageContainer extends HTMLElementCreator {
     this.count = count;
   }
 
-  public addCar(): void {
-    ViewUtilities.clearElement(this.carsContainer);
-    if (this.carsPageNumber <= 1)
-      domElements.prevButton?.getElement()?.setAttribute('disabled', 'true');
-    if (this.pageNumber) {
-      this.pageNumber.textContent = `Page #${this.carsPageNumber}`;
-    }
-    void this.updateGarage().then(() => {
+  public async addCar(): Promise<void> {
+    try {
+      ViewUtilities.clearElement(this.carsContainer);
+      if (this.carsPageNumber <= 1)
+        domElements.prevButton?.getElement()?.setAttribute('disabled', 'true');
+      if (this.pageNumber) {
+        this.pageNumber.textContent = `Page #${this.carsPageNumber}`;
+      }
+      await this.updateGarage();
       raceCars.length = 0;
+      if (Number(this.count) <= 7)
+        domElements.nextButton?.getElement()?.setAttribute('disabled', 'true');
       for (const item of this.items) {
         const car = new CarWay(
           { tag: 'div', css: ['car-way'], id: item.id },
@@ -104,11 +107,9 @@ export class GarageContainer extends HTMLElementCreator {
         );
         this.carsContainer?.append(car.getElement());
         raceCars.push(car);
-        if (Number(this.count) <= 7)
-          domElements.nextButton
-            ?.getElement()
-            ?.setAttribute('disabled', 'true');
       }
-    });
+    } catch (err) {
+      throw err;
+    }
   }
 }

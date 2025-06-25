@@ -4,7 +4,7 @@ import type { IsHTMLElement } from '../../models/types/is-html-element.type';
 
 export abstract class HTMLElementCreator {
   public element: IsHTMLElement;
-  constructor(options: ElementOptions) {
+  protected constructor(options: ElementOptions) {
     this.element = undefined;
     this.createElement(options);
   }

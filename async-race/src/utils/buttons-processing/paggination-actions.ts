@@ -1,7 +1,7 @@
 import { domElements } from '../../data/dom-elements';
 
 export class PagginationActions {
-  public static NextButton(): void {
+  public static nextButton(): void {
     const garage = domElements.garageContainer;
     const previousButton = domElements.prevButton?.getElement();
     const nextButton = domElements.nextButton?.getElement();

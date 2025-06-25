@@ -5,7 +5,6 @@ import {
 } from '../../data/creation-car-data';
 import { domElements } from '../../data/dom-elements';
 import type { ElementOptions } from '../../models/interfaces/element-options.interface';
-import type { IsHTMLElement } from '../../models/types/is-html-element.type';
 import { createCarActions } from '../../utils/buttons-processing/create-actions';
 import { InputActions } from '../../utils/buttons-processing/input-actions';
 import { RaceControlActions } from '../../utils/buttons-processing/race-control-actions';
@@ -13,22 +12,24 @@ import { ButtonsCreator } from '../../utils/view-creators/buttons-creator';
 import { HTMLElementCreator } from '../../utils/view-creators/html-element-creator';
 import { InputCreator } from '../../utils/view-creators/input-creator';
 import { ViewCreator } from '../../utils/view-creators/view-creator';
+import { Placeholders } from '../../models/enums/placeholders.enum';
+import { Styles } from '../../models/enums/styles.enum';
 import './car-control-panel.scss';
+import { ButtonText } from '../../models/enums/button-text.enum';
 
 export class CarControlPanel extends HTMLElementCreator {
-  public createContainer: ViewCreator | undefined;
-  public createCarName: InputCreator | undefined;
-  public createCarColor: InputCreator | undefined;
-  public createCarButton: ButtonsCreator | undefined;
-  public updateContainer: ViewCreator | undefined;
-  public updateCarName: InputCreator | undefined;
-  public updateCarColor: InputCreator | undefined;
-  public updateCarButton: ButtonsCreator | undefined;
-  public raceContainer: ViewCreator | undefined;
-  public raceButton: IsHTMLElement;
-  public resetButton: IsHTMLElement;
-  public generateCarsButton: IsHTMLElement;
-  public winnerText: ViewCreator | undefined;
+  private createContainer: ViewCreator | undefined;
+  private createCarName: InputCreator | undefined;
+  private createCarColor: InputCreator | undefined;
+  private createCarButton: ButtonsCreator | undefined;
+  private updateContainer: ViewCreator | undefined;
+  private updateCarName: InputCreator | undefined;
+  private updateCarColor: InputCreator | undefined;
+  private updateCarButton: ButtonsCreator | undefined;
+  private raceContainer: ViewCreator | undefined;
+  public raceButton: ButtonsCreator | undefined;
+  public resetButton: ButtonsCreator | undefined;
+  public generateCarsButton: ButtonsCreator | undefined;
 
   constructor(options: ElementOptions) {
     super(options);
@@ -41,41 +42,57 @@ export class CarControlPanel extends HTMLElementCreator {
     this.initRaceContainer();
   }
 
+  public createInput(
+    type: string,
+    css: string,
+    placeholder?: string,
+  ): InputCreator {
+    return new InputCreator({
+      tag: 'input',
+      css: ['control-input', css],
+      placeholder: placeholder || '',
+      type: type,
+      callback: (): void => {
+        if (this.createCarName)
+          InputActions.sendInput(this.createCarName, createdCar);
+      },
+    });
+  }
+
+  public createButton(
+    text: string,
+    css: string,
+    callback: () => void,
+  ): ButtonsCreator {
+    return new ButtonsCreator({
+      tag: 'button',
+      css: ['button', css],
+      text: text,
+      callback: callback,
+    });
+  }
+
   public initCreateContainer(): void {
     this.createContainer = new ViewCreator({
       tag: 'div',
       css: ['create-container'],
     });
     this.addInnerElement(this.createContainer);
-    this.createCarName = new InputCreator({
-      tag: 'input',
-      css: ['control-input', 'name-input'],
-      placeholder: 'Enter car name',
-      type: 'text',
-      callback: (): void => {
-        if (this.createCarName)
-          InputActions.sendInput(this.createCarName, createdCar);
-      },
-    });
+    this.createCarName = this.createInput(
+      'text',
+      Styles.Name,
+      Placeholders.Name,
+    );
     this.createContainer.addInnerElement(this.createCarName);
-    this.createCarColor = new InputCreator({
-      tag: 'input',
-      css: ['control-input', 'color-input'],
-      type: 'color',
-      callback: (): void => {
-        if (this.createCarColor)
-          InputActions.sendInput(this.createCarColor, createdCar);
-      },
-    });
+    this.createCarColor = this.createInput('color', Styles.Color);
     this.createContainer.addInnerElement(this.createCarColor);
-    this.createCarButton = new ButtonsCreator({
-      tag: 'button',
-      css: ['button', 'create-button'],
-      text: 'Create new car',
-      callback: (): void => {
+    this.createCarButton = this.createButton(
+      ButtonText.Create,
+      Styles.Create,
+      (): void => {
         createCarActions.createCar(createdCar);
       },
-    });
+    );
     this.createContainer.addInnerElement(this.createCarButton);
   }
 
@@ -85,37 +102,23 @@ export class CarControlPanel extends HTMLElementCreator {
       css: ['create-container'],
     });
     this.addInnerElement(this.updateContainer);
-    this.updateCarName = new InputCreator({
-      tag: 'input',
-      css: ['control-input', 'name-input'],
-      placeholder: 'Enter car new name',
-      type: 'text',
-      callback: (): void => {
-        if (this.updateCarName)
-          InputActions.sendInput(this.updateCarName, updatedCar);
-      },
-    });
+    this.updateCarName = this.createCarColor = this.createInput(
+      'text',
+      Styles.Name,
+      Placeholders.NewName,
+    );
     domElements.updateCarName = this.updateCarName;
     this.updateContainer.addInnerElement(this.updateCarName);
-    this.updateCarColor = new InputCreator({
-      tag: 'input',
-      css: ['control-input', 'color-input'],
-      type: 'color',
-      callback: (): void => {
-        if (this.updateCarColor)
-          InputActions.sendInput(this.updateCarColor, updatedCar);
-      },
-    });
+    this.updateCarColor = this.createInput('color', Styles.Color);
     this.updateContainer.addInnerElement(this.updateCarColor);
     domElements.updateCarColor = this.updateCarColor;
-    this.updateCarButton = new ButtonsCreator({
-      tag: 'button',
-      css: ['button', 'create-button'],
-      text: 'Update car',
-      callback: (): void => {
+    this.updateCarButton = this.createButton(
+      ButtonText.Update,
+      Styles.Create,
+      (): void => {
         if (updatedId.id) createCarActions.updateCar(updatedId.id, updatedCar);
       },
-    });
+    );
     this.updateContainer.addInnerElement(this.updateCarButton);
   }
 
@@ -126,34 +129,31 @@ export class CarControlPanel extends HTMLElementCreator {
     });
     domElements.raceContainer = this.raceContainer;
     this.addInnerElement(this.raceContainer);
-    this.raceButton = new ButtonsCreator({
-      tag: 'button',
-      css: ['button', 'race-button'],
-      text: 'Race',
-      callback: (): void => {
+    this.raceButton = this.createButton(
+      ButtonText.Race,
+      Styles.Race,
+      (): void => {
         void RaceControlActions.race(this);
       },
-    }).getElement();
+    );
     this.raceContainer.addInnerElement(this.raceButton);
-    this.resetButton = new ButtonsCreator({
-      tag: 'button',
-      css: ['button', 'race-button'],
-      text: 'Reset',
-      callback: (): void => {
+    this.resetButton = this.createButton(
+      ButtonText.Reset,
+      Styles.Race,
+      (): void => {
         RaceControlActions.reset(this);
       },
-    }).getElement();
+    );
     if (this.resetButton instanceof HTMLButtonElement)
       this.resetButton.disabled = true;
     this.raceContainer.addInnerElement(this.resetButton);
-    this.generateCarsButton = new ButtonsCreator({
-      tag: 'button',
-      css: ['button', 'race-button'],
-      text: 'Generate cars',
-      callback: (): void => {
+    this.generateCarsButton = this.createButton(
+      ButtonText.Generate,
+      Styles.Race,
+      (): void => {
         void RaceControlActions.generateCars(this);
       },
-    }).getElement();
+    );
     this.raceContainer.addInnerElement(this.generateCarsButton);
   }
 }

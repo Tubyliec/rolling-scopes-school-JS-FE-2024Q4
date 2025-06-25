@@ -56,7 +56,7 @@ export class Api {
     const response = await fetch(`http://localhost:3000/garage/${id}`, {
       method: 'DELETE',
     });
-    return response.json() as Promise<Car>;
+    return (await response.json()) as Promise<Car>;
   }
 
   public static async getStartEngine(id: number): Promise<Engine> {
@@ -66,17 +66,17 @@ export class Api {
         method: 'PATCH',
       },
     );
-    return response.json() as Promise<Engine>;
+    return (await response.json()) as Promise<Engine>;
   }
 
   public static async getStopEngine(id: number): Promise<Engine> {
     const response = await fetch(
-      `http://localhost:3000/engine?id=${id}&status=started`,
+      `http://localhost:3000/engine?id=${id}&status=stopped`,
       {
         method: 'PATCH',
       },
     );
-    return response.json() as Promise<Engine>;
+    return (await response.json()) as Promise<Engine>;
   }
 
   public static async getDriveStatus(
@@ -87,7 +87,9 @@ export class Api {
       {
         method: 'PATCH',
       },
-    ).catch();
+    ).catch((error) => {
+      throw error;
+    });
     return response.status === 200
       ? { success: ((await response.json()) as { success: boolean }).success }
       : { success: false };
@@ -104,8 +106,15 @@ export class Api {
     sort?: string | null;
     order?: string | null;
   }): Promise<Winners> {
+    const queryParams = new URLSearchParams();
+    queryParams.set('_page', page.toString());
+    queryParams.set('_limit', limit.toString());
+
+    if (sort) queryParams.set('_sort', sort);
+    if (order) queryParams.set('_order', order);
+
     const response = await fetch(
-      `http://localhost:3000/winners?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`,
+      `http://localhost:3000/winners?${queryParams.toString()}`,
     );
 
     const winners = (await response.json()) as Winner[];
@@ -118,7 +127,7 @@ export class Api {
 
   public static async getWinner(id: number): Promise<Winner> {
     const response = await fetch(`http://localhost:3000/winners/${id}`);
-    return response.json() as Promise<Winner>;
+    return (await response.json()) as Promise<Winner>;
   }
 
   public static async getWinnerStatus(id: number): Promise<number> {
@@ -131,7 +140,7 @@ export class Api {
     winner.wins = 1;
     await fetch(`http://localhost:3000/winners`, {
       method: 'POST',
-      body: JSON.stringify(body),
+      body: JSON.stringify(winner),
       headers: {
         'Content-Type': 'application/json',
       },
