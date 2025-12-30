@@ -1,7 +1,7 @@
 /*Reset configuration*/
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   border: none;
 }
 *::before, *::after {
@@ -46,15 +46,15 @@ html {
 /*Reset configuration end*/
 /*Fonts*/
 @font-face {
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   src: local("Montserrat"), url("../assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Allura";
+  font-family: "Allura", cursive;
   src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
 }
 /*Fonts end*/
-.hero_wrapper, .about_wrapper, .about_image, .slider_wrapper, .slider_pagination .button_left, .slider_pagination .button_right, .best_gifts_wrapper, .counter_wrapper, .phone_img, .adress_img, .mail_img {
+.hero_wrapper, .about_wrapper, .about_image, .slider_wrapper, .slider_pagination .button_left, .slider_pagination .button_right, .best_gifts_wrapper, .counter_wrapper, .phone_img, .address_img, .mail_img {
   background-position: center;
   background-size: cover;
 }
@@ -143,17 +143,17 @@ html {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #181c29;
   text-transform: uppercase;
   align-content: center;
   translate: 100%;
-  transition: translate 1s ease-out, display 1s ease-out allow-discrete, overlay 1s ease-out allow-discrete;
+  transition: translate 1s ease-out, display 1s ease-out, overlay 1s ease-out;
 }
 .menu_popup:popover-open {
   translate: 0 0;
-  transition: translate 1s ease-out, display 1s ease-out allow-discrete, overlay 1s ease-out allow-discrete;
+  transition: translate 1s ease-out, display 1s ease-out, overlay 1s ease-out;
 }
 @starting-style {
   .menu_popup:popover-open {
@@ -219,7 +219,7 @@ html {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
@@ -228,13 +228,13 @@ html {
   font-size: 16px;
   line-height: 152%;
   letter-spacing: 0.08em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #181c29;
   padding-bottom: 8px;
 }
 .modal_block .gift_description_wrapper .gift_description p {
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 148%;
@@ -250,7 +250,7 @@ html {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
@@ -262,7 +262,7 @@ html {
   align-items: center;
 }
 .powers_list ul {
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 148%;
@@ -279,6 +279,94 @@ html {
 
 .snowflakes_list {
   margin-top: 5px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #181c29;
+  padding: 12px 82px;
+  anchor-name: --my-anchor;
+}
+header a {
+  color: #181c29;
+}
+@media (max-width: 800px) {
+  header {
+    padding: 1.2rem 8px;
+  }
+}
+header .logo_box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+header .logo_box .logo_image {
+  background-image: url("../assets/icons/snowflake.svg");
+  width: 24px;
+  height: 24px;
+}
+
+.gifts_item {
+  width: 310px;
+  height: 342px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  background-color: #ecf3f8;
+}
+.gifts_item .gift_img {
+  width: 310px;
+  height: 230px;
+}
+.gifts_item .gift_description_wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.gifts_item .gift_description_wrapper .gift_description {
+  text-align: left;
+  padding: 20px;
+}
+.gifts_item .gift_description_wrapper .gift_description p {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 0.05em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  padding-bottom: 10px;
+}
+.gifts_item .gift_description_wrapper .gift_description h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 152%;
+  letter-spacing: 0.08em;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  color: #181c29;
+}
+@media (hover: hover) {
+  .gifts_item:hover {
+    cursor: pointer;
+  }
+  .gifts_item:hover .gift_description > h3 {
+    color: #ff4646;
+  }
 }
 
 /*Global*/
@@ -311,44 +399,6 @@ body {
 }
 
 /*Header*/
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 130%;
-  letter-spacing: 0.05em;
-  font-family: Montserrat;
-  text-transform: uppercase;
-  color: #181c29;
-  padding: 12px 82px;
-  anchor-name: --my-anchor;
-}
-header a {
-  color: #181c29;
-}
-@media (max-width: 800px) {
-  header {
-    padding: 1.2rem 8px;
-  }
-}
-header .logo_box {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding-left: 20px;
-  cursor: pointer;
-}
-header .logo_box .logo_image {
-  background-image: url("../assets/icons/snowflake.svg");
-  width: 24px;
-  height: 24px;
-}
-
 .navigation_list {
   display: flex;
   flex-direction: row;
@@ -404,7 +454,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: Allura;
+  font-family: Allura, sans-serif;
   color: #fff;
 }
 .hero .hero_description h1 {
@@ -412,7 +462,7 @@ header .logo_box .logo_image {
   font-size: 32px;
   line-height: 150%;
   letter-spacing: 0.18em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -422,7 +472,7 @@ header .logo_box .logo_image {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
   padding: 20px 32px;
@@ -485,7 +535,7 @@ header .logo_box .logo_image {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
+  align-items: flex-start;
   margin: 100px 92px 100px 60px;
   padding: 60px 0;
   gap: 20px;
@@ -496,14 +546,14 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: Allura;
+  font-family: "Allura", cursive;
   color: #ff4646;
 }
 .about_info_wrapper .about_info p:last-child {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   letter-spacing: 0.0015em;
   color: #181c29;
 }
@@ -512,7 +562,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #181c29;
 }
@@ -561,7 +611,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: Allura;
+  font-family: Allura, sans-serif;
   color: #fff;
 }
 .slider_caption h2 {
@@ -569,7 +619,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -591,7 +641,7 @@ header .logo_box .logo_image {
 .slider .slider_item p {
   font-weight: 600;
   font-size: 80px;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -667,7 +717,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: Allura;
+  font-family: Allura, sans-serif;
   color: #fff;
 }
 .best_gifts_caption h2 {
@@ -675,7 +725,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -687,56 +737,6 @@ header .logo_box .logo_image {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-}
-
-.gifts_item {
-  width: 310px;
-  height: 342px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 20px;
-  background-color: #ecf3f8;
-}
-.gifts_item .gift_img {
-  width: 310px;
-  height: 230px;
-}
-.gifts_item .gift_description_wrapper {
-  width: 100%;
-  height: 100%;
-  border-radius: 20px;
-  background-color: #fff;
-}
-.gifts_item .gift_description_wrapper .gift_description {
-  text-align: left;
-  padding: 20px;
-}
-.gifts_item .gift_description_wrapper .gift_description p {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 130%;
-  letter-spacing: 0.05em;
-  font-family: Montserrat;
-  text-transform: uppercase;
-  padding-bottom: 10px;
-}
-.gifts_item .gift_description_wrapper .gift_description h3 {
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 152%;
-  letter-spacing: 0.08em;
-  font-family: Montserrat;
-  text-transform: uppercase;
-  color: #181c29;
-}
-@media (hover: hover) {
-  .gifts_item:hover {
-    cursor: pointer;
-  }
-  .gifts_item:hover .gift_description > h3 {
-    color: #ff4646;
-  }
 }
 
 .for_work {
@@ -778,7 +778,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -788,7 +788,7 @@ header .logo_box .logo_image {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
   padding: 20px 32px;
@@ -815,7 +815,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: Allura;
+  font-family: Allura, sans-serif;
   color: #fff;
 }
 
@@ -843,7 +843,7 @@ header .logo_box .logo_image {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -852,7 +852,7 @@ header .logo_box .logo_image {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -909,13 +909,13 @@ footer {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   color: #181c29;
   gap: 12px;
 }
 .contacts .contact_card p {
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 152%;
@@ -931,7 +931,8 @@ footer {
 }
 
 @media (hover: hover) {
-  .contact_card:hover a > span, .contact_card:hover p {
+  .contact_card:hover a > span,
+  .contact_card:hover p {
     color: #ff4646;
   }
 }
@@ -944,58 +945,12 @@ footer {
   background-image: url("../assets/icons/santa-claus.svg");
 }
 
-.adress_img {
+.address_img {
   background-image: url("../assets/icons/christmas-tree.svg");
 }
 
 .mail_img {
   background-image: url("../assets/icons/snake.svg");
-}
-
-.social {
-  display: grid;
-  grid-template-columns: repeat(4, 24px);
-  grid-gap: 30px;
-  margin-bottom: 10px;
-}
-.social .logo {
-  width: 20px;
-  height: 20px;
-  padding: 3px;
-  background-position: center;
-  background-size: cover;
-}
-.social .telegram {
-  background-image: url("../assets/icons/telegram.svg");
-}
-@media (hover: hover) {
-  .social .telegram:hover {
-    background-image: url("../assets/icons/telegram-red.svg");
-  }
-}
-.social .facebook {
-  background-image: url("../assets/icons/facebook.svg");
-}
-@media (hover: hover) {
-  .social .facebook:hover {
-    background-image: url("../assets/icons/facebook-red.svg");
-  }
-}
-.social .instagram {
-  background-image: url("../assets/icons/instagram.svg");
-}
-@media (hover: hover) {
-  .social .instagram:hover {
-    background-image: url("../assets/icons/instagram-red.svg");
-  }
-}
-.social .x {
-  background-image: url("../assets/icons/X.svg");
-}
-@media (hover: hover) {
-  .social .x:hover {
-    background-image: url("../assets/icons/X-red.svg");
-  }
 }
 
 .rs_contacts {
@@ -1006,7 +961,7 @@ footer {
   gap: 12px;
 }
 .rs_contacts p {
-  font-family: Montserrat;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 148%;
@@ -1017,7 +972,7 @@ footer {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: Allura;
+  font-family: "Allura", cursive;
   color: #181c29;
 }
 
@@ -1025,4 +980,6 @@ footer {
   .rs_link:hover {
     color: #ff4646;
   }
-}/*# sourceMappingURL=home.css.map */
+}
+
+/*# sourceMappingURL=home.css.map */

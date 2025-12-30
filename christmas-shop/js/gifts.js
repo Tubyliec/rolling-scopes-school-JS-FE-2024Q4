@@ -1,93 +1,85 @@
 // Import
-
-import {modalWindow} from './modal.js';
-import {getGifts} from './modal.js';
-import {allGifts} from './modal.js';
+import { allGifts } from './modal.js';
 
 // Identifiers
 
-const BUTTON_UP = document.querySelector('.button_top');
-const GIFTS_CONTAINER = document.querySelector('.best_gifts');
+const buttonUp = document.querySelector('.button_top');
+const giftsContainer = document.querySelector('.best_gifts');
 
-const BUTTONS_LIST = document.querySelector('.buttons_panel_list');
+const filterButtonAll = document.querySelector('.buttons_panel_list li:nth-child(1)');
+const filterButtonWork = document.querySelector('.buttons_panel_list li:nth-child(2)');
+const filterButtonHealth = document.querySelector('.buttons_panel_list li:nth-child(3)');
+const filterButtonHarmony = document.querySelector('.buttons_panel_list li:nth-child(4)');
 
-const FILTER_BUTTON_ALL = document.querySelector('.buttons_panel_list li:nth-child(1)');
-const FILTER_BUTTON_WORK = document.querySelector('.buttons_panel_list li:nth-child(2)');
-const FILTER_BUTTON_HEALTH = document.querySelector('.buttons_panel_list li:nth-child(3)');
-const FILTER_BUTTON_HARMONY = document.querySelector('.buttons_panel_list li:nth-child(4)');
-
-const POPOVER_WRAPPER = document.querySelector('.popover_wrapper');
-const POPUP_MODAL = document.querySelector('.modal_window');
+const popoverWrapper = document.querySelector('.popover_wrapper');
 
 // Button to top
 
-window.addEventListener("scroll", function (e) {
-    if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
-        BUTTON_UP.classList.add('visible');
-    } else {
-        BUTTON_UP.classList.remove('visible');
-    }
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
+    buttonUp.classList.add('visible');
+  } else {
+    buttonUp.classList.remove('visible');
+  }
 });
 
-BUTTON_UP.addEventListener("click", function (e) {
-window.scrollTo({
+buttonUp.addEventListener('click', function () {
+  window.scrollTo({
     top: 0,
     left: 0,
-    behavior: 'smooth'
-    });
+    behavior: 'smooth',
+  });
 });
 
 // Cards
 
-FILTER_BUTTON_ALL.classList.add('active_panel_items');
+filterButtonAll.classList.add('active_panel_items');
 
 allGifts('All');
 
 function removeAllChildNodes(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
 
-FILTER_BUTTON_ALL.addEventListener("click", function (e) {
-    removeAllChildNodes(GIFTS_CONTAINER)
-    allGifts('All');
-    FILTER_BUTTON_HEALTH.classList.remove('active_panel_items');
-    FILTER_BUTTON_WORK.classList.remove('active_panel_items');
-    FILTER_BUTTON_HARMONY.classList.remove('active_panel_items');
-    this.classList.add('active_panel_items');
+filterButtonAll.addEventListener('click', function () {
+  removeAllChildNodes(giftsContainer);
+  allGifts('All');
+  filterButtonHealth.classList.remove('active_panel_items');
+  filterButtonWork.classList.remove('active_panel_items');
+  filterButtonHarmony.classList.remove('active_panel_items');
+  this.classList.add('active_panel_items');
 });
 
-FILTER_BUTTON_WORK.addEventListener("click", function (e) {
-    removeAllChildNodes(GIFTS_CONTAINER)
-    allGifts('For Work');
-    FILTER_BUTTON_ALL.classList.remove('active_panel_items');
-    FILTER_BUTTON_HEALTH.classList.remove('active_panel_items');
-    FILTER_BUTTON_HARMONY.classList.remove('active_panel_items');
-    this.classList.add('active_panel_items');
+filterButtonWork.addEventListener('click', function () {
+  removeAllChildNodes(giftsContainer);
+  allGifts('For Work');
+  filterButtonAll.classList.remove('active_panel_items');
+  filterButtonHealth.classList.remove('active_panel_items');
+  filterButtonHarmony.classList.remove('active_panel_items');
+  this.classList.add('active_panel_items');
 });
 
-FILTER_BUTTON_HEALTH.addEventListener("click", function (e) {
-    removeAllChildNodes(GIFTS_CONTAINER)
-    allGifts('For Health');
-    FILTER_BUTTON_ALL.classList.remove('active_panel_items');
-    FILTER_BUTTON_WORK.classList.remove('active_panel_items');
-    FILTER_BUTTON_HARMONY.classList.remove('active_panel_items');
-    this.classList.add('active_panel_items');
+filterButtonHealth.addEventListener('click', function () {
+  removeAllChildNodes(giftsContainer);
+  allGifts('For Health');
+  filterButtonAll.classList.remove('active_panel_items');
+  filterButtonWork.classList.remove('active_panel_items');
+  filterButtonHarmony.classList.remove('active_panel_items');
+  this.classList.add('active_panel_items');
 });
 
-FILTER_BUTTON_HARMONY.addEventListener("click", function (e) {
-    removeAllChildNodes(GIFTS_CONTAINER)
-    allGifts('For Harmony');
-    FILTER_BUTTON_ALL.classList.remove('active_panel_items');
-    FILTER_BUTTON_WORK.classList.remove('active_panel_items');
-    FILTER_BUTTON_HEALTH.classList.remove('active_panel_items');
-    this.classList.add('active_panel_items');
+filterButtonHarmony.addEventListener('click', function () {
+  removeAllChildNodes(giftsContainer);
+  allGifts('For Harmony');
+  filterButtonAll.classList.remove('active_panel_items');
+  filterButtonWork.classList.remove('active_panel_items');
+  filterButtonHealth.classList.remove('active_panel_items');
+  this.classList.add('active_panel_items');
 });
 
-
-POPOVER_WRAPPER.addEventListener('click', () => {
-    BODY.classList.remove('no_scroll');
-    POPOVER_WRAPPER.classList.remove('wrapper_open');
+popoverWrapper.addEventListener('click', () => {
+  body.classList.remove('no_scroll');
+  popoverWrapper.classList.remove('wrapper_open');
 });
-
