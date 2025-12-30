@@ -54,7 +54,7 @@ $tablet-margin: 60px 8px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
+    align-items: flex-start;
 }
 
 @mixin button_link_style {

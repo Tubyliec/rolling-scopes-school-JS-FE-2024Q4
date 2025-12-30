@@ -1,134 +1,130 @@
-const POPOVER_WRAPPER = document.querySelector('.popover_wrapper');
-const POPUP_MODAL = document.querySelector('.modal_window');
-const GIFTS_CONTAINER = document.querySelector('.best_gifts');
+const giftsContainer = document.querySelector('.best_gifts');
+const popoverWrapper = document.querySelector('.popover_wrapper');
+const popupModal = document.querySelector('.modal_window');
 
 
 export async function getGifts() {
-    const RESULT = await fetch('./assets/json/gifts.json');
-    const GIFTS = await RESULT.json();
-    return GIFTS;
+  const result = await fetch('./assets/json/gifts.json');
+  return await result.json();
 }
 
 export async function bestGifts() {
-    const GIFTS_DATA = await getGifts();
-    let giftsArray = [];
+  const giftsData = await getGifts();
+  let giftsArray = [];
 
-    for (let i = 0; i < 4; i++) {
-        giftsArray[i] = Math.floor(Math.random() * (GIFTS_DATA.length - 1))
-        for (let j = 0; j < i; j++) {
-            if (giftsArray[i] === giftsArray[j]) i--;
-          }
+  for (let i = 0; i < 4; i++) {
+    giftsArray[i] = Math.floor(Math.random() * (giftsData.length - 1));
+    for (let j = 0; j < i; j++) {
+      if (giftsArray[i] === giftsArray[j]) i--;
     }
+  }
 
-    giftsArray.forEach(item => {
-        let newItem = document.createElement('div');
-        newItem.classList.add('gifts_item');
-        newItem.innerHTML = `
+  giftsArray.forEach((item) => {
+    let newItem = document.createElement('div');
+    newItem.classList.add('gifts_item');
+    newItem.innerHTML = `
         <div class="gift_img">
-            <img src="./assets/images/${GIFTS_DATA[item].category}.png" alt="gift">
+            <img src="./assets/images/${giftsData[item].category}.png" alt="gift">
         </div>
         <div class="gift_description_wrapper">
             <div class="gift_description">
-                <p class="${GIFTS_DATA[item].category.toLowerCase().replace(" ", "_")}">${GIFTS_DATA[item].category}</p>
-                <h3>${GIFTS_DATA[item].name}</h3>
+                <p class="${giftsData[item].category.toLowerCase().replace(' ', '_')}">${giftsData[item].category}</p>
+                <h3>${giftsData[item].name}</h3>
             </div>
         </div>
         `;
-        newItem.addEventListener('click', () => {
-            POPUP_MODAL.togglePopover();
-            BODY.classList.toggle('no_scroll');
-            POPOVER_WRAPPER.classList.add('wrapper_open');
-            POPUP_MODAL.innerHTML = '';
-            modalWindow(item);
-        });
-        document.querySelector('.best_gifts').appendChild(newItem);
+    newItem.addEventListener('click', () => {
+      popupModal.togglePopover();
+      body.classList.toggle('no_scroll');
+      popoverWrapper.classList.add('wrapper_open');
+      popupModal.innerHTML = '';
+      modalWindow(item);
     });
+    document.querySelector('.best_gifts').appendChild(newItem);
+  });
 }
 
 export async function allGifts(itemCategory) {
-    const GIFTS_DATA = await getGifts();
-    let giftsArray = [];
+  const giftsData = await getGifts();
+  let giftsArray = [];
 
-    for (let i = 0; i < GIFTS_DATA.length; i++) {
-        giftsArray[i] = i;
-    }
+  for (let i = 0; i < giftsData.length; i++) {
+    giftsArray[i] = i;
+  }
 
-
-    giftsArray.forEach(item => {
-        if (GIFTS_DATA[item].category === itemCategory || itemCategory === 'All') {
-            let newItem = document.createElement('div');
-            newItem.classList.add('gifts_item');
-            newItem.innerHTML = `
+  giftsArray.forEach((item) => {
+    if (giftsData[item].category === itemCategory || itemCategory === 'All') {
+      let newItem = document.createElement('div');
+      newItem.classList.add('gifts_item');
+      newItem.innerHTML = `
                 <div class="gift_img">
-                    <img src="./assets/images/${GIFTS_DATA[item].category}.png" alt="gift">
+                    <img src="./assets/images/${giftsData[item].category}.png" alt="gift">
                 </div>
                 <div class="gift_description_wrapper">
                     <div class="gift_description">
-                        <p class="${GIFTS_DATA[item].category.toLowerCase().replace(" ", "_")}">${GIFTS_DATA[item].category}</p>
-                        <h3>${GIFTS_DATA[item].name}</h3>
+                        <p class="${giftsData[item].category.toLowerCase().replace(' ', '_')}">${giftsData[item].category}</p>
+                        <h3>${giftsData[item].name}</h3>
                     </div>
                 </div>
             `;
-            newItem.addEventListener('click', () => {
-                POPUP_MODAL.togglePopover();
-                BODY.classList.toggle('no_scroll');
-                POPOVER_WRAPPER.classList.add('wrapper_open');
-                POPUP_MODAL.innerHTML = '';
-                modalWindow(item);
-            });
-            GIFTS_CONTAINER.appendChild(newItem);
-        }
-    });
+      newItem.addEventListener('click', () => {
+        popupModal.togglePopover();
+        body.classList.toggle('no_scroll');
+        popoverWrapper.classList.add('wrapper_open');
+        popupModal.innerHTML = '';
+        modalWindow(item);
+      });
+      giftsContainer.appendChild(newItem);
+    }
+  });
 }
 
 export async function modalWindow(number) {
-    const GIFTS_DATA = await getGifts();
-    const GIFTS_STAR_DATA = await getGifts();
+  const giftsData = await getGifts();
+  const giftsStarData = await getGifts();
 
-    let superpowersArray = [];
-    console.log(superpowersArray);
-    for (let i = 0; i < GIFTS_STAR_DATA.length; i++) {
-        superpowersArray.push(GIFTS_STAR_DATA[i].superpowers);
+  let superpowersArray = [];
+  for (let i = 0; i < giftsStarData.length; i++) {
+    superpowersArray.push(giftsStarData[i].superpowers);
+  }
+  superpowersArray.forEach((item) => {
+    for (let key in item) {
+      if (item[key] === '+500') {
+        item[key] = `<img src="./assets/icons/5stars.svg" alt="gift">`;
+      }
+      if (item[key] === '+400') {
+        item[key] = `<img src="./assets/icons/4stars.svg" alt="gift">`;
+      }
+      if (item[key] === '+300') {
+        item[key] = `<img src="./assets/icons/3stars.svg" alt="gift">`;
+      }
+      if (item[key] === '+200') {
+        item[key] = `<img src="./assets/icons/2stars.svg" alt="gift">`;
+      }
+      if (item[key] === '+100') {
+        item[key] = `<img src="./assets/icons/1stars.svg" alt="gift">`;
+      }
     }
-    console.log(superpowersArray);
-    superpowersArray.forEach( item => {
-        for (let key in item) {
-            if (item[key] === '+500') {
-                item[key] = `<img src="./assets/icons/5stars.svg" alt="gift">`;
-            }
-            if (item[key] === '+400') {
-                item[key] = `<img src="./assets/icons/4stars.svg" alt="gift">`;
-            }
-            if (item[key] === '+300') {
-                item[key] = `<img src="./assets/icons/3stars.svg" alt="gift">`;
-            }
-            if (item[key] === '+200') {
-                item[key] = `<img src="./assets/icons/2stars.svg" alt="gift">`;
-            }
-            if (item[key] === '+100') {
-                item[key] = `<img src="./assets/icons/1stars.svg" alt="gift">`;
-            }
-        }
-    })
+  });
 
-    let modalClose = document.createElement('div');
-    modalClose.classList.add('modal_close');
-    modalClose.innerHTML = `
+  let modalClose = document.createElement('div');
+  modalClose.classList.add('modal_close');
+  modalClose.innerHTML = `
         <img src="./assets/icons/close.svg" alt="gift">
         `;
 
-    let modalBlock = document.createElement('div');
+  let modalBlock = document.createElement('div');
 
-    modalBlock.classList.add('modal_block');
-    modalBlock.innerHTML = `
+  modalBlock.classList.add('modal_block');
+  modalBlock.innerHTML = `
         <div class="gift_img">
-            <img src="./assets/images/${GIFTS_DATA[number].category}.png" alt="gift">
+            <img src="./assets/images/${giftsData[number].category}.png" alt="gift">
         </div>
         <div class="gift_description_wrapper">
             <div class="gift_description">
-                <h4 class="${GIFTS_DATA[number].category.toLowerCase().replace(" ", "_")}">${GIFTS_DATA[number].category}</h4>
-                <h3>${GIFTS_DATA[number].name}</h3>
-                <p>${GIFTS_DATA[number].description}</p>
+                <h4 class="${giftsData[number].category.toLowerCase().replace(' ', '_')}">${giftsData[number].category}</h4>
+                <h3>${giftsData[number].name}</h3>
+                <p>${giftsData[number].description}</p>
             </div>
             <div class="superpowers">
                 <h4>Adds superpowers to:</h4>
@@ -143,10 +139,10 @@ export async function modalWindow(number) {
                     </div>
                     <div class="powers_rate">
                         <ul>
-                            <li>${GIFTS_DATA[number].superpowers.live}</li>
-                            <li>${GIFTS_DATA[number].superpowers.create}</li>
-                            <li>${GIFTS_DATA[number].superpowers.love}</li>
-                            <li>${GIFTS_DATA[number].superpowers.dream}</li>
+                            <li>${giftsData[number].superpowers.live}</li>
+                            <li>${giftsData[number].superpowers.create}</li>
+                            <li>${giftsData[number].superpowers.love}</li>
+                            <li>${giftsData[number].superpowers.dream}</li>
                         </ul>
                         <ul class="snowflakes_list">
                             <li>${superpowersArray[number].live}</li>
@@ -159,12 +155,12 @@ export async function modalWindow(number) {
                 </div>
             </div>
         </div>
-        `
-    POPUP_MODAL.appendChild(modalBlock);
-    POPUP_MODAL.appendChild(modalClose);
-    modalClose.addEventListener('click', () => {
-        POPUP_MODAL.togglePopover();
-        BODY.classList.remove('no_scroll');
-        POPOVER_WRAPPER.classList.remove('wrapper_open');
-    });
+        `;
+  popupModal.appendChild(modalBlock);
+  popupModal.appendChild(modalClose);
+  modalClose.addEventListener('click', () => {
+    popupModal.togglePopover();
+    body.classList.remove('no_scroll');
+    popoverWrapper.classList.remove('wrapper_open');
+  });
 }
