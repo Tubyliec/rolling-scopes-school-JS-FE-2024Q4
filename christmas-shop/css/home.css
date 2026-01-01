@@ -4,28 +4,43 @@
   margin: 0;
   border: none;
 }
-*::before, *::after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-a, a:link, a:visited, a:hover {
+a,
+a:link,
+a:visited,
+a:hover {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-size: inherit;
   font-weight: inherit;
 }
 
-ul, ul li {
+ul,
+ul li {
   list-style: none;
 }
 
-nav, footer, header, aside {
+nav,
+footer,
+header,
+aside {
   display: block;
 }
 
-img, svg {
+img,
+svg {
   max-width: 100%;
   height: auto;
 }
@@ -46,15 +61,29 @@ html {
 /*Reset configuration end*/
 /*Fonts*/
 @font-face {
-  font-family: "Montserrat", sans-serif;
-  src: local("Montserrat"), url("../assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
+  font-family: 'Montserrat', sans-serif;
+  src:
+    local('Montserrat'),
+    url('../assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
 }
 @font-face {
-  font-family: "Allura", cursive;
-  src: local("Allura"), url("../assets/fonts/Allura-Regular.ttf") format("truetype");
+  font-family: 'Allura', cursive;
+  src:
+    local('Allura'),
+    url('../assets/fonts/Allura-Regular.ttf') format('truetype');
 }
 /*Fonts end*/
-.hero_wrapper, .about_wrapper, .about_image, .slider_wrapper, .slider_pagination .button_left, .slider_pagination .button_right, .best_gifts_wrapper, .counter_wrapper, .phone_img, .address_img, .mail_img {
+.hero_wrapper,
+.about_wrapper,
+.about_image,
+.slider_wrapper,
+.slider_pagination .button_left,
+.slider_pagination .button_right,
+.best_gifts_wrapper,
+.counter_wrapper,
+.phone_img,
+.address_img,
+.mail_img {
   background-position: center;
   background-size: cover;
 }
@@ -102,8 +131,9 @@ html {
   width: 20px;
   height: 10px;
 }
-.burger::before, .burger::after {
-  content: "";
+.burger::before,
+.burger::after {
+  content: '';
   left: 0;
   position: absolute;
   display: block;
@@ -114,23 +144,31 @@ html {
 }
 .burger::before {
   top: 0;
-  transition: top 0.3s 0.15s, transform 0.3s;
+  transition:
+    top 0.3s 0.15s,
+    transform 0.3s;
 }
 .burger::after {
   bottom: 0;
-  transition: bottom 0.3s 0.15s, transform 0.3s;
+  transition:
+    bottom 0.3s 0.15s,
+    transform 0.3s;
 }
 
 .burger-checkbox:checked + .burger::before {
   top: 5px;
   transform: rotate(45deg);
-  transition: top 0.3s, transform 0.3s 0.15s;
+  transition:
+    top 0.3s,
+    transform 0.3s 0.15s;
 }
 
 .burger-checkbox:checked + .burger::after {
   top: 5px;
   transform: rotate(-45deg);
-  transition: top 0.3s, transform 0.3s 0.15s;
+  transition:
+    top 0.3s,
+    transform 0.3s 0.15s;
 }
 
 .menu_popup {
@@ -143,17 +181,23 @@ html {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #181c29;
   text-transform: uppercase;
   align-content: center;
   translate: 100%;
-  transition: translate 1s ease-out, display 1s ease-out, overlay 1s ease-out;
+  transition:
+    translate 1s ease-out,
+    display 1s ease-out,
+    overlay 1s ease-out;
 }
 .menu_popup:popover-open {
   translate: 0 0;
-  transition: translate 1s ease-out, display 1s ease-out, overlay 1s ease-out;
+  transition:
+    translate 1s ease-out,
+    display 1s ease-out,
+    overlay 1s ease-out;
 }
 @starting-style {
   .menu_popup:popover-open {
@@ -219,7 +263,7 @@ html {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
@@ -228,13 +272,13 @@ html {
   font-size: 16px;
   line-height: 152%;
   letter-spacing: 0.08em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #181c29;
   padding-bottom: 8px;
 }
 .modal_block .gift_description_wrapper .gift_description p {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 148%;
@@ -250,7 +294,7 @@ html {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
@@ -262,7 +306,7 @@ html {
   align-items: center;
 }
 .powers_list ul {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 148%;
@@ -290,7 +334,7 @@ header {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #181c29;
   padding: 12px 82px;
@@ -314,7 +358,7 @@ header .logo_box {
   cursor: pointer;
 }
 header .logo_box .logo_image {
-  background-image: url("../assets/icons/snowflake.svg");
+  background-image: url('../assets/icons/snowflake.svg');
   width: 24px;
   height: 24px;
 }
@@ -347,7 +391,7 @@ header .logo_box .logo_image {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   padding-bottom: 10px;
 }
@@ -356,7 +400,7 @@ header .logo_box .logo_image {
   font-size: 16px;
   line-height: 152%;
   letter-spacing: 0.08em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #181c29;
 }
@@ -430,7 +474,9 @@ body {
 
 /*Hero*/
 .hero_wrapper {
-  background-image: url("../assets/images/home/bg-ball.png"), url("../assets/images/home/bg-snow.png");
+  background-image:
+    url('../assets/images/home/bg-ball.png'),
+    url('../assets/images/home/bg-snow.png');
 }
 
 .hero {
@@ -462,7 +508,7 @@ body {
   font-size: 32px;
   line-height: 150%;
   letter-spacing: 0.18em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -472,7 +518,7 @@ body {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
   padding: 20px 32px;
@@ -489,7 +535,7 @@ body {
 
 /*About*/
 .about_wrapper {
-  background-image: url("../assets/images/home/bg-snow.png");
+  background-image: url('../assets/images/home/bg-snow.png');
 }
 
 .about {
@@ -546,14 +592,14 @@ body {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: "Allura", cursive;
+  font-family: 'Allura', cursive;
   color: #ff4646;
 }
 .about_info_wrapper .about_info p:last-child {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   letter-spacing: 0.0015em;
   color: #181c29;
 }
@@ -562,7 +608,7 @@ body {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #181c29;
 }
@@ -577,14 +623,14 @@ body {
 
 .about_image {
   border-radius: 20px;
-  background-image: url("../assets/images/home/santa.png");
+  background-image: url('../assets/images/home/santa.png');
   width: 50%;
   height: 528px;
 }
 
 /*Slider*/
 .slider_wrapper {
-  background-image: url("../assets/images/home/bg-snow.png");
+  background-image: url('../assets/images/home/bg-snow.png');
   overflow: hidden;
 }
 
@@ -619,7 +665,7 @@ body {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -641,7 +687,7 @@ body {
 .slider .slider_item p {
   font-weight: 600;
   font-size: 80px;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -660,19 +706,19 @@ body {
   gap: 20px;
 }
 .slider_pagination .button_left {
-  background-image: url("../assets/icons/Button_left.png");
+  background-image: url('../assets/icons/Button_left.png');
 }
 @media (hover: hover) {
   .slider_pagination .button_left:hover {
-    background-image: url("../assets/icons/Button_left_hover.png");
+    background-image: url('../assets/icons/Button_left_hover.png');
   }
 }
 .slider_pagination .button_right {
-  background-image: url("../assets/icons/Button_right.png");
+  background-image: url('../assets/icons/Button_right.png');
 }
 @media (hover: hover) {
   .slider_pagination .button_right:hover {
-    background-image: url("../assets/icons/Button_right_hover.png");
+    background-image: url('../assets/icons/Button_right_hover.png');
   }
 }
 
@@ -690,7 +736,7 @@ body {
 
 /*Best gifts*/
 .best_gifts_wrapper {
-  background-image: url("../assets/images/home/bg-snow.png");
+  background-image: url('../assets/images/home/bg-snow.png');
 }
 
 .best_gifts_container {
@@ -725,7 +771,7 @@ body {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -753,7 +799,9 @@ body {
 
 /*Counter*/
 .counter_wrapper {
-  background-image: url("../assets/images/home/bg-forest.png"), url("../assets/images/home/bg-snow.png");
+  background-image:
+    url('../assets/images/home/bg-forest.png'),
+    url('../assets/images/home/bg-snow.png');
 }
 
 .counter_container {
@@ -778,7 +826,7 @@ body {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -788,7 +836,7 @@ body {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
   padding: 20px 32px;
@@ -843,7 +891,7 @@ body {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -852,7 +900,7 @@ body {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #fff;
 }
@@ -909,13 +957,13 @@ footer {
   font-size: 24px;
   line-height: 152%;
   letter-spacing: 0.16em;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
   color: #181c29;
   gap: 12px;
 }
 .contacts .contact_card p {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 16px;
   line-height: 152%;
@@ -942,15 +990,15 @@ footer {
 }
 
 .phone_img {
-  background-image: url("../assets/icons/santa-claus.svg");
+  background-image: url('../assets/icons/santa-claus.svg');
 }
 
 .address_img {
-  background-image: url("../assets/icons/christmas-tree.svg");
+  background-image: url('../assets/icons/christmas-tree.svg');
 }
 
 .mail_img {
-  background-image: url("../assets/icons/snake.svg");
+  background-image: url('../assets/icons/snake.svg');
 }
 
 .rs_contacts {
@@ -961,7 +1009,7 @@ footer {
   gap: 12px;
 }
 .rs_contacts p {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 148%;
@@ -972,7 +1020,7 @@ footer {
   font-size: 24px;
   line-height: 100%;
   letter-spacing: 0.05em;
-  font-family: "Allura", cursive;
+  font-family: 'Allura', cursive;
   color: #181c29;
 }
 

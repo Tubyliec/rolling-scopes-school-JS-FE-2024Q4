@@ -1,40 +1,54 @@
 /*Reset configuration*/
 * {
-	padding: 0;
-	margin: 0;
-	border: none;
-    &::before, &::after {
-        box-sizing: border-box;
-    }
+  padding: 0;
+  margin: 0;
+  border: none;
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
 }
 a {
-    &, &:link, &:visited, &:hover {
-        text-decoration: none;
-    }
-
+  &,
+  &:link,
+  &:visited,
+  &:hover {
+    text-decoration: none;
+  }
 }
-h1, h2, h3, h4, h5, h6, p {
-    font-size: inherit;
-	font-weight: inherit;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
 }
-ul, ul li {
-	list-style: none;
+ul,
+ul li {
+  list-style: none;
 }
-nav,footer,header,aside {
-    display: block;
+nav,
+footer,
+header,
+aside {
+  display: block;
 }
-img, svg {
-	max-width: 100%;
-	height: auto;
+img,
+svg {
+  max-width: 100%;
+  height: auto;
 }
 input::-ms-clear {
-	display: none;
+  display: none;
 }
 button::-moz-focus-inner {
-	padding: 0;
-	border: 0;
+  padding: 0;
+  border: 0;
 }
 html {
-    font-size: 10px;
+  font-size: 10px;
 }
 /*Reset configuration end*/

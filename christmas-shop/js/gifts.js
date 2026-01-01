@@ -2,14 +2,22 @@
 import { allGifts } from './modal.js';
 
 // Identifiers
-
+const body = document.body;
 const buttonUp = document.querySelector('.button_top');
 const giftsContainer = document.querySelector('.best_gifts');
 
-const filterButtonAll = document.querySelector('.buttons_panel_list li:nth-child(1)');
-const filterButtonWork = document.querySelector('.buttons_panel_list li:nth-child(2)');
-const filterButtonHealth = document.querySelector('.buttons_panel_list li:nth-child(3)');
-const filterButtonHarmony = document.querySelector('.buttons_panel_list li:nth-child(4)');
+const filterButtonAll = document.querySelector(
+  '.buttons_panel_list li:nth-child(1)',
+);
+const filterButtonWork = document.querySelector(
+  '.buttons_panel_list li:nth-child(2)',
+);
+const filterButtonHealth = document.querySelector(
+  '.buttons_panel_list li:nth-child(3)',
+);
+const filterButtonHarmony = document.querySelector(
+  '.buttons_panel_list li:nth-child(4)',
+);
 
 const popoverWrapper = document.querySelector('.popover_wrapper');
 
