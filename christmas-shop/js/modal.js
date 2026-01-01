@@ -1,7 +1,9 @@
+/* global fetch */
+
 const giftsContainer = document.querySelector('.best_gifts');
 const popoverWrapper = document.querySelector('.popover_wrapper');
 const popupModal = document.querySelector('.modal_window');
-
+const body = document.body;
 
 export async function getGifts() {
   const result = await fetch('./assets/json/gifts.json');
