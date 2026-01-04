@@ -92,19 +92,19 @@ export async function modalWindow(number) {
   superpowersArray.forEach((item) => {
     for (let key in item) {
       if (item[key] === '+500') {
-        item[key] = `<img src="./assets/icons/5stars.svg" alt="gift">`;
+        item[key] = `<img src="../assets/icons/5stars.svg" alt="gift">`;
       }
       if (item[key] === '+400') {
-        item[key] = `<img src="./assets/icons/4stars.svg" alt="gift">`;
+        item[key] = `<img src="../assets/icons/4stars.svg" alt="gift">`;
       }
       if (item[key] === '+300') {
-        item[key] = `<img src="./assets/icons/3stars.svg" alt="gift">`;
+        item[key] = `<img src="../assets/icons/3stars.svg" alt="gift">`;
       }
       if (item[key] === '+200') {
-        item[key] = `<img src="./assets/icons/2stars.svg" alt="gift">`;
+        item[key] = `<img src="../assets/icons/2stars.svg" alt="gift">`;
       }
       if (item[key] === '+100') {
-        item[key] = `<img src="./assets/icons/1stars.svg" alt="gift">`;
+        item[key] = `<img src="../assets/icons/1stars.svg" alt="gift">`;
       }
     }
   });
@@ -112,7 +112,7 @@ export async function modalWindow(number) {
   let modalClose = document.createElement('div');
   modalClose.classList.add('modal_close');
   modalClose.innerHTML = `
-        <img src="./assets/icons/close.svg" alt="gift">
+        <img src="../assets/icons/close.svg" alt="gift">
         `;
 
   let modalBlock = document.createElement('div');

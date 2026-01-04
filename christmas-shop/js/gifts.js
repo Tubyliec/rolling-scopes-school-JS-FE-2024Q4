@@ -43,7 +43,7 @@ buttonUp.addEventListener('click', function () {
 
 filterButtonAll.classList.add('active_panel_items');
 
-allGifts('All');
+allGifts('All').catch((err) => console.log(err));
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -53,7 +53,7 @@ function removeAllChildNodes(parent) {
 
 filterButtonAll.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
-  allGifts('All');
+  allGifts('All').catch((err) => console.log(err));
   filterButtonHealth.classList.remove('active_panel_items');
   filterButtonWork.classList.remove('active_panel_items');
   filterButtonHarmony.classList.remove('active_panel_items');
@@ -62,7 +62,7 @@ filterButtonAll.addEventListener('click', function () {
 
 filterButtonWork.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
-  allGifts('For Work');
+  allGifts('For Work').catch((err) => console.log(err));
   filterButtonAll.classList.remove('active_panel_items');
   filterButtonHealth.classList.remove('active_panel_items');
   filterButtonHarmony.classList.remove('active_panel_items');
@@ -71,7 +71,7 @@ filterButtonWork.addEventListener('click', function () {
 
 filterButtonHealth.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
-  allGifts('For Health');
+  allGifts('For Health').catch((err) => console.log(err));
   filterButtonAll.classList.remove('active_panel_items');
   filterButtonWork.classList.remove('active_panel_items');
   filterButtonHarmony.classList.remove('active_panel_items');
@@ -80,7 +80,7 @@ filterButtonHealth.addEventListener('click', function () {
 
 filterButtonHarmony.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
-  allGifts('For Harmony');
+  allGifts('For Harmony').catch((err) => console.log(err));
   filterButtonAll.classList.remove('active_panel_items');
   filterButtonWork.classList.remove('active_panel_items');
   filterButtonHealth.classList.remove('active_panel_items');

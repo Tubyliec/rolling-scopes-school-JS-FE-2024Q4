@@ -96,7 +96,7 @@ window.addEventListener('resize', () => {
 
 // Cards
 
-bestGifts();
+bestGifts().catch((err) => console.log(err));
 
 //
 
