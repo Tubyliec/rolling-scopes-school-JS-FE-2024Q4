@@ -13,6 +13,7 @@
 }
 
 body {
+  font-family: 'Griffy', cursive, system-ui, -apple-system, sans-serif;
   --cell-size: 5rem;
 
   --primary-color: #308eaf;
@@ -93,7 +94,7 @@ body {
 
 .time {
   text-align: center;
-  font-family: Griffy;
+  font-family: Griffy, cursive;
   font-size: 2rem;
 }
 
@@ -178,7 +179,6 @@ body {
   }
 }
 .dif-btn {
-  padding-top: 0.2rem;
   font-family: Griffy;
   font-size: 1.5rem;
   text-transform: uppercase;

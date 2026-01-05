@@ -1,10 +1,10 @@
 //Fonts
 
 @font-face {
-  font-family: "Griffy";
-  src:
-    local("Griffy"),
-    url("../assets/fonts/Griffy-Regular.ttf") format("truetype");
+  font-family: 'Griffy';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Griffy-Regular.ttf') format('truetype');
 }
 //Colors
 
@@ -95,16 +95,16 @@ $border-normal: 0.1rem solid $border-color;
 //Fonts
 
 %header-text {
-  font-family: Griffy;
+  font-family: Griffy, cursive;
   font-size: 3.5rem;
 }
 
 %header-secondary {
-  font-family: Griffy;
+  font-family: Griffy, cursive;
   font-size: 3rem;
 }
 
 %text-medium {
-  font-family: Griffy;
+  font-family: Griffy, cursive;
   font-size: 2rem;
 }

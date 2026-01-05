@@ -2,6 +2,7 @@
 import { createDom } from './create-dom.js';
 import { domElements } from './create-dom.js';
 import { createList, createGame } from './create-elements.js';
+import '../styles/styles.scss';
 
 //Game
 createDom();
