@@ -11,9 +11,10 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
+        ...globals.browser,
         ...globals.node,
-        ...globals.es2021
-      }
+        ...globals.es2021,
+      },
     },
     plugins: {
       import: importPlugin,
@@ -29,13 +30,13 @@ export default [
       'no-use-before-define': 'error',
 
       // Enforce consistent quote style (single quotes)
-      'quotes': ['error', 'single', { 'avoidEscape': true }],
+      quotes: ['error', 'single', { avoidEscape: true }],
 
       // Require semicolons
-      'semi': ['error', 'always'],
+      semi: ['error', 'always'],
 
       // Disallow unused variables
-      'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
   prettierConfig,

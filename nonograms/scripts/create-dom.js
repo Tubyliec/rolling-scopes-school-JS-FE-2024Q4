@@ -1,279 +1,277 @@
-import {
-  gameState,
-  processDifficulty,
-  processControlButtons,
-  buttonsSound,
-  processToogle,
-} from "./utilits.js";
-import { createElement } from "./create-elements.js";
-const domElements = {};
+import { createElement } from './shared/utils/elements/create-element.js';
+import { domElements } from './core/states/dom-elements.js';
+import { gameState } from './core/states/game-state';
+import { processDifficultyButtons } from './features/buttons/process-difficulty-buttons';
+import { processControlButtons } from './features/buttons/process-control-buttons';
+import { buttonsSound } from './features/audio/buttons-sound';
+import { processTogglers } from './features/buttons/process-togglers';
 
-function createDom() {
+export function createDom() {
   const bodyElement = document.body;
   domElements.bodyWrapper = createElement({
-    tag: "div",
-    classes: ["body-wrapper"],
+    tag: 'div',
+    classes: ['body-wrapper'],
   });
   //Header
   domElements.header = createElement({
-    tag: "header",
+    tag: 'header',
     parent: domElements.bodyWrapper,
-    classes: ["header"],
+    classes: ['header'],
   });
 
   domElements.headerWrapper = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.header,
-    classes: ["header-wrapper"],
+    classes: ['header-wrapper'],
   });
 
   domElements.name = createElement({
-    tag: "p",
-    text: "nonograms",
+    tag: 'p',
+    text: 'nonograms',
     parent: domElements.headerWrapper,
-    classes: ["name"],
+    classes: ['name'],
   });
 
   domElements.timer = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.headerWrapper,
-    classes: ["timer"],
+    classes: ['timer'],
   });
 
   domElements.minutes = createElement({
-    tag: "span",
+    tag: 'span',
     parent: domElements.timer,
-    text: "00",
-    classes: ["time"],
+    text: '00',
+    classes: ['time'],
   });
   domElements.timeSeparator = createElement({
-    tag: "span",
+    tag: 'span',
     parent: domElements.timer,
-    text: " : ",
-    classes: ["time"],
+    text: ' : ',
+    classes: ['time'],
   });
   domElements.seconds = createElement({
-    tag: "span",
+    tag: 'span',
     parent: domElements.timer,
-    text: "00",
-    classes: ["time"],
+    text: '00',
+    classes: ['time'],
   });
 
   domElements.options = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.headerWrapper,
-    classes: ["options"],
+    classes: ['options'],
   });
 
   domElements.audioButton = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.options,
-    classes: ["panel-btn"],
+    classes: ['panel-btn'],
   });
 
   domElements.audioButtonWrapper = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.audioButton,
-    classes: ["btn-wrapper"],
+    classes: ['btn-wrapper'],
   });
 
   domElements.audioOnImg = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.audioButtonWrapper,
-    classes: ["button-img", "audio-on"],
+    classes: ['button-img', 'audio-on'],
   });
 
-  domElements.audioToogler = createElement({
-    tag: "input",
-    type: "checkbox",
+  domElements.audiotoggler = createElement({
+    tag: 'input',
+    type: 'checkbox',
     parent: domElements.audioButtonWrapper,
-    id: ["audio-toogle"],
-    classes: ["toogle-btn"],
+    id: ['audio-toggle'],
+    classes: ['toggle-btn'],
   });
-  domElements.audioToogler.setAttribute("data-name", "audio");
-  domElements.audioTooglerLabel = createElement({
-    tag: "label",
+  domElements.audiotoggler.setAttribute('data-name', 'audio');
+  domElements.audiotogglerLabel = createElement({
+    tag: 'label',
     parent: domElements.audioButtonWrapper,
-    classes: ["toogle-label"],
+    classes: ['toggle-label'],
   });
-  domElements.audioTooglerLabel.setAttribute("for", "audio-toogle");
+  domElements.audiotogglerLabel.setAttribute('for', 'audio-toggle');
   domElements.audioOffImg = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.audioButtonWrapper,
-    classes: ["button-img", "audio-off"],
+    classes: ['button-img', 'audio-off'],
   });
 
   domElements.themeButton = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.options,
-    classes: ["panel-btn"],
+    classes: ['panel-btn'],
   });
 
   domElements.themeButtonWrapper = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.themeButton,
-    classes: ["btn-wrapper"],
+    classes: ['btn-wrapper'],
   });
 
   domElements.themeOnImg = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.themeButtonWrapper,
-    classes: ["button-img", "theme-on"],
+    classes: ['button-img', 'theme-on'],
   });
 
-  domElements.themeToogler = createElement({
-    tag: "input",
-    type: "checkbox",
+  domElements.themetoggler = createElement({
+    tag: 'input',
+    type: 'checkbox',
     parent: domElements.themeButtonWrapper,
-    id: ["theme-toogle"],
-    classes: ["toogle-btn"],
+    id: ['theme-toggle'],
+    classes: ['toggle-btn'],
   });
-  domElements.themeToogler.setAttribute("data-name", "theme");
-  domElements.themeTooglerLabel = createElement({
-    tag: "label",
+  domElements.themetoggler.setAttribute('data-name', 'theme');
+  domElements.themetogglerLabel = createElement({
+    tag: 'label',
     parent: domElements.themeButtonWrapper,
-    classes: ["toogle-label"],
+    classes: ['toggle-label'],
   });
-  domElements.themeTooglerLabel.setAttribute("for", "theme-toogle");
+  domElements.themetogglerLabel.setAttribute('for', 'theme-toggle');
   domElements.themeOffImg = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.themeButtonWrapper,
-    classes: ["button-img", "theme-off"],
+    classes: ['button-img', 'theme-off'],
   });
   //Main
   domElements.mainPanel = createElement({
-    tag: "main",
+    tag: 'main',
     parent: domElements.bodyWrapper,
-    classes: ["main-panel"],
+    classes: ['main-panel'],
   });
   domElements.mainWrapper = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.mainPanel,
-    classes: ["main-wrapper"],
+    classes: ['main-wrapper'],
   });
   //Control panel
   domElements.controlPanel = createElement({
-    tag: "section",
+    tag: 'section',
     parent: domElements.mainWrapper,
-    classes: ["control-panel"],
+    classes: ['control-panel'],
   });
   //Difficulty panel
   domElements.difficultyPanel = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.controlPanel,
-    classes: ["difficulty-panel"],
+    classes: ['difficulty-panel'],
   });
   domElements.difficultyButtons = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.difficultyPanel,
-    classes: ["difficulty-buttons"],
+    classes: ['difficulty-buttons'],
   });
   domElements.easyButton = createElement({
-    tag: "button",
-    text: "easy",
+    tag: 'button',
+    text: 'easy',
     parent: domElements.difficultyButtons,
-    classes: ["dif-btn", "easy-btn"],
+    classes: ['dif-btn', 'easy-btn'],
   });
 
   domElements.mediumButton = createElement({
-    tag: "button",
-    text: "medium",
+    tag: 'button',
+    text: 'medium',
     parent: domElements.difficultyButtons,
-    classes: ["dif-btn", "medium-btn"],
+    classes: ['dif-btn', 'medium-btn'],
   });
 
   domElements.hardButton = createElement({
-    tag: "button",
-    text: "hard",
+    tag: 'button',
+    text: 'hard',
     parent: domElements.difficultyButtons,
-    classes: ["dif-btn", "hard-btn"],
+    classes: ['dif-btn', 'hard-btn'],
   });
 
   domElements.patternsList = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.difficultyPanel,
-    classes: ["patterns-list"],
+    classes: ['patterns-list'],
   });
   domElements.fieldset = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.patternsList,
-    classes: ["fieldset"],
+    classes: ['fieldset'],
   });
   domElements.buttonsPanel = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.controlPanel,
-    classes: ["buttons-panel"],
+    classes: ['buttons-panel'],
   });
   domElements.scoreButton = createElement({
-    tag: "button",
-    text: "Score",
+    tag: 'button',
+    text: 'Score',
     parent: domElements.buttonsPanel,
-    classes: ["dif-btn"],
+    classes: ['dif-btn'],
   });
 
   domElements.solutionButton = createElement({
-    tag: "button",
-    text: "Solution",
+    tag: 'button',
+    text: 'Solution',
     parent: domElements.buttonsPanel,
-    classes: ["dif-btn"],
+    classes: ['dif-btn'],
   });
   domElements.resetButton = createElement({
-    tag: "button",
-    text: "Reset game",
+    tag: 'button',
+    text: 'Reset game',
     parent: domElements.buttonsPanel,
-    classes: ["dif-btn"],
+    classes: ['dif-btn'],
   });
   domElements.randomButton = createElement({
-    tag: "button",
-    text: "Random game",
+    tag: 'button',
+    text: 'Random game',
     parent: domElements.buttonsPanel,
-    classes: ["dif-btn"],
+    classes: ['dif-btn'],
   });
   domElements.saveButton = createElement({
-    tag: "button",
-    text: "Save game",
+    tag: 'button',
+    text: 'Save game',
     parent: domElements.buttonsPanel,
-    classes: ["dif-btn"],
+    classes: ['dif-btn'],
   });
   domElements.continueButton = createElement({
-    tag: "button",
-    text: "Continue last game",
+    tag: 'button',
+    text: 'Continue last game',
     parent: domElements.buttonsPanel,
-    classes: ["dif-btn"],
+    classes: ['dif-btn'],
   });
 
   //Game panel
   domElements.gamePanel = createElement({
-    tag: "section",
+    tag: 'section',
     parent: domElements.mainWrapper,
-    classes: ["game-panel"],
+    classes: ['game-panel'],
   });
   domElements.board = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.gamePanel,
-    classes: ["board"],
+    classes: ['board'],
   });
   domElements.topInfo = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.board,
-    classes: ["top-info"],
+    classes: ['top-info'],
   });
   domElements.leftInfo = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.board,
-    classes: ["left-info"],
+    classes: ['left-info'],
   });
   domElements.gameboard = createElement({
-    tag: "div",
+    tag: 'div',
     parent: domElements.board,
-    classes: ["gameboard"],
+    classes: ['gameboard'],
   });
 
   //Modal window
   domElements.modalWindow = createElement({
-    tag: "dialog",
+    tag: 'dialog',
     parent: domElements.bodyWrapper,
-    classes: ["modal"],
+    classes: ['modal'],
   });
 
   gameState.difficultyButtons = [
@@ -291,30 +289,27 @@ function createDom() {
     domElements.continueButton,
   ];
 
-  gameState.toogleButtons = [
-    domElements.audioToogler,
-    domElements.themeToogler,
+  gameState.toggleButtons = [
+    domElements.audiotoggler,
+    domElements.themetoggler,
   ];
 
   gameState.timerElements = [domElements.minutes, domElements.seconds];
 
   gameState.difficultyButtons.forEach((element) => {
-    element.addEventListener("click", processDifficulty);
-    element.addEventListener("click", buttonsSound);
+    element.addEventListener('click', processDifficultyButtons);
+    element.addEventListener('click', buttonsSound);
   });
 
   gameState.controlButtons.forEach((element) => {
-    element.addEventListener("click", processControlButtons);
-    element.addEventListener("click", buttonsSound);
+    element.addEventListener('click', processControlButtons);
+    element.addEventListener('click', buttonsSound);
   });
 
-  gameState.toogleButtons.forEach((element) => {
-    element.addEventListener("click", buttonsSound);
-    element.addEventListener("click", processToogle);
+  gameState.toggleButtons.forEach((element) => {
+    element.addEventListener('click', buttonsSound);
+    element.addEventListener('click', processTogglers);
   });
 
   bodyElement.append(domElements.bodyWrapper);
 }
-
-export { createDom };
-export { domElements };

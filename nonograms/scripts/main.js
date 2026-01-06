@@ -1,10 +1,9 @@
-//Import
 import { createDom } from './create-dom.js';
-import { domElements } from './create-dom.js';
-import { createList, createGame } from './create-elements.js';
+import { domElements } from './core/states/dom-elements.js';
 import '../styles/styles.scss';
+import { createGame } from './features/ui/game/create-game';
+import { createList } from './features/ui/board/board-elements';
 
-//Game
 createDom();
 createGame();
 createList(domElements.fieldset);
