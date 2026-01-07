@@ -1,32 +1,32 @@
-//Fonts
+// Fonts
 
 @font-face {
-  font-family: 'Griffy';
+  font-family: Griffy;
   font-style: normal;
   font-weight: 400;
   src: url('../assets/fonts/Griffy-Regular.ttf') format('truetype');
 }
-//Colors
+
+// Colors
 
 $primary-color: var(--primary-color);
 $border-color: var(--border-color);
 $neutral-color: var(--neutral-color);
 $dark-color: #262626;
 
-//Margins
+// Margins
 $align-margin: 0 auto;
 $margin-medium: 0.5rem;
 $margin-big: 2rem;
 
-//Paddings
+// Paddings
 $padding-small: 0.1rem;
 $padding-panel: 0.5rem;
 $padding-medium: 1.5rem;
 
-//Borders
+// Borders
 $border-dark: 0.3rem solid $dark-color;
 $border-cell: 0.001rem solid $border-color;
-
 $border-bold: 0.3rem solid $border-color;
 $border-normal: 0.1rem solid $border-color;
 
@@ -56,7 +56,7 @@ $border-normal: 0.1rem solid $border-color;
   border-radius: 0.5rem;
 }
 
-//Aligning
+// Aligning
 
 %align-center {
   text-align: center;
@@ -84,7 +84,7 @@ $border-normal: 0.1rem solid $border-color;
   justify-content: space-evenly;
 }
 
-//Background
+// Background
 
 %background-btn {
   background-repeat: no-repeat;
@@ -92,7 +92,7 @@ $border-normal: 0.1rem solid $border-color;
   background-position: center;
 }
 
-//Fonts
+// Fonts
 
 %header-text {
   font-family: Griffy, cursive;
