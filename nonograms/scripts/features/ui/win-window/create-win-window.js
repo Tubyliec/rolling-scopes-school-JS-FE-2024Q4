@@ -9,21 +9,21 @@ export function createWinWindow(parentElement) {
   domElements.modalInfo = createElement({
     tag: 'div',
     parent: parentElement,
-    classes: ['modal-info'],
+    classes: ['win-window-info'],
   });
 
   domElements.modalInfoText = createElement({
     tag: 'p',
     text: `Great! You have solved the nonogram in ${gameState.time.minutes * 60 + gameState.time.seconds} seconds!`,
     parent: domElements.modalInfo,
-    classes: ['modal-info__text'],
+    classes: ['win-window-info__text'],
   });
 
   domElements.modalCLose = createElement({
     tag: 'button',
     text: 'close',
     parent: domElements.modalInfo,
-    classes: ['modal-btn', 'dif-btn'],
+    classes: ['win-window-btn', 'dif-btn'],
   });
 
   domElements.modalCLose.addEventListener('click', () => {

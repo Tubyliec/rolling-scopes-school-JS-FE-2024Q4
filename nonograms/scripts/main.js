@@ -1,8 +1,8 @@
 import { createDom } from './create-dom.js';
 import { domElements } from './core/states/dom-elements.js';
 import '../styles/styles.scss';
-import { createGame } from './features/ui/game/create-game';
-import { createList } from './features/ui/board/board-elements';
+import { createGame } from './features/game/create-game';
+import { createList } from './features/ui/board/create-list';
 
 createDom();
 createGame();

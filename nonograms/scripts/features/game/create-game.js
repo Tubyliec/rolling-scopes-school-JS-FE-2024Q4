@@ -1,8 +1,9 @@
-import { createCells, createInfo } from '../board/board-elements.js';
-import { domElements } from '../../../core/states/dom-elements.js';
-import { gameState } from '../../../core/states/game-state.js';
-import { resetTimer } from '../../timer/reset-timer';
-import { fullCellCounter } from '../../cells/full-cells-counter';
+import { domElements } from '../../core/states/dom-elements.js';
+import { gameState } from '../../core/states/game-state.js';
+import { resetTimer } from '../timer/reset-timer';
+import { fullCellCounter } from '../cells/full-cells-counter';
+import { createCells } from '../ui/board/create-cells';
+import { createInfo } from '../ui/board/create-info';
 
 export function createGame() {
   if (window.localStorage.getItem('savedGame') === null) {

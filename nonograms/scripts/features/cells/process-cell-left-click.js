@@ -4,7 +4,7 @@ import { gameState } from '../../core/states/game-state';
 import { stopTimer } from '../timer/stop-timer';
 import { domElements } from '../../core/states/dom-elements';
 import { createRating } from '../rating/create-rating';
-import { createWinWindow } from '../ui/modal/modal-elements';
+import { createWinWindow } from '../ui/win-window/create-win-window';
 
 export function processCellLeftClick() {
   if (this.classList.contains('background--dark')) {

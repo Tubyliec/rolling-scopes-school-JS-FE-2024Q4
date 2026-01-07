@@ -97,7 +97,7 @@ export function createScoreTable(parentElement) {
     tag: 'button',
     text: 'close',
     parent: domElements.scoreWrapper,
-    classes: ['modal-btn', 'dif-btn'],
+    classes: ['win-window-btn', 'dif-btn'],
   });
 
   closeButton.addEventListener('click', () => {

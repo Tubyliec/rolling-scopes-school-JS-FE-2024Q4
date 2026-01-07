@@ -1,7 +1,7 @@
 import { gameState } from '../../core/states/game-state';
 import { sounds } from '../../core/data/data';
 import { playSound } from '../audio/play-sound';
-import { createGame } from '../ui/game/create-game';
+import { createGame } from '../game/create-game';
 
 export function processRadioButtons() {
   gameState.currentPattern = gameState.difficulty[this.value].array;

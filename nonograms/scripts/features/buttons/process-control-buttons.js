@@ -1,5 +1,5 @@
 import { domElements } from '../../core/states/dom-elements';
-import { createScoreTable } from '../ui/score/score-elements';
+import { createScoreTable } from '../ui/score/create-score-table';
 import { gameState } from '../../core/states/game-state';
 import { resetTimer } from '../timer/reset-timer';
 import { saveGame } from '../game/save-game';

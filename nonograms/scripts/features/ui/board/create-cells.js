@@ -1,11 +1,10 @@
-import { createElement } from '../../../shared/utils/elements/create-element.js';
+import { removeAllChildren } from '../../../shared/utils/elements/remove-all-children';
 import { gameState } from '../../../core/states/game-state';
-import { removeAllChildren } from '../../../shared/utils/elements/remove-all-children.js';
-import { processTimerEvent } from '../../timer/process-timer';
-import { processCellLeftClick } from '../../cells/process-cell-left-click';
-import { processCellRightClick } from '../../cells/process-cell-right-click';
-import { processRadioButtons } from '../../buttons/process-radio-buttons';
 import { easy, medium } from '../../../core/data/data';
+import { createElement } from '../../../shared/utils/elements/create-element';
+import { processCellLeftClick } from '../../cells/process-cell-left-click';
+import { processTimerEvent } from '../../timer/process-timer';
+import { processCellRightClick } from '../../cells/process-cell-right-click';
 
 export function createCells(array, parentElement) {
   let counter = 0;
@@ -65,62 +64,5 @@ export function createCells(array, parentElement) {
       });
     });
     cellCounter = 0;
-  });
-}
-
-export function createInfo(array, parentElement, elementClass) {
-  let counter = 0;
-  removeAllChildren(parentElement);
-
-  array.forEach((element) => {
-    counter += 1;
-    const tempClass = `${elementClass}-${counter}`;
-    const newItem = createElement({
-      tag: 'div',
-      parent: parentElement,
-      classes: [elementClass, tempClass],
-    });
-
-    element.forEach((item) => {
-      createElement({
-        tag: 'div',
-        parent: document.querySelector(`.${tempClass}`),
-        text: item,
-        classes: ['info-nums'],
-      });
-    });
-  });
-}
-
-export function createList(parentElement) {
-  removeAllChildren(parentElement);
-
-  Object.keys(gameState.difficulty).forEach((key) => {
-    const tempClass = `checkbox-${key}`;
-    const newDiv = createElement({
-      tag: 'div',
-      parent: parentElement,
-      classes: ['list-checkbox', tempClass],
-    });
-
-    const newInput = createElement({
-      tag: 'input',
-      type: 'radio',
-      name: 'pattern',
-      value: key,
-      parent: document.querySelector(`.${tempClass}`),
-      id: key,
-      classes: ['input-radio'],
-    });
-
-    const newLabel = createElement({
-      tag: 'label',
-      text: key,
-      parent: document.querySelector(`.${tempClass}`),
-      classes: ['input-label'],
-    });
-
-    newLabel.setAttribute('for', key);
-    newInput.addEventListener('click', processRadioButtons);
   });
 }
