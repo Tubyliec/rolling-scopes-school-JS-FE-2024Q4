@@ -17,7 +17,7 @@ export function createInfo(array, parentElement, elementClass) {
     element.forEach((item) => {
       createElement({
         tag: 'div',
-        parent: document.querySelector(`.${tempClass}`),
+        parent: newItem,
         text: item,
         classes: ['info-nums'],
       });

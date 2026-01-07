@@ -10,15 +10,15 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
+        main: resolve(__dirname, 'index.html'),
       },
       output: {
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash][extname]',
-      }
+      },
     },
-    sourcemap: true
+    sourcemap: true,
   },
   resolve: {
     alias: {
@@ -27,6 +27,6 @@ export default defineConfig({
   },
   server: {
     open: true,
-    port: 3000
-  }
+    port: 3000,
+  },
 });

@@ -19,7 +19,7 @@ export function createList(parentElement) {
       type: 'radio',
       name: 'pattern',
       value: key,
-      parent: document.querySelector(`.${tempClass}`),
+      parent: newDiv,
       id: key,
       classes: ['input-radio'],
     });
@@ -27,7 +27,7 @@ export function createList(parentElement) {
     const newLabel = createElement({
       tag: 'label',
       text: key,
-      parent: document.querySelector(`.${tempClass}`),
+      parent: newDiv,
       classes: ['input-label'],
     });
 

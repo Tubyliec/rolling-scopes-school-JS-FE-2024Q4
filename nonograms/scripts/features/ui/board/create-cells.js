@@ -42,7 +42,7 @@ export function createCells(array, parentElement) {
       cellCounter += 1;
       const newItem = createElement({
         tag: 'div',
-        parent: document.querySelector(`.${tempClass}`),
+        parent: newRow,
         text: item,
         classes: ['cell'],
       });

@@ -1,6 +1,6 @@
 // Import
-@use "reset" as *;
-@use "variables" as *;
+@use 'reset' as *;
+@use 'variables' as *;
 
 // Global
 .background--dark {
@@ -16,7 +16,12 @@
 }
 
 body {
-  font-family: Griffy, cursive, system-ui, -apple-system, sans-serif;
+  font-family:
+    Griffy,
+    cursive,
+    system-ui,
+    -apple-system,
+    sans-serif;
 
   --cell-size: 5rem;
   --primary-color: #308eaf;
@@ -32,7 +37,7 @@ body {
   --active-color: #3663bb;
   --dark-color: #1b1c1d;
   --panel-color: #f9f6f4;
-  --cross: url("../assets/icons/cross.png");
+  --cross: url('../assets/icons/cross.png');
 }
 
 .body-wrapper {
@@ -131,7 +136,7 @@ body {
   cursor: pointer;
 
   &::after {
-    content: "";
+    content: '';
     display: inline-block;
     position: absolute;
     background-color: var(--primary-color);
@@ -152,19 +157,19 @@ body {
 }
 
 .audio-on {
-  background-image: url("../assets/icons/volume.png");
+  background-image: url('../assets/icons/volume.png');
 }
 
 .audio-off {
-  background-image: url("../assets/icons/volume-muted.png");
+  background-image: url('../assets/icons/volume-muted.png');
 }
 
 .theme-on {
-  background-image: url("../assets/icons/sun-icon.png");
+  background-image: url('../assets/icons/sun-icon.png');
 }
 
 .theme-off {
-  background-image: url("../assets/icons/moon-icon.png");
+  background-image: url('../assets/icons/moon-icon.png');
 }
 
 .toggle-btn:checked {
@@ -290,8 +295,8 @@ body {
   margin: $margin-medium;
   display: grid;
   grid-template:
-    ". top"
-    "left gameboard";
+    '. top'
+    'left gameboard';
 }
 
 .top-info {

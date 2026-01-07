@@ -1,6 +1,6 @@
 import { gameState } from '../../core/states/game-state';
 import { domElements } from '../../core/states/dom-elements';
-import { createList } from '../ui/board/board-elements';
+import { createList } from '../ui/board/create-list';
 import { easy, medium, hard } from '../../core/data/data';
 
 export function processDifficultyButtons() {
@@ -17,6 +17,6 @@ export function processDifficultyButtons() {
   } else if (difficultyText === 'hard') {
     gameState.difficulty = hard;
   }
-  
+
   createList(domElements.fieldset);
 }
