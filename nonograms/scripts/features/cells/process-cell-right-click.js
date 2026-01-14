@@ -1,5 +1,5 @@
 import { gameState } from '../../core/states/game-state';
-import { sounds } from '../../core/data/data';
+import { sounds } from '../../core/data/sounds';
 import { playSound } from '../audio/play-sound';
 
 export function processCellRightClick(event) {

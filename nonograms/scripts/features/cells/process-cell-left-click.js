@@ -1,5 +1,5 @@
 import { playSound } from '../audio/play-sound';
-import { sounds } from '../../core/data/data';
+import { sounds } from '../../core/data/sounds';
 import { gameState } from '../../core/states/game-state';
 import { stopTimer } from '../timer/stop-timer';
 import { domElements } from '../../core/states/dom-elements';

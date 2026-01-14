@@ -1,4 +1,4 @@
-import { sounds } from '../../core/data/data';
+import { sounds } from '../../core/data/sounds';
 import { playSound } from './play-sound';
 
 export function buttonsSound() {
