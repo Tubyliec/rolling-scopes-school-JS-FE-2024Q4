@@ -1,10 +1,10 @@
-import { createDom } from './create-dom.js';
+import { createBasicElements } from './features/ui/create-basic-elements.js';
 import { domElements } from './core/states/dom-elements.js';
 import '../styles/styles.scss';
 import { createGame } from './features/game/create-game';
 import { createList } from './features/ui/board/create-list';
 
-createDom();
+createBasicElements();
 createGame();
 createList(domElements.fieldset);
 domElements.easyButton.classList.add('dif-btn--active');
