@@ -271,7 +271,7 @@ export function createDom() {
   domElements.modalWindow = createElement({
     tag: 'dialog',
     parent: domElements.bodyWrapper,
-    classes: ['win-window'],
+    classes: ['modal'],
   });
 
   gameState.difficultyButtons = [

@@ -42,6 +42,7 @@ export function processCellLeftClick() {
     playSound(sounds.fanfare);
     domElements.modalWindow.showModal();
     domElements.board.classList.add('no-events');
+    document.body.classList.add('no-scroll');
     createRating();
   }
 }
