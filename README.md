@@ -13,7 +13,6 @@ This repository contains my portfolio projects for the Rolling Scopes School Jav
 - [css-meme-slider](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/css-meme-slider)
 - [decision-making-tool](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/decision-making-tool)
 - [fun-chat](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/fun-chat)
-- [gh-pages](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/gh-pages)
 - [html-builder](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/html-builder)
 - [news-api](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/news-api)
 - [nonograms](https://github.com/Tubyliec/rolling-scopes-school-JS-FE-2024Q4/tree/nonograms)
