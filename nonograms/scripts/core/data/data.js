@@ -1,6 +1,6 @@
 const easy = {
   cross: {
-    name: "cross",
+    name: 'cross',
     array: [
       [0, 0, 1, 0, 0],
       [0, 0, 1, 0, 0],
@@ -10,7 +10,7 @@ const easy = {
     ],
   },
   heart: {
-    name: "heart",
+    name: 'heart',
     array: [
       [0, 1, 0, 1, 0],
       [1, 1, 1, 1, 1],
@@ -20,7 +20,7 @@ const easy = {
     ],
   },
   chess: {
-    name: "chess",
+    name: 'chess',
     array: [
       [1, 0, 1, 0, 1],
       [0, 1, 0, 1, 0],
@@ -30,7 +30,7 @@ const easy = {
     ],
   },
   x: {
-    name: "x",
+    name: 'x',
     array: [
       [1, 0, 0, 0, 1],
       [0, 1, 0, 1, 0],
@@ -40,7 +40,7 @@ const easy = {
     ],
   },
   clock: {
-    name: "clock",
+    name: 'clock',
     array: [
       [0, 1, 1, 1, 0],
       [1, 0, 1, 0, 1],
@@ -53,7 +53,7 @@ const easy = {
 
 const medium = {
   fish: {
-    name: "fish",
+    name: 'fish',
     array: [
       [1, 1, 0, 1, 1, 1, 1, 1, 1, 0],
       [1, 1, 1, 0, 0, 1, 1, 1, 0, 1],
@@ -68,7 +68,7 @@ const medium = {
     ],
   },
   camel: {
-    name: "camel",
+    name: 'camel',
     array: [
       [0, 0, 0, 0, 0, 1, 1, 0, 1, 1],
       [0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
@@ -83,7 +83,7 @@ const medium = {
     ],
   },
   hangman: {
-    name: "hangman",
+    name: 'hangman',
     array: [
       [0, 1, 1, 1, 1, 1, 1, 0, 0, 1],
       [0, 1, 0, 1, 0, 1, 0, 0, 0, 0],
@@ -98,7 +98,7 @@ const medium = {
     ],
   },
   bear: {
-    name: "bear",
+    name: 'bear',
     array: [
       [0, 1, 1, 0, 0, 0, 0, 1, 1, 0],
       [1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
@@ -113,7 +113,7 @@ const medium = {
     ],
   },
   bird: {
-    name: "bird",
+    name: 'bird',
     array: [
       [0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
       [0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
@@ -131,7 +131,7 @@ const medium = {
 
 const hard = {
   mask: {
-    name: "mask",
+    name: 'mask',
     array: [
       [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0],
       [0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0],
@@ -151,7 +151,7 @@ const hard = {
     ],
   },
   panda: {
-    name: "panda",
+    name: 'panda',
     array: [
       [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
       [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
@@ -171,7 +171,7 @@ const hard = {
     ],
   },
   snail: {
-    name: "snail",
+    name: 'snail',
     array: [
       [1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
       [1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1],
@@ -191,7 +191,7 @@ const hard = {
     ],
   },
   dog: {
-    name: "dog",
+    name: 'dog',
     array: [
       [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1],
       [1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0],
@@ -211,7 +211,7 @@ const hard = {
     ],
   },
   scales: {
-    name: "scales",
+    name: 'scales',
     array: [
       [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       [0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
@@ -232,14 +232,4 @@ const hard = {
   },
 };
 
-const sounds = {
-  pencil: "assets/audio/pencil.mp3",
-  cross: "assets/audio/cross.mp3",
-  wipe: "assets/audio/wipe.mp3",
-  button: "assets/audio/button.mp3",
-  switch: "assets/audio/switch.mp3",
-  click: "assets/audio/click.mp3",
-  fanfare: "assets/audio/fanfare.mp3",
-};
-
-export { easy, medium, hard, sounds };
+export { easy, medium, hard };
