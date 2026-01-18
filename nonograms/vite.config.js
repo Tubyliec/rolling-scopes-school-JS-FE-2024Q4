@@ -6,7 +6,7 @@ export default defineConfig({
   base: './',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
+    assetsDir: 'public',
     emptyOutDir: true,
     rollupOptions: {
       input: {

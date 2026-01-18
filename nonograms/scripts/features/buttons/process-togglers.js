@@ -19,7 +19,7 @@ export function processTogglers() {
       document.body.style.setProperty('--neutral-color', '#308eaf');
       document.body.style.setProperty(
         '--cross',
-        `url("../assets/icons/cross-pr.png")`,
+        `url("../public/icons/cross-pr.png")`,
       );
       domElements.audioOnImg.style.setProperty(
         'background-image',
