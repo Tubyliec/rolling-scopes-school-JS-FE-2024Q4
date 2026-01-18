@@ -1,0 +1,113 @@
+@use '../variables' as *;
+@use '../placeholders' as *;
+
+.header {
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: $primary-color;
+}
+
+.header-wrapper {
+  margin: $align-margin;
+  padding: $padding-panel;
+  color: var(--panel-color);
+
+  @extend %flex-row;
+
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.name {
+  @extend %header-text;
+
+  text-transform: uppercase;
+
+  @media (width <= 500px) {
+    font-size: 3rem;
+  }
+}
+
+.options {
+  @extend %flex-row;
+
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.timer {
+  width: 8rem;
+
+  @extend %flex-row;
+  @extend %flex-evenly;
+}
+
+.time {
+  text-align: center;
+  font-family: Griffy, cursive;
+  font-size: 2rem;
+}
+
+.btn-wrapper {
+  @extend %flex-row;
+
+  gap: 0.4rem;
+}
+
+.toggle-btn {
+  appearance: none;
+  position: relative;
+  display: inline-block;
+  width: 3.2rem;
+  height: 1.8rem;
+  background: var(--panel-color);
+  border-radius: 1rem;
+  outline: none;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    background-color: var(--primary-color);
+    width: 1.5rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    left: 0.11rem;
+    top: 0.11rem;
+    transform: translateX(0);
+  }
+}
+
+.button-img {
+  width: 1.6rem;
+  height: 1.6rem;
+
+  @extend %background-btn;
+}
+
+.audio-on {
+  background-image: url('../../public/icons/volume.png');
+}
+
+.audio-off {
+  background-image: url('../../public/icons/volume-muted.png');
+}
+
+.theme-on {
+  background-image: url('../../public/icons/sun-icon.png');
+}
+
+.theme-off {
+  background-image: url('../../public/icons/moon-icon.png');
+}
+
+.toggle-btn:checked {
+  &::after {
+    transform: translateX(calc(100%));
+  }
+}

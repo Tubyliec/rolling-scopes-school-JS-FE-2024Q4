@@ -1,0 +1,41 @@
+import { easy } from '../data/data';
+
+export let gameState = {
+  templateCellCounter: 0,
+  currentCellCounter: 0,
+  falseCellCounter: 0,
+  difficulty: easy,
+  currentPattern: easy.cross.array,
+  horizontalNums: [],
+  verticalNums: [],
+  timerElements: [],
+  timerState: undefined,
+  time: {
+    minutes: 0,
+    seconds: 0,
+  },
+  scoreItem: {
+    name: null,
+    difficulty: null,
+    time: null,
+    minutes: null,
+    seconds: null,
+  },
+  ratingList: [],
+  topList: [],
+  difficultyButtons: [],
+  controlButtons: [],
+  toggleButtons: [],
+  isSoundOn: true,
+  isLightTheme: true,
+  savedGame: {
+    difficulty: 'easy',
+    pattern: 'cross',
+    array: [],
+    savedArray: [],
+    currentCellCounter: 0,
+    falseCellCounter: 0,
+    minutes: 0,
+    seconds: 0,
+  },
+};
