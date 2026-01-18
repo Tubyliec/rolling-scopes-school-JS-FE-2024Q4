@@ -1,0 +1,430 @@
+//Import
+
+@use 'reset' as *;
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+@use 'variables' as *;
+@use 'burger' as *;
+@use 'modal' as *;
+@use 'header' as *;
+@use 'items' as *;
+
+/*Global*/
+
+* {
+  transition: 0.5s;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1440px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px;
+  background-color: $primary;
+}
+
+.section {
+  max-width: $desktop-max-width;
+  @media (min-width: 400px) and (max-width: 800px) {
+    max-width: $tablet-max-width;
+  }
+}
+
+/*Header*/
+
+.navigation_list {
+  @include flex-horizontal;
+  gap: 8px;
+  @include list_item_styles;
+  padding: 12px 0;
+  @media (max-width: 768px) {
+    @include flex-vertical;
+    gap: 20px;
+  }
+}
+
+/*Hero*/
+
+.hero_wrapper {
+  background-image: $background-ball, $background-snow;
+  @extend %background-center;
+}
+
+.hero {
+  @include flex-vertical;
+  margin: 60px 0;
+  gap: 12px;
+  .hero_description {
+    @include flex-vertical;
+    padding: 60px 0;
+    gap: 12px;
+    p {
+      @include header-italic;
+    }
+    h1 {
+      @include h1;
+    }
+    .button_link {
+      p {
+        @include button_link_style;
+      }
+    }
+  }
+}
+
+/*About*/
+
+.about_wrapper {
+  background-image: $background-snow;
+  @extend %background-center;
+}
+
+.about {
+  @include flex-horizontal;
+  height: 528px;
+  background-color: $static-white;
+  margin: $primary-margin;
+  border-radius: $primary-radius;
+  @media (max-width: 800px) {
+    margin: $tablet-margin;
+  }
+  @media (max-width: 600px) {
+    @include flex-vertical;
+    height: 100%;
+    margin: $tablet-margin;
+    .about_info_wrapper {
+      width: 100%;
+
+      .about_info {
+        margin: 60px 20px;
+
+        padding: 0;
+      }
+    }
+    .about_image {
+      width: 100%;
+    }
+  }
+}
+
+.about_info_wrapper {
+  width: 50%;
+  .about_info {
+    @include flex-vertical-left;
+    margin: 100px 92px 100px 60px;
+    padding: 60px 0;
+    gap: 20px;
+    p {
+      padding-right: 60px;
+      @include header-italic-primary;
+      &:last-child {
+        @include text_font;
+      }
+    }
+    h2 {
+      @include h2;
+    }
+    @media (max-width: 1000px) {
+      margin: 46px 60px;
+      p {
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+.about_image {
+  border-radius: $primary-radius;
+  background-image: $santa-img;
+  @extend %background-center;
+  width: 50%;
+  height: 528px;
+}
+
+/*Slider*/
+
+.slider_wrapper {
+  background-image: $background-snow;
+  @extend %background-center;
+  overflow: hidden;
+}
+
+.slider_container {
+  margin: $primary-margin;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 800px) {
+    margin: $tablet-margin;
+  }
+}
+
+.slider_caption {
+  @include flex-vertical;
+  gap: 12px;
+  p {
+    @include header-italic;
+  }
+  h2 {
+    @include h2-white;
+  }
+}
+
+.slider {
+  position: relative;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  .slider_item {
+    @include flex-horizontal;
+    gap: 20px;
+    p {
+      @include slider-font;
+    }
+    .slider_item_img {
+      width: 200px;
+      height: 200px;
+      img {
+        border-radius: $primary-radius;
+      }
+    }
+  }
+}
+
+.slider_pagination {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  .button_left {
+    background-image: $left-button-img;
+    @extend %background-center;
+    @media (hover: hover) {
+      &:hover {
+        background-image: $left-button-img-hover;
+      }
+    }
+  }
+  .button_right {
+    background-image: $right-button-img;
+    @extend %background-center;
+    @media (hover: hover) {
+      &:hover {
+        background-image: $right-button-img-hover;
+      }
+    }
+  }
+}
+
+.pag_btn {
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/*Best gifts*/
+
+.best_gifts_wrapper {
+  background-image: $background-snow;
+  @extend %background-center;
+}
+
+.best_gifts_container {
+  margin: $primary-margin;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media (max-width: 800px) {
+    margin: $tablet-margin;
+  }
+}
+
+.best_gifts_caption {
+  @include flex-vertical;
+  gap: 12px;
+  p {
+    @include header-italic;
+  }
+  h2 {
+    @include h2-white;
+  }
+}
+
+.best_gifts {
+  @include flex-horizontal-center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.for_work {
+  color: $tag-purple;
+}
+
+.for_harmony {
+  color: $tag-pink;
+}
+
+.for_health {
+  color: $tag-green;
+}
+
+/*Counter*/
+
+.counter_wrapper {
+  background-image: $background-forest, $background-snow;
+  @extend %background-center;
+}
+
+.counter_container {
+  margin: 60px 0;
+  @include flex-horizontal-center;
+}
+
+.counter_block {
+  margin: 120px 0;
+  @include flex-vertical;
+  gap: 20px;
+  h2 {
+    @include h2-white;
+  }
+  text-align: center;
+}
+
+.button_link {
+  p {
+    @include button_link_style;
+  }
+}
+
+.ny_counter {
+  @include flex-vertical;
+  gap: 8px;
+  p {
+    @include header-italic;
+  }
+}
+
+.counter {
+  display: grid;
+  grid-template-columns: 80px 1px 80px 1px 80px 1px 80px;
+  align-items: center;
+  background-color: $static-white-40;
+  border-radius: $primary-radius;
+  padding: 7px 12px 12px 12px;
+  text-align: center;
+  .separator {
+    padding: 0;
+  }
+  .counter_item {
+    padding: 0 10px;
+    @include flex-vertical;
+    .value {
+      @include h2-white;
+    }
+    .count_item_name {
+      @include count_item_text;
+    }
+  }
+  .separator {
+    color: $static-white-40;
+  }
+}
+
+/*Footer*/
+
+.footer_wrapper {
+  background-color: $static-white;
+}
+
+footer {
+  margin: $primary-margin;
+  @include flex-vertical-between;
+  gap: 65px;
+  @media (max-width: 800px) {
+    margin: $tablet-margin;
+  }
+}
+
+.contacts {
+  @include flex-horizontal;
+  gap: 10px;
+  @media (max-width: 1200px) {
+    @include flex-vertical;
+  }
+  .contact_card {
+    background-color: $content-background;
+    border-radius: $primary-radius;
+    text-align: center;
+    width: 30%;
+    padding: 20px;
+    a {
+      @include flex-vertical;
+      @include h2;
+      gap: 12px;
+    }
+    p {
+      @include contact_font;
+    }
+    @media (max-width: 1200px) {
+      width: 100%;
+      padding: 20px 0;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .contact_card:hover {
+    a > span,
+    p {
+      color: $primary;
+    }
+  }
+}
+
+.card_img {
+  width: 80px;
+  height: 80px;
+}
+
+.phone_img {
+  background-image: $santa-logo;
+  @extend %background-center;
+}
+.address_img {
+  background-image: $tree-logo;
+  @extend %background-center;
+}
+.mail_img {
+  background-image: $snake-logo;
+  @extend %background-center;
+}
+
+.rs_contacts {
+  @include flex-vertical;
+  gap: 12px;
+  p {
+    @include contact_rs_font;
+  }
+  a {
+    @include header-italic-dark;
+  }
+}
+
+@media (hover: hover) {
+  .rs_link:hover {
+    color: $primary;
+  }
+}

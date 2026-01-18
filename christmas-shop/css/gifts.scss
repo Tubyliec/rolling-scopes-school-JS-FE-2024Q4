@@ -1,0 +1,273 @@
+//Import
+
+@use 'reset' as *;
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+@use 'variables' as *;
+@use 'burger' as *;
+@use 'modal' as *;
+@use 'header' as *;
+@use 'items' as *;
+
+/*Global*/
+
+* {
+  transition: 0.5s;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  height: 100%;
+  max-width: 1440px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 20px;
+  background-color: $primary;
+}
+
+.section {
+  max-width: $desktop-max-width;
+  @media (min-width: 400px) and (max-width: 800px) {
+    max-width: $tablet-max-width;
+  }
+}
+
+/*Header*/
+
+.navigation_panel {
+  ul {
+    li:first-child {
+      padding: 12px 20px;
+      border-radius: 10px;
+      pointer-events: none;
+      cursor: default;
+      background: $primary-opacity;
+      color: $primary;
+    }
+  }
+}
+
+.navigation_list {
+  @include flex-horizontal;
+  gap: 8px;
+  @include list_item_styles;
+  @media (max-width: 768px) {
+    @include flex-vertical;
+    gap: 20px;
+  }
+  li:first-child {
+    padding: 12px 20px;
+    border-radius: 10px;
+    pointer-events: auto;
+    cursor: default;
+    background: $primary-opacity;
+    color: $primary;
+  }
+}
+
+/*Best gifts*/
+
+.best_gifts_wrapper {
+  background-image: $background-garland;
+  background-position: top;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.best_gifts_container {
+  margin: $tablet-margin;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.best_gifts_caption {
+  @include flex-vertical;
+  text-align: center;
+  h1 {
+    @include h1;
+  }
+}
+
+.buttons_panel_list {
+  @include navigation-font-white;
+  @include flex-horizontal-center;
+  gap: 8px;
+  @media (max-width: 649px) {
+    gap: 0;
+  }
+  li {
+    padding: 12px 20px;
+    @media (max-width: 649px) {
+      padding: 12px 8px;
+    }
+    border-radius: 10px;
+    @media (hover: hover) {
+      &:hover {
+        background-color: $static-white-40;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.active_panel_items {
+  background-color: $static-white-40;
+}
+
+.best_gifts {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 310px);
+  grid-template-rows: repeat(3, 342px);
+  gap: 12px;
+  @media (min-width: 1100px) and (max-width: 1439px) {
+    grid-template-columns: repeat(3, 310px);
+    grid-template-rows: repeat(4, 342px);
+  }
+  @media (min-width: 650px) and (max-width: 1100px) {
+    grid-template-columns: repeat(2, 310px);
+    grid-template-rows: repeat(6, 342px);
+  }
+  @media (max-width: 649px) {
+    grid-template-columns: repeat(1, 310px);
+  }
+}
+
+.for_work {
+  color: $tag-purple;
+}
+
+.for_harmony {
+  color: $tag-pink;
+}
+
+.for_health {
+  color: $tag-green;
+}
+
+/*Footer*/
+
+.footer_wrapper {
+  background-color: $static-white;
+}
+
+footer {
+  margin: $primary-margin;
+  @include flex-vertical-between;
+  gap: 65px;
+  @media (max-width: 800px) {
+    margin: $tablet-margin;
+  }
+}
+
+.contacts {
+  @include flex-horizontal;
+  gap: 12px;
+  @media (max-width: 1200px) {
+    @include flex-vertical;
+  }
+  .contact_card {
+    background-color: $content-background;
+    border-radius: $primary-radius;
+    text-align: center;
+    width: 30%;
+    padding: 20px;
+    a {
+      @include flex-vertical;
+      @include h2;
+      gap: 12px;
+    }
+    p {
+      @include contact_font;
+    }
+    @media (max-width: 1200px) {
+      width: 100%;
+      padding: 20px 0;
+    }
+  }
+}
+
+@media (hover: hover) {
+  .contact_card:hover {
+    a > span,
+    p {
+      color: $primary;
+    }
+  }
+}
+
+.card_img {
+  width: 80px;
+  height: 80px;
+}
+
+.phone_img {
+  background-image: $santa-logo;
+  @extend %background-center;
+}
+.address_img {
+  background-image: $tree-logo;
+  @extend %background-center;
+}
+.mail_img {
+  background-image: $snake-logo;
+  @extend %background-center;
+}
+
+.rs_contacts {
+  @include flex-vertical;
+  gap: 12px;
+  p {
+    @include contact_rs_font;
+  }
+  a {
+    @include header-italic-dark;
+  }
+}
+
+@media (hover: hover) {
+  .rs_link:hover {
+    color: $primary;
+  }
+}
+
+/*Button top*/
+
+.button_top {
+  display: none;
+  visibility: hidden;
+  background-image: $top-button-img;
+  @extend %background-center;
+  position: fixed;
+  bottom: 3%;
+  right: 3%;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.pag_btn {
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+.not_displayed {
+  display: none;
+}
+
+.visible {
+  visibility: visible;
+}

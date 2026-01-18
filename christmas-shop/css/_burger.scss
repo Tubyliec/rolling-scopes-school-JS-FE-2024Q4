@@ -1,0 +1,105 @@
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+@use 'variables' as *;
+
+.navigation_panel {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navigation_panel_burger {
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_button {
+  margin: 15px 10px;
+  display: none;
+  background: transparent;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.burger-checkbox {
+  position: absolute;
+  visibility: hidden;
+}
+.burger {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  border: none;
+  background: transparent;
+  width: 20px;
+  height: 10px;
+  &::before,
+  &::after {
+    content: '';
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    background: $dark;
+  }
+  &::before {
+    top: 0;
+    transition:
+      top 0.3s 0.15s,
+      transform 0.3s;
+  }
+  &::after {
+    bottom: 0;
+    transition:
+      bottom 0.3s 0.15s,
+      transform 0.3s;
+  }
+}
+
+.burger-checkbox:checked + .burger::before {
+  top: 5px;
+  transform: rotate(45deg);
+  transition:
+    top 0.3s,
+    transform 0.3s 0.15s;
+}
+.burger-checkbox:checked + .burger::after {
+  top: 5px;
+  transform: rotate(-45deg);
+  transition:
+    top 0.3s,
+    transform 0.3s 0.15s;
+}
+
+.menu_popup {
+  position: absolute;
+  position-anchor: --my-anchor;
+  position-area: bottom;
+  width: 100%;
+  height: 100%;
+  @include navigation-font-24;
+  text-transform: uppercase;
+  align-content: center;
+  translate: 100%;
+  transition:
+    translate 1s ease-out,
+    display 1s ease-out,
+    overlay 1s ease-out;
+  &:popover-open {
+    translate: 0 0;
+    transition:
+      translate 1s ease-out,
+      display 1s ease-out,
+      overlay 1s ease-out;
+    @starting-style {
+      translate: 100% 0;
+    }
+  }
+}
