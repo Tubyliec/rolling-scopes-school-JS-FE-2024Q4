@@ -17,80 +17,78 @@ $tablet-margin: 60px 8px;
 //Placeholders
 
 %background-center {
-    background-position: center;
-    background-size: cover;
+  background-position: center;
+  background-size: cover;
 }
 
 //Mixins
 
 @mixin flex-horizontal {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @mixin flex-horizontal-center {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin flex-vertical {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @mixin flex-vertical-between {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 @mixin flex-vertical-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 @mixin button_link_style {
-    @include button_font;
-    padding: 20px 32px;
-    background-color: $dark;
-    border-radius: $primary-radius;
-    cursor: pointer;
-    @media (hover: hover) {
-        &:hover {
-            background-color: $static-white;
-            color: $dark;
-        }
-
+  @include button_font;
+  padding: 20px 32px;
+  background-color: $dark;
+  border-radius: $primary-radius;
+  cursor: pointer;
+  @media (hover: hover) {
+    &:hover {
+      background-color: $static-white;
+      color: $dark;
     }
+  }
 }
 
 @mixin list_item_styles {
-    li {
-        a {
-            padding: 12px 20px;
-            color: $dark;
-            border-radius: 10px;
-        }
-        @media (hover: hover) {
-            &:hover {
-                a {
-                    color: $primary;
-                    background: $primary-opacity;
-                }
-            }
-
-        }
+  li {
+    a {
+      padding: 12px 20px;
+      color: $dark;
+      border-radius: 10px;
     }
+    @media (hover: hover) {
+      &:hover {
+        a {
+          color: $primary;
+          background: $primary-opacity;
+        }
+      }
+    }
+  }
 }
 
 .no_scroll {
-    overflow: hidden;
+  overflow: hidden;
 }
