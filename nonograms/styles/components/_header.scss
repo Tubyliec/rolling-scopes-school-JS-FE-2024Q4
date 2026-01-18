@@ -91,19 +91,19 @@
 }
 
 .audio-on {
-  background-image: url('../../assets/icons/volume.png');
+  background-image: url('/icons/volume.png');
 }
 
 .audio-off {
-  background-image: url('../../assets/icons/volume-muted.png');
+  background-image: url('/icons/volume-muted.png');
 }
 
 .theme-on {
-  background-image: url('../../assets/icons/sun-icon.png');
+  background-image: url('/icons/sun-icon.png');
 }
 
 .theme-off {
-  background-image: url('../../assets/icons/moon-icon.png');
+  background-image: url('/icons/moon-icon.png');
 }
 
 .toggle-btn:checked {

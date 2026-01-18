@@ -19,23 +19,23 @@ export function processTogglers() {
       document.body.style.setProperty('--neutral-color', '#308eaf');
       document.body.style.setProperty(
         '--cross',
-        `url("../assets/icons/cross-pr.png")`,
+        `url("/icons/cross-pr.png")`,
       );
       domElements.audioOnImg.style.setProperty(
         'background-image',
-        `url("./assets/icons/volume-pr.png")`,
+        `url("/icons/volume-pr.png")`,
       );
       domElements.audioOffImg.style.setProperty(
         'background-image',
-        `url("./assets/icons/volume-muted-pr.png")`,
+        `url("/icons/volume-muted-pr.png")`,
       );
       domElements.themeOnImg.style.setProperty(
         'background-image',
-        `url("./assets/icons/sun-icon-pr.png")`,
+        `url("/icons/sun-icon-pr.png")`,
       );
       domElements.themeOffImg.style.setProperty(
         'background-image',
-        `url("./assets/icons/moon-icon-pr.png")`,
+        `url("/icons/moon-icon-pr.png")`,
       );
     } else {
       document.body.style.setProperty(
