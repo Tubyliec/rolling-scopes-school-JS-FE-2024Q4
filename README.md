@@ -25,8 +25,3 @@ This repository contains my portfolio projects for the Rolling Scopes School Jav
 
 1. Click the branch link for the project you want to view.
 2. On the branch page, open the project files or the project's README (if present) to see instructions, live demo links, and deployment details.
-
-
----
-
-If you want, I can also add short descriptions or live demo links for each project — tell me which projects to document first.
