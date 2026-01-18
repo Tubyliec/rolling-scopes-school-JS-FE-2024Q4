@@ -1,28 +1,29 @@
 @use 'colors' as *;
 
-/*Fonts*/
+/* Fonts */
 
 @font-face {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   src:
     local('Montserrat'),
     url('../assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Allura', cursive;
+  font-family: Allura, cursive;
   src:
     local('Allura'),
     url('../assets/fonts/Allura-Regular.ttf') format('truetype');
 }
 
-//Mixins
+// Mixins
 
 @mixin font-12 {
   font: {
     weight: 600;
     size: 12px;
   }
+
   line-height: 130%;
   letter-spacing: 0.05em;
 }
@@ -32,6 +33,7 @@
     weight: 400;
     size: 16px;
   }
+
   line-height: 150%;
 }
 
@@ -40,6 +42,7 @@
     weight: 400;
     size: 16px;
   }
+
   line-height: 148%;
 }
 
@@ -48,6 +51,7 @@
     weight: 600;
     size: 16px;
   }
+
   line-height: 152%;
   letter-spacing: 0.08em;
 }
@@ -57,6 +61,7 @@
     weight: 600;
     size: 16px;
   }
+
   line-height: 152%;
   letter-spacing: 0.08em;
 }
@@ -66,6 +71,7 @@
     weight: 400;
     size: 24px;
   }
+
   line-height: 100%;
   letter-spacing: 0.05em;
 }
@@ -75,6 +81,7 @@
     weight: 600;
     size: 24px;
   }
+
   line-height: 152%;
   letter-spacing: 0.16em;
 }
@@ -84,6 +91,7 @@
     weight: 600;
     size: 32px;
   }
+
   line-height: 150%;
   letter-spacing: 0.18em;
 }
@@ -97,52 +105,60 @@
 
 @mixin navigation-font {
   @include font-12;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
 @mixin navigation-font-white {
   @include font-12;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
 @mixin navigation-font-24 {
   @include font-24-header;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
 @mixin header-italic {
   @include font-24;
+
   font-family: Allura, sans-serif;
   color: $static-white;
 }
 
 @mixin header-italic-dark {
   @include font-24;
-  font-family: 'Allura', cursive;
+
+  font-family: Allura, cursive;
   color: $dark;
 }
 
 @mixin header-italic {
   @include font-24;
+
   font-family: Allura, sans-serif;
   color: $static-white;
 }
 
 @mixin header-italic-primary {
   @include font-24;
-  font-family: 'Allura', cursive;
+
+  font-family: Allura, cursive;
   color: $primary;
 }
 
 @mixin h1 {
   @include font-32;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: $static-white;
@@ -150,35 +166,40 @@
 
 @mixin h2 {
   @include font-24-header;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
 @mixin h2-white {
   @include font-24-header;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
 @mixin button_font {
   @include font-12;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
 @mixin text_font {
   @include font-16;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   letter-spacing: 0.0015em;
   color: $dark;
 }
 
 @mixin slider_font {
   @include font-80;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   text-align: center;
   color: $static-white;
@@ -186,35 +207,42 @@
 
 @mixin item_font {
   @include font-12;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
 }
 
 @mixin item_description_text {
   @include font-16-152;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
 @mixin count_item_text {
   @include font-12;
-  font-family: 'Montserrat', sans-serif;
+
+  font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
 @mixin contact_font {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
+
   @include font-16-152-600;
+
   text-transform: uppercase;
   color: $dark;
 }
 
 @mixin contact_rs_font {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
+
   @include font-16-148;
+
   color: $dark;
 }
 
-/*Fonts end*/
+/* Fonts end */

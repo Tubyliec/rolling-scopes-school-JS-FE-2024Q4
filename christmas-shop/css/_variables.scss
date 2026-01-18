@@ -1,27 +1,26 @@
-//Import
+// Import
 
 @use 'reset' as *;
 @use 'fonts' as *;
 @use 'colors' as *;
 @use 'images' as *;
 
-//Variables
+// Variables
 
 $desktop-max-width: 1276px;
 $tablet-max-width: 752px;
 $primary-radius: 20px;
-
 $primary-margin: 60px 82px;
 $tablet-margin: 60px 8px;
 
-//Placeholders
+// Placeholders
 
 %background-center {
   background-position: center;
   background-size: cover;
 }
 
-//Mixins
+// Mixins
 
 @mixin flex-horizontal {
   display: flex;
@@ -59,10 +58,12 @@ $tablet-margin: 60px 8px;
 
 @mixin button_link_style {
   @include button_font;
+
   padding: 20px 32px;
   background-color: $dark;
   border-radius: $primary-radius;
   cursor: pointer;
+
   @media (hover: hover) {
     &:hover {
       background-color: $static-white;
@@ -78,6 +79,7 @@ $tablet-margin: 60px 8px;
       color: $dark;
       border-radius: 10px;
     }
+
     @media (hover: hover) {
       &:hover {
         a {
