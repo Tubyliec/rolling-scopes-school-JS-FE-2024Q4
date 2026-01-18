@@ -1,0 +1,188 @@
+//Import
+@use "reset" as *;
+@use "variables" as *;
+/*Global*/
+.body-wrapper {
+  margin: $primary-margin;
+  padding: $primary-padding;
+  max-width: 60%;
+  @extend %border;
+  @extend %flex-vertical;
+  text-align: center;
+  @media (max-width: 700px) {
+    gap: 1rem;
+    margin: $secondary-margin;
+    padding: 0.5rem;
+  }
+}
+.no-display {
+  display: none;
+}
+.no-events {
+  pointer-events: none;
+}
+/*Header*/
+.header {
+  @extend %flex-horizontal;
+  @extend %flex-between;
+  margin: $header-margin;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+}
+.difficulty-panel {
+  @extend %flex-horizontal;
+}
+.header-btn {
+  min-width: 7rem;
+  @extend %border;
+  padding: $secodary-padding;
+  background-color: $third-color;
+  @extend %btn-text;
+  cursor: pointer;
+  &--active {
+    background-color: $primary-color;
+  }
+  &:hover {
+    background-color: $primary-color;
+    scale: 1.05;
+  }
+  @media (max-width: 500px) {
+    font-size: $small-size;
+    min-width: 4rem;
+  }
+}
+.round-panel {
+  @extend %flex-horizontal;
+  @extend %btn-text;
+  padding: $secodary-padding;
+}
+.round-counter {
+  @extend %flex-horizontal;
+}
+/*Title*/
+.title {
+  @extend %h1;
+  @media (max-width: 700px) {
+    font-size: $gamebtn-size;
+  }
+}
+/*Input*/
+.input-section {
+  @extend %flex-horizontal;
+  @extend %flex-center;
+}
+.input-wrapper {
+  width: 60%;
+  text-align: center;
+  @media (max-width: 700px) {
+    width: 80%;
+  }
+  @media (max-width: 400px) {
+    width: 90%;
+  }
+}
+.input-field {
+  margin: $input-margin;
+  padding: $input-padding;
+  color: $primary-color;
+  @extend %border;
+  text-align: center;
+  @extend %key-text;
+  cursor: default;
+  pointer-events: none;
+  width: 80%;
+  height: 3rem;
+}
+/*Keyboard*/
+.keyboard-wrapper {
+  @extend %flex-horizontal;
+  @extend %flex-center;
+}
+.key {
+  width: 7rem;
+  height: 7rem;
+  @extend %border;
+  @extend %key-text;
+  padding: $secodary-padding;
+  text-align: center;
+  align-content: center;
+  cursor: default;
+  background-color: $third-color;
+  &:hover {
+    cursor: pointer;
+    background-color: $primary-color;
+    scale: 1.01;
+  }
+  &:disabled {
+    pointer-events: none;
+  }
+  &:active {
+    scale: 1.1;
+  }
+  @media (max-width: 700px) {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+/*Game buttons*/
+.gamebtn-wrapper {
+  @extend %flex-horizontal;
+  @extend %flex-center;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.game-btn {
+  @extend %border;
+  padding: $gamebtn-padding;
+  background-color: white;
+  @extend %btn-text;
+  font-size: $gamebtn-size;
+  cursor: pointer;
+  &:hover {
+    background-color: $primary-color;
+    scale: 1.01;
+  }
+  &:disabled {
+    pointer-events: none;
+  }
+  @media (max-width: 700px) {
+    font-size: $key-size;
+  }
+}
+
+.modal {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 30%;
+  height: 30%;
+  @extend %border;
+  background-color: $third-color;
+  &::backdrop {
+    background-color: $primary-color;
+    opacity: 0.3;
+  }
+  @media (max-width: 800px) {
+    width: 50%;
+    height: 50%;
+  }
+}
+.modal-info {
+  @extend %flex-vertical;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-info__text {
+  @extend %h1;
+}
+
+.scale {
+  background-color: $primary-color;
+  scale: 1.01;
+}

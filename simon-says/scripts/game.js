@@ -1,0 +1,259 @@
+// Import
+import { createKeyboard, removeAllChildNodes } from "./create-elements.js";
+import {
+  currentElements,
+  actionButtons,
+  gameState,
+  allKeys,
+} from "./create-dom.js";
+import { numbersArray, lettersArray, mixedArray } from "./data.js";
+
+// identifiers
+
+let sequenceArray = [];
+let keysArray = [];
+let inputArray = [];
+let pressIndex = 0;
+
+// Difficulty
+
+function difficultySwap(array, parentElement) {
+  array.forEach((element) => {
+    element.name.addEventListener("click", function (e) {
+      element.name.classList.add("header-btn--active");
+      array.forEach((item) => {
+        if (item !== element) {
+          item.name.classList.remove("header-btn--active");
+        }
+      });
+      removeAllChildNodes(parentElement);
+      createKeyboard(element.array, parentElement);
+      console.log(
+        `Keys count: ${currentElements.keyboardWrapper.childElementCount}`,
+      );
+    });
+  });
+}
+// Disable buttons
+
+function disableActionButtons(buttons) {
+  buttons.forEach((element) => {
+    if (
+      element === currentElements.startButton ||
+      element === currentElements.nextButton
+    ) {
+      element.classList.add("no-display");
+    } else {
+      element.classList.remove("no-display");
+    }
+  });
+}
+function resetButtons(buttons) {
+  buttons.forEach((element) => {
+    if (element === currentElements.startButton) {
+      element.classList.remove("no-display");
+    } else {
+      element.classList.add("no-display");
+    }
+  });
+}
+
+function disableDifficultyButtons() {
+  if (gameState.playing === true) {
+    currentElements.difficultyPanel.classList.add("no-events");
+  }
+}
+function enableDifficultyButtons() {
+  if (gameState.playing === false) {
+    currentElements.difficultyPanel.classList.remove("no-events");
+  }
+}
+
+function disableKeys(keys) {
+  for (let i = 0; i < keys.length; i++) {
+    keys[i].disabled = true;
+  }
+}
+
+function enableKeys(keys) {
+  for (let i = 0; i < keys.length; i++) {
+    keys[i].disabled = false;
+  }
+}
+
+// Sequense
+function showKey(key) {
+  const transform = [{ background: "#ffb84d" }, { transform: "scale(1.1)" }];
+  const timing = {
+    easing: "ease-in",
+    duration: 200,
+  };
+  const animation = key.animate(transform, timing);
+  key.onclick = key.animate(transform, timing);
+}
+
+function showSequense(keys) {
+  let index = 0;
+
+  function showNext() {
+    const key = keys[index];
+    const transform = [{ background: "#ffb84d" }, { transform: "scale(1.1)" }];
+    const timing = {
+      delay: 300,
+      easing: "ease-out",
+      duration: 1000,
+    };
+    if (index >= keys.length) {
+      return;
+    }
+    const animation = key.animate(transform, timing);
+    animation.onfinish = () => {
+      index += 1;
+      showNext();
+    };
+  }
+  showNext();
+}
+
+function createSequense() {
+  const sequenceLength = gameState.liveCounter * 2;
+  const maxIndex = currentElements.keyboardWrapper.childElementCount;
+  let currentArray = [];
+  for (let i = 0; i < sequenceLength; i++) {
+    const index = Math.floor(Math.random() * maxIndex);
+    if (maxIndex === 10) {
+      currentArray = numbersArray;
+    } else if (maxIndex === 26) {
+      currentArray = lettersArray;
+    } else {
+      currentArray = mixedArray;
+    }
+    sequenceArray.push(String(currentArray[index]));
+    keysArray.push(currentElements.keyboardWrapper.childNodes[index]);
+  }
+  showSequense(keysArray);
+}
+
+function input(keys) {
+  pressIndex = 0;
+  let wrongAttempts = 0;
+
+  for (let key of keys) {
+    function checkInput() {
+      if (key.textContent === sequenceArray[pressIndex]) {
+        currentElements.inputField.value += key.textContent;
+        pressIndex += 1;
+        console.log(pressIndex);
+      } else {
+        let tempField = currentElements.inputField.value;
+        currentElements.inputField.value = "Wrong key";
+        setTimeout(() => {
+          currentElements.inputField.value = tempField;
+        }, 1400 * gameState.liveCounter);
+        wrongAttempts += 1;
+        currentElements.repeatButton.classList.add("scale");
+        setTimeout(
+          () => {
+            currentElements.repeatButton.classList.remove("scale");
+          },
+          1400 * 2 * gameState.liveCounter,
+        );
+      }
+      if (currentElements.inputField.value.length === sequenceArray.length) {
+        currentElements.inputField.value = "Good job!";
+        currentElements.repeatButton.classList.add("no-display");
+        currentElements.nextButton.classList.remove("no-display");
+        disableKeys(allKeys);
+        if (gameState.liveCounter === 5) {
+          currentElements.modalInfoText.textContent = "You win";
+          currentElements.modalWindow.showModal();
+          currentElements.nextButton.classList.add("no-display");
+          currentElements.repeatButton.classList.remove("no-display");
+        }
+      }
+      if (wrongAttempts === 2) {
+        disableKeys(allKeys);
+        currentElements.modalInfoText.textContent = "You lose";
+        currentElements.modalWindow.showModal();
+        currentElements.repeatButton.disabled = true;
+      }
+    }
+    key.onclick = checkInput;
+  }
+}
+
+// Game
+
+function startRound() {
+  sequenceArray = [];
+  keysArray = [];
+  currentElements.inputField.value = null;
+  disableActionButtons(actionButtons);
+  disableKeys(allKeys);
+  disableKeys(actionButtons);
+  gameState.liveCounter += 1;
+  currentElements.currentRound.textContent = gameState.liveCounter;
+  createSequense();
+  console.log(`Simon says: ${sequenceArray}`);
+  setTimeout(
+    () => {
+      enableKeys(allKeys);
+    },
+    1400 * 2 * gameState.liveCounter,
+  );
+  setTimeout(
+    () => {
+      enableKeys(actionButtons);
+    },
+    1400 * 2 * gameState.liveCounter,
+  );
+  input(allKeys);
+}
+
+function startGame() {
+  gameState.liveCounter = 0;
+  gameState.playing = true;
+  disableDifficultyButtons();
+  disableActionButtons(actionButtons);
+  startRound();
+}
+// Repeat
+
+function repeatSequence() {
+  disableKeys(allKeys);
+  currentElements.inputField.value = null;
+  pressIndex = 0;
+  showSequense(keysArray);
+  setTimeout(
+    () => {
+      enableKeys(allKeys);
+    },
+    1400 * 2 * gameState.liveCounter,
+  );
+  currentElements.repeatButton.disabled = true;
+}
+
+function resetGame() {
+  gameState.liveCounter = 0;
+  sequenceArray = [];
+  keysArray = [];
+  currentElements.inputField.value = null;
+  disableKeys(allKeys);
+  currentElements.currentRound.textContent = gameState.liveCounter;
+  gameState.playing = false;
+  enableDifficultyButtons();
+  resetButtons(actionButtons);
+}
+
+// Export
+export {
+  difficultySwap,
+  startGame,
+  startRound,
+  createSequense,
+  disableKeys,
+  repeatSequence,
+  resetGame,
+  sequenceArray,
+  keysArray,
+};
