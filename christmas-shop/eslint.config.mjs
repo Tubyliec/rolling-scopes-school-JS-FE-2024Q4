@@ -6,7 +6,7 @@ export default [
     ignores: ['**/node_modules/**'],
   },
   {
-    files: ['**/*.js'],
+    files: ['**/*.scripts'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
