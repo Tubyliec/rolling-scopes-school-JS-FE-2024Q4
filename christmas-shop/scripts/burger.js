@@ -2,26 +2,26 @@
 
 const body = document.querySelector('body');
 
-const burgerCheckbox = document.querySelector('.burger-checkbox');
-const navigationPanel = document.querySelector('.navigation_panel_burger');
-const menuPopup = document.getElementById('menu_popup');
+const burgerCheckbox = document.querySelector('.header__burger-checkbox');
+const navigationPanel = document.querySelector('.burger-menu');
+const menuPopup = document.getElementById('burger-menu');
 
 // Burger
 
 burgerCheckbox.addEventListener('click', function () {
-  body.classList.toggle('no_scroll');
+  body.classList.toggle('no-scroll');
 });
 
 navigationPanel.addEventListener('click', function (e) {
-  if (e.target.classList.contains('navigation_link')) {
-    body.classList.remove('no_scroll');
+  if (e.target.classList.contains('header__nav-link')) {
+    body.classList.remove('no-scroll');
     menuPopup.hidePopover();
     burgerCheckbox.checked = false;
   }
 });
 
 window.addEventListener('resize', () => {
-  body.classList.remove('no_scroll');
+  body.classList.remove('no-scroll');
   menuPopup.hidePopover();
   burgerCheckbox.checked = false;
 });

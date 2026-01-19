@@ -18,7 +18,7 @@
 
 // Mixins
 
-@mixin font-12 {
+@mixin typography-font-12 {
   font: {
     weight: 600;
     size: 12px;
@@ -28,7 +28,7 @@
   letter-spacing: 0.05em;
 }
 
-@mixin font-16 {
+@mixin typography-font-16 {
   font: {
     weight: 400;
     size: 16px;
@@ -37,7 +37,7 @@
   line-height: 150%;
 }
 
-@mixin font-16-148 {
+@mixin typography-font-16-148 {
   font: {
     weight: 400;
     size: 16px;
@@ -46,7 +46,7 @@
   line-height: 148%;
 }
 
-@mixin font-16-152 {
+@mixin typography-font-16-152 {
   font: {
     weight: 600;
     size: 16px;
@@ -56,7 +56,7 @@
   letter-spacing: 0.08em;
 }
 
-@mixin font-16-152-600 {
+@mixin typography-font-16-152-600 {
   font: {
     weight: 600;
     size: 16px;
@@ -66,7 +66,7 @@
   letter-spacing: 0.08em;
 }
 
-@mixin font-24 {
+@mixin typography-font-24 {
   font: {
     weight: 400;
     size: 24px;
@@ -76,7 +76,7 @@
   letter-spacing: 0.05em;
 }
 
-@mixin font-24-header {
+@mixin typography-font-24-header {
   font: {
     weight: 600;
     size: 24px;
@@ -86,7 +86,7 @@
   letter-spacing: 0.16em;
 }
 
-@mixin font-32 {
+@mixin typography-font-32 {
   font: {
     weight: 600;
     size: 32px;
@@ -96,67 +96,60 @@
   letter-spacing: 0.18em;
 }
 
-@mixin font-80 {
+@mixin typography-font-80 {
   font: {
     weight: 600;
     size: 80px;
   }
 }
 
-@mixin navigation-font {
-  @include font-12;
+@mixin typography-navigation {
+  @include typography-font-12;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
-@mixin navigation-font-white {
-  @include font-12;
+@mixin typography-navigation-white {
+  @include typography-font-12;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
-@mixin navigation-font-24 {
-  @include font-24-header;
+@mixin typography-navigation-24 {
+  @include typography-font-24-header;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
-@mixin header-italic {
-  @include font-24;
+@mixin typography-header-italic {
+  @include typography-font-24;
 
   font-family: Allura, sans-serif;
   color: $static-white;
 }
 
-@mixin header-italic-dark {
-  @include font-24;
+@mixin typography-header-italic-dark {
+  @include typography-font-24;
 
   font-family: Allura, cursive;
   color: $dark;
 }
 
-@mixin header-italic {
-  @include font-24;
-
-  font-family: Allura, sans-serif;
-  color: $static-white;
-}
-
-@mixin header-italic-primary {
-  @include font-24;
+@mixin typography-header-italic-primary {
+  @include typography-font-24;
 
   font-family: Allura, cursive;
   color: $primary;
 }
 
-@mixin h1 {
-  @include font-32;
+@mixin typography-h1 {
+  @include typography-font-32;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
@@ -164,40 +157,40 @@
   color: $static-white;
 }
 
-@mixin h2 {
-  @include font-24-header;
+@mixin typography-h2 {
+  @include typography-font-24-header;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
-@mixin h2-white {
-  @include font-24-header;
+@mixin typography-h2-white {
+  @include typography-font-24-header;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
-@mixin button_font {
-  @include font-12;
+@mixin typography-button {
+  @include typography-font-12;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
-@mixin text_font {
-  @include font-16;
+@mixin typography-text {
+  @include typography-font-16;
 
   font-family: Montserrat, sans-serif;
   letter-spacing: 0.0015em;
   color: $dark;
 }
 
-@mixin slider_font {
-  @include font-80;
+@mixin typography-slider {
+  @include typography-font-80;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
@@ -205,42 +198,42 @@
   color: $static-white;
 }
 
-@mixin item_font {
-  @include font-12;
+@mixin typography-item {
+  @include typography-font-12;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
 }
 
-@mixin item_description_text {
-  @include font-16-152;
+@mixin typography-item-description {
+  @include typography-font-16-152;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $dark;
 }
 
-@mixin count_item_text {
-  @include font-12;
+@mixin typography-count-item {
+  @include typography-font-12;
 
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
   color: $static-white;
 }
 
-@mixin contact_font {
+@mixin typography-contact {
   font-family: Montserrat, sans-serif;
 
-  @include font-16-152-600;
+  @include typography-font-16-152-600;
 
   text-transform: uppercase;
   color: $dark;
 }
 
-@mixin contact_rs_font {
+@mixin typography-contact-rs {
   font-family: Montserrat, sans-serif;
 
-  @include font-16-148;
+  @include typography-font-16-148;
 
   color: $dark;
 }

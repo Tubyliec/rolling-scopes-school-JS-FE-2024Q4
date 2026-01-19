@@ -1,6 +1,3 @@
-// Import
-
-@use 'reset' as *;
 @use 'fonts' as *;
 @use 'colors' as *;
 @use 'images' as *;
@@ -56,8 +53,8 @@ $tablet-margin: 60px 8px;
   align-items: flex-start;
 }
 
-@mixin button_link_style {
-  @include button_font;
+@mixin button-link-style {
+  @include typography-button;
 
   padding: 20px 32px;
   background-color: $dark;
@@ -72,7 +69,7 @@ $tablet-margin: 60px 8px;
   }
 }
 
-@mixin list_item_styles {
+@mixin list-item-styles {
   li {
     a {
       padding: 12px 20px;
@@ -91,6 +88,6 @@ $tablet-margin: 60px 8px;
   }
 }
 
-.no_scroll {
+.no-scroll {
   overflow: hidden;
 }

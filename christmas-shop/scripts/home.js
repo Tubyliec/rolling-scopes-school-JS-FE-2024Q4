@@ -7,16 +7,16 @@ import { bestGifts } from './modal.js';
 // Identifiers
 
 const body = document.body;
-const popoverWrapper = document.querySelector('.popover_wrapper');
+const popoverWrapper = document.querySelector('.overlay');
 
 const days = document.querySelector('.days');
 const hours = document.querySelector('.hours');
 const minutes = document.querySelector('.minutes');
 const seconds = document.querySelector('.seconds');
 
-const slider = document.querySelector('.slider');
-const buttonLeft = document.querySelector('.button_left');
-const buttonRight = document.querySelector('.button_right');
+const slider = document.querySelector('.slider__track');
+const buttonLeft = document.querySelector('.slider__btn--left');
+const buttonRight = document.querySelector('.slider__btn--right');
 
 let currentStep = 0;
 let stepCount = 3;
@@ -49,7 +49,7 @@ setInterval(countdown, 1000);
 
 // Slider
 
-buttonLeft.classList.add('disabled');
+buttonLeft.classList.add('slider-btn--disabled');
 
 function widthCount() {
   window.innerWidth <= 768 ? (stepCount = 6) : (stepCount = 3);
@@ -101,6 +101,6 @@ bestGifts().catch((err) => console.log(err));
 //
 
 popoverWrapper.addEventListener('click', () => {
-  body.classList.remove('no_scroll');
-  popoverWrapper.classList.remove('wrapper_open');
+  body.classList.remove('no-scroll');
+  popoverWrapper.classList.remove('overlay--open');
 });

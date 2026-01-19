@@ -3,31 +3,25 @@ import { allGifts } from './modal.js';
 
 // Identifiers
 const body = document.body;
-const buttonUp = document.querySelector('.button_top');
-const giftsContainer = document.querySelector('.best_gifts');
+const buttonUp = document.querySelector('.scroll-top');
+const giftsContainer = document.querySelector('.gifts__list');
 
-const filterButtonAll = document.querySelector(
-  '.buttons_panel_list li:nth-child(1)',
-);
-const filterButtonWork = document.querySelector(
-  '.buttons_panel_list li:nth-child(2)',
-);
-const filterButtonHealth = document.querySelector(
-  '.buttons_panel_list li:nth-child(3)',
-);
+const filterButtonAll = document.querySelector('.filter ul li:nth-child(1)');
+const filterButtonWork = document.querySelector('.filter ul li:nth-child(2)');
+const filterButtonHealth = document.querySelector('.filter ul li:nth-child(3)');
 const filterButtonHarmony = document.querySelector(
-  '.buttons_panel_list li:nth-child(4)',
+  '.filter ul li:nth-child(4)',
 );
 
-const popoverWrapper = document.querySelector('.popover_wrapper');
+const popoverWrapper = document.querySelector('.overlay');
 
 // Button to top
 
 window.addEventListener('scroll', function () {
   if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
-    buttonUp.classList.add('visible');
+    buttonUp.classList.add('scroll-top--visible');
   } else {
-    buttonUp.classList.remove('visible');
+    buttonUp.classList.remove('scroll-top--visible');
   }
 });
 
@@ -41,7 +35,7 @@ buttonUp.addEventListener('click', function () {
 
 // Cards
 
-filterButtonAll.classList.add('active_panel_items');
+filterButtonAll.classList.add('buttons-panel__item--active');
 
 allGifts('All').catch((err) => console.log(err));
 
@@ -54,40 +48,40 @@ function removeAllChildNodes(parent) {
 filterButtonAll.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
   allGifts('All').catch((err) => console.log(err));
-  filterButtonHealth.classList.remove('active_panel_items');
-  filterButtonWork.classList.remove('active_panel_items');
-  filterButtonHarmony.classList.remove('active_panel_items');
-  this.classList.add('active_panel_items');
+  filterButtonHealth.classList.remove('buttons-panel__item--active');
+  filterButtonWork.classList.remove('buttons-panel__item--active');
+  filterButtonHarmony.classList.remove('buttons-panel__item--active');
+  this.classList.add('buttons-panel__item--active');
 });
 
 filterButtonWork.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
   allGifts('For Work').catch((err) => console.log(err));
-  filterButtonAll.classList.remove('active_panel_items');
-  filterButtonHealth.classList.remove('active_panel_items');
-  filterButtonHarmony.classList.remove('active_panel_items');
-  this.classList.add('active_panel_items');
+  filterButtonAll.classList.remove('buttons-panel__item--active');
+  filterButtonHealth.classList.remove('buttons-panel__item--active');
+  filterButtonHarmony.classList.remove('buttons-panel__item--active');
+  this.classList.add('buttons-panel__item--active');
 });
 
 filterButtonHealth.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
   allGifts('For Health').catch((err) => console.log(err));
-  filterButtonAll.classList.remove('active_panel_items');
-  filterButtonWork.classList.remove('active_panel_items');
-  filterButtonHarmony.classList.remove('active_panel_items');
-  this.classList.add('active_panel_items');
+  filterButtonAll.classList.remove('buttons-panel__item--active');
+  filterButtonWork.classList.remove('buttons-panel__item--active');
+  filterButtonHarmony.classList.remove('buttons-panel__item--active');
+  this.classList.add('buttons-panel__item--active');
 });
 
 filterButtonHarmony.addEventListener('click', function () {
   removeAllChildNodes(giftsContainer);
   allGifts('For Harmony').catch((err) => console.log(err));
-  filterButtonAll.classList.remove('active_panel_items');
-  filterButtonWork.classList.remove('active_panel_items');
-  filterButtonHealth.classList.remove('active_panel_items');
-  this.classList.add('active_panel_items');
+  filterButtonAll.classList.remove('buttons-panel__item--active');
+  filterButtonWork.classList.remove('buttons-panel__item--active');
+  filterButtonHealth.classList.remove('buttons-panel__item--active');
+  this.classList.add('buttons-panel__item--active');
 });
 
 popoverWrapper.addEventListener('click', () => {
-  body.classList.remove('no_scroll');
-  popoverWrapper.classList.remove('wrapper_open');
+  body.classList.remove('no-scroll');
+  popoverWrapper.classList.remove('overlay--open');
 });

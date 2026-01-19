@@ -3,21 +3,7 @@
 @use 'images' as *;
 @use 'variables' as *;
 
-.navigation_panel {
-  @media (width <= 768px) {
-    display: none;
-  }
-}
-
-.navigation_panel_burger {
-  padding-bottom: 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu_button {
+.header__burger-btn {
   margin: 15px 10px;
   display: none;
   background: transparent;
@@ -27,12 +13,12 @@
   }
 }
 
-.burger-checkbox {
+.header__burger-checkbox {
   position: absolute;
   visibility: hidden;
 }
 
-.burger {
+.header__burger-icon {
   cursor: pointer;
   display: block;
   position: relative;
@@ -68,7 +54,7 @@
   }
 }
 
-.burger-checkbox:checked + .burger::before {
+.header__burger-checkbox:checked + .header__burger-icon::before {
   top: 5px;
   transform: rotate(45deg);
   transition:
@@ -76,7 +62,7 @@
     transform 0.3s 0.15s;
 }
 
-.burger-checkbox:checked + .burger::after {
+.header__burger-checkbox:checked + .header__burger-icon::after {
   top: 5px;
   transform: rotate(-45deg);
   transition:
@@ -84,16 +70,15 @@
     transform 0.3s 0.15s;
 }
 
-.menu_popup {
+.burger-menu {
   position: absolute;
   position-anchor: --my-anchor;
   position-area: bottom;
   width: 100%;
   height: 100%;
 
-  @include navigation-font-24;
+  @include typography-navigation-24;
 
-  text-transform: uppercase;
   align-content: center;
   translate: 100%;
   transition:
@@ -112,4 +97,12 @@
       translate: 100% 0;
     }
   }
+}
+
+.burger-menu__nav {
+  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

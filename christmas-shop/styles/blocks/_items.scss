@@ -3,7 +3,7 @@
 @use 'images' as *;
 @use 'variables' as *;
 
-.gifts_item {
+.gifts__item {
   width: 310px;
   height: 342px;
 
@@ -12,29 +12,29 @@
   border-radius: $primary-radius;
   background-color: $content-background;
 
-  .gift_img {
+  .gifts__image {
     width: 310px;
     height: 230px;
   }
 
-  .gift_description_wrapper {
+  .gifts__description-wrapper {
     width: 100%;
     height: 100%;
     border-radius: $primary-radius;
     background-color: $static-white;
 
-    .gift_description {
+    .gifts__description {
       text-align: left;
       padding: 20px;
 
       p {
-        @include item_font;
+        @include typography-item;
 
         padding-bottom: 10px;
       }
 
       h3 {
-        @include item_description_text;
+        @include typography-item-description;
       }
     }
   }
@@ -43,7 +43,7 @@
     &:hover {
       cursor: pointer;
 
-      .gift_description > h3 {
+      .gifts__description > h3 {
         color: $primary;
       }
     }

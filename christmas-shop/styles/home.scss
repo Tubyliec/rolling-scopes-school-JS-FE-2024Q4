@@ -1,27 +1,15 @@
-// Import
-
 @use 'reset' as *;
-@use 'fonts' as *;
-@use 'colors' as *;
-@use 'images' as *;
-@use 'variables' as *;
-@use 'burger' as *;
-@use 'modal' as *;
-@use 'header' as *;
-@use 'items' as *;
+@use 'globals' as *;
+@use 'blocks/colors' as *;
+@use 'blocks/variables' as *;
+@use 'blocks/burger' as *;
+@use 'blocks/modal' as *;
+@use 'blocks/header' as *;
+@use 'blocks/items' as *;
+@use 'blocks/images' as *;
+@use 'blocks/fonts' as *;
 
 /* Global */
-
-* {
-  transition: 0.5s;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0 auto;
-  height: 100%;
-  max-width: 1440px;
-}
 
 .container {
   display: flex;
@@ -41,12 +29,12 @@ body {
 
 /* Header */
 
-.navigation_list {
+.header__nav-list {
   @include flex-horizontal;
 
   gap: 8px;
 
-  @include list_item_styles;
+  @include list-item-styles;
 
   padding: 12px 0;
 
@@ -59,35 +47,32 @@ body {
 
 /* Hero */
 
-.hero_wrapper {
+.hero {
   background-image: $background-ball, $background-snow;
 
   @extend %background-center;
-}
-
-.hero {
   @include flex-vertical;
 
   margin: 60px 0;
   gap: 12px;
 
-  .hero_description {
+  .hero__content {
     @include flex-vertical;
 
     padding: 60px 0;
     gap: 12px;
 
     p {
-      @include header-italic;
+      @include typography-header-italic;
     }
 
     h1 {
-      @include h1;
+      @include typography-h1;
     }
 
-    .button_link {
+    .btn-link {
       p {
-        @include button_link_style;
+        @include button-link-style;
       }
     }
   }
@@ -95,13 +80,13 @@ body {
 
 /* About */
 
-.about_wrapper {
+.about {
   background-image: $background-snow;
 
   @extend %background-center;
 }
 
-.about {
+.about__content {
   @include flex-horizontal;
 
   height: 528px;
@@ -119,25 +104,25 @@ body {
     height: 100%;
     margin: $tablet-margin;
 
-    .about_info_wrapper {
+    .about__info-wrapper {
       width: 100%;
 
-      .about_info {
+      .about__info {
         margin: 60px 20px;
         padding: 0;
       }
     }
 
-    .about_image {
+    .about__image {
       width: 100%;
     }
   }
 }
 
-.about_info_wrapper {
+.about__info-wrapper {
   width: 50%;
 
-  .about_info {
+  .about__info {
     @include flex-vertical-left;
 
     margin: 100px 92px 100px 60px;
@@ -147,15 +132,15 @@ body {
     p {
       padding-right: 60px;
 
-      @include header-italic-primary;
+      @include typography-header-italic-primary;
 
       &:last-child {
-        @include text_font;
+        @include typography-text;
       }
     }
 
     h2 {
-      @include h2;
+      @include typography-h2;
     }
 
     @media (width <= 1000px) {
@@ -168,7 +153,7 @@ body {
   }
 }
 
-.about_image {
+.about__image {
   border-radius: $primary-radius;
   background-image: $santa-img;
 
@@ -180,7 +165,7 @@ body {
 
 /* Slider */
 
-.slider_wrapper {
+.slider {
   background-image: $background-snow;
 
   @extend %background-center;
@@ -188,7 +173,7 @@ body {
   overflow: hidden;
 }
 
-.slider_container {
+.slider__container {
   margin: $primary-margin;
   display: flex;
   flex-direction: column;
@@ -198,37 +183,37 @@ body {
   }
 }
 
-.slider_caption {
+.slider__caption {
   @include flex-vertical;
 
   gap: 12px;
 
   p {
-    @include header-italic;
+    @include typography-header-italic;
   }
 
   h2 {
-    @include h2-white;
+    @include typography-h2-white;
   }
 }
 
-.slider {
+.slider__track {
   position: relative;
   margin: 20px 0;
   display: flex;
   flex-direction: row;
   gap: 20px;
 
-  .slider_item {
+  .slider__item {
     @include flex-horizontal;
 
     gap: 20px;
 
-    p {
-      @include slider-font;
+    .slider__item-caption {
+      @include typography-slider;
     }
 
-    .slider_item_img {
+    .slider__item-image {
       width: 200px;
       height: 200px;
 
@@ -239,12 +224,19 @@ body {
   }
 }
 
-.slider_pagination {
+.slider__pagination {
   display: flex;
   justify-content: end;
   gap: 20px;
 
-  .button_left {
+  .slider__btn {
+    width: 56px;
+    height: 56px;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  .slider__btn--left {
     background-image: $left-button-img;
 
     @extend %background-center;
@@ -256,7 +248,7 @@ body {
     }
   }
 
-  .button_right {
+  .slider__btn--right {
     background-image: $right-button-img;
 
     @extend %background-center;
@@ -267,29 +259,22 @@ body {
       }
     }
   }
-}
 
-.pag_btn {
-  width: 56px;
-  height: 56px;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.disabled {
-  opacity: 0.4;
-  pointer-events: none;
+  .disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
 }
 
 /* Best gifts */
 
-.best_gifts_wrapper {
+.gifts {
   background-image: $background-snow;
 
   @extend %background-center;
 }
 
-.best_gifts_container {
+.gifts__container {
   margin: $primary-margin;
   display: flex;
   flex-direction: column;
@@ -300,54 +285,54 @@ body {
   }
 }
 
-.best_gifts_caption {
+.gifts__caption {
   @include flex-vertical;
 
   gap: 12px;
 
   p {
-    @include header-italic;
+    @include typography-header-italic;
   }
 
   h2 {
-    @include h2-white;
+    @include typography-h2-white;
   }
 }
 
-.best_gifts {
+.gifts__list {
   @include flex-horizontal-center;
 
   flex-wrap: wrap;
   gap: 12px;
 }
 
-.for_work {
+.for-work {
   color: $tag-purple;
 }
 
-.for_harmony {
+.for-harmony {
   color: $tag-pink;
 }
 
-.for_health {
+.for-health {
   color: $tag-green;
 }
 
 /* Counter */
 
-.counter_wrapper {
+.countdown {
   background-image: $background-forest, $background-snow;
 
   @extend %background-center;
 }
 
-.counter_container {
+.countdown__container {
   margin: 60px 0;
 
   @include flex-horizontal-center;
 }
 
-.counter_block {
+.countdown__content {
   margin: 120px 0;
 
   @include flex-vertical;
@@ -355,29 +340,29 @@ body {
   gap: 20px;
 
   h2 {
-    @include h2-white;
+    @include typography-h2-white;
   }
 
   text-align: center;
 }
 
-.button_link {
+.btn-link {
   p {
-    @include button_link_style;
+    @include button-link-style;
   }
 }
 
-.ny_counter {
+.countdown__timer {
   @include flex-vertical;
 
   gap: 8px;
 
   p {
-    @include header-italic;
+    @include typography-header-italic;
   }
 }
 
-.counter {
+.countdown__display {
   display: grid;
   grid-template-columns: 80px 1px 80px 1px 80px 1px 80px;
   align-items: center;
@@ -386,32 +371,29 @@ body {
   padding: 7px 12px 12px;
   text-align: center;
 
-  .separator {
+  .countdown__separator {
     padding: 0;
+    color: $static-white-40;
   }
 
-  .counter_item {
+  .countdown__item {
     padding: 0 10px;
 
     @include flex-vertical;
 
-    .value {
-      @include h2-white;
+    .countdown__value {
+      @include typography-h2-white;
     }
 
-    .count_item_name {
-      @include count_item_text;
+    .countdown__label {
+      @include typography-count-item;
     }
-  }
-
-  .separator {
-    color: $static-white-40;
   }
 }
 
 /* Footer */
 
-.footer_wrapper {
+.footer {
   background-color: $static-white;
 }
 
@@ -427,7 +409,7 @@ footer {
   }
 }
 
-.contacts {
+.footer__contacts {
   @include flex-horizontal;
 
   gap: 10px;
@@ -436,7 +418,7 @@ footer {
     @include flex-vertical;
   }
 
-  .contact_card {
+  .contact-card {
     background-color: $content-background;
     border-radius: $primary-radius;
     text-align: center;
@@ -445,13 +427,13 @@ footer {
 
     a {
       @include flex-vertical;
-      @include h2;
+      @include typography-h2;
 
       gap: 12px;
     }
 
     p {
-      @include contact_font;
+      @include typography-contact;
     }
 
     @media (width <= 1200px) {
@@ -462,7 +444,7 @@ footer {
 }
 
 @media (hover: hover) {
-  .contact_card:hover {
+  .contact-card:hover {
     a > span,
     p {
       color: $primary;
@@ -470,45 +452,45 @@ footer {
   }
 }
 
-.card_img {
+.contact-card__icon {
   width: 80px;
   height: 80px;
 }
 
-.phone_img {
+.contact-card__icon--phone {
   background-image: $santa-logo;
 
   @extend %background-center;
 }
 
-.address_img {
+.contact-card__icon--address {
   background-image: $tree-logo;
 
   @extend %background-center;
 }
 
-.mail_img {
+.contact-card__icon--mail {
   background-image: $snake-logo;
 
   @extend %background-center;
 }
 
-.rs_contacts {
+.footer__info {
   @include flex-vertical;
 
   gap: 12px;
 
   p {
-    @include contact_rs_font;
+    @include typography-contact-rs;
   }
 
   a {
-    @include header-italic-dark;
+    @include typography-header-italic-dark;
   }
 }
 
 @media (hover: hover) {
-  .rs_link:hover {
+  .footer__link:hover {
     color: $primary;
   }
 }

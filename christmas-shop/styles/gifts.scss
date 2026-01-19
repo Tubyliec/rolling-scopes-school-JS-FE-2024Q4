@@ -1,27 +1,15 @@
-// Import
-
 @use 'reset' as *;
-@use 'fonts' as *;
-@use 'colors' as *;
-@use 'images' as *;
-@use 'variables' as *;
-@use 'burger' as *;
-@use 'modal' as *;
-@use 'header' as *;
-@use 'items' as *;
+@use 'globals' as *;
+@use 'blocks/colors' as *;
+@use 'blocks/variables' as *;
+@use 'blocks/burger' as *;
+@use 'blocks/modal' as *;
+@use 'blocks/header' as *;
+@use 'blocks/items' as *;
+@use 'blocks/images' as *;
+@use 'blocks/fonts' as *;
 
 /* Global */
-
-* {
-  transition: 0.5s;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0 auto;
-  height: 100%;
-  max-width: 1440px;
-}
 
 .container {
   display: flex;
@@ -39,72 +27,34 @@ body {
   }
 }
 
-/* Header */
+/* Gifts */
 
-.navigation_panel {
-  ul {
-    li:first-child {
-      padding: 12px 20px;
-      border-radius: 10px;
-      pointer-events: none;
-      cursor: default;
-      background: $primary-opacity;
-      color: $primary;
-    }
-  }
-}
-
-.navigation_list {
-  @include flex-horizontal;
-
-  gap: 8px;
-
-  @include list_item_styles;
-
-  @media (width <= 768px) {
-    @include flex-vertical;
-
-    gap: 20px;
-  }
-
-  li:first-child {
-    padding: 12px 20px;
-    border-radius: 10px;
-    pointer-events: auto;
-    cursor: default;
-    background: $primary-opacity;
-    color: $primary;
-  }
-}
-
-/* Best gifts */
-
-.best_gifts_wrapper {
+.gifts {
   background-image: $background-garland;
   background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.best_gifts_container {
+.gifts__container {
   margin: $tablet-margin;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.best_gifts_caption {
+.gifts__caption {
   @include flex-vertical;
 
   text-align: center;
 
   h1 {
-    @include h1;
+    @include typography-h1;
   }
 }
 
-.buttons_panel_list {
-  @include navigation-font-white;
+.filter ul {
+  @include typography-navigation-white;
   @include flex-horizontal-center;
 
   gap: 8px;
@@ -131,11 +81,36 @@ body {
   }
 }
 
-.active_panel_items {
+.buttons-panel__item--active {
   background-color: $static-white-40;
 }
 
-.best_gifts {
+/* Header */
+
+.header__nav-list {
+  @include flex-horizontal;
+
+  gap: 8px;
+
+  @include list-item-styles;
+
+  @media (width <= 768px) {
+    @include flex-vertical;
+
+    gap: 20px;
+  }
+
+  li:first-child {
+    padding: 12px 20px;
+    border-radius: 10px;
+    pointer-events: auto;
+    cursor: default;
+    background: $primary-opacity;
+    color: $primary;
+  }
+}
+
+.gifts__list {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 310px);
@@ -157,21 +132,21 @@ body {
   }
 }
 
-.for_work {
+.for-work {
   color: $tag-purple;
 }
 
-.for_harmony {
+.for-harmony {
   color: $tag-pink;
 }
 
-.for_health {
+.for-health {
   color: $tag-green;
 }
 
 /* Footer */
 
-.footer_wrapper {
+.footer {
   background-color: $static-white;
 }
 
@@ -187,7 +162,7 @@ footer {
   }
 }
 
-.contacts {
+.footer__contacts {
   @include flex-horizontal;
 
   gap: 12px;
@@ -196,7 +171,7 @@ footer {
     @include flex-vertical;
   }
 
-  .contact_card {
+  .contact-card {
     background-color: $content-background;
     border-radius: $primary-radius;
     text-align: center;
@@ -205,13 +180,13 @@ footer {
 
     a {
       @include flex-vertical;
-      @include h2;
+      @include typography-h2;
 
       gap: 12px;
     }
 
     p {
-      @include contact_font;
+      @include typography-contact;
     }
 
     @media (width <= 1200px) {
@@ -222,7 +197,7 @@ footer {
 }
 
 @media (hover: hover) {
-  .contact_card:hover {
+  .contact-card:hover {
     a > span,
     p {
       color: $primary;
@@ -230,53 +205,53 @@ footer {
   }
 }
 
-.card_img {
+.contact-card__icon {
   width: 80px;
   height: 80px;
 }
 
-.phone_img {
+.contact-card__icon--phone {
   background-image: $santa-logo;
 
   @extend %background-center;
 }
 
-.address_img {
+.contact-card__icon--address {
   background-image: $tree-logo;
 
   @extend %background-center;
 }
 
-.mail_img {
+.contact-card__icon--mail {
   background-image: $snake-logo;
 
   @extend %background-center;
 }
 
-.rs_contacts {
+.footer__info {
   @include flex-vertical;
 
   gap: 12px;
 
   p {
-    @include contact_rs_font;
+    @include typography-contact-rs;
   }
 
   a {
-    @include header-italic-dark;
+    @include typography-header-italic-dark;
   }
 }
 
 @media (hover: hover) {
-  .rs_link:hover {
+  .footer__link:hover {
     color: $primary;
   }
 }
 
 /* Button top */
 
-.button_top {
-  display: none;
+.scroll-top {
+  display: block;
   visibility: hidden;
   background-image: $top-button-img;
 
@@ -285,13 +260,9 @@ footer {
   position: fixed;
   bottom: 3%;
   right: 3%;
-
-  @media (width <= 768px) {
-    display: block;
-  }
 }
 
-.pag_btn {
+.pagination__btn {
   width: 56px;
   height: 56px;
   background-color: transparent;
@@ -303,10 +274,10 @@ footer {
   }
 }
 
-.not_displayed {
+.scroll-top--hidden {
   display: none;
 }
 
-.visible {
+.scroll-top--visible {
   visibility: visible;
 }
