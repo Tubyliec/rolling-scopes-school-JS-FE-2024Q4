@@ -1002,48 +1002,6 @@ body {
     max-width: 752px;
   }
 }
-.page-gifts .header__nav-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-}
-.page-gifts .header__nav-list li a {
-  padding: 12px 20px;
-  color: #181c29;
-  border-radius: 10px;
-}
-@media (hover: hover) {
-  .page-gifts .header__nav-list li:hover a {
-    color: #ff4646;
-    background: rgba(255, 70, 70, 0.2);
-  }
-}
-@media (width <= 768px) {
-  .page-gifts .header__nav-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-}
-.page-gifts .header__nav-list li:first-child {
-  padding: 12px 20px;
-  border-radius: 10px;
-  pointer-events: auto;
-  cursor: default;
-  background: rgba(255, 70, 70, 0.2);
-  color: #ff4646;
-}
-.page-gifts .header__nav-list > li:first-child {
-  color: #fff;
-  font-weight: 600;
-}
-.page-gifts .header__nav-list > li:first-child:hover {
-  color: #fff;
-}
 .page-gifts .gifts {
   background-image: url("./assets/images/bg-garland.png");
   background-position: top;
@@ -1111,6 +1069,48 @@ body {
 }
 .page-gifts .buttons-panel__item--active {
   background-color: rgba(255, 255, 255, 0.4);
+}
+.page-gifts .header__nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.page-gifts .header__nav-list li a {
+  padding: 12px 20px;
+  color: #181c29;
+  border-radius: 10px;
+}
+@media (hover: hover) {
+  .page-gifts .header__nav-list li:hover a {
+    color: #ff4646;
+    background: rgba(255, 70, 70, 0.2);
+  }
+}
+@media (width <= 768px) {
+  .page-gifts .header__nav-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+}
+.page-gifts .header__nav-list li:first-child {
+  padding: 12px 20px;
+  border-radius: 10px;
+  pointer-events: auto;
+  cursor: default;
+  background: rgba(255, 70, 70, 0.2);
+  color: #ff4646;
+}
+.page-gifts .header__nav-list > li:first-child {
+  color: #fff;
+  font-weight: 600;
+}
+.page-gifts .header__nav-list > li:first-child:hover {
+  color: #fff;
 }
 .page-gifts .gifts__list {
   margin: 0 auto;

@@ -26,38 +26,6 @@
     }
   }
 
-  .header__nav-list {
-    @include flex-horizontal;
-
-    gap: 8px;
-
-    @include list-item-styles;
-
-    @media (width <= 768px) {
-      @include flex-vertical;
-
-      gap: 20px;
-    }
-
-    li:first-child {
-      padding: 12px 20px;
-      border-radius: 10px;
-      pointer-events: auto;
-      cursor: default;
-      background: $primary-opacity;
-      color: $primary;
-    }
-  }
-
-  .header__nav-list > li:first-child {
-    color: $static-white;
-    font-weight: 600;
-
-    &:hover {
-      color: $static-white;
-    }
-  }
-
   .gifts {
     background-image: $background-garland;
     background-position: top;
@@ -112,6 +80,38 @@
 
   .buttons-panel__item--active {
     background-color: $static-white-40;
+  }
+
+  .header__nav-list {
+    @include flex-horizontal;
+
+    gap: 8px;
+
+    @include list-item-styles;
+
+    @media (width <= 768px) {
+      @include flex-vertical;
+
+      gap: 20px;
+    }
+
+    li:first-child {
+      padding: 12px 20px;
+      border-radius: 10px;
+      pointer-events: auto;
+      cursor: default;
+      background: $primary-opacity;
+      color: $primary;
+    }
+  }
+
+  .header__nav-list > li:first-child {
+    color: $static-white;
+    font-weight: 600;
+
+    &:hover {
+      color: $static-white;
+    }
   }
 
   .gifts__list {
