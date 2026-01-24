@@ -1,0 +1,490 @@
+@use 'reset' as *;
+@use 'globals' as *;
+@use 'blocks/colors' as *;
+@use 'blocks/variables' as *;
+@use 'blocks/burger' as *;
+@use 'blocks/modal' as *;
+@use 'blocks/header' as *;
+@use 'blocks/items' as *;
+@use 'blocks/images' as *;
+@use 'blocks/fonts' as *;
+
+.page-home {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 20px;
+    background-color: $primary;
+  }
+
+  .section {
+    max-width: $desktop-max-width;
+
+    @media (width >= 400px) and (width <= 800px) {
+      max-width: $tablet-max-width;
+    }
+  }
+
+  .header__nav-list {
+    @include flex-horizontal;
+
+    gap: 8px;
+
+    @include list-item-styles;
+
+    padding: 12px 0;
+
+    @media (width <= 768px) {
+      @include flex-vertical;
+
+      gap: 20px;
+    }
+  }
+
+  .header__nav-link[href='gifts.html'] {
+    color: $dark;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .hero {
+    background-image: $background-ball, $background-snow;
+
+    @extend %background-center;
+    @include flex-vertical;
+
+    margin: 60px 0;
+    gap: 12px;
+
+    .hero__content {
+      @include flex-vertical;
+
+      padding: 60px 0;
+      gap: 12px;
+
+      p {
+        @include typography-header-italic;
+      }
+
+      h1 {
+        @include typography-h1;
+      }
+
+      .btn-link {
+        p {
+          @include button-link-style;
+        }
+      }
+    }
+  }
+
+  .about {
+    background-image: $background-snow;
+
+    @extend %background-center;
+  }
+
+  .about__content {
+    @include flex-horizontal;
+
+    height: 528px;
+    background-color: $static-white;
+    margin: $primary-margin;
+    border-radius: $primary-radius;
+
+    @media (width <= 800px) {
+      margin: $tablet-margin;
+    }
+
+    @media (width <= 600px) {
+      @include flex-vertical;
+
+      height: 100%;
+      margin: $tablet-margin;
+
+      .about__info-wrapper {
+        width: 100%;
+
+        .about__info {
+          margin: 60px 20px;
+          padding: 0;
+        }
+      }
+
+      .about__image {
+        width: 100%;
+      }
+    }
+  }
+
+  .about__info-wrapper {
+    width: 50%;
+
+    .about__info {
+      @include flex-vertical-left;
+
+      margin: 100px 92px 100px 60px;
+      padding: 60px 0;
+      gap: 20px;
+
+      p {
+        padding-right: 60px;
+
+        @include typography-header-italic-primary;
+
+        &:last-child {
+          @include typography-text;
+        }
+      }
+
+      h2 {
+        @include typography-h2;
+      }
+
+      @media (width <= 1000px) {
+        margin: 46px 60px;
+
+        p {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  .about__image {
+    border-radius: $primary-radius;
+    background-image: $santa-img;
+
+    @extend %background-center;
+
+    width: 50%;
+    height: 528px;
+  }
+
+  .slider {
+    background-image: $background-snow;
+
+    @extend %background-center;
+
+    overflow: hidden;
+  }
+
+  .slider__container {
+    margin: $primary-margin;
+    display: flex;
+    flex-direction: column;
+
+    @media (width <= 800px) {
+      margin: $tablet-margin;
+    }
+  }
+
+  .slider__caption {
+    @include flex-vertical;
+
+    gap: 12px;
+
+    p {
+      @include typography-header-italic;
+    }
+
+    h2 {
+      @include typography-h2-white;
+    }
+  }
+
+  .slider__track {
+    position: relative;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    .slider__item {
+      @include flex-horizontal;
+
+      gap: 20px;
+
+      .slider__item-caption {
+        @include typography-slider;
+      }
+
+      .slider__item-image {
+        width: 200px;
+        height: 200px;
+
+        img {
+          border-radius: $primary-radius;
+        }
+      }
+    }
+  }
+
+  .slider__pagination {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+
+    .slider__btn {
+      width: 56px;
+      height: 56px;
+      background-color: transparent;
+      cursor: pointer;
+    }
+
+    .slider__btn--left {
+      background-image: $left-button-img;
+
+      @extend %background-center;
+
+      @media (hover: hover) {
+        &:hover {
+          background-image: $left-button-img-hover;
+        }
+      }
+    }
+
+    .slider__btn--right {
+      background-image: $right-button-img;
+
+      @extend %background-center;
+
+      @media (hover: hover) {
+        &:hover {
+          background-image: $right-button-img-hover;
+        }
+      }
+    }
+
+    .disabled {
+      opacity: 0.4;
+      pointer-events: none;
+    }
+  }
+
+  .gifts {
+    background-image: $background-snow;
+
+    @extend %background-center;
+  }
+
+  .gifts__container {
+    margin: $primary-margin;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (width <= 800px) {
+      margin: $tablet-margin;
+    }
+  }
+
+  .gifts__caption {
+    @include flex-vertical;
+
+    gap: 12px;
+
+    p {
+      @include typography-header-italic;
+    }
+
+    h2 {
+      @include typography-h2-white;
+    }
+  }
+
+  .gifts__list {
+    @include flex-horizontal-center;
+
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .for-work {
+    color: $tag-purple;
+  }
+
+  .for-harmony {
+    color: $tag-pink;
+  }
+
+  .for-health {
+    color: $tag-green;
+  }
+
+  .countdown {
+    background-image: $background-forest, $background-snow;
+
+    @extend %background-center;
+  }
+
+  .countdown__container {
+    margin: 60px 0;
+
+    @include flex-horizontal-center;
+  }
+
+  .countdown__content {
+    margin: 120px 0;
+
+    @include flex-vertical;
+
+    gap: 20px;
+
+    h2 {
+      @include typography-h2-white;
+    }
+
+    text-align: center;
+  }
+
+  .btn-link {
+    p {
+      @include button-link-style;
+    }
+  }
+
+  .countdown__timer {
+    @include flex-vertical;
+
+    gap: 8px;
+
+    p {
+      @include typography-header-italic;
+    }
+  }
+
+  .countdown__display {
+    display: grid;
+    grid-template-columns: 80px 1px 80px 1px 80px 1px 80px;
+    align-items: center;
+    background-color: $static-white-40;
+    border-radius: $primary-radius;
+    padding: 7px 12px 12px;
+    text-align: center;
+
+    .countdown__separator {
+      padding: 0;
+      color: $static-white-40;
+    }
+
+    .countdown__item {
+      padding: 0 10px;
+
+      @include flex-vertical;
+
+      .countdown__value {
+        @include typography-h2-white;
+      }
+
+      .countdown__label {
+        @include typography-count-item;
+      }
+    }
+  }
+
+  .footer {
+    background-color: $static-white;
+  }
+
+  footer {
+    margin: $primary-margin;
+
+    @include flex-vertical-between;
+
+    gap: 65px;
+
+    @media (width <= 800px) {
+      margin: $tablet-margin;
+    }
+  }
+
+  .footer__contacts {
+    @include flex-horizontal;
+
+    gap: 10px;
+
+    @media (width <= 1200px) {
+      @include flex-vertical;
+    }
+
+    .contact-card {
+      background-color: $content-background;
+      border-radius: $primary-radius;
+      text-align: center;
+      width: 30%;
+      padding: 20px;
+
+      a {
+        @include flex-vertical;
+        @include typography-h2;
+
+        gap: 12px;
+      }
+
+      p {
+        @include typography-contact;
+      }
+
+      @media (width <= 1200px) {
+        width: 100%;
+        padding: 20px 0;
+      }
+    }
+  }
+
+  @media (hover: hover) {
+    .contact-card:hover {
+      a > span,
+      p {
+        color: $primary;
+      }
+    }
+  }
+
+  .contact-card__icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .contact-card__icon--phone {
+    background-image: $santa-logo;
+
+    @extend %background-center;
+  }
+
+  .contact-card__icon--address {
+    background-image: $tree-logo;
+
+    @extend %background-center;
+  }
+
+  .contact-card__icon--mail {
+    background-image: $snake-logo;
+
+    @extend %background-center;
+  }
+
+  .footer__info {
+    @include flex-vertical;
+
+    gap: 12px;
+
+    p {
+      @include typography-contact-rs;
+    }
+
+    a {
+      @include typography-header-italic-dark;
+    }
+  }
+
+  @media (hover: hover) {
+    .footer__link:hover {
+      color: $primary;
+    }
+  }
+}
