@@ -1,5 +1,6 @@
 import { bestGifts } from '../../widgets/modal/modal.js';
 import { createSlider } from '../../widgets/slider/slider.js';
+import { createBurger } from '../../widgets/burger/burger.js';
 import {
   COUNTDOWN_CONFIG,
   CSS_CLASSES,
@@ -45,6 +46,8 @@ function countdown() {
 setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
 
 createSlider();
+
+createBurger();
 
 bestGifts().catch((err) => console.log(err));
 

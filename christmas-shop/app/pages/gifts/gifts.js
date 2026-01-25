@@ -1,4 +1,5 @@
 import { allGifts } from '../../widgets/modal/modal.js';
+import { createBurger } from '../../widgets/burger/burger.js';
 import { GIFT_CATEGORIES } from '../../shared/constants/api.js';
 import {
   SELECTORS,
@@ -43,6 +44,8 @@ if (buttonUp) {
 }
 
 filterButtonAll.classList.add(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+
+createBurger();
 
 allGifts(GIFT_CATEGORIES.ALL).catch((err) => console.log(err));
 

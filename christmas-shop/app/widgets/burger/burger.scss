@@ -1,7 +1,7 @@
-@use 'fonts' as *;
-@use 'colors' as *;
-@use 'images' as *;
-@use 'variables' as *;
+@use '../../shared/styles/styles/fonts' as *;
+@use '../../shared/styles/styles/colors' as *;
+@use '../../shared/styles/styles/images' as *;
+@use '../../shared/styles/styles/variables' as *;
 
 .header__burger-btn {
   margin: 15px 10px;
