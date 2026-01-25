@@ -1,9 +1,9 @@
 import { bestGifts } from '../../shared/ui/modal.js';
 import { createSlider } from '../../widgets/slider/slider.js';
 import {
-  SELECTORS,
-  CSS_CLASSES,
   COUNTDOWN_CONFIG,
+  CSS_CLASSES,
+  SELECTORS,
 } from '../../shared/constants/config.js';
 
 const body = document.querySelector(SELECTORS.BODY);
@@ -44,11 +44,18 @@ function countdown() {
 
 setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
 
-const slider = createSlider();
+createSlider();
 
 bestGifts().catch((err) => console.log(err));
 
 popoverWrapper.addEventListener('click', () => {
   body.classList.remove(CSS_CLASSES.NO_SCROLL);
   popoverWrapper.classList.remove(CSS_CLASSES.OVERLAY_OPEN);
+
+  const buttonUp = document.querySelector('.scroll-top');
+  if (buttonUp) {
+    if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
+      buttonUp.classList.add('scroll-top--visible');
+    }
+  }
 });

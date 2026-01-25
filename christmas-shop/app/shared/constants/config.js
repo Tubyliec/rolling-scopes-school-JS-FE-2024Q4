@@ -1,4 +1,3 @@
-// Slider configuration
 export const SLIDER_CONFIG = {
   DEFAULT_STEP_COUNT: 3,
   MOBILE_STEP_COUNT: 6,
@@ -6,24 +5,21 @@ export const SLIDER_CONFIG = {
   MOBILE_BREAKPOINT: 768,
 };
 
-// Countdown configuration
 export const COUNTDOWN_CONFIG = {
-  UPDATE_INTERVAL: 1000, // milliseconds
-  TARGET_MONTH: 0, // January (0-indexed)
-  TARGET_DAY: 1, // January 1st
+  UPDATE_INTERVAL: 1000,
+  TARGET_MONTH: 0,
+  TARGET_DAY: 1,
   TARGET_HOUR: 0,
   TARGET_MINUTE: 0,
   TARGET_SECOND: 0,
 };
 
-// UI configuration
 export const UI_CONFIG = {
   SCROLL_TOP_THRESHOLD: 300,
   RANDOM_GIFTS_COUNT: 4,
-  MODAL_ANIMATION_DURATION: 300, // milliseconds (if needed)
+  MODAL_ANIMATION_DURATION: 300,
 };
 
-// CSS classes
 export const CSS_CLASSES = {
   OVERLAY: 'overlay',
   OVERLAY_OPEN: 'overlay--open',
@@ -57,7 +53,6 @@ export const CSS_CLASSES = {
   POWERS_NAME: 'powers_name',
 };
 
-// Selectors
 export const SELECTORS = {
   BODY: 'body',
   OVERLAY: '.overlay',
@@ -81,7 +76,6 @@ export const SELECTORS = {
   COUNTDOWN_SECONDS: '.seconds',
 };
 
-// Superpower categories
 export const SUPERPOWER_CATEGORIES = {
   LIVE: 'live',
   CREATE: 'create',

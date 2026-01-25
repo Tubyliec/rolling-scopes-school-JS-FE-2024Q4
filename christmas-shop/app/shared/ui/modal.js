@@ -50,6 +50,12 @@ export async function bestGifts() {
       body.classList.toggle(CSS_CLASSES.NO_SCROLL);
       popoverWrapper.classList.add(CSS_CLASSES.OVERLAY_OPEN);
       popupModal.innerHTML = '';
+
+      const buttonUp = document.querySelector('.scroll-top');
+      if (buttonUp) {
+        buttonUp.classList.remove('scroll-top--visible');
+      }
+
       modalWindow(item);
     });
     giftsContainer.appendChild(newItem);
@@ -87,6 +93,12 @@ export async function allGifts(itemCategory) {
         body.classList.toggle(CSS_CLASSES.NO_SCROLL);
         popoverWrapper.classList.add(CSS_CLASSES.OVERLAY_OPEN);
         popupModal.innerHTML = '';
+
+        const buttonUp = document.querySelector('.scroll-top');
+        if (buttonUp) {
+          buttonUp.classList.remove('scroll-top--visible');
+        }
+
         modalWindow(item);
       });
       giftsContainer.appendChild(newItem);

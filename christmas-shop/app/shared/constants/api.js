@@ -1,9 +1,7 @@
-// API endpoints and paths
 export const API_ENDPOINTS = {
   GIFTS_DATA: '../../../public/json/gifts.json',
 };
 
-// Image paths
 export const IMAGE_PATHS = {
   PUBLIC_IMAGES: '../../../public/images',
   PUBLIC_ICONS: '../../../public/icons',
@@ -18,7 +16,6 @@ export const IMAGE_PATHS = {
   },
 };
 
-// Gift categories
 export const GIFT_CATEGORIES = {
   ALL: 'All',
   FOR_WORK: 'For Work',
@@ -26,7 +23,6 @@ export const GIFT_CATEGORIES = {
   FOR_HARMONY: 'For Harmony',
 };
 
-// Superpower ratings
 export const SUPERPOWER_RATINGS = {
   PLUS_500: '+500',
   PLUS_400: '+400',

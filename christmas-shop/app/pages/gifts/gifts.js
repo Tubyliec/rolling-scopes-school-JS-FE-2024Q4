@@ -91,4 +91,13 @@ filterButtonHarmony.addEventListener('click', function () {
 popoverWrapper.addEventListener('click', () => {
   body.classList.remove(CSS_CLASSES.NO_SCROLL);
   popoverWrapper.classList.remove(CSS_CLASSES.OVERLAY_OPEN);
+
+  if (buttonUp) {
+    if (
+      window.scrollY > UI_CONFIG.SCROLL_TOP_THRESHOLD ||
+      document.documentElement.scrollTop > UI_CONFIG.SCROLL_TOP_THRESHOLD
+    ) {
+      buttonUp.classList.add(CSS_CLASSES.SCROLL_TOP_VISIBLE);
+    }
+  }
 });
