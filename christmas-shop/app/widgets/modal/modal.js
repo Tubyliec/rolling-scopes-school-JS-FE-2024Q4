@@ -13,8 +13,6 @@ import {
   selectElement,
   createElement,
   addEventListener,
-  removeClass,
-  addClass,
 } from '../../shared/utilities/dom-helpers.js';
 
 const giftsContainer = selectElement(SELECTORS.GIFTS_LIST);

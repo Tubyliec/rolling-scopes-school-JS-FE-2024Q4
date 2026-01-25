@@ -7,13 +7,12 @@ import {
   SELECTORS,
 } from '../../shared/constants/config.js';
 import {
-  selectElement,
-  removeClass,
   addClass,
   isScrolledPast,
+  removeClass,
+  selectElement,
 } from '../../shared/utilities/dom-helpers.js';
 import {
-  getCurrentDate,
   createTargetDate,
   getTimeRemaining,
   padNumber,
@@ -28,7 +27,6 @@ const minutes = selectElement(SELECTORS.COUNTDOWN_MINUTES);
 const seconds = selectElement(SELECTORS.COUNTDOWN_SECONDS);
 
 function countdown() {
-  const currentDate = getCurrentDate();
   const targetDate = createTargetDate(
     COUNTDOWN_CONFIG.TARGET_MONTH,
     COUNTDOWN_CONFIG.TARGET_DAY,
@@ -44,7 +42,7 @@ function countdown() {
   seconds.innerText = padNumber(timeRemaining.seconds, 1);
 }
 
-setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
+window.setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
 
 createSlider();
 
