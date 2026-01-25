@@ -4,7 +4,7 @@ const popupModal = document.querySelector('.modal');
 const body = document.body;
 
 export async function getGifts() {
-  const result = await fetch('./assets/json/gifts.json');
+  const result = await fetch('../../../public/json/gifts.json');
   return await result.json();
 }
 
@@ -24,7 +24,7 @@ export async function bestGifts() {
     newItem.classList.add('gifts__item');
     newItem.innerHTML = `
         <div class="gifts__image">
-            <img src="./assets/images/${giftsData[item].category}.png" alt="gift">
+            <img src="../../../public/images/${giftsData[item].category}.png" alt="gift">
         </div>
         <div class="gifts__description-wrapper">
             <div class="gifts__description">
@@ -58,7 +58,7 @@ export async function allGifts(itemCategory) {
       newItem.classList.add('gifts__item');
       newItem.innerHTML = `
                 <div class="gifts__image">
-                    <img src="./assets/images/${giftsData[item].category}.png" alt="gift">
+                    <img src="../../../public/images/${giftsData[item].category}.png" alt="gift">
                 </div>
                 <div class="gifts__description-wrapper">
                     <div class="gifts__description">
@@ -90,19 +90,19 @@ export async function modalWindow(number) {
   superpowersArray.forEach((item) => {
     for (let key in item) {
       if (item[key] === '+500') {
-        item[key] = `<img src="./assets/icons/5stars.svg" alt="gift">`;
+        item[key] = `<img src="../../../public/icons/5stars.svg" alt="gift">`;
       }
       if (item[key] === '+400') {
-        item[key] = `<img src="./assets/icons/4stars.svg" alt="gift">`;
+        item[key] = `<img src="../../../public/icons/4stars.svg" alt="gift">`;
       }
       if (item[key] === '+300') {
-        item[key] = `<img src="./assets/icons/3stars.svg" alt="gift">`;
+        item[key] = `<img src="../../../public/icons/3stars.svg" alt="gift">`;
       }
       if (item[key] === '+200') {
-        item[key] = `<img src="./assets/icons/2stars.svg" alt="gift">`;
+        item[key] = `<img src="../../../public/icons/2stars.svg" alt="gift">`;
       }
       if (item[key] === '+100') {
-        item[key] = `<img src="./assets/icons/1stars.svg" alt="gift">`;
+        item[key] = `<img src="../../../public/icons/1stars.svg" alt="gift">`;
       }
     }
   });
@@ -110,7 +110,7 @@ export async function modalWindow(number) {
   let modalClose = document.createElement('div');
   modalClose.classList.add('modal__close');
   modalClose.innerHTML = `
-        <img src="./assets/icons/close.svg" alt="gift">
+        <img src="../../../public/icons/close.svg" alt="gift">
         `;
 
   let modalBlock = document.createElement('div');
@@ -118,7 +118,7 @@ export async function modalWindow(number) {
   modalBlock.classList.add('modal__content');
   modalBlock.innerHTML = `
         <div class="modal__image">
-            <img src="./assets/images/${giftsData[number].category}.png" alt="gift">
+            <img src="../../../public/images/${giftsData[number].category}.png" alt="gift">
         </div>
         <div class="modal__description-wrapper">
             <div class="modal__description">

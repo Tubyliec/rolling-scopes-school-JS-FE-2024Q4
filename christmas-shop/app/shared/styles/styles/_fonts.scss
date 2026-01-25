@@ -4,14 +4,14 @@
   font-family: Montserrat;
   src:
     local('Montserrat'),
-    url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    url('../public/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
 }
 
 @font-face {
   font-family: Allura;
   src:
     local('Allura'),
-    url('./assets/fonts/Allura-Regular.ttf') format('truetype');
+    url('../public/fonts/Allura-Regular.ttf') format('truetype');
 }
 
 // Mixins

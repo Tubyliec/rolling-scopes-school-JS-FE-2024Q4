@@ -1,8 +1,8 @@
 {
   "type": "module",
   "scripts": {
-    "scss": "npx sass styles.scss styles.css",
-    "scss:watch": "npx sass --watch styles.scss styles.css",
+    "scss": "npx sass app/styles.scss app/styles.css",
+    "scss:watch": "npx sass --watch app/styles.scss app/styles.css",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "format": "prettier --write .",

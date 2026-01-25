@@ -1,13 +1,13 @@
-@use 'reset' as *;
-@use 'globals' as *;
-@use 'blocks/colors' as *;
-@use 'blocks/variables' as *;
-@use 'blocks/burger' as *;
-@use 'blocks/modal' as *;
-@use 'blocks/header' as *;
-@use 'blocks/items' as *;
-@use 'blocks/images' as *;
-@use 'blocks/fonts' as *;
+@use '../../shared/styles/styles/reset' as *;
+@use '../../shared/styles/styles/globals' as *;
+@use '../../shared/styles/styles/colors' as *;
+@use '../../shared/styles/styles/variables' as *;
+@use '../../shared/styles/styles/burger' as *;
+@use '../../shared/styles/styles/modal' as *;
+@use '../../shared/styles/styles/header' as *;
+@use '../../shared/styles/styles/items' as *;
+@use '../../shared/styles/styles/images' as *;
+@use '../../shared/styles/styles/fonts' as *;
 
 .page-gifts {
   .container {
@@ -254,6 +254,10 @@
     display: block;
     visibility: hidden;
     background-image: $top-button-img;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
 
     @extend %background-center;
 

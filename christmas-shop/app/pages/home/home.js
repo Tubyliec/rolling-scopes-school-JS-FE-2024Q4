@@ -2,7 +2,7 @@
 
 // Import
 
-import { bestGifts } from './modal.js';
+import { bestGifts } from '../../shared/ui/modal.js';
 
 // Identifiers
 

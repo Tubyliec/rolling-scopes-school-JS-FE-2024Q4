@@ -1,5 +1,5 @@
 // Import
-import { allGifts } from './modal.js';
+import { allGifts } from '../../shared/ui/modal.js';
 
 // Identifiers
 const body = document.body;
@@ -17,21 +17,23 @@ const popoverWrapper = document.querySelector('.overlay');
 
 // Button to top
 
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
-    buttonUp.classList.add('scroll-top--visible');
-  } else {
-    buttonUp.classList.remove('scroll-top--visible');
-  }
-});
-
-buttonUp.addEventListener('click', function () {
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
+if (buttonUp) {
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
+      buttonUp.classList.add('scroll-top--visible');
+    } else {
+      buttonUp.classList.remove('scroll-top--visible');
+    }
   });
-});
+
+  buttonUp.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  });
+}
 
 // Cards
 
