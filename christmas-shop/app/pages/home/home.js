@@ -6,41 +6,42 @@ import {
   CSS_CLASSES,
   SELECTORS,
 } from '../../shared/constants/config.js';
+import {
+  selectElement,
+  removeClass,
+  addClass,
+  isScrolledPast,
+} from '../../shared/utilities/dom-helpers.js';
+import {
+  getCurrentDate,
+  createTargetDate,
+  getTimeRemaining,
+  padNumber,
+} from '../../shared/utilities/date-utils.js';
 
-const body = document.querySelector(SELECTORS.BODY);
-const popoverWrapper = document.querySelector(SELECTORS.OVERLAY);
+const body = selectElement(SELECTORS.BODY);
+const popoverWrapper = selectElement(SELECTORS.OVERLAY);
 
-const days = document.querySelector(SELECTORS.COUNTDOWN_DAYS);
-const hours = document.querySelector(SELECTORS.COUNTDOWN_HOURS);
-const minutes = document.querySelector(SELECTORS.COUNTDOWN_MINUTES);
-const seconds = document.querySelector(SELECTORS.COUNTDOWN_SECONDS);
+const days = selectElement(SELECTORS.COUNTDOWN_DAYS);
+const hours = selectElement(SELECTORS.COUNTDOWN_HOURS);
+const minutes = selectElement(SELECTORS.COUNTDOWN_MINUTES);
+const seconds = selectElement(SELECTORS.COUNTDOWN_SECONDS);
 
 function countdown() {
-  const currentDate = new Date();
-  const targetDate = new Date(
-    Date.UTC(
-      currentDate.getFullYear() + 1,
-      COUNTDOWN_CONFIG.TARGET_MONTH,
-      COUNTDOWN_CONFIG.TARGET_DAY,
-      COUNTDOWN_CONFIG.TARGET_HOUR,
-      COUNTDOWN_CONFIG.TARGET_MINUTE,
-      COUNTDOWN_CONFIG.TARGET_SECOND,
-    ),
+  const currentDate = getCurrentDate();
+  const targetDate = createTargetDate(
+    COUNTDOWN_CONFIG.TARGET_MONTH,
+    COUNTDOWN_CONFIG.TARGET_DAY,
+    COUNTDOWN_CONFIG.TARGET_HOUR,
+    COUNTDOWN_CONFIG.TARGET_MINUTE,
+    COUNTDOWN_CONFIG.TARGET_SECOND,
   );
-  const remainingTime = targetDate - currentDate;
-  const remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-  const remainingHours = Math.floor(
-    (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-  );
-  const remainingMinutes = Math.floor(
-    (remainingTime % (1000 * 60 * 60)) / (1000 * 60),
-  );
-  const remainingSeconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+  const timeRemaining = getTimeRemaining(targetDate);
 
-  days.innerText = remainingDays.toString().padStart(1, '0');
-  hours.innerText = remainingHours.toString().padStart(1, '0');
-  minutes.innerText = remainingMinutes.toString().padStart(1, '0');
-  seconds.innerText = remainingSeconds.toString().padStart(1, '0');
+  days.innerText = padNumber(timeRemaining.days, 1);
+  hours.innerText = padNumber(timeRemaining.hours, 1);
+  minutes.innerText = padNumber(timeRemaining.minutes, 1);
+  seconds.innerText = padNumber(timeRemaining.seconds, 1);
 }
 
 setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
@@ -52,13 +53,11 @@ createBurger();
 bestGifts().catch((err) => console.log(err));
 
 popoverWrapper.addEventListener('click', () => {
-  body.classList.remove(CSS_CLASSES.NO_SCROLL);
-  popoverWrapper.classList.remove(CSS_CLASSES.OVERLAY_OPEN);
+  removeClass(body, CSS_CLASSES.NO_SCROLL);
+  removeClass(popoverWrapper, CSS_CLASSES.OVERLAY_OPEN);
 
-  const buttonUp = document.querySelector('.scroll-top');
-  if (buttonUp) {
-    if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
-      buttonUp.classList.add('scroll-top--visible');
-    }
+  const buttonUp = selectElement('.scroll-top');
+  if (buttonUp && isScrolledPast(300)) {
+    addClass(buttonUp, 'scroll-top--visible');
   }
 });

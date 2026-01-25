@@ -9,11 +9,18 @@ import {
   SELECTORS,
   SUPERPOWER_CATEGORIES,
 } from '../../shared/constants/config.js';
+import {
+  selectElement,
+  createElement,
+  addEventListener,
+  removeClass,
+  addClass,
+} from '../../shared/utilities/dom-helpers.js';
 
-const giftsContainer = document.querySelector(SELECTORS.GIFTS_LIST);
-const popoverWrapper = document.querySelector(SELECTORS.OVERLAY);
-const popupModal = document.querySelector(SELECTORS.MODAL);
-const body = document.querySelector(SELECTORS.BODY);
+const giftsContainer = selectElement(SELECTORS.GIFTS_LIST);
+const popoverWrapper = selectElement(SELECTORS.OVERLAY);
+const popupModal = selectElement(SELECTORS.MODAL);
+const body = selectElement(SELECTORS.BODY);
 
 export async function getGifts() {
   const result = await fetch(API_ENDPOINTS.GIFTS_DATA);
@@ -32,9 +39,10 @@ export async function bestGifts() {
   }
 
   giftsArray.forEach((item) => {
-    let newItem = document.createElement('div');
-    newItem.classList.add(CSS_CLASSES.GIFTS_ITEM);
-    newItem.innerHTML = `
+    let newItem = createElement(
+      'div',
+      CSS_CLASSES.GIFTS_ITEM,
+      `
         <div class="${CSS_CLASSES.GIFTS_IMAGE}">
             <img src="${IMAGE_PATHS.PUBLIC_IMAGES}/${giftsData[item].category}.png" alt="gift">
         </div>
@@ -44,8 +52,9 @@ export async function bestGifts() {
                 <h3>${giftsData[item].name}</h3>
             </div>
         </div>
-        `;
-    newItem.addEventListener('click', () => {
+        `,
+    );
+    addEventListener(newItem, 'click', () => {
       popupModal.togglePopover();
       body.classList.toggle(CSS_CLASSES.NO_SCROLL);
       popoverWrapper.classList.add(CSS_CLASSES.OVERLAY_OPEN);

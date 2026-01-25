@@ -6,101 +6,88 @@ import {
   CSS_CLASSES,
   UI_CONFIG,
 } from '../../shared/constants/config.js';
+import {
+  selectElement,
+  addClass,
+  removeClass,
+  removeChildNodes,
+  scrollToTop,
+  isScrolledPast,
+  addEventListener,
+} from '../../shared/utilities/dom-helpers.js';
 
-const body = document.querySelector(SELECTORS.BODY);
-const buttonUp = document.querySelector(SELECTORS.SCROLL_TOP);
-const giftsContainer = document.querySelector(SELECTORS.GIFTS_LIST);
+const body = selectElement(SELECTORS.BODY);
+const buttonUp = selectElement(SELECTORS.SCROLL_TOP);
+const giftsContainer = selectElement(SELECTORS.GIFTS_LIST);
 
-const filterButtonAll = document.querySelector(SELECTORS.FILTER_BUTTON_ALL);
-const filterButtonWork = document.querySelector(SELECTORS.FILTER_BUTTON_WORK);
-const filterButtonHealth = document.querySelector(
-  SELECTORS.FILTER_BUTTON_HEALTH,
-);
-const filterButtonHarmony = document.querySelector(
-  SELECTORS.FILTER_BUTTON_HARMONY,
-);
+const filterButtonAll = selectElement(SELECTORS.FILTER_BUTTON_ALL);
+const filterButtonWork = selectElement(SELECTORS.FILTER_BUTTON_WORK);
+const filterButtonHealth = selectElement(SELECTORS.FILTER_BUTTON_HEALTH);
+const filterButtonHarmony = selectElement(SELECTORS.FILTER_BUTTON_HARMONY);
 
-const popoverWrapper = document.querySelector(SELECTORS.OVERLAY);
+const popoverWrapper = selectElement(SELECTORS.OVERLAY);
 
 if (buttonUp) {
-  window.addEventListener('scroll', function () {
-    if (
-      window.scrollY > UI_CONFIG.SCROLL_TOP_THRESHOLD ||
-      document.documentElement.scrollTop > UI_CONFIG.SCROLL_TOP_THRESHOLD
-    ) {
-      buttonUp.classList.add(CSS_CLASSES.SCROLL_TOP_VISIBLE);
+  addEventListener(window, 'scroll', function () {
+    if (isScrolledPast(UI_CONFIG.SCROLL_TOP_THRESHOLD)) {
+      addClass(buttonUp, CSS_CLASSES.SCROLL_TOP_VISIBLE);
     } else {
-      buttonUp.classList.remove(CSS_CLASSES.SCROLL_TOP_VISIBLE);
+      removeClass(buttonUp, CSS_CLASSES.SCROLL_TOP_VISIBLE);
     }
   });
 
-  buttonUp.addEventListener('click', function () {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+  addEventListener(buttonUp, 'click', function () {
+    scrollToTop();
   });
 }
 
-filterButtonAll.classList.add(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+addClass(filterButtonAll, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
 
 createBurger();
 
 allGifts(GIFT_CATEGORIES.ALL).catch((err) => console.log(err));
 
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
-
-filterButtonAll.addEventListener('click', function () {
-  removeAllChildNodes(giftsContainer);
+addEventListener(filterButtonAll, 'click', function () {
+  removeChildNodes(giftsContainer);
   allGifts(GIFT_CATEGORIES.ALL).catch((err) => console.log(err));
-  filterButtonHealth.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonWork.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonHarmony.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  this.classList.add(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonHealth, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonWork, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonHarmony, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  addClass(this, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
 });
 
-filterButtonWork.addEventListener('click', function () {
-  removeAllChildNodes(giftsContainer);
+addEventListener(filterButtonWork, 'click', function () {
+  removeChildNodes(giftsContainer);
   allGifts(GIFT_CATEGORIES.FOR_WORK).catch((err) => console.log(err));
-  filterButtonAll.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonHealth.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonHarmony.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  this.classList.add(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonAll, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonHealth, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonHarmony, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  addClass(this, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
 });
 
-filterButtonHealth.addEventListener('click', function () {
-  removeAllChildNodes(giftsContainer);
+addEventListener(filterButtonHealth, 'click', function () {
+  removeChildNodes(giftsContainer);
   allGifts(GIFT_CATEGORIES.FOR_HEALTH).catch((err) => console.log(err));
-  filterButtonAll.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonWork.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonHarmony.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  this.classList.add(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonAll, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonWork, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonHarmony, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  addClass(this, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
 });
 
-filterButtonHarmony.addEventListener('click', function () {
-  removeAllChildNodes(giftsContainer);
+addEventListener(filterButtonHarmony, 'click', function () {
+  removeChildNodes(giftsContainer);
   allGifts(GIFT_CATEGORIES.FOR_HARMONY).catch((err) => console.log(err));
-  filterButtonAll.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonWork.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  filterButtonHealth.classList.remove(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
-  this.classList.add(CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonAll, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonWork, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  removeClass(filterButtonHealth, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
+  addClass(this, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
 });
 
-popoverWrapper.addEventListener('click', () => {
-  body.classList.remove(CSS_CLASSES.NO_SCROLL);
-  popoverWrapper.classList.remove(CSS_CLASSES.OVERLAY_OPEN);
+addEventListener(popoverWrapper, 'click', () => {
+  removeClass(body, CSS_CLASSES.NO_SCROLL);
+  removeClass(popoverWrapper, CSS_CLASSES.OVERLAY_OPEN);
 
-  if (buttonUp) {
-    if (
-      window.scrollY > UI_CONFIG.SCROLL_TOP_THRESHOLD ||
-      document.documentElement.scrollTop > UI_CONFIG.SCROLL_TOP_THRESHOLD
-    ) {
-      buttonUp.classList.add(CSS_CLASSES.SCROLL_TOP_VISIBLE);
-    }
+  if (buttonUp && isScrolledPast(UI_CONFIG.SCROLL_TOP_THRESHOLD)) {
+    addClass(buttonUp, CSS_CLASSES.SCROLL_TOP_VISIBLE);
   }
 });

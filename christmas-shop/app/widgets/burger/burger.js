@@ -1,4 +1,9 @@
-import { SELECTORS, CSS_CLASSES } from '../../shared/constants/config.js';
+import { CSS_CLASSES, SELECTORS } from '../../shared/constants/config.js';
+import {
+  removeClass,
+  selectElement,
+  toggleClass,
+} from '../../shared/utilities/dom-helpers.js';
 
 export class Burger {
   constructor(options = {}) {
@@ -11,7 +16,7 @@ export class Burger {
     };
 
     this.handleBurgerClick = () => {
-      this.body.classList.toggle(CSS_CLASSES.NO_SCROLL);
+      toggleClass(this.body, CSS_CLASSES.NO_SCROLL);
     };
 
     this.handleNavigationClick = (e) => {
@@ -28,12 +33,10 @@ export class Burger {
   }
 
   init() {
-    this.body = document.querySelector(SELECTORS.BODY);
-    this.burgerCheckbox = document.querySelector(
-      SELECTORS.HEADER_BURGER_CHECKBOX,
-    );
-    this.navigationPanel = document.querySelector(SELECTORS.BURGER_MENU);
-    this.menuPopup = document.querySelector(SELECTORS.BURGER_MENU_ID);
+    this.body = selectElement(SELECTORS.BODY);
+    this.burgerCheckbox = selectElement(SELECTORS.HEADER_BURGER_CHECKBOX);
+    this.navigationPanel = selectElement(SELECTORS.BURGER_MENU);
+    this.menuPopup = selectElement(SELECTORS.BURGER_MENU_ID);
 
     if (
       !this.body ||
@@ -57,7 +60,7 @@ export class Burger {
   }
 
   closeMenu() {
-    this.body.classList.remove(CSS_CLASSES.NO_SCROLL);
+    removeClass(this.body, CSS_CLASSES.NO_SCROLL);
     this.menuPopup.hidePopover();
     this.burgerCheckbox.checked = false;
   }

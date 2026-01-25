@@ -3,6 +3,12 @@ import {
   CSS_CLASSES,
   SLIDER_CONFIG,
 } from '../../shared/constants/config.js';
+import {
+  selectElement,
+  addEventListener,
+  addClass,
+  removeClass,
+} from '../../shared/utilities/dom-helpers.js';
 
 export class Slider {
   constructor(options = {}) {
@@ -23,9 +29,9 @@ export class Slider {
   }
 
   init() {
-    this.slider = document.querySelector(SELECTORS.SLIDER_TRACK);
-    this.buttonLeft = document.querySelector(SELECTORS.SLIDER_BTN_LEFT);
-    this.buttonRight = document.querySelector(SELECTORS.SLIDER_BTN_RIGHT);
+    this.slider = selectElement(SELECTORS.SLIDER_TRACK);
+    this.buttonLeft = selectElement(SELECTORS.SLIDER_BTN_LEFT);
+    this.buttonRight = selectElement(SELECTORS.SLIDER_BTN_RIGHT);
 
     if (!this.slider || !this.buttonLeft || !this.buttonRight) {
       console.warn('Slider elements not found');
@@ -37,9 +43,9 @@ export class Slider {
   }
 
   setupEventListeners() {
-    this.buttonLeft.addEventListener('click', () => this.moveLeft());
-    this.buttonRight.addEventListener('click', () => this.moveRight());
-    window.addEventListener('resize', () => this.handleResize());
+    addEventListener(this.buttonLeft, 'click', () => this.moveLeft());
+    addEventListener(this.buttonRight, 'click', () => this.moveRight());
+    addEventListener(window, 'resize', () => this.handleResize());
   }
 
   calculateStepWidth() {
@@ -68,18 +74,18 @@ export class Slider {
       this.currentStep === 0 &&
       !this.buttonLeft.classList.contains(CSS_CLASSES.SLIDER_BTN_DISABLED)
     ) {
-      this.buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
+      addClass(this.buttonLeft, CSS_CLASSES.SLIDER_BTN_DISABLED);
     } else {
-      this.buttonLeft.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
+      removeClass(this.buttonLeft, CSS_CLASSES.SLIDER_BTN_DISABLED);
     }
 
     if (
       this.currentStep >= maxStep &&
       !this.buttonRight.classList.contains(CSS_CLASSES.SLIDER_BTN_DISABLED)
     ) {
-      this.buttonRight.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
+      addClass(this.buttonRight, CSS_CLASSES.SLIDER_BTN_DISABLED);
     } else {
-      this.buttonRight.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
+      removeClass(this.buttonRight, CSS_CLASSES.SLIDER_BTN_DISABLED);
     }
   }
 
@@ -109,8 +115,8 @@ export class Slider {
     const translateX = -this.currentStep * this.config.stepWidth;
     this.slider.style.transform = `translateX(${translateX}px)`;
     this.currentStep = 0;
-    this.buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
-    this.buttonRight.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    addClass(this.buttonLeft, CSS_CLASSES.SLIDER_BTN_DISABLED);
+    removeClass(this.buttonRight, CSS_CLASSES.SLIDER_BTN_DISABLED);
     this.calculateStepWidth();
   }
 
