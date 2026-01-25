@@ -1,8 +1,6 @@
-import {
-  SELECTORS,
-  CSS_CLASSES,
-  SLIDER_CONFIG,
-} from '../../shared/constants/config.js';
+import { SLIDER_CONFIG } from '../../shared/constants/slider-constants.js';
+import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
+import { SELECTORS } from '../../shared/constants/selectors.js';
 import {
   selectElement,
   addEventListener,

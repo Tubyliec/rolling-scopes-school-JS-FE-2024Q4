@@ -1,4 +1,5 @@
-import { CSS_CLASSES, SELECTORS } from '../../shared/constants/config.js';
+import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
+import { SELECTORS } from '../../shared/constants/selectors.js';
 import {
   removeClass,
   selectElement,

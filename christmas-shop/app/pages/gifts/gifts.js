@@ -1,11 +1,9 @@
 import { allGifts } from '../../widgets/modal/modal.js';
 import { createBurger } from '../../widgets/burger/burger.js';
 import { GIFT_CATEGORIES } from '../../shared/constants/api.js';
-import {
-  SELECTORS,
-  CSS_CLASSES,
-  UI_CONFIG,
-} from '../../shared/constants/config.js';
+import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
+import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
+import { SELECTORS } from '../../shared/constants/selectors.js';
 import {
   selectElement,
   addClass,

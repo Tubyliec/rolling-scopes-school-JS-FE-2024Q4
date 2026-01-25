@@ -1,11 +1,10 @@
 import { bestGifts } from '../../widgets/modal/modal.js';
 import { createSlider } from '../../widgets/slider/slider.js';
 import { createBurger } from '../../widgets/burger/burger.js';
-import {
-  COUNTDOWN_CONFIG,
-  CSS_CLASSES,
-  SELECTORS,
-} from '../../shared/constants/config.js';
+import { COUNTDOWN_CONFIG } from '../../shared/constants/countdown-constants.js';
+import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
+import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
+import { SELECTORS } from '../../shared/constants/selectors.js';
 import {
   addClass,
   isScrolledPast,
@@ -55,7 +54,7 @@ popoverWrapper.addEventListener('click', () => {
   removeClass(popoverWrapper, CSS_CLASSES.OVERLAY_OPEN);
 
   const buttonUp = selectElement('.scroll-top');
-  if (buttonUp && isScrolledPast(300)) {
+  if (buttonUp && isScrolledPast(UI_CONFIG.SCROLL_TOP_THRESHOLD)) {
     addClass(buttonUp, 'scroll-top--visible');
   }
 });

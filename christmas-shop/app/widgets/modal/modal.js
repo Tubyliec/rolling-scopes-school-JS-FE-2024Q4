@@ -4,11 +4,10 @@ import {
   GIFT_CATEGORIES,
   SUPERPOWER_RATINGS,
 } from '../../shared/constants/api.js';
-import {
-  CSS_CLASSES,
-  SELECTORS,
-  SUPERPOWER_CATEGORIES,
-} from '../../shared/constants/config.js';
+import { SUPERPOWER_CATEGORIES } from '../../shared/constants/superpower-constants.js';
+import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
+import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
+import { SELECTORS } from '../../shared/constants/selectors.js';
 import {
   selectElement,
   createElement,
@@ -29,7 +28,7 @@ export async function bestGifts() {
   const giftsData = await getGifts();
   let giftsArray = [];
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < UI_CONFIG.RANDOM_GIFTS_COUNT; i++) {
     giftsArray[i] = Math.floor(Math.random() * (giftsData.length - 1));
     for (let j = 0; j < i; j++) {
       if (giftsArray[i] === giftsArray[j]) i--;
