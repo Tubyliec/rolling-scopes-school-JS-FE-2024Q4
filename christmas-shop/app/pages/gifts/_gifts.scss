@@ -1,11 +1,10 @@
-@use '../../shared/styles/styles/reset' as *;
-@use '../../shared/styles/styles/globals' as *;
-@use '../../shared/styles/styles/colors' as *;
-@use '../../shared/styles/styles/variables' as *;
-@use '../../shared/styles/styles/header' as *;
-@use '../../shared/styles/styles/items' as *;
-@use '../../shared/styles/styles/images' as *;
-@use '../../shared/styles/styles/fonts' as *;
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/colors' as *;
+@use '../../shared/styles/images' as *;
+@use '../../shared/styles/fonts' as *;
+@use '../../shared/styles/globals' as *;
+@use '../../shared/styles/header' as *;
+@use '../../shared/styles/items' as *;
 
 .page-gifts {
   .container {
