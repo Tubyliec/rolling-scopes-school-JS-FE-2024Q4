@@ -1,0 +1,130 @@
+import {
+  SELECTORS,
+  CSS_CLASSES,
+  SLIDER_CONFIG,
+} from '../../shared/constants/config.js';
+
+export class Slider {
+  constructor(options = {}) {
+    this.config = {
+      stepCount: SLIDER_CONFIG.DEFAULT_STEP_COUNT,
+      stepWidth: SLIDER_CONFIG.DEFAULT_STEP_WIDTH,
+      mobileBreakpoint: SLIDER_CONFIG.MOBILE_BREAKPOINT,
+      mobileStepCount: SLIDER_CONFIG.MOBILE_STEP_COUNT,
+      ...options,
+    };
+
+    this.currentStep = 0;
+    this.slider = null;
+    this.buttonLeft = null;
+    this.buttonRight = null;
+
+    this.init();
+  }
+
+  init() {
+    this.slider = document.querySelector(SELECTORS.SLIDER_TRACK);
+    this.buttonLeft = document.querySelector(SELECTORS.SLIDER_BTN_LEFT);
+    this.buttonRight = document.querySelector(SELECTORS.SLIDER_BTN_RIGHT);
+
+    if (!this.slider || !this.buttonLeft || !this.buttonRight) {
+      console.warn('Slider elements not found');
+      return;
+    }
+
+    this.setupEventListeners();
+    this.updateSliderState();
+  }
+
+  setupEventListeners() {
+    this.buttonLeft.addEventListener('click', () => this.moveLeft());
+    this.buttonRight.addEventListener('click', () => this.moveRight());
+    window.addEventListener('resize', () => this.handleResize());
+  }
+
+  calculateStepWidth() {
+    if (window.innerWidth <= this.config.mobileBreakpoint) {
+      this.config.stepCount = this.config.mobileStepCount;
+    } else {
+      this.config.stepCount = SLIDER_CONFIG.DEFAULT_STEP_COUNT;
+    }
+    this.config.stepWidth = Math.round(
+      (this.slider.scrollWidth - this.slider.clientWidth) /
+        this.config.stepCount,
+    );
+  }
+
+  moveSlider() {
+    const translateX = -this.currentStep * this.config.stepWidth;
+    this.slider.style.transform = `translateX(${translateX}px)`;
+    this.updateButtonStates();
+  }
+
+  updateButtonStates() {
+    const sliderItems = this.slider.querySelectorAll('.slider__item');
+    const maxStep = Math.max(0, sliderItems.length - 1);
+
+    if (
+      this.currentStep === 0 &&
+      !this.buttonLeft.classList.contains(CSS_CLASSES.SLIDER_BTN_DISABLED)
+    ) {
+      this.buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    } else {
+      this.buttonLeft.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    }
+
+    if (
+      this.currentStep >= maxStep &&
+      !this.buttonRight.classList.contains(CSS_CLASSES.SLIDER_BTN_DISABLED)
+    ) {
+      this.buttonRight.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    } else {
+      this.buttonRight.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    }
+  }
+
+  updateSliderState() {
+    this.calculateStepWidth();
+    this.moveSlider();
+  }
+
+  moveLeft() {
+    this.calculateStepWidth();
+    this.currentStep -= 1;
+    if (this.currentStep < 0) this.currentStep = 0;
+    this.moveSlider();
+  }
+
+  moveRight() {
+    this.calculateStepWidth();
+    const sliderItems = this.slider.querySelectorAll('.slider__item');
+    const maxStep = Math.max(0, sliderItems.length - 1);
+
+    this.currentStep += 1;
+    if (this.currentStep > maxStep) this.currentStep = maxStep;
+    this.moveSlider();
+  }
+
+  handleResize() {
+    const translateX = -this.currentStep * this.config.stepWidth;
+    this.slider.style.transform = `translateX(${translateX}px)`;
+    this.currentStep = 0;
+    this.buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    this.buttonRight.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
+    this.calculateStepWidth();
+  }
+
+  destroy() {
+    if (this.buttonLeft) {
+      this.buttonLeft.removeEventListener('click', this.moveLeft);
+    }
+    if (this.buttonRight) {
+      this.buttonRight.removeEventListener('click', this.moveRight);
+    }
+    window.removeEventListener('resize', this.handleResize);
+  }
+}
+
+export function createSlider(options = {}) {
+  return new Slider(options);
+}

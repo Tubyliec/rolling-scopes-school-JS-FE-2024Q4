@@ -41,7 +41,7 @@ export const CSS_CLASSES = {
   SLIDER_TRACK: 'slider__track',
   SLIDER_BTN_LEFT: 'slider__btn--left',
   SLIDER_BTN_RIGHT: 'slider__btn--right',
-  SLIDER_BTN_DISABLED: 'slider-btn--disabled',
+  SLIDER_BTN_DISABLED: 'disabled',
   BUTTONS_PANEL_ITEM: 'buttons-panel__item',
   BUTTONS_PANEL_ITEM_ACTIVE: 'buttons-panel__item--active',
   HEADER_BURGER_CHECKBOX: 'header__burger-checkbox',
