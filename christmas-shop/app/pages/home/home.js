@@ -1,4 +1,4 @@
-import { bestGifts } from '../../shared/ui/modal.js';
+import { bestGifts } from '../../widgets/modal/modal.js';
 import { createSlider } from '../../widgets/slider/slider.js';
 import {
   COUNTDOWN_CONFIG,

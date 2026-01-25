@@ -3,12 +3,12 @@ import {
   IMAGE_PATHS,
   GIFT_CATEGORIES,
   SUPERPOWER_RATINGS,
-} from '../constants/api.js';
+} from '../../shared/constants/api.js';
 import {
   CSS_CLASSES,
   SELECTORS,
   SUPERPOWER_CATEGORIES,
-} from '../constants/config.js';
+} from '../../shared/constants/config.js';
 
 const giftsContainer = document.querySelector(SELECTORS.GIFTS_LIST);
 const popoverWrapper = document.querySelector(SELECTORS.OVERLAY);

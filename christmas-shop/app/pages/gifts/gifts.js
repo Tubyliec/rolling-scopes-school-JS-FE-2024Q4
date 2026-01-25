@@ -1,4 +1,4 @@
-import { allGifts } from '../../shared/ui/modal.js';
+import { allGifts } from '../../widgets/modal/modal.js';
 import { GIFT_CATEGORIES } from '../../shared/constants/api.js';
 import {
   SELECTORS,
