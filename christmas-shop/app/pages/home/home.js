@@ -1,33 +1,38 @@
-/* global setInterval */
-
-// Import
-
 import { bestGifts } from '../../shared/ui/modal.js';
+import {
+  SELECTORS,
+  CSS_CLASSES,
+  SLIDER_CONFIG,
+  COUNTDOWN_CONFIG,
+} from '../../shared/constants/config.js';
 
-// Identifiers
+const body = document.querySelector(SELECTORS.BODY);
+const popoverWrapper = document.querySelector(SELECTORS.OVERLAY);
 
-const body = document.body;
-const popoverWrapper = document.querySelector('.overlay');
+const days = document.querySelector(SELECTORS.COUNTDOWN_DAYS);
+const hours = document.querySelector(SELECTORS.COUNTDOWN_HOURS);
+const minutes = document.querySelector(SELECTORS.COUNTDOWN_MINUTES);
+const seconds = document.querySelector(SELECTORS.COUNTDOWN_SECONDS);
 
-const days = document.querySelector('.days');
-const hours = document.querySelector('.hours');
-const minutes = document.querySelector('.minutes');
-const seconds = document.querySelector('.seconds');
-
-const slider = document.querySelector('.slider__track');
-const buttonLeft = document.querySelector('.slider__btn--left');
-const buttonRight = document.querySelector('.slider__btn--right');
+const slider = document.querySelector(SELECTORS.SLIDER_TRACK);
+const buttonLeft = document.querySelector(SELECTORS.SLIDER_BTN_LEFT);
+const buttonRight = document.querySelector(SELECTORS.SLIDER_BTN_RIGHT);
 
 let currentStep = 0;
-let stepCount = 3;
-let stepWidth = 178;
-
-// Counter
+let stepCount = SLIDER_CONFIG.DEFAULT_STEP_COUNT;
+let stepWidth = SLIDER_CONFIG.DEFAULT_STEP_WIDTH;
 
 function countdown() {
   const currentDate = new Date();
   const targetDate = new Date(
-    Date.UTC(currentDate.getFullYear() + 1, 0, 1, 0, 0, 0),
+    Date.UTC(
+      currentDate.getFullYear() + 1,
+      COUNTDOWN_CONFIG.TARGET_MONTH,
+      COUNTDOWN_CONFIG.TARGET_DAY,
+      COUNTDOWN_CONFIG.TARGET_HOUR,
+      COUNTDOWN_CONFIG.TARGET_MINUTE,
+      COUNTDOWN_CONFIG.TARGET_SECOND,
+    ),
   );
   const remainingTime = targetDate - currentDate;
   const remainingDays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
@@ -45,31 +50,34 @@ function countdown() {
   seconds.innerText = remainingSeconds.toString().padStart(1, '0');
 }
 
-setInterval(countdown, 1000);
+setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
 
-// Slider
-
-buttonLeft.classList.add('slider-btn--disabled');
+buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
 
 function widthCount() {
-  window.innerWidth <= 768 ? (stepCount = 6) : (stepCount = 3);
+  window.innerWidth <= SLIDER_CONFIG.MOBILE_BREAKPOINT
+    ? (stepCount = SLIDER_CONFIG.MOBILE_STEP_COUNT)
+    : (stepCount = SLIDER_CONFIG.DEFAULT_STEP_COUNT);
   stepWidth = Math.round((slider.scrollWidth - slider.clientWidth) / stepCount);
 }
 
 function moveSlider() {
   slider.style.left = -currentStep * stepWidth + 'px';
-  if (currentStep === 0 && !buttonLeft.classList.contains('disabled')) {
-    buttonLeft.classList.add('disabled');
+  if (
+    currentStep === 0 &&
+    !buttonLeft.classList.contains(CSS_CLASSES.SLIDER_BTN_DISABLED)
+  ) {
+    buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
   } else {
-    buttonLeft.classList.remove('disabled');
+    buttonLeft.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
   }
   if (
     currentStep === stepCount &&
-    !buttonRight.classList.contains('disabled')
+    !buttonRight.classList.contains(CSS_CLASSES.SLIDER_BTN_DISABLED)
   ) {
-    buttonRight.classList.add('disabled');
+    buttonRight.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
   } else {
-    buttonRight.classList.remove('disabled');
+    buttonRight.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
   }
 }
 
@@ -90,17 +98,13 @@ buttonRight.addEventListener('click', () => {
 window.addEventListener('resize', () => {
   slider.style.left = `-${currentStep * stepWidth}px`;
   currentStep = 0;
-  buttonLeft.classList.add('disabled');
-  buttonRight.classList.remove('disabled');
+  buttonLeft.classList.add(CSS_CLASSES.SLIDER_BTN_DISABLED);
+  buttonRight.classList.remove(CSS_CLASSES.SLIDER_BTN_DISABLED);
 });
-
-// Cards
 
 bestGifts().catch((err) => console.log(err));
 
-//
-
 popoverWrapper.addEventListener('click', () => {
-  body.classList.remove('no-scroll');
-  popoverWrapper.classList.remove('overlay--open');
+  body.classList.remove(CSS_CLASSES.NO_SCROLL);
+  popoverWrapper.classList.remove(CSS_CLASSES.OVERLAY_OPEN);
 });
