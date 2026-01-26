@@ -1,0 +1,235 @@
+@use 'colors' as *;
+
+@font-face {
+  font-family: Montserrat;
+  src:
+    local('Montserrat'),
+    url('../public/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Allura;
+  src:
+    local('Allura'),
+    url('../public/fonts/Allura-Regular.ttf') format('truetype');
+}
+
+@mixin typography-font-12 {
+  font: {
+    weight: 600;
+    size: 12px;
+  }
+
+  line-height: 130%;
+  letter-spacing: 0.05em;
+}
+
+@mixin typography-font-16 {
+  font: {
+    weight: 400;
+    size: 16px;
+  }
+
+  line-height: 150%;
+}
+
+@mixin typography-font-16-148 {
+  font: {
+    weight: 400;
+    size: 16px;
+  }
+
+  line-height: 148%;
+}
+
+@mixin typography-font-16-152 {
+  font: {
+    weight: 600;
+    size: 16px;
+  }
+
+  line-height: 152%;
+  letter-spacing: 0.08em;
+}
+
+@mixin typography-font-16-152-600 {
+  font: {
+    weight: 600;
+    size: 16px;
+  }
+
+  line-height: 152%;
+  letter-spacing: 0.08em;
+}
+
+@mixin typography-font-24 {
+  font: {
+    weight: 400;
+    size: 24px;
+  }
+
+  line-height: 100%;
+  letter-spacing: 0.05em;
+}
+
+@mixin typography-font-24-header {
+  font: {
+    weight: 600;
+    size: 24px;
+  }
+
+  line-height: 152%;
+  letter-spacing: 0.16em;
+}
+
+@mixin typography-font-32 {
+  font: {
+    weight: 600;
+    size: 32px;
+  }
+
+  line-height: 150%;
+  letter-spacing: 0.18em;
+}
+
+@mixin typography-font-80 {
+  font: {
+    weight: 600;
+    size: 80px;
+  }
+}
+
+@mixin typography-navigation {
+  @include typography-font-12;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $dark;
+}
+
+@mixin typography-navigation-white {
+  @include typography-font-12;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $static-white;
+}
+
+@mixin typography-navigation-24 {
+  @include typography-font-24-header;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $dark;
+}
+
+@mixin typography-header-italic {
+  @include typography-font-24;
+
+  font-family: Allura, sans-serif;
+  color: $static-white;
+}
+
+@mixin typography-header-italic-dark {
+  @include typography-font-24;
+
+  font-family: Allura, cursive;
+  color: $dark;
+}
+
+@mixin typography-header-italic-primary {
+  @include typography-font-24;
+
+  font-family: Allura, cursive;
+  color: $primary;
+}
+
+@mixin typography-h1 {
+  @include typography-font-32;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: $static-white;
+}
+
+@mixin typography-h2 {
+  @include typography-font-24-header;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $dark;
+}
+
+@mixin typography-h2-white {
+  @include typography-font-24-header;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $static-white;
+}
+
+@mixin typography-button {
+  @include typography-font-12;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $static-white;
+}
+
+@mixin typography-text {
+  @include typography-font-16;
+
+  font-family: Montserrat, sans-serif;
+  letter-spacing: 0.0015em;
+  color: $dark;
+}
+
+@mixin typography-slider {
+  @include typography-font-80;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  color: $static-white;
+}
+
+@mixin typography-item {
+  @include typography-font-12;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+}
+
+@mixin typography-item-description {
+  @include typography-font-16-152;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $dark;
+}
+
+@mixin typography-count-item {
+  @include typography-font-12;
+
+  font-family: Montserrat, sans-serif;
+  text-transform: uppercase;
+  color: $static-white;
+}
+
+@mixin typography-contact {
+  font-family: Montserrat, sans-serif;
+
+  @include typography-font-16-152-600;
+
+  text-transform: uppercase;
+  color: $dark;
+}
+
+@mixin typography-contact-rs {
+  font-family: Montserrat, sans-serif;
+
+  @include typography-font-16-148;
+
+  color: $dark;
+}

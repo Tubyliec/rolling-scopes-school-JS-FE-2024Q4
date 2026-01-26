@@ -1,0 +1,87 @@
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+
+$desktop-max-width: 1276px;
+$tablet-max-width: 752px;
+$primary-radius: 20px;
+$primary-margin: 60px 82px;
+$tablet-margin: 60px 8px;
+
+%background-center {
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin flex-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-horizontal-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-vertical-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin flex-vertical-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+@mixin button-link-style {
+  @include typography-button;
+
+  padding: 20px 32px;
+  background-color: $dark;
+  border-radius: $primary-radius;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: $static-white;
+      color: $dark;
+    }
+  }
+}
+
+@mixin list-item-styles {
+  li {
+    a {
+      padding: 12px 20px;
+      color: $dark;
+      border-radius: 10px;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        a {
+          color: $primary;
+          background: $primary-opacity;
+        }
+      }
+    }
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+}

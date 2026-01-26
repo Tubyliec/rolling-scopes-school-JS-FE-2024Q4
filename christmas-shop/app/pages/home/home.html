@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="../../styles.css"
+    />
+    <link
+      type="image/x-icon"
+      href="../../../public/icons/snowflake.svg"
+      rel="shortcut icon"
+    />
+    <title>Home</title>
+  </head>
+  <body class="page-home">
+    <div class="overlay"></div>
+    <header class="header">
+      <a href="home.html">
+        <div class="header__logo">
+          <div class="header__logo-icon"></div>
+          <div class="header__logo-text">the gifts</div>
+        </div>
+      </a>
+      <nav class="header__nav">
+        <ul class="header__nav-list">
+          <li>
+            <a
+              href="../gifts/gifts.html"
+              class="header__nav-link"
+              >gifts</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="header__nav-link"
+              >about</a
+            >
+          </li>
+          <li>
+            <a
+              href="#best"
+              class="header__nav-link"
+              >best</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="header__nav-link"
+              >contacts</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <button
+        class="header__burger-btn"
+        popovertarget="burger-menu"
+      >
+        <input
+          type="checkbox"
+          id="burger-checkbox"
+          class="header__burger-checkbox"
+        />
+        <label
+          for="burger-checkbox"
+          class="header__burger-icon"
+        ></label>
+      </button>
+    </header>
+    <div class="container">
+      <div class="hero">
+        <section class="hero__content">
+          <div class="hero__description">
+            <p>Merry Christmas</p>
+            <h1>Gift yourself<br />the magic of new<br />possibilities</h1>
+            <div class="btn-link">
+              <a
+                href="../gifts/gifts.html"
+                class="header__nav-link"
+                ><p>Explore Magical Gifts</p></a
+              >
+            </div>
+            <p>and Happy New Year</p>
+          </div>
+        </section>
+      </div>
+      <div
+        class="about"
+        id="about"
+      >
+        <section class="about__content">
+          <div class="about__info-wrapper">
+            <div class="about__info">
+              <p>About</p>
+              <h2>Unleash your inner superhero!</h2>
+              <p>
+                This New Year marks the beginning of your journey to inner
+                harmony and new strengths. We offer unique gifts that will help
+                you improve your life.
+              </p>
+            </div>
+          </div>
+          <div class="about__image"></div>
+        </section>
+      </div>
+      <div class="slider">
+        <section class="slider__container">
+          <div class="slider__caption">
+            <p>Become Happier!</p>
+            <h2>in the new 2025</h2>
+          </div>
+          <div class="slider__track">
+            <div class="slider__item">
+              <div class="slider__item-caption">
+                <p>live</p>
+              </div>
+              <div class="slider__item-image">
+                <img
+                  src="../../../public/images/home/snowman.png"
+                  alt="snowman"
+                />
+              </div>
+            </div>
+            <div class="slider__item">
+              <div class="slider__item-caption">
+                <p>create</p>
+              </div>
+              <div class="slider__item-image">
+                <img
+                  src="../../../public/images/home/christmas-trees.png"
+                  alt="christmas-trees"
+                />
+              </div>
+            </div>
+            <div class="slider__item">
+              <div class="slider__item-caption">
+                <p>Love</p>
+              </div>
+              <div class="slider__item-image">
+                <img
+                  src="../../../public/images/home/christmas-tree-ball.png"
+                  alt="snowman"
+                />
+              </div>
+            </div>
+            <div class="slider__item">
+              <div class="slider__item-caption">
+                <p>dream</p>
+              </div>
+              <div class="slider__item-image">
+                <img
+                  src="../../../public/images/home/fairytale-house.png"
+                  alt="snowman"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="slider__pagination">
+            <button class="slider__btn slider__btn--left"></button>
+            <button class="slider__btn slider__btn--right"></button>
+          </div>
+        </section>
+      </div>
+      <div
+        class="gifts"
+        id="best"
+      >
+        <section class="gifts__container">
+          <div class="gifts__caption">
+            <p>Best Gifts</p>
+            <h2>especially for you</h2>
+          </div>
+          <div class="gifts__list"></div>
+        </section>
+      </div>
+      <div class="countdown">
+        <section class="countdown__container">
+          <div class="countdown__content">
+            <h2>
+              Ready to start your<br />journey to a better<br />version of
+              yourself?
+            </h2>
+            <div class="btn-link">
+              <a
+                href="../gifts/gifts.html"
+                class="header__nav-link"
+                ><p>Explore Magical Gifts</p></a
+              >
+            </div>
+            <div class="countdown__timer">
+              <p>The New Year is Coming Soon...</p>
+              <div class="countdown__display">
+                <div class="countdown__item countdown__item--days">
+                  <span class="countdown__value days"></span>
+                  <span class="countdown__label">days</span>
+                </div>
+                <span class="countdown__separator">|</span>
+                <div class="countdown__item countdown__item--hours">
+                  <span class="countdown__value hours"></span>
+                  <span class="countdown__label">hours</span>
+                </div>
+                <span class="countdown__separator">|</span>
+                <div class="countdown__item countdown__item--minutes">
+                  <span class="countdown__value minutes"></span>
+                  <span class="countdown__label">minutes</span>
+                </div>
+                <span class="countdown__separator">|</span>
+                <div class="countdown__item countdown__item--seconds">
+                  <span class="countdown__value seconds"></span>
+                  <span class="countdown__label">seconds</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="footer">
+      <footer class="footer__content">
+        <div
+          class="footer__contacts"
+          id="contact"
+        >
+          <div class="contact-card contact-card--phone">
+            <a href="tel:+375291112233">
+              <div class="contact-card__icon contact-card__icon--phone"></div>
+              <span>+375 (29) 111-22-33</span>
+              <p class="contact-card__caption">Call Us</p>
+            </a>
+          </div>
+          <div class="contact-card contact-card--address">
+            <a
+              href="https://maps.app.goo.gl/15CxpbpjYZUnqBvU6"
+              target="_blank"
+            >
+              <div class="contact-card__icon contact-card__icon--address"></div>
+              <span>Magic forest</span>
+              <p class="contact-card__caption">meet us</p>
+            </a>
+          </div>
+          <div class="contact-card contact-card--mail">
+            <a href="mailto:gifts@magic.com">
+              <div class="contact-card__icon contact-card__icon--mail"></div>
+              <span>gifts@magic.com</span>
+              <p class="contact-card__caption">write us</p>
+            </a>
+          </div>
+        </div>
+        <div class="footer__info">
+          <div class="social">
+            <a
+              href="https://telegram.org"
+              target="_blank"
+              ><div class="social__icon social__icon--telegram"></div
+            ></a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              ><div class="social__icon social__icon--facebook"></div
+            ></a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              ><div class="social__icon social__icon--instagram"></div
+            ></a>
+            <a
+              href="https://x.com"
+              target="_blank"
+              ><div class="social__icon social__icon--x"></div
+            ></a>
+          </div>
+          <p>© Copyright 2025, All Rights Reserved</p>
+          <a
+            href="https://rs.school"
+            target="_blank"
+            class="footer__link"
+            >Made in Rolling Scopes School</a
+          >
+        </div>
+      </footer>
+    </div>
+    <div
+      class="burger-menu"
+      popover="manual"
+      id="burger-menu"
+    >
+      <nav class="burger-menu__nav">
+        <ul class="header__nav-list">
+          <li>
+            <a
+              href="../gifts/gifts.html"
+              class="header__nav-link"
+              >gifts</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="header__nav-link"
+              >about</a
+            >
+          </li>
+          <li>
+            <a
+              href="#best"
+              class="header__nav-link"
+              >best</a
+            >
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="header__nav-link"
+              >contacts</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div
+      class="modal"
+      popover
+      id="modal_window"
+    ></div>
+    <script
+      type="module"
+      src="home.js"
+    ></script>
+  </body>
+</html>

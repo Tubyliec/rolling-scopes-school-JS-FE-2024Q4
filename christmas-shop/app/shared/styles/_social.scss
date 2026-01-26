@@ -1,0 +1,59 @@
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+@use 'variables' as *;
+
+.social {
+  display: grid;
+  grid-template-columns: repeat(4, 24px);
+  gap: 30px;
+  margin-bottom: 10px;
+
+  .logo {
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    background-position: center;
+    background-size: cover;
+  }
+
+  .telegram {
+    background-image: $telegram-logo;
+
+    @media (hover: hover) {
+      &:hover {
+        background-image: $telegram-logo-red;
+      }
+    }
+  }
+
+  .facebook {
+    background-image: $facebook-logo;
+
+    @media (hover: hover) {
+      &:hover {
+        background-image: $facebook-logo-red;
+      }
+    }
+  }
+
+  .instagram {
+    background-image: $instagram-logo;
+
+    @media (hover: hover) {
+      &:hover {
+        background-image: $instagram-logo-red;
+      }
+    }
+  }
+
+  .x {
+    background-image: $x-logo;
+
+    @media (hover: hover) {
+      &:hover {
+        background-image: $x-logo-red;
+      }
+    }
+  }
+}

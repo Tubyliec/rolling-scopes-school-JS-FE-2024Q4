@@ -1,0 +1,57 @@
+@use 'fonts' as *;
+@use 'colors' as *;
+@use 'images' as *;
+@use 'variables' as *;
+
+.header {
+  @include flex-horizontal;
+  @include typography-navigation;
+
+  padding: 12px 82px;
+
+  @media (width <= 800px) {
+    padding: 1.2rem 8px;
+  }
+
+  a {
+    color: $dark;
+  }
+
+  anchor-name: --my-anchor;
+}
+
+.header__logo {
+  @include flex-horizontal;
+
+  gap: 8px;
+  padding-left: 20px;
+  cursor: pointer;
+}
+
+.header__logo-icon {
+  background-image: $gifts-logo;
+  width: 24px;
+  height: 24px;
+}
+
+.header__nav {
+  @media (width <= 768px) {
+    display: none;
+  }
+}
+
+.header__nav-list {
+  @include flex-horizontal;
+
+  gap: 8px;
+
+  @include list-item-styles;
+
+  padding: 12px 0;
+
+  @media (width <= 768px) {
+    @include flex-vertical;
+
+    gap: 20px;
+  }
+}
