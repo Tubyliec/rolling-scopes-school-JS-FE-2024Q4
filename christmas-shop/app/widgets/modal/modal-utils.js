@@ -27,14 +27,18 @@ export function createGiftItem(giftData, clickHandler) {
 }
 
 export function getUniqueRandomIndices(count, max) {
-  const indices = new Set();
-
-  while (indices.size < count && indices.size < max) {
-    const randomIndex = Math.floor(Math.random() * max);
-    indices.add(randomIndex);
+  if (count >= max) {
+    return Array.from({ length: max }, (_, i) => i);
   }
 
-  return Array.from(indices);
+  const indices = Array.from({ length: max }, (_, i) => i);
+  
+  for (let i = 0; i < count; i++) {
+    const randomIndex = Math.floor(Math.random() * (max - i)) + i;
+    [indices[i], indices[randomIndex]] = [indices[randomIndex], indices[i]];
+  }
+  
+  return indices.slice(0, count);
 }
 
 export function convertSuperpowersToStars(superpowers) {

@@ -37,22 +37,31 @@ export async function getGifts() {
 export async function bestGifts() {
   try {
     const giftsData = await getGifts();
+    
+    if (!giftsData || giftsData.length === 0) {
+      console.warn('No gifts available to display');
+      return;
+    }
+
     const randomIndices = getUniqueRandomIndices(
       UI_CONFIG.RANDOM_GIFTS_COUNT,
       giftsData.length,
     );
 
+    const fragment = document.createDocumentFragment();
+    
     randomIndices.forEach((itemIndex) => {
       const giftData = giftsData[itemIndex];
-
       const clickHandler = () => {
         handleModalOpen();
         showModalWindow(itemIndex);
       };
-
+      
       const newItem = createGiftItem(giftData, clickHandler);
-      giftsContainer.appendChild(newItem);
+      fragment.appendChild(newItem);
     });
+
+    giftsContainer.appendChild(fragment);
   } catch (error) {
     console.error('Failed to display best gifts:', error);
     throw error;
