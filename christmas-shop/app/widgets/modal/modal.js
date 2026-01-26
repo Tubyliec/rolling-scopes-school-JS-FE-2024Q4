@@ -125,9 +125,10 @@ async function showModalWindow(giftIndex) {
     body.classList.toggle(CSS_CLASSES.NO_SCROLL);
     popoverWrapper.classList.add(CSS_CLASSES.OVERLAY_OPEN);
 
-    const { modalBlock, modalClose } = createModalWindow(giftData, [
+    const { modalBlock, modalClose } = createModalWindow(
+      giftData,
       giftSuperpowers,
-    ]);
+    );
 
     popupModal.appendChild(modalBlock);
     popupModal.appendChild(modalClose);
