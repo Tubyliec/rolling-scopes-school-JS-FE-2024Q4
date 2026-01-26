@@ -1,10 +1,6 @@
 # Christmas Shop
 
----
-
 ![Christmas Shop Interface](./public/images/Screenshot_20260126_235254.png)
-
----
 
 A beautiful, interactive Christmas-themed e-commerce website built with vanilla JavaScript, HTML, and SCSS. This project showcases a magical Christmas gift shop where users can browse and discover unique gifts that add superpowers to their lives.
 
