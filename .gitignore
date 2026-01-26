@@ -1,3 +1,4 @@
+.idea
 # Logs
 logs
 *.log
@@ -80,7 +81,6 @@ typings/
 
 # Nuxt.scripts build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -104,3 +104,5 @@ dist
 .tern-port
 
 .idea
+
+node_modules
