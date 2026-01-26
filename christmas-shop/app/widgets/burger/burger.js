@@ -55,9 +55,17 @@ export class Burger {
   }
 
   setupEventListeners() {
-    addEventListenerWithCleanup(this.burgerCheckbox, 'click', this.handleBurgerClick);
+    addEventListenerWithCleanup(
+      this.burgerCheckbox,
+      'click',
+      this.handleBurgerClick,
+    );
 
-    addEventListenerWithCleanup(this.navigationPanel, 'click', this.handleNavigationClick);
+    addEventListenerWithCleanup(
+      this.navigationPanel,
+      'click',
+      this.handleNavigationClick,
+    );
 
     addEventListenerWithCleanup(window, 'resize', this.handleResize);
   }

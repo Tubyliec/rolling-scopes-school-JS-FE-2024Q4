@@ -3,7 +3,7 @@ import { SUPERPOWER_CATEGORIES } from '../../shared/constants/superpower-constan
 import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
 import { createElement } from '../../shared/utilities/dom-helpers.js';
 
-export function createModalWindow(giftData, superpowersArray, giftIndex) {
+export function createModalWindow(giftData, giftSuperpowers) {
   const modalClose = createElement('div', CSS_CLASSES.MODAL_CLOSE);
   modalClose.innerHTML = `
         <img src="${IMAGE_PATHS.CLOSE_ICON}" alt="gift">
@@ -39,10 +39,10 @@ export function createModalWindow(giftData, superpowersArray, giftIndex) {
                             <li>${giftData.superpowers[SUPERPOWER_CATEGORIES.DREAM]}</li>
                         </ul>
                         <ul class="${CSS_CLASSES.MODAL_SNOWFLAKES}">
-                            <li>${superpowersArray[giftIndex][SUPERPOWER_CATEGORIES.LIVE]}</li>
-                            <li>${superpowersArray[giftIndex][SUPERPOWER_CATEGORIES.CREATE]}</li>
-                            <li>${superpowersArray[giftIndex][SUPERPOWER_CATEGORIES.LOVE]}</li>
-                            <li>${superpowersArray[giftIndex][SUPERPOWER_CATEGORIES.DREAM]}</li>
+                            <li>${giftSuperpowers[SUPERPOWER_CATEGORIES.LIVE]}</li>
+                            <li>${giftSuperpowers[SUPERPOWER_CATEGORIES.CREATE]}</li>
+                            <li>${giftSuperpowers[SUPERPOWER_CATEGORIES.LOVE]}</li>
+                            <li>${giftSuperpowers[SUPERPOWER_CATEGORIES.DREAM]}</li>
                         </ul>
                     </div>
                 </div>

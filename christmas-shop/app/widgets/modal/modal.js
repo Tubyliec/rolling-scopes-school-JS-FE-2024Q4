@@ -2,7 +2,10 @@ import { API_ENDPOINTS, GIFT_CATEGORIES } from '../../shared/constants/api.js';
 import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
 import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
 import { SELECTORS } from '../../shared/constants/selectors.js';
-import { selectElement, removeAllEventListeners } from '../../shared/utilities/dom-helpers.js';
+import {
+  selectElement,
+  removeAllEventListeners,
+} from '../../shared/utilities/dom-helpers.js';
 import {
   createGiftItem,
   getUniqueRandomIndices,
@@ -20,8 +23,10 @@ const body = selectElement(SELECTORS.BODY);
 let giftsDataCache = null;
 
 function removeAllGiftItems() {
-  const existingItems = giftsContainer.querySelectorAll(`.${CSS_CLASSES.GIFTS_ITEM}`);
-  existingItems.forEach(item => {
+  const existingItems = giftsContainer.querySelectorAll(
+    `.${CSS_CLASSES.GIFTS_ITEM}`,
+  );
+  existingItems.forEach((item) => {
     removeAllEventListeners(item);
     item.remove();
   });
@@ -45,7 +50,7 @@ export async function getGifts() {
 export async function bestGifts() {
   try {
     const giftsData = await getGifts();
-    
+
     if (!giftsData || giftsData.length === 0) {
       console.warn('No gifts available to display');
       return;
@@ -59,14 +64,14 @@ export async function bestGifts() {
     );
 
     const fragment = document.createDocumentFragment();
-    
+
     randomIndices.forEach((itemIndex) => {
       const giftData = giftsData[itemIndex];
       const clickHandler = () => {
         handleModalOpen();
         showModalWindow(itemIndex);
       };
-      
+
       const newItem = createGiftItem(giftData, clickHandler);
       fragment.appendChild(newItem);
     });
@@ -106,11 +111,13 @@ export async function allGifts(itemCategory) {
 
 async function showModalWindow(giftIndex) {
   try {
-    const giftsData = await getGifts();
+    if (!giftsDataCache) {
+      await getGifts();
+    }
 
-    const superpowersArray = giftsData.map((gift) =>
-      convertSuperpowersToStars(gift.superpowers),
-    );
+    const giftData = giftsDataCache[giftIndex];
+
+    const giftSuperpowers = convertSuperpowersToStars(giftData.superpowers);
 
     popupModal.innerHTML = '';
 
@@ -118,11 +125,9 @@ async function showModalWindow(giftIndex) {
     body.classList.toggle(CSS_CLASSES.NO_SCROLL);
     popoverWrapper.classList.add(CSS_CLASSES.OVERLAY_OPEN);
 
-    const { modalBlock, modalClose } = createModalWindow(
-      giftsData[giftIndex],
-      superpowersArray,
-      giftIndex,
-    );
+    const { modalBlock, modalClose } = createModalWindow(giftData, [
+      giftSuperpowers,
+    ]);
 
     popupModal.appendChild(modalBlock);
     popupModal.appendChild(modalClose);
@@ -130,7 +135,7 @@ async function showModalWindow(giftIndex) {
     modalClose.addEventListener('click', () =>
       handleModalClose(popupModal, body, popoverWrapper),
     );
-    
+
     modalClose.dataset.modalClose = 'true';
   } catch (error) {
     console.error('Failed to show modal window:', error);

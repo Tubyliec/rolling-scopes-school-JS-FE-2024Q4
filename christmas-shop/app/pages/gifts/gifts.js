@@ -40,7 +40,7 @@ if (buttonUp) {
       removeClass(buttonUp, CSS_CLASSES.SCROLL_TOP_VISIBLE);
     }
   };
-  
+
   addEventListener(window, 'scroll', scrollListener);
 
   addEventListener(buttonUp, 'click', function () {
@@ -56,21 +56,21 @@ const filterConfigs = [
   { button: filterButtonAll, category: GIFT_CATEGORIES.ALL },
   { button: filterButtonWork, category: GIFT_CATEGORIES.FOR_WORK },
   { button: filterButtonHealth, category: GIFT_CATEGORIES.FOR_HEALTH },
-  { button: filterButtonHarmony, category: GIFT_CATEGORIES.FOR_HARMONY }
+  { button: filterButtonHarmony, category: GIFT_CATEGORIES.FOR_HARMONY },
 ];
 
-filterConfigs.forEach(config => {
+filterConfigs.forEach((config) => {
   const listener = function () {
     removeChildNodes(giftsContainer);
     allGifts(config.category).catch((err) => console.log(err));
-    
+
     filterConfigs.forEach(({ button }) => {
       removeClass(button, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
     });
-    
+
     addClass(this, CSS_CLASSES.BUTTONS_PANEL_ITEM_ACTIVE);
   };
-  
+
   addEventListener(config.button, 'click', listener);
   filterListeners.push({ element: config.button, listener });
 });
@@ -88,18 +88,18 @@ window.addEventListener('beforeunload', () => {
   if (burger && typeof burger.destroy === 'function') {
     burger.destroy();
   }
-  
+
   if (scrollListener) {
     window.removeEventListener('scroll', scrollListener);
   }
-  
+
   if (buttonUp) {
     buttonUp.removeEventListener('click', scrollToTop);
   }
-  
+
   filterListeners.forEach(({ element, listener }) => {
     element.removeEventListener('click', listener);
   });
-  
+
   removeAllEventListeners(popoverWrapper);
 });

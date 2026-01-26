@@ -2,12 +2,11 @@ import { SLIDER_CONFIG } from '../../shared/constants/slider-constants.js';
 import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
 import { SELECTORS } from '../../shared/constants/selectors.js';
 import {
-  selectElement,
-  addEventListener,
   addClass,
-  removeClass,
   addEventListenerWithCleanup,
   removeAllEventListeners,
+  removeClass,
+  selectElement,
 } from '../../shared/utilities/dom-helpers.js';
 
 export class Slider {
@@ -43,8 +42,12 @@ export class Slider {
   }
 
   setupEventListeners() {
-    addEventListenerWithCleanup(this.buttonLeft, 'click', () => this.moveLeft());
-    addEventListenerWithCleanup(this.buttonRight, 'click', () => this.moveRight());
+    addEventListenerWithCleanup(this.buttonLeft, 'click', () =>
+      this.moveLeft(),
+    );
+    addEventListenerWithCleanup(this.buttonRight, 'click', () =>
+      this.moveRight(),
+    );
     addEventListenerWithCleanup(window, 'resize', () => this.handleResize());
   }
 

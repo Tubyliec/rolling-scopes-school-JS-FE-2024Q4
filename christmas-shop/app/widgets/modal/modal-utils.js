@@ -32,12 +32,12 @@ export function getUniqueRandomIndices(count, max) {
   }
 
   const indices = Array.from({ length: max }, (_, i) => i);
-  
+
   for (let i = 0; i < count; i++) {
     const randomIndex = Math.floor(Math.random() * (max - i)) + i;
     [indices[i], indices[randomIndex]] = [indices[randomIndex], indices[i]];
   }
-  
+
   return indices.slice(0, count);
 }
 

@@ -45,7 +45,10 @@ function countdown() {
   seconds.innerText = padNumber(timeRemaining.seconds, 1);
 }
 
-countdownInterval = window.setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
+countdownInterval = window.setInterval(
+  countdown,
+  COUNTDOWN_CONFIG.UPDATE_INTERVAL,
+);
 
 const slider = createSlider();
 const burger = createBurger();
@@ -66,7 +69,7 @@ popoverWrapper.addEventListener('click', popoverListener);
 
 window.addEventListener('beforeunload', () => {
   if (countdownInterval) {
-    clearInterval(countdownInterval);
+    window.clearInterval(countdownInterval);
   }
   if (slider && typeof slider.destroy === 'function') {
     slider.destroy();
