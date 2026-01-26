@@ -1,5 +1,6 @@
 import { CSS_CLASSES } from '../../shared/constants/config.js';
 import { IMAGE_PATHS } from '../../shared/constants/api.js';
+import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
 import { addClass, createElement } from '../../shared/utilities/dom-helpers.js';
 
 export class GiftComponent {

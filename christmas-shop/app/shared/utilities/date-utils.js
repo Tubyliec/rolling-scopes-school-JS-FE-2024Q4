@@ -2,12 +2,14 @@ export function getCurrentDate() {
   return new Date();
 }
 
+import { COUNTDOWN_CONFIG } from '../../shared/constants/countdown-constants.js';
+
 export function createTargetDate(
-  month = 0,
-  day = 1,
-  hour = 0,
-  minute = 0,
-  second = 0,
+  month = COUNTDOWN_CONFIG.TARGET_MONTH,
+  day = COUNTDOWN_CONFIG.TARGET_DAY,
+  hour = COUNTDOWN_CONFIG.TARGET_HOUR,
+  minute = COUNTDOWN_CONFIG.TARGET_MINUTE,
+  second = COUNTDOWN_CONFIG.TARGET_SECOND,
 ) {
   const targetDate = new Date();
   targetDate.setMonth(month);
@@ -15,6 +17,12 @@ export function createTargetDate(
   targetDate.setHours(hour);
   targetDate.setMinutes(minute);
   targetDate.setSeconds(second);
+
+  const currentDate = new Date();
+  if (targetDate < currentDate) {
+    targetDate.setFullYear(currentDate.getFullYear() + 1);
+  }
+
   return targetDate;
 }
 

@@ -1,4 +1,5 @@
 import { API_ENDPOINTS, GIFT_CATEGORIES } from '../../shared/constants/api.js';
+import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
 import { Gift } from '../../entities/gift/gift.model.js';
 
 export class GiftsService {
@@ -43,7 +44,7 @@ export class GiftsService {
     return allGifts.filter((gift) => gift.category === category);
   }
 
-  async getRandomGifts(count = 4) {
+  async getRandomGifts(count = UI_CONFIG.RANDOM_GIFTS_COUNT) {
     const allGifts = await this.getAllGifts();
     const shuffled = [...allGifts].sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
