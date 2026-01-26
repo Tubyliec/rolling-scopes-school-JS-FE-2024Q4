@@ -10,6 +10,7 @@ import {
   isScrolledPast,
   removeClass,
   selectElement,
+  removeAllEventListeners,
 } from '../../shared/utilities/dom-helpers.js';
 import {
   createTargetDate,
@@ -24,6 +25,9 @@ const days = selectElement(SELECTORS.COUNTDOWN_DAYS);
 const hours = selectElement(SELECTORS.COUNTDOWN_HOURS);
 const minutes = selectElement(SELECTORS.COUNTDOWN_MINUTES);
 const seconds = selectElement(SELECTORS.COUNTDOWN_SECONDS);
+
+let countdownInterval = null;
+let popoverListener = null;
 
 function countdown() {
   const targetDate = createTargetDate(
@@ -41,15 +45,14 @@ function countdown() {
   seconds.innerText = padNumber(timeRemaining.seconds, 1);
 }
 
-window.setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
+countdownInterval = window.setInterval(countdown, COUNTDOWN_CONFIG.UPDATE_INTERVAL);
 
-createSlider();
-
-createBurger();
+const slider = createSlider();
+const burger = createBurger();
 
 bestGifts().catch((err) => console.log(err));
 
-popoverWrapper.addEventListener('click', () => {
+popoverListener = () => {
   removeClass(body, CSS_CLASSES.NO_SCROLL);
   removeClass(popoverWrapper, CSS_CLASSES.OVERLAY_OPEN);
 
@@ -57,4 +60,22 @@ popoverWrapper.addEventListener('click', () => {
   if (buttonUp && isScrolledPast(UI_CONFIG.SCROLL_TOP_THRESHOLD)) {
     addClass(buttonUp, 'scroll-top--visible');
   }
+};
+
+popoverWrapper.addEventListener('click', popoverListener);
+
+window.addEventListener('beforeunload', () => {
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
+  }
+  if (slider && typeof slider.destroy === 'function') {
+    slider.destroy();
+  }
+  if (burger && typeof burger.destroy === 'function') {
+    burger.destroy();
+  }
+  if (popoverWrapper && popoverListener) {
+    popoverWrapper.removeEventListener('click', popoverListener);
+  }
+  removeAllEventListeners(popoverWrapper);
 });

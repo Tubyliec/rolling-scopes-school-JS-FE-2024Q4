@@ -6,6 +6,8 @@ import {
   addEventListener,
   addClass,
   removeClass,
+  addEventListenerWithCleanup,
+  removeAllEventListeners,
 } from '../../shared/utilities/dom-helpers.js';
 
 export class Slider {
@@ -41,9 +43,9 @@ export class Slider {
   }
 
   setupEventListeners() {
-    addEventListener(this.buttonLeft, 'click', () => this.moveLeft());
-    addEventListener(this.buttonRight, 'click', () => this.moveRight());
-    addEventListener(window, 'resize', () => this.handleResize());
+    addEventListenerWithCleanup(this.buttonLeft, 'click', () => this.moveLeft());
+    addEventListenerWithCleanup(this.buttonRight, 'click', () => this.moveRight());
+    addEventListenerWithCleanup(window, 'resize', () => this.handleResize());
   }
 
   calculateStepWidth() {
@@ -120,12 +122,12 @@ export class Slider {
 
   destroy() {
     if (this.buttonLeft) {
-      this.buttonLeft.removeEventListener('click', this.moveLeft);
+      removeAllEventListeners(this.buttonLeft);
     }
     if (this.buttonRight) {
-      this.buttonRight.removeEventListener('click', this.moveRight);
+      removeAllEventListeners(this.buttonRight);
     }
-    window.removeEventListener('resize', this.handleResize);
+    removeAllEventListeners(window);
   }
 }
 

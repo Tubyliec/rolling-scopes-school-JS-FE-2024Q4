@@ -4,6 +4,8 @@ import {
   removeClass,
   selectElement,
   toggleClass,
+  addEventListenerWithCleanup,
+  removeAllEventListeners,
 } from '../../shared/utilities/dom-helpers.js';
 
 export class Burger {
@@ -53,11 +55,11 @@ export class Burger {
   }
 
   setupEventListeners() {
-    this.burgerCheckbox.addEventListener('click', this.handleBurgerClick);
+    addEventListenerWithCleanup(this.burgerCheckbox, 'click', this.handleBurgerClick);
 
-    this.navigationPanel.addEventListener('click', this.handleNavigationClick);
+    addEventListenerWithCleanup(this.navigationPanel, 'click', this.handleNavigationClick);
 
-    window.addEventListener('resize', this.handleResize);
+    addEventListenerWithCleanup(window, 'resize', this.handleResize);
   }
 
   closeMenu() {
@@ -68,15 +70,12 @@ export class Burger {
 
   destroy() {
     if (this.burgerCheckbox) {
-      this.burgerCheckbox.removeEventListener('click', this.handleBurgerClick);
+      removeAllEventListeners(this.burgerCheckbox);
     }
     if (this.navigationPanel) {
-      this.navigationPanel.removeEventListener(
-        'click',
-        this.handleNavigationClick,
-      );
+      removeAllEventListeners(this.navigationPanel);
     }
-    window.removeEventListener('resize', this.handleResize);
+    removeAllEventListeners(window);
   }
 }
 

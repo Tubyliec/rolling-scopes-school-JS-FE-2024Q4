@@ -71,3 +71,35 @@ export function removeEventListener(element, event, handler, options = {}) {
     element.removeEventListener(event, handler, options);
   }
 }
+
+const eventListeners = new WeakMap();
+
+export function addEventListenerWithCleanup(element, event, handler, options = {}) {
+  if (!element) return;
+  
+  if (!eventListeners.has(element)) {
+    eventListeners.set(element, new Map());
+  }
+  
+  const elementListeners = eventListeners.get(element);
+  if (!elementListeners.has(event)) {
+    elementListeners.set(event, new Set());
+  }
+  
+  elementListeners.get(event).add(handler);
+  element.addEventListener(event, handler, options);
+}
+
+export function removeAllEventListeners(element) {
+  if (!element || !eventListeners.has(element)) return;
+  
+  const elementListeners = eventListeners.get(element);
+  
+  elementListeners.forEach((handlers, event) => {
+    handlers.forEach(handler => {
+      element.removeEventListener(event, handler);
+    });
+  });
+  
+  eventListeners.delete(element);
+}

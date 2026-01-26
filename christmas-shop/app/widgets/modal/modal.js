@@ -2,7 +2,7 @@ import { API_ENDPOINTS, GIFT_CATEGORIES } from '../../shared/constants/api.js';
 import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
 import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
 import { SELECTORS } from '../../shared/constants/selectors.js';
-import { selectElement } from '../../shared/utilities/dom-helpers.js';
+import { selectElement, removeAllEventListeners } from '../../shared/utilities/dom-helpers.js';
 import {
   createGiftItem,
   getUniqueRandomIndices,
@@ -18,6 +18,14 @@ const popupModal = selectElement(SELECTORS.MODAL);
 const body = selectElement(SELECTORS.BODY);
 
 let giftsDataCache = null;
+
+function removeAllGiftItems() {
+  const existingItems = giftsContainer.querySelectorAll(`.${CSS_CLASSES.GIFTS_ITEM}`);
+  existingItems.forEach(item => {
+    removeAllEventListeners(item);
+    item.remove();
+  });
+}
 
 export async function getGifts() {
   if (giftsDataCache) {
@@ -42,6 +50,8 @@ export async function bestGifts() {
       console.warn('No gifts available to display');
       return;
     }
+
+    removeAllGiftItems();
 
     const randomIndices = getUniqueRandomIndices(
       UI_CONFIG.RANDOM_GIFTS_COUNT,
@@ -71,6 +81,8 @@ export async function bestGifts() {
 export async function allGifts(itemCategory) {
   try {
     const giftsData = await getGifts();
+
+    removeAllGiftItems();
 
     giftsData.forEach((giftData, itemIndex) => {
       if (
@@ -118,6 +130,8 @@ async function showModalWindow(giftIndex) {
     modalClose.addEventListener('click', () =>
       handleModalClose(popupModal, body, popoverWrapper),
     );
+    
+    modalClose.dataset.modalClose = 'true';
   } catch (error) {
     console.error('Failed to show modal window:', error);
     throw error;
