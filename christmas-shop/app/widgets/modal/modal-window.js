@@ -1,16 +1,15 @@
 import { IMAGE_PATHS } from '../../shared/constants/api.js';
 import { SUPERPOWER_CATEGORIES } from '../../shared/constants/superpower-constants.js';
 import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
+import { createElement } from '../../shared/utilities/dom-helpers.js';
 
 export function createModalWindow(giftData, superpowersArray, giftIndex) {
-  const modalClose = document.createElement('div');
-  modalClose.classList.add(CSS_CLASSES.MODAL_CLOSE);
+  const modalClose = createElement('div', CSS_CLASSES.MODAL_CLOSE);
   modalClose.innerHTML = `
         <img src="${IMAGE_PATHS.CLOSE_ICON}" alt="gift">
         `;
 
-  const modalBlock = document.createElement('div');
-  modalBlock.classList.add(CSS_CLASSES.MODAL_CONTENT);
+  const modalBlock = createElement('div', CSS_CLASSES.MODAL_CONTENT);
   modalBlock.innerHTML = `
         <div class="${CSS_CLASSES.MODAL_IMAGE}">
             <img src="${IMAGE_PATHS.PUBLIC_IMAGES}/${giftData.category}.png" alt="gift">
