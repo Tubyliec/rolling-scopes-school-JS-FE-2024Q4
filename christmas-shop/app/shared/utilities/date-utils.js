@@ -2,7 +2,7 @@ export function getCurrentDate() {
   return new Date();
 }
 
-import { COUNTDOWN_CONFIG } from '../../shared/constants/countdown-constants.js';
+import { COUNTDOWN_CONFIG } from '../constants/countdown-constants.js';
 
 export function createTargetDate(
   month = COUNTDOWN_CONFIG.TARGET_MONTH,

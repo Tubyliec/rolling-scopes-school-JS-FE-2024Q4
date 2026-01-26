@@ -1,7 +1,6 @@
 import { IMAGE_PATHS } from '../../shared/constants/api.js';
 import { SUPERPOWER_CATEGORIES } from '../../shared/constants/superpower-constants.js';
 import { CSS_CLASSES } from '../../shared/constants/css-classes.js';
-import { UI_CONFIG } from '../../shared/constants/ui-constants.js';
 
 export function createModalWindow(giftData, superpowersArray, giftIndex) {
   const modalClose = document.createElement('div');
